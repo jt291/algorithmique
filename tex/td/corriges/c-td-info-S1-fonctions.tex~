@@ -1,0 +1,237 @@
+%-------------------------------------------------------------------------
+% c-td-info-S1-fonctions.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+
+\begin{td}[Codage des entiers positifs (1)]\label{td:codageEntier}\index[td]{codage des entiers positifs}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.01.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Codage d'un nombre fractionnaire]\label{td:fraction}\index[td]{codage d'un nombre fractionnaire}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.02.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Décodage base b $\rightarrow$ décimal]\label{td:decoder}\index[td]{décodage base b $\rightarrow$ décimal}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.03.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Codage des entiers positifs (2)]\label{td:codage}\index[td]{codage des entiers positifs}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.04.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Une spécification, des implémentations]\label{td:implem}\index[td]{spécification et implémentations}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.05.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Passage par valeur]\label{td:swap}\index[td]{passage par valeur}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.06.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Valeurs par défaut]\label{td:defaut}\index[td]{valeurs par défaut}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.07.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\newpage
+\begin{td}[Portée des variables]\label{td:portee}\index[td]{portée des variables}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.08.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Tours de Hanoï {\em à la main}]\label{td:hanoi}\index[td]{tours de Hanoï}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.09.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Pgcd et ppcm de 2 entiers (1)]\label{td:pgcd}\index[td]{pgcd et ppcm de 2 entiers}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.10.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Somme arithmétique]\label{td:somme}\index[td]{suite arithmétique}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.11.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Courbes fractales]\label{td:fractal}\index[algo]{courbes fractales}\index[td]{courbes fractales}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.12.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+%-------------------------------------------------------------------------
+
+\begin{td}[QCM (3)]\label{td:qcm3}\index{evaluation@évaluation!contrôle d'attention}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.13.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Passage des paramètres]\label{td:passage}\index{fonction!passage par valeur}\index[td]{passage par valeur}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.14.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Portée des variables (2)]\label{td:portee2}\index{variable!portée}\index[td]{portée des variables}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.15.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+
+\begin{td}[Suite géométrique]\label{td:geometrie}\index[algo]{suites numériques}\index[td]{suite
+géométriques}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.16.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Puissance entière]\label{td:puissance}\index[algo]{fonction puissance}\index[td]{fonction puissance}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.17.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Coefficients du binôme]\label{td:binome}\index[algo]{coefficients du binôme}\index[td]{coefficients du binôme}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.18.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Fonction d'Ackerman]\label{td:ackerman}\index[algo]{fonction d'Ackerman}\index[td]{fonction d'Ackerman}\index{{{\sc Ackerman}}}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.19.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Addition binaire]\label{td:addition2}\index[algo]{opérations binaires}\index[td]{addition binaire}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.20.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Complément à 2]\label{td:complement2}\index[td]{complément à 2}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.21.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Codage-décodage des réels]\label{td:ieee754}\index[algo]{codage des réels}\index[td]{codage des réels}\index{norme IEEE 754} {\em(on pourra vérifier sur le site \href{http://babbage.cs.qc.cuny.edu/IEEE-754.old/Decimal.html}{\tt http://babbage.cs.qc.cuny.edu/IEEE-754.old/Decimal.html})}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.22.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Intégration numérique]\label{td:integration}\index[algo]{intégration numérique}\index[td]{intégration numérique}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.23.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Tracés de courbes paramétrées]\label{td:traces}\index[algo]{courbes paramétrées}\index[td]{courbes paramétrées}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td3/td3.24.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}

@@ -1,0 +1,294 @@
+%-------------------------------------------------------------------------
+% q-info-S1.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usepackage{calc}
+\usepackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\usepackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno,import}
+\usepackage{longtable,multirow}
+\usepackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz,wrapfig}
+\usepackage{colortbl,color}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref,multimedia,rotating,framed,pstricks}
+\usepackage{listings,index}
+%
+%---- pdflatex
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%---- xelatex
+\usepackage{fontspec}
+%
+\usepackage[french]{minitoc}
+\usepackage[french]{babel}
+\usepackage[french]{nomencl}
+\usepackage[framed,hyperref,standard]{ntheorem}
+\usepackage{eurosym,pifont}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\definecolor{blanc}{RGB}{255,255,255}
+\definecolor{orange}{RGB}{234,138,0}
+\definecolor{bleu}{RGB}{144,209,223}
+\definecolor{rose}{RGB}{233,96,124}
+\definecolor{beige}{RGB}{247,244,241}
+\definecolor{violet}{RGB}{159,159,202}
+\definecolor{vert}{RGB}{162,169,63}
+\definecolor{marron}{RGB}{193,181,162}
+\definecolor{noir}{RGB}{62,61,64}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usetikzlibrary{mindmap,backgrounds,shapes,decorations.text}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{sigle}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\color{blue}\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\pgfuseimage{logo-enib}}
+\fancyhead[C]{Informatique S1}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{40pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newtheorem{question}{\color{blue}Q}[section]
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\ga{\textsc{ga}}   
+\def\bu{\textsc{bu}} 
+\def\zo{\textsc{zo}} 
+\def\meu{\textsc{meu}} 
+\def\coeur{{\color{red}\heartsuit}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newcommand{\hexagone}[2]
+{\draw[color=blue,fill=lightgray] (#1,#2) -- ({#1+1},#2) -- ({#1+3/2},{#2+sqrt(3)/2}) -- 
+({#1+1},{#2+sqrt(3)}) -- (#1,{#2+sqrt(3)}) -- ({#1-1/2},{#2+sqrt(3)/2}) -- cycle;}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\graphicspath{{../fig/}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{titlepage}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\thispagestyle{fancy}
+\lhead{\hspace*{-2em}\begin{minipage}{5cm}\includegraphics[width=5cm]{logo-enib}\end{minipage}}
+\rhead{Cours d'Informatique S1}
+\setlength{\headheight}{79pt}
+\setlength{\footskip}{20pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+\begin{center}
+{\huge\bf Initiation à l'algorithmique}\\[5mm]
+{\huge\sc Questionnements de cours}\\[1cm]
+\href{http://www.enib.fr/~tisseau}{\Large\sc Jacques TISSEAU}\\[3mm]
+\href{http://www.enib.fr}{Ecole nationale d'ingénieurs de Brest}\\
+\href{http://www.cerv.fr}{Centre européen de réalité virtuelle}\\
+\href{mailto:tisseau@enib.fr}{\tt tisseau@enib.fr}
+\end{center}
+\vspace*{1cm}
+
+{\footnotesize\vspace*{1.5mm}
+\noindent Avec la participation de 
+{\sc Romain Bénard}, 
+{\sc Stéphane Bonneaud}, {\sc Cédric Buche},
+{\sc Gireg Desmeulles}, {\sc Céline Jost}, 
+{\sc Sébastien Kubicki}, {\sc Eric Maisel}, 
+{\sc Aléxis Nédélec}, {\sc Marc Parenthoën} et 
+{\sc Cyril Septseault}.
+}
+\null\vfill
+
+\noindent Ces questionnements accompagnent les enseignements d'informatique 
+du $1^{er}$ semestre (S1) de l'Ecole Nationale d'Ingénieurs 
+de Brest (ENIB : \href{http://www.enib.fr}{\tt www.enib.fr}).
+Ils complètent les notes de cours « Initiation à l'algorithmique ».
+$$\fbox{\includegraphics[width=14cm,page=1]{../../pdf/cours/info-S1.pdf}}$$
+\centerline{\footnotesize
+{\bf Tisseau J.},{\em Initiation à l'algorithmique}, ENIB, cours d'Informatique S1, Brest, 2009-2014.
+}
+\null\vfill
+
+\centerline{\tiny version du \today}
+
+\end{titlepage}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\begin{minipage}{3cm}\includegraphics[width=3cm]{logo-enib}\end{minipage}}
+\fancyhead[C]{Informatique S1}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{47pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setcounter{tocdepth}{2}
+\tableofcontents
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{0}
+\section{Introduction}\label{sec:introduction}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-preambule.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{1}
+\section{Qu'est-ce que l'algorithmique ?}\label{sec:algo}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-introduction.tex}
+	
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{2}
+\section{Qu'est-ce que l'affectation ?}\label{sec:affectation}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-affectation.tex}
+	
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{3}
+\section{Comment calcule-t-on avec des opérateurs booléens ?}\label{sec:booleens}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-booleens.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{4}
+\section{Comment coder un nombre ?}\label{sec:codage}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-codage.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{5}
+\section{Qu'est-ce qu'un test ?}\label{sec:tests}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-tests.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{6}
+\section{Comment construit-on une boucle ?}\label{sec:boucles}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-boucles.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{7}
+\section{Comment imbriquer des boucles ?}\label{sec:boucles-imbriquees}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-boucles-imbriquees.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{8}
+\section{Comment spécifier une fonction ?}\label{sec:specification}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-specification.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{9}
+\section{Qu'est-ce que la récursivité ?}\label{sec:recursivite}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-recursivite.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{10}
+\section{Comment trier une séquence ?}\label{sec:sequences}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-sequences.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+%\setcounter{section}{11}
+\section{Tout en un ?}\label{sec:conclusion}
+%-------------------------------------------------------------------------
+	\input{q-info-S1-conclusion.tex}
+
+%-------------------------------------------------------------------------
+\newpage
+\section*{Liste des questions}\label{annexe:questions}
+\addcontentsline{toc}{section}{Liste des questions}
+\listtheorems{question}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newpage
+\begin{thebibliography}{99}\label{annexe:biblio}
+\addcontentsline{toc}{section}{Références}
+\bibitem{cours} Tisseau J., \emph{Initiation à l'algorithmique. \href{http://www.enib.fr/~tisseau/pdf/course/info-S1.pdf}{Cours}}, \enib, 2009-2014
+\bibitem{td} Tisseau J., \emph{Initiation à l'algorithmique. \href{http://www.enib.fr/~tisseau/pdf/course/td-info-S1.pdf}{Travaux dirigés}}, \enib, 2009-2014
+\bibitem{mvr} Tisseau J., Nédélec A., Parenthoën M., \emph{La démarche \mvr : méthode, vérification, résultat}, \enib, 2011-2014
+\end{thebibliography}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\label{fin}
+\end{document}
+%-------------------------------------------------------------------------

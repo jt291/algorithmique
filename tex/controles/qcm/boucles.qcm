@@ -1,0 +1,79 @@
+[
+["L'itération conditionnelle est une instruction de contrôle du flux d'instructions ",
+ ["qui permet d'exécuter une instruction sous condition préalable",
+  "qui est vérifiée tout au long de son exécution",
+  "qui permet sous condition préalable de répéter zéro ou plusieurs fois la même instruction",
+  "qui permet de choisir entre plusieurs instructions"]],
+["On ne sort jamais d'une boucle si la condition d'arrêt ",
+ ["ne varie pas en cours d'exécution",
+  "ne contient pas d'opérateurs booléens",
+  "est toujours fausse",
+  "n'est jamais fausse"]],
+["Que vaut \\texttt{f} à la fin des instructions suivantes si \\texttt{n = 5} ?\ \
+	\\begin{minipage}{3cm}\\footnotesize\n\
+	\\begin{Verbatim}[frame=single]\n\
+i, f = 1, 0\n\
+while i < n+1 :\n\
+    f = f + i\n\
+    i = i + 1\n\
+	\\end{Verbatim}\n\
+	\\end{minipage} ",
+ ["15", "6", "10", "21"]],
+["Que vaut \\texttt{f} à la fin des instructions suivantes si \\texttt{n = 5} ?\ \
+	\\begin{minipage}{4cm}\\footnotesize\n\
+	\\begin{Verbatim}[frame=single]\n\
+f = 1\n\
+for i in range(2,n+1) :\n\
+    f = f * i\n\
+	\\end{Verbatim}\n\
+	\\end{minipage} ",
+ ["120", "720", "6", "24"]],
+["Que vaut \\texttt{f} à la fin des instructions suivantes si \\texttt{n = 5} ?\ \
+	\\begin{minipage}{4cm}\\footnotesize\n\
+	\\begin{Verbatim}[frame=single]\n\
+f, f1, f2 = 2,1,1\n\
+for i in range(3,n+1) :\n\
+    f2 = f1\n\
+    f1 = f\n\
+    f = f1 + f2\n\
+	\\end{Verbatim}\n\
+	\\end{minipage} ",
+ ["8", "3", "5", "13"]],
+["Que vaut \\texttt{f} à la fin des instructions suivantes si \\texttt{n = 5} ?\ \
+	\\begin{minipage}{4cm}\\footnotesize\n\
+	\\begin{Verbatim}[frame=single]\n\
+f = 0\n\
+for i in [9,-8,-7] :\n\
+    f = f - i\n\
+	\\end{Verbatim}\n\
+	\\end{minipage} ",
+ ["6", "-8", "-24", "24"]],
+["Qu'affichent les instructions suivantes ?\ \
+	\\begin{minipage}{8cm}\\footnotesize\n\
+	\\begin{Verbatim}[frame=single]\n\
+for a in [0,1] :\n\
+    for b in [0,1] :\n\
+        s = (a and (not b)) or ((not a) and b)\n\
+        print(a,b,int(s))\n\
+	\\end{Verbatim}\n\
+	\\end{minipage} ",
+ ["{\\footnotesize\\begin{tabular}[t]{ccc}0&0&0\\\\0&1&1\\\\1&0&1\\\\1&1&0\\end{tabular}}",
+  "{\\footnotesize\\begin{tabular}[t]{ccc}1&0&1\\\\1&1&0\\\\0&0&0\\\\0&1&1\\end{tabular}}",
+  "{\\footnotesize\\begin{tabular}[t]{ccc}1&1&0\\\\1&0&1\\\\0&1&1\\\\0&0&0\\end{tabular}}",
+  "{\\footnotesize\\begin{tabular}[t]{ccc}0&1&1\\\\0&0&0\\\\1&1&0\\\\1&0&1\\end{tabular}}"]],
+["Pour quelles valeurs de \\texttt{a} et de \\texttt{b} sortira-t-on de la boucle ci-dessous ?\n\n\
+	\\begin{minipage}{6cm}\\footnotesize\n\
+	\\begin{Verbatim}[frame=single]\n\
+while not ((a > 5) and (not b)) :\n\
+    bloc\n\
+	\\end{Verbatim}\n\
+	\\end{minipage} ",
+ ["\\texttt{a, b = 6, False}",
+  "\\texttt{a, b = 4, True}",
+  "\\texttt{a, b = 4, False}",
+  "\\texttt{a, b = 6, True}"]]
+]
+
+	
+
+

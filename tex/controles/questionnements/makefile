@@ -1,0 +1,35 @@
+LATEX = xelatex
+PDFDIR = ../../../pdf/controles/questionnements/
+
+export TEXINPUTS=.:../../macros//:
+
+ALLPDF = ds-info-S1-introduction.pdf\
+		ds-info-S1-affectation.pdf\
+		ds-info-S1-booleens.pdf\
+		ds-info-S1-codage.pdf\
+		ds-info-S1-tests.pdf\
+		ds-info-S1-boucles.pdf\
+		ds-info-S1-boucles-imbriquees.pdf\
+		ds-info-S1-boucles-polygones.pdf\
+		ds-info-S1-instructions.pdf\
+		ds-info-S1-ds.pdf\
+		ds-info-S1-portees.pdf\
+		ds-info-S1-specification.pdf\
+		ds-info-S1-specification-1.pdf\
+		ds-info-S1-recursivite.pdf\
+		ds-info-S1-sequences.pdf
+		
+#-------------------------------------------------------------------------------
+all: $(ALLPDF)
+	
+#-------------------------------------------------------------------------------
+%.pdf: %.tex
+	$(LATEX) $<
+	$(LATEX) $<
+	cp $@ $(PDFDIR)
+
+#-------------------------------------------------------------------------------
+clean:
+	rm -f $(ALLPDF)
+	rm -f *.ald *.alx *.aux *.bbl *.blg *.bmt *.defd *.defx *.idx *.ilg *.ind
+	rm -f *.log *.lol *.maf *.mtc* *.out *.tdd *.tdx *.thm *.toc 

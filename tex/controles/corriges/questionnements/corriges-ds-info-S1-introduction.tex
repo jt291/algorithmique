@@ -1,0 +1,193 @@
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{corriges-ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+$$\mbox{\textbf{\large Calculs « Shadok »}}$$
+
+\paragraph{Questions :} calculer les divisions suivantes en base « Shadok ».
+
+\paragraph{Réponses :} la base « Shadok » \{\ga{}, \bu{}, \zo{}, \meu{}\}
+correspond à la base 4 \{0, 1, 2, 3\}; il s'agit donc d'appliquer l'algorithme de la division entière en base 4.
+\vspace*{3mm}
+
+\begin{enumerate}
+\item \meu{} \zo{} \bu{} \meu{} $\div$ \zo{} \zo{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \bu{}	& \bu{} \bu{} \bu{}
+\end{tabular}
+%1 ([1, 1], [1, 1, 1])
+%
+
+\item \zo{} \meu{} \ga{} \zo{} $\div$ \bu{} \meu{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \bu{}	& \bu{} \meu{} \ga{}
+\end{tabular}
+%2 ([1, 1], [1, 3, 0])
+%
+
+\item \bu{} \ga{} \zo{} \meu{} $\div$ \meu{} \zo{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} & \bu{} \ga{} \bu{} 
+\end{tabular}
+%3 ([1], [1, 0, 1])
+%
+
+\item \meu{} \zo{} \ga{} \bu{} $\div$ \meu{} \zo{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\meu{} & \meu{} \ga{} \meu{} 
+\end{tabular}
+%4 ([3], [3, 0, 3])
+%
+
+\item \bu{} \zo{} \bu{} \zo{}  $\div$ \bu{} \ga{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \bu{} & \meu{} \ga{}
+\end{tabular}
+%5 ([1, 1], [3, 0])
+%
+
+\item \bu{} \ga{} \meu{} \bu{} $\div$ \bu{} \ga{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \meu{} \bu{} 
+\end{tabular}
+%6 ([1, 0], [3, 1])
+%
+
+\item \zo{} \bu{} \zo{} \meu{} $\div$ \zo{} \ga{} \bu{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \bu{} \bu{} \meu{}
+\end{tabular}
+%7 ([1, 0], [1, 1, 3])
+%
+
+\item \meu{} \zo{} \ga{} \bu{} $\div$ \zo{} \bu{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \zo{} & \zo{} \bu{}
+\end{tabular}
+%8 ([1, 2], [2, 1])
+%
+
+\item \bu{} \meu{} \meu{} \ga{}$\div$ \bu{} \meu{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \meu{} \ga{} 
+\end{tabular}
+%9 ([1, 0], [3, 0])
+%
+
+\item \zo{} \bu{} \meu{} \meu{}$\div$ \bu{} \ga{} \bu{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\zo{} \bu{} & \bu{} \zo{} 
+\end{tabular}
+%10 ([2, 1], [1, 2])
+%
+
+\item \zo{} \ga{} \zo{} \meu{} $\div$ \zo{} \ga{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \meu{}
+\end{tabular}
+%11 ([1, 0], [3])
+%
+
+\item \bu{} \meu{} \bu{} \ga{} $\div$ \meu{} \zo{} \meu{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} & \meu{} \zo{} \bu{}
+\end{tabular}
+%12 ([1], [3, 2, 1])
+%
+
+\item \zo{} \meu{} \bu{} \zo{} $\div$ \bu{} \ga{} \meu{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\zo{} \bu{} & \zo{} \meu{} 
+\end{tabular}
+%13 ([2, 1], [2, 3])
+%
+
+\item \zo{} \ga{} \meu{} \meu{}$\div$ \bu{} \zo{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \bu{} & \bu{} \bu{} \meu{}
+\end{tabular}
+%14 ([1, 1], [1, 1, 3])
+%
+ 
+\item \meu{} \meu{} \ga{} \zo{}$\div$ \zo{} \meu{} \meu{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \bu{} & \bu{} \meu{} 
+\end{tabular}
+%15 ([1, 1], [1, 3])
+%
+ 
+\item \bu{} \ga{} \zo{} \meu{} $\div$ \bu{} \ga{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \meu{}
+\end{tabular}
+%16 ([1, 0], [3])
+%
+
+\item \zo{} \zo{} \ga{} \meu{} $\div$ \bu{} \ga{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\zo{} \zo{} & \meu{}
+\end{tabular}
+%17 ([2, 2], [3])
+%
+
+\item \zo{} \meu{} \meu{} \ga{}$\div$ \zo{} \meu{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \meu{} \ga{}
+\end{tabular}
+%18 ([1, 0], [3, 0])
+%
+
+\item \zo{} \bu{} \bu{} \zo{}  $\div$ \zo{} \bu{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \bu{} \zo{} 
+\end{tabular}
+%19 ([1, 0], [1, 2])
+%
+
+\item \meu{} \bu{} \bu{} \zo{} $\div$ \meu{} \bu{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \bu{} \zo{} 
+\end{tabular}
+%20 ([1, 0], [1, 2])
+%
+
+\item \meu{} \ga{} \zo{} \meu{}$\div$ \meu{} \ga{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \ga{} & \meu{}	 
+\end{tabular}
+%21 ([1, 0], [3])
+%
+
+\item \bu{} \bu{} \zo{} \zo{}  $\div$ \bu{} \ga{} \bu{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \bu{} & \bu{} \bu{} 
+\end{tabular}
+%22 ([1, 1], [1, 1])
+%
+
+\item \bu{} \zo{} \ga{} \bu{}  $\div$ \bu{} \zo{} \zo{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\meu{} & \bu{} \ga{} \meu{}
+\end{tabular}
+%23 ([3], [1, 0, 3])
+%
+ 
+\item \meu{} \ga{} \meu{} \bu{}$\div$ \bu{} \meu{} \ga{}\hfill
+\begin{tabular}[t]{@{quotient : }p{3cm}@{reste : }p{2.5cm}}
+\bu{} \meu{} & \zo{} \bu{}
+\end{tabular}
+%24 ([1, 3], [2, 1])
+% 
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

@@ -1,0 +1,356 @@
+%-------------------------------------------------------------------------
+% corriges-ds-info-S1-boucles.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{corriges-ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+$$\mbox{\textbf{\large Développements limités}}$$
+%-------------------------------------------------------------------------
+
+\paragraph{Questions :} 
+Ecrire un algorithme qui calcule $y = f(x)$ en fonction du développement en série entière de la fonction $f$ : 
+$f(x) = \sum u_k$, en respectant les contraintes suivantes :
+\begin{itemize}
+\item les calculs seront arrêtés lorsque la valeur absolue du terme $u_k$ ($|u_k|$) 
+	sera inférieure à un certain seuil $s$ (avec $0 < s < 1$);
+\item on n'utilisera ni la fonction \emph{puissance} ($x^n$) ni la fonction
+	\emph{facto\-riel\-le} ($n!$) pour effectuer le calcul du développement.
+\end{itemize}
+\vspace*{5mm}
+
+\noindent\begin{minipage}{6cm}
+D'une manière générale, le code aura l'allure ci-contre.
+On peut vérifier en comparant la valeur obtenue pour $y$
+au calcul direct de la fonction $f$ : $|y - f(x)|$, et ce 
+pour différentes valeurs de $x$ et de $s$.
+\end{minipage}
+\hfill
+\begin{minipage}{9cm}\footnotesize
+\begin{Verbatim}[frame=single]
+x, s = 0.25, 1.0e-9
+# calcul de f(x)
+k, u = k0, u0         # initialisation
+y = u
+while fabs(u) > s :
+    u = g(u,k,x)      # relation de récurrence
+    y = y + u
+    k = k + 1
+# vérification
+print(fabs(y - f(x)) < s)
+\end{Verbatim}
+\end{minipage}
+\vspace*{5mm}
+
+
+%1
+\begin{enumerate}
+\item $\displaystyle\arcsin(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, x
+y = u
+u = u*x*x*(2*k+1)*(2*k+1)/((2*k+2)*(2*k+3))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%2
+\item $\displaystyle\arccos(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, -x
+y = pi/2 + u
+u = u*x*x*(2*k+1)*(2*k+1)/((2*k+2)*(2*k+3))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%3
+\item $\displaystyle\arctan(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, x
+y = u
+u = -u*x*x*(2*k+1)/(2*k+3)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%4
+\item $\displaystyle \frac{1}{1+x}$  
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = -u*x
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%5
+\item $\displaystyle \frac{1}{1-x}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = u*x
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%6
+\item $\displaystyle \frac{1}{1+x^2}$  
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = -u*x*x
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%7
+\item $\displaystyle \frac{1}{1-x^2}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = u*x*x
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%8
+\item $\displaystyle \sqrt{1+x}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = -u*x*(2*k-1)/(2*(k+1))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%9
+\item $\displaystyle \frac{1}{\sqrt{1+x}}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = -u*x*(2*k+1)/(2*k+2)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%10
+\item $\displaystyle \frac{1}{\sqrt{1-x^2}}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = u*x*x*(2*k+1)*(2*k+2)/(4*(k+1)*(k+1))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%11
+\item $\displaystyle \frac{1}{(a-x)^2}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1/(a*a)
+y = u
+u = u*x*(k+2)/(a*(k+1))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%12
+\item $\displaystyle \frac{1}{(a-x)^3}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1/(a*a*a)
+y = u
+u = u*x*(k+3)/(a*(k+1))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%13
+\item $\displaystyle \frac{1}{(a-x)^5}$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1/(a*a*a*a*a)
+y = u
+u = u*x*(k+5)/(a*(k+1))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%14
+\item $\displaystyle \exp(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = u*x/(k+1)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%15
+\item $\displaystyle \exp(-x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = -u*x/(k+1)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%16
+\item $\displaystyle\log(1+x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 1, x
+y = u
+u = -u*x*k/(k+1)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%17
+\item $\displaystyle\log(1-x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 1, -x
+y = u
+u = u*x*k/(k+1)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%18
+\item $\displaystyle\log\left(\frac{1+x}{1-x}\right)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 2*x
+y = u
+u = u*x*x*(2*k+1)/(2*k+3)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%19
+\item $\displaystyle\sinh(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, x
+y = u
+u = u*x*x/((2*k+2)*(2*k+3))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%20
+\item $\displaystyle\cosh(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = u*x*x/((2*k+1)*(2*k+2))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%21
+\item $\displaystyle\arg\sinh(x)$  
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, x
+y = u
+u = -u*x*x*(2*k+1)*(2*k+1)/((2*k+2)*(2*k+3))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+
+%22
+\item $\displaystyle\arg\tanh(x)$  	
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, x
+y = u
+u = u*x*x*(2*k+1)/(2*k+3)
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%23
+\item $\displaystyle\sin(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, x
+y = u
+u = -u*x*x/((2*k+2)*(2*k+3))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+%24
+\item $\displaystyle\cos(x)$
+\hfill
+\begin{minipage}[t]{9cm}\footnotesize
+\begin{Verbatim}
+k, u = 0, 1
+y = u
+u = -u*x*x/((2*k+1)*(2*k+2))
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

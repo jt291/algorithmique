@@ -1,0 +1,139 @@
+%-------------------------------------------------------------------------
+% beamerthemeCerv.sty
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{en-tete.tex}
+\input{sigle.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usepackage{beamerfoils}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+%\newfontfamily\trublion{DearestJohn.otf}
+%\newfontfamily\titre{Sofia-Pro-Bold.otf}
+%\setmainfont
+%	[
+%	BoldFont 		= Sofia-Pro-Bold.otf,
+%	%BoldFont 		= Gotham-Bold.otf,
+%	ItalicFont 		= Gotham-BookItalic.otf,
+%	BoldItalicFont 		= Gotham-BoldItalic.otf
+%	%SmallCapsFont		= ?
+%	]
+%	{Gotham-Book.otf}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamercolor{normal text}{fg=noir,bg=blanc}
+\setbeamercolor{alerted text}{fg=orange,bg=blanc}
+\setbeamercolor{title in head/foot}{fg=noir}
+\setbeamercolor{author in head/foot}{fg=noir}
+\setbeamercolor{date in head/foot}{fg=noir}
+\setbeamercolor{detail in head/foot}{fg=noir}
+\setbeamercolor{frametitle}{fg=orange,bg=blanc}
+\setbeamercolor{framesubtitle}{fg=noir,bg=blanc}
+\setbeamercolor{block title}{fg=noir,bg=orange}
+\setbeamercolor{block body}{fg=noir,bg=blanc}
+\setbeamercolor{block title alerted}{fg=noir,bg=rose}
+\setbeamercolor{block body alerted}{fg=noir,bg=blanc}
+\setbeamercolor{block title example}{fg=noir,bg=bleu}
+\setbeamercolor{block body example}{fg=noir,bg=blanc}
+\setbeamercolor{item}{fg=noir,bg=blanc}
+\setbeamercolor{enumerate item}{fg=orange,bg=blanc}
+\setbeamercolor{enumerate subitem}{fg=rose,bg=blanc}
+\setbeamercolor{enumerate subsubitem}{fg=bleu,bg=blanc}
+\setbeamercolor{description item}{fg=orange,bg=blanc}
+\setbeamercolor{itemize/enumerate body}{fg=noir,bg=blanc}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{description item}{series=\bfseries}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamersize{text margin left=0.75cm,text margin right=0.75cm}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{itemize item}{\includegraphics[width=0.5ex]{puce-1.jpg}}
+\setbeamertemplate{itemize subitem}{\includegraphics[width=0.5ex]{puce-2.jpg}}
+\setbeamertemplate{itemize subsubitem}{\includegraphics[width=0.5ex]{puce-3.jpg}}
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertenumlabel.\insertsubenumlabel}
+\setbeamertemplate{enumerate subsubitem}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamertemplate{background canvas}{\includegraphics[keepaspectratio,width=\paperwidth]{fond-page-courante.jpg}}
+
+\setbeamertemplate{frametitle}{
+	{\vspace*{1ex}
+	%
+	\begin{minipage}{3cm}
+	\pgfuseimage{logo-enib}
+	\end{minipage}
+	\begin{minipage}{0.68\linewidth}
+	\mbox{}{\insertframetitle{}}\\[1mm]\usebeamerfont{framesubtitle}\color{noir}{\insertframesubtitle{}}
+	\end{minipage}}
+}
+
+\def\footpagecourante{
+	\centerline{\makebox[\linewidth]{$\rule[-0.75ex]{0cm}{3ex}$
+		\color{noir}
+		\textbf{\insertshorttitle{}}
+		\hspace*{1em}
+		{\insertshortauthor{}}
+		\hspace*{1em}
+		{\insertshortdate{}}
+		\hfill
+		{\footnotesize\textbf{\insertframenumber{}}}/\inserttotalframenumber{}}
+	}
+}
+\setbeamertemplate{footline}{\footpagecourante}
+
+%-------------------------------------------------------------------------
+\def\pagetitre#1{
+	\setbeamertemplate{footline}[default]
+	\setbeamertemplate{background canvas}{\includegraphics[keepaspectratio,width=\paperwidth]{fond-page-titre.jpg}}
+	\setbeamertemplate{title page}{
+		\begin{center}\color{white}
+		\mbox{}{\insertshortdate}\mbox{}\\[2mm]
+		$\blacktriangle$\\[2mm]
+		{\textbf{\inserttitle}}\\[5mm]
+		%{{\insertsubtitle}}\\[5mm]
+		{{\insertauthor}}
+		\end{center}
+	}
+	\frame{\titlepage}\note{{#1}}
+	\setbeamertemplate{background canvas}{\includegraphics[keepaspectratio,width=\paperwidth]{fond-page-courante.jpg}}
+	\setbeamertemplate{footline}{\footpagecourante}
+}
+
+\def\pagefin#1#2{
+	\setbeamertemplate{footline}[default]
+	\setbeamertemplate{background canvas}{\includegraphics[keepaspectratio,width=\paperwidth]{fond-page-titre.pdf}}
+	\frame{#1}\note{{#2}}
+	\setbeamertemplate{background canvas}{\includegraphics[keepaspectratio,width=\paperwidth]{fond-page-courante.jpg}}
+	\setbeamertemplate{footline}{\footpagecourante}
+}
+
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\mode<presentation>
+{
+\setbeamertemplate{navigation symbols}{}
+}
+\mode<handout> 
+{
+\setbeameroption{show notes} 
+\setbeamertemplate{note page}[plain]
+\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+}
+%-------------------------------------------------------------------------
+
+

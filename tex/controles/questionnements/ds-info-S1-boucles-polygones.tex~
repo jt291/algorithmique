@@ -1,0 +1,80 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-boucles-polygones.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+\entete
+
+\autoevaluation
+
+
+$$\mbox{\textbf{\large Polygones rÃ©guliers}}$$
+
+
+\paragraph{Questions :} 
+En utilisant les instructions de la tortue \logo{}
+(module \texttt{turtle}), Ã©crire un algorithme qui dessine un motif gÃ©omÃ©trique
+composÃ© de $(n\times m)$ polygones rÃ©guliers alignÃ©s sur une grille
+ou disposÃ©s en quinconce sur la grille.
+\vspace*{3mm}
+
+\begin{minipage}[t]{7cm}
+\begin{enumerate}
+\item dÃ©cagones (10 cÃ´tÃ©s) alignÃ©s
+\item dÃ©cagones (10 cÃ´tÃ©s) en quinconce
+\item heptadÃ©cagones (17 cÃ´tÃ©s) alignÃ©s
+\item heptadÃ©cagones (17 cÃ´tÃ©s) en quinconce
+\item heptagones (7 cÃ´tÃ©s) alignÃ©s
+\item heptagones (7 cÃ´tÃ©s) en quinconce
+\item pentagones (5 cÃ´tÃ©s) alignÃ©s
+\item pentagones (5 cÃ´tÃ©s) en quinconce
+\item hendÃ©cagones (11 cÃ´tÃ©s) alignÃ©s
+\item hendÃ©cagones (11 cÃ´tÃ©s) en quinconce
+\item octogones (8 cÃ´tÃ©s) alignÃ©s
+\item octogones (8 cÃ´tÃ©s) en quinconce
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{12}
+\item dodÃ©cagones (12 cÃ´tÃ©s) alignÃ©s
+\item dodÃ©cagones (12 cÃ´tÃ©s) en quinconce
+\item hexagones (6 cÃ´tÃ©s) alignÃ©s
+\item hexagones (6 cÃ´tÃ©s)  en quinconce
+\item hexadÃ©cagones (16 cÃ´tÃ©s) alignÃ©s
+\item hexadÃ©cagones (16 cÃ´tÃ©s) en quinconce
+\item pentadÃ©cagones (15 cÃ´tÃ©s) alignÃ©s
+\item pentadÃ©cagones (15 cÃ´tÃ©s) en quinconce
+\item tridÃ©cagones (13 cÃ´tÃ©s) alignÃ©s
+\item tridÃ©cagones (13 cÃ´tÃ©s) en quinconce
+\item ennÃ©agones (9 cÃ´tÃ©s) alignÃ©s
+\item ennÃ©agones (9 cÃ´tÃ©s) en quinconce
+\end{enumerate}
+\end{minipage}
+\null\vfill
+
+\centerline{\textbf{Du triangle Ã©quilatÃ©ral (3 cÃ´tÃ©s) Ã  l'octadÃ©cagone rÃ©gulier (18 cÃ´tÃ©s)}}
+\centerline{\includegraphics[width=\textwidth]{polygones.png}}
+
+
+%-------------------------------------------------------------------------
+\paragraph{RÃ©ponse :}\mbox{}
+
+\noindent\framebox[\textwidth]{$\rule{0cm}{0.96\textheight}$}
+
+
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

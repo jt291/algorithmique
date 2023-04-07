@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+ 
+# séquence 1
+x = -3
+if x < 0 : x = -x
+print('sequence 1 :',x)
+
+# séquence 2
+x0 = 3
+x = 5
+if x < x0 : y = -1
+else : y = 1
+print('sequence 2 :',y)
+
+# séquence 3
+p = 1
+d = 0
+r = 0
+h = 1
+z = 0
+f = p and (d or r)
+g = not r 
+m = not p and not z
+g = g and (d or h or m)
+if f or g : y = 1
+else : y = 0
+print('sequence 3 :',y)
+
+# séquence 4
+x = 2
+y = 3
+d = 5
+h = 4
+if x > 0 and x < d :
+    if y > 0 and y < h : ok = 1
+    else : ok = 0
+else : ok = 0
+print('sequence 4 :',ok)
+
+# séquence 5
+x = 3
+y = -2
+if x < y : y = y - x
+elif x == y : y = 0
+else : y = x - y
+print('sequence 5 :',y)

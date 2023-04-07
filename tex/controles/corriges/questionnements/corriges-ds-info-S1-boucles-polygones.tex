@@ -1,0 +1,95 @@
+%-------------------------------------------------------------------------
+% corriges-ds-info-S1-boucles-polygones.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\input{corriges-ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+$$\mbox{\textbf{\large Polygones réguliers}}$$
+
+
+\paragraph{Questions :} 
+En utilisant les instructions de la tortue \logo{}
+(module \texttt{turtle}), écrire un algorithme qui dessine un motif géométrique
+composé de $(n\times m)$ polygones réguliers alignés sur une grille
+ou disposés en quinconce sur la grille.
+
+\paragraph{Réponses :} 
+D'une manière générale, le code aura la structure suivante selon que 
+les polygones sont alignés ou en quinconce :
+
+\noindent
+\mbox{}\hfill
+\begin{minipage}[t]{6cm}
+alignés :\\
+\centerline{\includegraphics[width=3cm]{grille-1.pdf}}
+
+\footnotesize
+\begin{Verbatim}[frame=single]
+# initialisation du motif
+dx, dy = 20, 20
+n, m = 5, 4
+x0, y0 = 0, 0
+c, d = 7, 15 
+# dessin du motif
+for j in range(m) :
+    xl = x0
+    yl = y0 + j*dy
+    # dessin d'une ligne de figures
+    for i in range(n) :
+        x, y = xl + i*dx, yl
+        # dessin d'une figure
+        up()
+        goto(x,y)
+        setheading(0)
+        down()
+        # tracé d'un polygone
+        for i in range(c):
+            forward(d)
+            left(360/c)
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+en quinconce :\\
+\centerline{\includegraphics[width=3cm]{grille-2.pdf}}
+
+\footnotesize
+\begin{Verbatim}[frame=single]
+# initialisation du motif
+dx, dy = 20, 20
+n, m = 5, 4
+x0, y0 = 0, 0
+c, d = 7, 15
+# dessin du motif
+for j in range(m) :
+    xl = x0 + dx*(j%2)/2
+    yl = y0 + j*dy
+    # dessin d'une ligne de figures
+    nf = n - (j%2)
+    for i in range(nf) :
+        x, y = xl + i*dx, yl
+        # dessin d'une figure
+        up()
+        goto(x,y)
+        setheading(0)
+        down()
+        # tracé d'un polygone
+        for i in range(c):
+            forward(d)
+            left(360/c)
+\end{Verbatim}
+\end{minipage}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

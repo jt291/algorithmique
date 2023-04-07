@@ -1,0 +1,84 @@
+% corrige-ds-instruc-06.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-instruc-preambule.tex}
+\usepackage{epsfig}
+%-------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une séquence d'instructions}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-instruc-06-racine.py}
+
+\noindent\begin{minipage}{8cm}
+Il s'agit du calcul de la racine carrée entière $y$ d'un nombre entier $a$ :
+$y = 27 = \sqrt{729} = \sqrt{a}$.
+\end{minipage}
+\hfill
+\begin{py}{7cm}
+\begin{verbatim}
+729 1 729 1 0
+729 1024 729 1 0
+729 256 473 768 384
+729 64 153 448 224
+729 16 153 208 104
+729 4 53 108 54
+729 1 0 55 27
+729 1 0 55 27
+\end{verbatim}
+\end{py}
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-instruc-06-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\section{Zéro d'une fonction}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-instruc-06-zero.py}
+
+%-----------------------------------------------------------------------------
+\newpage
+\section{Le calcul Shadok}
+%-----------------------------------------------------------------------------
+Le système Shadok est un système de numération en base 4 :
+{\sc ga} = 0, {\sc bu} = 1, {\sc zo} = 2 et {\sc meu} = 3.
+\begin{enumerate}
+\item conversions «~base Shadok~» $\rightarrow$ décimal :
+
+	\begin{minipage}[t]{14cm}	
+	\begin{tabular}{l@{ = }lp{6cm}}
+	{\sc ga} {\sc ga} & $(00)_4$ & $= 0$\\[2mm]
+	{\sc bu} {\sc bu} {\sc bu} & $(111)_4$ & $= 1\cdot 4^2 + 1\cdot 4^1 + 1\cdot 4^0$\newline
+                                     $= 16 + 4 + 1$\newline $= 21$\\[2mm]
+	{\sc zo} {\sc zo} {\sc zo} {\sc zo} & $(2222)_4$ & $= 2\cdot 4^3 + 2\cdot 4^2 + 2\cdot 4^1 + 2\cdot 4^0$\newline 
+                                              $= 128 + 32 + 8 + 2$\newline $= 170$\\[2mm]
+	{\sc meu} {\sc meu} {\sc meu} {\sc meu} {\sc meu} & $(33333)_4$ & $= 3 \cdot 4^4 + 3\cdot 4^3 + 3\cdot 4^2 + 3\cdot 4^1 + 3\cdot 4^0$\newline $= 768 + 192 + 48 + 12 + 3$\newline $= 1023$
+	\end{tabular}
+	\end{minipage}
+\item calculs en «~base Shadok~» :
+
+	\begin{minipage}[t]{14cm}
+	\begin{tabular}{l@{ = }l}
+	{\sc zo} {\sc zo} {\sc meu} $+$ {\sc bu} {\sc ga} {\sc meu} & $(223)_4 + (103)_4 = (332)_4 = 43 + 19 = 62$\\[2mm]
+	{\sc meu} {\sc ga} {\sc meu} $-$ {\sc bu} {\sc meu} {\sc ga} & $(303)_4 - (130)_4 = (113)_4 = 51 - 28 = 23$\\[2mm]
+	{\sc zo} {\sc meu} {\sc meu} $\times$ {\sc bu} {\sc ga} {\sc meu} & $(233)_4 \times (103)_4 = (31331)_4 = 47 \times 19 = 893$\\[2mm]
+	{\sc zo} {\sc zo} {\sc zo} {\sc meu} $\div$ {\sc bu} {\sc ga} {\sc zo} & $(2223)_4 \div (102)_4 = (21)_4 = 171 \div 18 = 9$
+	\end{tabular}
+	\end{minipage}
+\end{enumerate}
+
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

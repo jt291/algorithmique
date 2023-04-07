@@ -1,0 +1,39 @@
+LATEX = xelatex
+PDFDIR = ../../../../pdf/controles/corriges/ds/
+PYDIR = ../../../../python/controles/ds/
+
+export TEXINPUTS=.:../../../macros//:
+
+ALLPDF = corrige-ds-algo-01.pdf\
+		 corrige-ds-algo-02.pdf\
+		 corrige-ds-algo-03.pdf\
+		 corrige-ds-algo-04.pdf\
+		 corrige-ds-algo-05.pdf\
+		 corrige-ds-algo-06.pdf\
+		 corrige-ds-algo-07.pdf\
+		 corrige-ds-algo-08.pdf\
+		 corrige-ds-algo-09.pdf\
+		 corrige-ds-algo-10.pdf\
+		 corrige-ds-instruc-01.pdf\
+		 corrige-ds-instruc-02.pdf\
+		 corrige-ds-instruc-03.pdf\
+		 corrige-ds-instruc-04.pdf\
+		 corrige-ds-instruc-05.pdf\
+		 corrige-ds-instruc-06.pdf\
+		 corrige-ds-instruc-07.pdf
+		
+#-------------------------------------------------------------------------------
+all: $(ALLPDF)
+	cp *.py $(PYDIR)
+	
+#-------------------------------------------------------------------------------
+%.pdf: %.tex
+	$(LATEX) $<
+	$(LATEX) $<
+	cp $@ $(PDFDIR)
+
+#-------------------------------------------------------------------------------
+clean:
+	rm -f $(ALLPDF)
+	rm -f *.ald *.alx *.aux *.bbl *.blg *.bmt *.defd *.defx *.idx *.ilg *.ind
+	rm -f *.log *.lol *.maf *.mtc* *.out *.tdd *.tdx *.thm *.toc 

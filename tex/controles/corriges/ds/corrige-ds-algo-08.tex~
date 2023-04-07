@@ -1,0 +1,131 @@
+% corrige-ds-algo-08.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+\usepackage{epsfig}
+%-------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$ (1)}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-08-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\section{Conversion base $b$ $\rightarrow$ décimal}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-08-conversion.py}
+
+%-----------------------------------------------------------------------------
+\section{Courbes fractales}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-08-fractals.py}
+
+{\epsfig{figure=fractalC.eps,width=10cm}}
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-08-portees.py}
+
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> y = f(x)
+>>> print(x)
+f 6
+2
+
+>>> print(x)
+f 6
+g 18
+2
+
+>>> t = h(x)
+>>> print(x)
+f 6
+f 18
+g 54
+h 162
+2
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> x = f(x)
+>>> print(x)
+f 6
+6
+
+>>> x = g(x)
+>>> print(x)
+f 18
+g 54
+54
+
+>>> x = h(x)
+>>> print(x)
+f 162
+f 486
+g 1458
+h 4374
+4374
+\end{verbatim}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$ (2)}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-08-kreweras.py}
+
+\begin{minipage}[t]{7cm}
+\begin{enumerate}
+\item 
+\begin{Verbatim}
+>>> for n in range(7):
+        print(n,':',end=' ')
+        for m in range(n+1):
+            print(g(n,m),end=' ')
+        print()
+
+0 : 1 
+1 : 0 1 
+2 : 0 1 1 
+3 : 0 1 2 2 
+4 : 0 2 4 5 5 
+5 : 0 5 10 14 16 16 
+6 : 0 16 32 46 56 61 61 
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{1}
+\item  
+\begin{Verbatim}
+>>> 12*g(5,5)/g(6,6)
+3.1475409836065573
+
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

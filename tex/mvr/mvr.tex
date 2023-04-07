@@ -1,0 +1,202 @@
+% mrv.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{book}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usepackage{calc}
+\usepackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\usepackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno,import}
+\usepackage{longtable,multirow}
+\usepackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz,wrapfig}
+\usepackage{colortbl,color}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref,multimedia,rotating,framed,pstricks}
+\usepackage{listings,index}
+%
+%---- pdflatex
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%---- xelatex
+\usepackage{fontspec}
+%
+\usepackage[french]{minitoc}
+\usepackage[french]{babel}
+\usepackage[french]{nomencl}
+\usepackage[framed,hyperref,standard]{ntheorem}
+\usepackage{eurosym,pifont}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\color{blue}\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\hspace*{-3em}\begin{minipage}{3cm}\pgfuseimage{logo-enib}\end{minipage}}
+\fancyhead[C]{Informatique S1 -- 2013-2014}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{40pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{sigle}
+%-------------------------------------------------------------------------
+
+\graphicspath{{../fig/}}
+
+
+\newtheorem{definition}{Définition}
+
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{fancy}
+\setlength{\headheight}{0pt}
+\setlength{\footskip}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+
+\begin{center}
+\includegraphics[height=4cm]{logo-enib}\\[2cm]
+{\huge\textbf{Initiation à l'algorithmique}}\\[5mm]
+{\Large\textbf{--- Démarche MVR ---}}\\[3mm]
+{\large Méthode -- Vérification -- Résultat}\\[1cm]
+{\Large\href{http://www.enib.fr/~tisseau}{\textsc{Jacques Tisseau}}, 
+\href{http://www.enib.fr/~nedelec}{\textsc{Alexis Nédélec}},
+\href{http://www.enib.fr/~parenthoen}{\textsc{Marc Parenthoën}}}\\[1mm]
+\enib\  -- Technopôle Brest Iroise\\
+CS 73862 -- 29238 Brest cedex 3 -- France\\
+\href{http://www.enib.fr/}{\tt www.enib.fr}
+\end{center}
+\null\vfill
+
+\centerline{\tiny version du \today}
+\end{titlepage}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\hspace*{-3em}\begin{minipage}{3cm}\pgfuseimage{logo-enib}\end{minipage}}
+\fancyhead[CE]{\rightmark}
+\fancyhead[CO]{\leftmark}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{51pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setcounter{tocdepth}{1}
+\tableofcontents
+%-------------------------------------------------------------------------
+
+%%-------------------------------------------------------------------------
+\part{Introduction générale}\label{introduction}
+%
+\chapter{Démarche MVR}\label{demarche}
+	\input{mvr-demarche.tex}
+%
+\chapter{Premiers pas}
+	\input{mvr-premiers-pas.tex}
+%
+%
+%%-------------------------------------------------------------------------
+\part{Instructions de base}\label{instructions}
+
+\chapter{Affectation}\label{instructions:affectations}
+	\input{mvr-affectation.tex}
+
+\chapter{Tests}\label{instructions:tests}
+	\input{mvr-tests.tex}
+%
+\chapter{Boucles}\label{instructions:boucles}
+	\input{mvr-boucles.tex}
+%
+\chapter{Instructions imbriquées}\label{instructions:imbrication}
+	\input{mvr-instructions.tex}
+%
+%
+%%-------------------------------------------------------------------------
+\part{Fonctions}\label{fonctions}
+%
+\chapter{Spécification}\label{fonctions:specification}
+%	\input{mrv-specification.tex}
+%
+\chapter{Appels de fonctions}\label{fonctions:appels}
+%	\input{mrv-appels.tex}
+%
+\chapter{Récursivité}\label{fonctions:recursivite}
+%	\input{mrv-recursivite.tex}
+%
+%
+%%-------------------------------------------------------------------------
+\part{Tout en un}\label{tout-en-un}
+%
+\chapter{Vie courante : recherche d'un chemin}\label{tout-en-un:vie-courante}
+%
+\chapter{Jeux : }\label{tout-en-un:jeux}
+%	http://norvig.com/sudoku.html
+%
+\chapter{Textes : cryptographie}\label{tout-en-un:textes}
+%
+\chapter{Nombres : calculateur en base b}\label{tout-en-un:nombres}
+%
+\chapter{Figures : construction de figures}\label{tout-en-un:figures}
+%
+\chapter{Mathématiques : systèmes linéaires}\label{tout-en-un:maths}
+%
+\chapter{Physique : équation différentielle}\label{tout-en-un:physique}
+%
+\chapter{Informatique : machine de Turing}\label{tout-en-un:informatique}
+%
+
+
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

@@ -1,0 +1,313 @@
+% ds-algo-09.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+%-------------------------------------------------------------------------
+
+\usepackage{epsfig}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+\entete
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$}
+Définir une fonction qui calcule $\pi$ à l'ordre $n$ selon la formule :
+$$\pi = 2\cdot
+	\frac{4}{3}\cdot\frac{16}{15}\cdot\frac{36}{35}\cdot\frac{64}{63}\cdots =
+	      2\prod_{k=1}^n\frac{4k^2}{4k^2 - 1}$$
+
+$$\framebox[14.5cm]{$\rule{0cm}{15cm}$}$$
+
+%-----------------------------------------------------------------------------
+\section{Conversion base $b$ $\rightarrow$ décimal}
+Définir une fonction qui calcule la valeur décimale $n$ d'un entier
+positif $t$ codé en base $b$.\\
+Exemples : 
+\begin{tabular}[t]{ll@{\ $\rightarrow$\ }l}
+{\tt b = 2}  & {\tt t = [0, 0, 1, 0, 1, 1, 1]}    & {\tt n = 23}\\
+{\tt b = 5}  & {\tt t = [0, 0, 0, 4, 3]}          & {\tt n = 23}\\
+{\tt b = 21} & {\tt t = [1, 2]}                   & {\tt n = 23}\\
+{\tt b = 25} & {\tt t = [0, 0, 0, 0, 0, 23]}      & {\tt n = 23}
+\end{tabular}
+
+$$\framebox[14.5cm]{$\rule{0cm}{19cm}$}$$
+
+
+%-----------------------------------------------------------------------------
+\section{Polygones réguliers}
+Définir une fonction {\tt polygone(x0,y0,d,n)} qui trace un polygone régulier à {\tt n} côtés 
+de longueur {\tt d} à partir du point de coordonnées $(x_0,y_0)$. 
+On utilisera les instructions de tracé {\em à la Logo} 
+(voir annexe \ref{logo} page \pageref{logo}).
+
+\begin{minipage}{6cm}
+Exemples :
+
+\begin{verbatim}
+>>> from turtle import *
+>>> polygone(-100,0,50,3)
+>>> polygone(0,0,20,7)
+>>> polygone(100,0,2,100)
+\end{verbatim}
+\end{minipage}\hfill
+\begin{minipage}{8cm}
+\epsfig{figure=polygone.eps, width=8cm}
+\end{minipage}
+
+$$\framebox[14.5cm]{$\rule{0cm}{14cm}$}$$
+
+
+%-----------------------------------------------------------------------------
+\section{Spirales rectangulaires}
+Définir une fonction {\tt spirale(n,x0,y0,a0,dr)} qui trace une spirale rectangulaire 
+à {\tt n} côtés à partir du point de coordonnées $(x_0,y_0)$ et avec une orientation initiale
+$a_0$. {\tt dr} représente l'incrément de longueur d'un côté de la spirale à son suivant
+immédiat (le premier côté ayant pour longueur {\tt dr}).
+On utilisera les instructions de tracé {\em à la Logo} 
+(voir annexe \ref{logo} page \pageref{logo}).\vspace*{2mm}
+
+
+\begin{minipage}{6cm}
+Exemples :
+
+\begin{verbatim}
+>>> from turtle import *
+>>> spirale(10,-100,0,0,8)
+>>> spirale(20,0,0,30,3)
+>>> spirale(15,100,0,-45,5)
+\end{verbatim}
+\end{minipage}\hfill
+\begin{minipage}{8cm}
+\epsfig{figure=spirale.eps, width=8cm}
+\end{minipage}
+
+$$\framebox[14.5cm]{$\rule{0cm}{13cm}$}$$
+
+\newpage
+
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+On considère les fonctions {\tt f}, {\tt g} et {\tt h} suivantes :
+\begin{center}
+\begin{py}{4cm}
+\begin{verbatim}
+def f(x):
+    x = 3*x
+    print('f', x)
+    return x
+\end{verbatim}
+\end{py}\hspace*{1cm}
+\begin{py}{4cm}
+\begin{verbatim}
+def g(x):
+    x = 2*f(x)
+    print('g', x)
+    return x
+\end{verbatim}
+\end{py}\hspace*{1cm}
+\begin{py}{4cm}
+\begin{verbatim}
+def h(x):
+    x = g(f(x))
+    print('h', x)
+    return x
+\end{verbatim}
+\end{py}
+\end{center}
+
+Qu'affichent les appels suivants ?
+\vspace*{2mm}
+
+\begin{minipage}{7cm}
+\begin{enumerate}
+\item 
+
+\begin{py}{3cm}
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+
+>>> y = f(x)
+>>> print(x)
+
+>>> z = g(x)
+>>> print(x)
+
+>>> t = h(x)
+>>> print(x)
+\end{verbatim}
+\end{py}
+
+\framebox[5.5cm]{$\rule{0cm}{13cm}$}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{7cm}
+\begin{enumerate}
+
+\item
+
+\begin{py}{4cm}
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+
+>>> x = f(x)
+>>> print(x)
+
+>>> x = g(x)
+>>> print(x)
+
+>>> x = h(x)
+>>> print(x)
+\end{verbatim}
+\end{py}
+
+\framebox[5.5cm]{$\rule{0cm}{13cm}$}
+
+\end{enumerate}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\section{Recherche d'un élément dans un tableau}
+Définir une fonction itérative {\tt recherche(t,x,k)} pour la recherche de la 
+$\mbox{\tt k}^{\grave eme}$ 
+occurrence d'un élément {\tt x} dans un tableau {\tt t} à partir de la fin du
+tableau. La fonction retourne
+un doublet {\tt (ok,i)} où {\tt ok} est une variable booléenne égale à 
+{\tt True} si la $\mbox{\tt k}^{\grave eme}$ occurrence de {\tt x} existe dans 
+{\tt t} ({\tt i} est alors le rang de cette occurrence dans {\tt t}); {\tt ok}
+vaut {\tt False} sinon (la valeur de {\tt i} n'a alors pas de signification :
+elle est sans importance).
+
+Exemples : \begin{py}{7cm}
+\begin{verbatim}
+>>> recherche([1,2,1,3,4,1,5],1,2)
+(True, 2)
+>>> recherche([1,2,1,3,4,1,5],1,4)
+(False, -1)
+\end{verbatim}
+\end{py}
+
+
+$$\framebox[14.5cm]{$\rule{0cm}{17cm}$}$$
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction de tri}
+\begin{minipage}[t]{7cm}
+Qu'affiche l'appel {\tt f([5,1,4,7,10])} où {\tt f} est la fonction itérative
+définie ci-contre ?
+
+$$\framebox[6.75cm]{$\rule{0cm}{15cm}$}$$
+\end{minipage}
+\hfill
+\begin{py}{8cm}
+\begin{verbatim}
+#----------------------------------------
+def f(t):
+#----------------------------------------
+    assert type(t) is list
+
+    for i in range(len(t)):
+        m = i
+        for j in range(i+1,len(t)):
+            if t[j] > t[m]: m = j
+        t[i],t[m] = t[m],t[i]
+        print(i, t) #---------- affichage
+
+    return t
+#----------------------------------------
+\end{verbatim}
+\end{py}
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction de sélection}
+\begin{minipage}[t]{7cm}
+Qu'affiche l'appel {\tt g(h,[5,1,4,7,10])} où {\tt g} et {\tt h}
+sont les fonctions définies ci-contre ?
+
+$$\framebox[6.75cm]{$\rule{0cm}{15cm}$}$$
+\end{minipage}
+\hfill
+\begin{py}{8cm}
+\begin{verbatim}
+#----------------------------------------
+def h(x):
+#----------------------------------------
+    assert type(x) is int
+    
+    return x%2 == 0
+#----------------------------------------
+
+
+#----------------------------------------
+def g(p,t):
+#----------------------------------------
+    assert type(t) is list
+
+    i = 0
+    while i < len(t):
+        if p(t[i]) == True:
+            del t[i]
+        else: i = i + 1
+        print(i, t)  #--------- affichage
+    return t
+#----------------------------------------
+\end{verbatim}
+\end{py}
+
+%-----------------------------------------------------------------------------
+\appendix
+\newpage
+%-----------------------------------------------------------------------------
+\section{Annexe : instructions Logo}\label{logo}
+%-----------------------------------------------------------------------------
+\begin{quote}\scriptsize\em 
+{\em Logo is the name for a philosophy of education and 
+a continually evolving family of programming languages that aid in its realization
+(Harold Abelson, Apple Logo, 1982).}
+This statement sums up two fundamental aspects of Logo and puts them in the proper order. 
+The Logo programming environments that have been developed over the past 28 years are 
+rooted in constructivist educational philosophy, and are designed to support constructive 
+learning. [\ldots]
+Constructivism views knowledge as being created by learners in their own minds through 
+interaction with other people and the world around them. This theory is most closely 
+associated with Jean Piaget, the Swiss psychologist, who spent decades studying and 
+documenting the learning processes of young children.\\
+\mbox{}\hfill {\rm\bf Logo Foundation :} {\tt http://el.media.mit.edu/logo-foundation}
+\end{quote}
+
+On suppose connues les procédures de tracés géométriques {\em à la Logo} :\vspace*{2mm}
+
+\begin{minipage}{14cm}\footnotesize
+\begin{description}
+\item[\tt degrees()] fixe l'unité d'angle en degrés
+\item[\tt radians()] fixe l'unité d'angle en radians
+\item[\tt reset()] efface l'écran et réinitialise les variables
+\item[\tt clear()] efface l'écran
+\item[\tt forward(d)] avance d'une distance $d$
+\item[\tt backward(d)] recule d'une distance $d$
+\item[\tt left(a)] tourne sur la gauche d'un angle $a$
+\item[\tt right(a)] tourne sur la droite d'un angle $a$
+\item[\tt up()] lève le crayon 
+\item[\tt down()] abaisse le crayon 
+\item[\tt goto(x,y)] déplace le crayon à la position $(x,y)$
+\item[\tt setheading(a)] oriente la tortue selon un angle $a$ avec l'axe horizontal
+\item[\tt towards(x,y)] donne l'angle entre la direction courante et la direction 
+	pointant vers le point de coordonnées $(x,y)$
+\item[\tt circle(r)] trace un cercle de rayon $r$
+\item[\tt circle(r,a)] trace un arc de cercle de rayon $r$ et d'angle au sommet $a$
+\end{description}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

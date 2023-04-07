@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+ 
+# enOrdre 1 : version récursive
+def enOrdreRecursif(t,debut,fin):
+    """
+    ok = enOrdreRecursif(t)
+    teste si la liste t est ordonnée par ordre croissant
+    
+    >>> t = [0,1,2,3,4]
+    >>> enOrdreRecursif(t,0,len(t)-1)
+    True
+    >>> t = [4,1,2,3,0]
+    >>> enOrdreRecursif(t,0,len(t)-1)
+    False
+    >>> enOrdreRecursif(t,1,3)
+    True
+    """
+    assert type(t) is list
+    assert 0 <= debut <= fin < len(t)
+    
+    ok = False
+    if debut == fin :
+        ok = True
+    else:
+        if t[debut] <= t[debut+1] : 
+            ok = enOrdreRecursif(t,debut+1,fin)
+    return ok
+
+# enOrdre 2 : version itérative
+def enOrdreIteratif(t,debut,fin):
+    """
+    ok = enOrdreIteratif(t)
+    teste si la liste t est ordonnée par ordre croissant
+    
+    >>> t = [0,1,2,3,4]
+    >>> enOrdreIteratif(t,0,len(t)-1)
+    True
+    >>> t = [4,1,2,3,0]
+    >>> enOrdreIteratif(t,0,len(t)-1)
+    False
+    >>> enOrdreIteratif(t,1,3)
+    True
+    """
+    assert type(t) is list
+    assert 0 <= debut <= fin < len(t)
+
+    ok = True
+    while not debut == fin and ok:
+        if t[debut] <= t[debut+1] :
+            debut = debut + 1
+        else :
+            ok = False
+
+    return ok
+
+#-----------------------------------------------------------------------
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

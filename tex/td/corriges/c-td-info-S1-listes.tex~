@@ -1,0 +1,296 @@
+%-------------------------------------------------------------------------
+% c-td-info-S1-listes.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+
+\begin{td}[Distance de 2 points de l'espace]\label{td:distance}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.01.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Opérations sur les n-uplets]\label{td:n-uplet}\index[td]{opérations sur les n-uplets}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.02.py}
+	%\end{minipage}
+	\vspace*{2mm}
+	
+\end{td}
+
+\begin{td}[Pgcd et ppcm de 2 entiers (2)]\label{td:pgcdppcm}\index[td]{pgcd et ppcm de 2 entiers}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.03.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\newpage
+\begin{td}[Opérations sur les chaînes]\label{td:chaine}\index[td]{opérations sur les chaînes de caractères}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.04.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Inverser une chaîne]\label{td:inverser}\index[td]{inverser une chaîne}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.05.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Caractères, mots, lignes d'une chaîne]\label{td:wc}\index[td]{caractères, mots, lignes d'une chaîne}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.06.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Opérations sur les listes (1)]\label{td:listes1}\index[td]{opérations sur les listes}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.07.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Opérations sur les listes (2)]\label{td:listes2}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.08.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+
+\begin{td}[Sélection d'éléments]\label{td:collect}\index[td]{sélection d'éléments}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.09.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Opérations sur les piles]\label{td:pile}\index[td]{opérations sur les piles}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.10.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Opérations sur les files]\label{td:file}\index[td]{opérations sur les files}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.11.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Produit de matrices]\label{td:matrices1}\index[td]{opérations sur les matrices}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.12.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Annuaire téléphonique]\label{td:annuaire}\index[td]{annuaire téléphonique}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.13.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Recherche dichotomique]\label{td:dicho}\index[td]{recherche dichotomique}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.14.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Liste ordonnée]\label{td:enordre}\index[td]{liste ordonnée}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.15.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Tri d'un annuaire téléphonique]\label{td:tri1}\index[td]{tri d'un annuaire}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.16.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Complexité du tri par sélection]\label{td:tri2}\index[td]{complexité du tri par sélection}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.17.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Tri par insertion]\label{td:tri3}\index[td]{tri par insertion}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.18.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Comparaison d'algorithmes (1)]\label{td:exectri1}\index[td]{comparaison d'algorithmes de tri}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.19.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+%-------------------------------------------------------------------------
+
+\begin{td}[QCM (4)]\label{td:qcmListes}\index[td]{contrôle d'attention}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.20.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Génération de séquences]\label{td:alea}\index[td]{génération de séquences}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.21.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Application d'une fonction à tous les éléments d'une liste]\label{td:foreach}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.22.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+
+\begin{td}[Que fait cette procédure ?]\label{td:trishell}\index[td]{que fait cette procédure ?}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.23.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+
+\begin{td}[Codes ASCII et chaînes de caractères]\label{td:asciichaines}\index[td]{codes ASCII et chaînes de caractères}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.24.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Opérations sur les matrices]\label{td:matrices2}\index[td]{opérations sur les matrices}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.25.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+
+\begin{td}[Recherche d'un motif]\label{td:motif}\index{recherche dans une séquence!recherche d'un motif}
+\index[td]{recherche d'un motif}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.26.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Recherche de toutes les occurences]\label{td:occurs}\index[td]{recherche de toutes les occurences}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.27.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Tri bulles]\label{td:bulles}\index{tri d'une séquence!tri bulles}\index[td]{tri bulles}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.28.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Méthode d'élimination de {\sc Gauss}]\label{td:gauss}\index[td]{méthode d'élimination de {{\sc Gauss}}}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.29.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+
+\begin{td}[Comparaison d'algorithmes de recherche.]\label{td:exectri2}\index[td]{comparaison d'algorithmes de recherche}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.30.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+\begin{td}[Comparaison d'algorithmes de tri]\label{td:exectri3}\index[td]{comparaison d'algorithmes de tri}
+	\em\mbox{}\\[-1.2cm]
+	%\em\mbox{}\hfill\begin{minipage}{0.95\textwidth}
+	\VerbatimInput{td4/td4.31.py}
+	%\end{minipage}
+	\vspace*{2mm}
+
+\end{td}
+
+%-------------------------------------------------------------------------
+

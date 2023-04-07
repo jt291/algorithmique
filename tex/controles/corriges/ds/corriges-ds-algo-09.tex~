@@ -1,0 +1,72 @@
+% corriges-ds-algo-09.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+\usepackage{epsfig}
+%-------------------------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\section{Conversion base $b$ $\rightarrow$ décimal}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-conversion.py}
+
+
+%-----------------------------------------------------------------------------
+\section{Polygones réguliers}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-polygone.py}
+
+%-----------------------------------------------------------------------------
+\section{Spirales rectangulaires}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-spirale.py}
+
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-portees.py}
+
+%-----------------------------------------------------------------------------
+\section{Recherche d'un élément dans un tableau}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-recherche.py}
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction de tri}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-tri.py}
+
+\begin{verbatim}
+>>> f([5,1,4,7,10])
+0 [10, 1, 4, 7, 5]
+1 [10, 7, 4, 1, 5]
+2 [10, 7, 5, 1, 4]
+3 [10, 7, 5, 4, 1]
+4 [10, 7, 5, 4, 1]
+\end{verbatim}
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction de sélection}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-selection.py}
+
+\begin{verbatim}
+>>> g(h,[5,1,4,7,10])
+1 [5, 1, 4, 7, 10]
+2 [5, 1, 4, 7, 10]
+2 [5, 1, 7, 10]
+3 [5, 1, 7, 10]
+3 [5, 1, 7]
+\end{verbatim}
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

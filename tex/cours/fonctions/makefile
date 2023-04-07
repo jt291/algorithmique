@@ -1,0 +1,22 @@
+LATEX = pdflatex
+PDFDIR = ../../../pdf/cours
+
+export TEXINPUTS=.:../../macros//:
+
+ALLPDF = fonctions-1Slide.pdf fonctions-1Paper.pdf\
+		fonctions-2Slide.pdf fonctions-2Paper.pdf
+
+#------------------------------------------------------------------------------------------
+all: $(ALLPDF)
+
+#------------------------------------------------------------------------------------------
+%.pdf: %.tex
+	$(LATEX) $<
+	$(LATEX) $<
+	cp $@ $(PDFDIR)
+
+#------------------------------------------------------------------------------------------
+clean:
+	rm -f *.aux *.log *.mtc* *.nav *.out *.snm *.thm *.toc
+	rm -f $(ALLPDF)
+

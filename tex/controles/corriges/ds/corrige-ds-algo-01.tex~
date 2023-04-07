@@ -1,0 +1,169 @@
+% corrige-ds-algo-01.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+%-------------------------------------------------------------------------
+
+\usepackage{epsfig}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Fonctions numériques}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\subsection{Calcul de $\pi$}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-01-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\subsection{Conversion décimal $\rightarrow$ base $b$}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-01-conversion.py}
+
+%-----------------------------------------------------------------------------
+\section{Fonctions graphiques}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\subsection{Courbes paramétrées}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-01-courbes.py}
+
+%-----------------------------------------------------------------------------
+\subsection{Courbes fractales}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-01-fractals.py}
+
+Les courbes ci-dessous correspondent, respectivement de bas en haut, 
+aux appels suivants~:
+{\tt p(0,300)}, {\tt p(1,300)}, {\tt p(2,300)} et {\tt p(3,300)}.
+\vspace*{1cm}
+
+\centerline{\epsfig{figure=fractal.eps,width=8cm}}
+
+%-----------------------------------------------------------------------------
+%\entete
+\section{Appels de fonctions}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\subsection{Portée des variables}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-01-portees.py}
+
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 5
+>>> print(x)
+5
+
+>>> y = f(x)
+>>> print(x)
+f 10
+5
+
+>>> print(x)
+f 10
+g 20
+5
+
+>>> t = h(x)
+>>> print(x)
+f 10
+f 20
+g 40
+h 80
+5
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 5
+>>> print(x)
+5
+
+>>> x = f(x)
+>>> print(x)
+f 10
+10
+
+>>> x = g(x)
+>>> print(x)
+f 20
+g 40
+40
+
+>>> x = h(x)
+>>> print(x)
+f 80
+f 160
+g 320
+h 640
+640
+\end{verbatim}
+\end{minipage}
+
+
+%-----------------------------------------------------------------------------
+\subsection{Récursivité}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-01-recherche.py}
+
+%-----------------------------------------------------------------------------
+%\entete
+\section{Exécutions de fonctions}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\subsection{Exécution d'une fonction itérative}
+
+\begin{minipage}[t]{10cm}
+Il s'agit de l'algorithme du tri par sélection
+et l'appel correspond au tri du tableau {\tt [3,6,4,5,2,1]}.
+\end{minipage}
+\hfill
+\begin{py}{4cm}\tt
+>>> f1([3,6,4,5,2,1])\\
+0 [1, 6, 4, 5, 2, 3]\\
+1 [1, 2, 4, 5, 6, 3]\\
+2 [1, 2, 3, 5, 6, 4]\\
+3 [1, 2, 3, 4, 6, 5]\\
+4 [1, 2, 3, 4, 5, 6]\\
+5 [1, 2, 3, 4, 5, 6]\\
+\mbox{}[1, 2, 3, 4, 5, 6]\\
+>>>
+\mbox{}
+\end{py}
+
+
+
+%-----------------------------------------------------------------------------
+\subsection{Exécution d'une fonction récursive}
+\begin{minipage}[t]{10cm}
+
+Il s'agit de l'algorithme des tours de Hanoï
+et l'appel correspond au déplacement de 3 disques de la tour 4 à la tour 6
+en utilisant la tour 5.
+\end{minipage}
+\hfill
+\begin{py}{4cm}\tt
+>>> f2(3,4,5,6)\\
+4 6\\
+4 5\\
+6 5\\
+4 6\\
+5 4\\
+5 6\\
+4 6\\
+>>>
+\mbox{}
+\end{py}
+
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

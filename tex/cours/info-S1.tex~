@@ -1,0 +1,329 @@
+%-------------------------------------------------------------------------
+% info-S1.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,landscape,colorlinks,breaklinks]{book}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usepackage{calc}
+\usepackage[text={25cm,16cm},centering=true,showframe=false]{geometry}
+\usepackage{fancybox,fancyvrb,fancyhdr,lastpage,import}
+\usepackage{longtable,multirow}
+\usepackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz,wrapfig}
+\usepackage{colortbl,color}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref,multimedia,rotating,framed,pstricks}
+\usepackage{listings,index}
+%
+%---- pdflatex
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%---- xelatex
+\usepackage{fontspec}
+%
+\usepackage[french]{minitoc}
+\usepackage[french]{babel}
+\usepackage[french]{nomencl}
+\usepackage[framed,hyperref,standard]{ntheorem}
+\usepackage{eurosym,pifont}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\definecolor{blanc}{RGB}{255,255,255}
+\definecolor{orange}{RGB}{234,138,0}
+\definecolor{bleu}{RGB}{144,209,223}
+\definecolor{rose}{RGB}{233,96,124}
+\definecolor{beige}{RGB}{247,244,241}
+\definecolor{violet}{RGB}{159,159,202}
+\definecolor{vert}{RGB}{162,169,63}
+\definecolor{marron}{RGB}{193,181,162}
+\definecolor{noir}{RGB}{62,61,64}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{sigle}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\makeatletter
+\newtheoremstyle{mybreak}%
+  {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+          ##1\ ##2\theorem@separator}\hbox{\strut}}}]}%
+  {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+          ##1\ ##2\theorem@separator {\sc ##3}}\hbox{\strut}}}]}
+\makeatother
+\theoremseparator{\ :\ }
+
+\newtheorem{rem}{Remarque}[chapter]
+\theoremstyle{mybreak}
+\shadecolor{rose!25}
+\newshadedtheorem{defin}{Définition}[chapter]
+\newtheorem{td}{\color{blue}\tdir}[chapter]
+\shadecolor{violet!25}
+\newshadedtheorem{ex}{Exemple}[chapter]
+\theorembodyfont{\footnotesize}
+\newframedtheorem{fig}{Fig.}[chapter]
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{16cm}
+\setlength{\marginparwidth}{8cm}
+\setlength{\marginparsep}{1cm}
+
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{+8cm}
+\setlength{\topmargin}{-0.75cm}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\hypersetup
+{
+colorlinks=true,
+pdftitle={Initiation à l'algorithmique},
+pdfauthor={Jacques TISSEAU}
+}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm,
+} 
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\def\exo#1{\mbox{}\ \hfill\mbox{\color{blue}$\rule{2mm}{2mm}\,$\footnotesize\sc \tdir\ \ref{#1}}}
+\def\exercice#1#2{\mbox{}\ \ \tdir\ \ref{#1}\ #2\ \dotfill\ \pageref{#1}\mbox{}}
+
+\newenvironment{py}[1]{\begin{minipage}[t]{#1}\footnotesize}{\end{minipage}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\entete#1{\noindent\framebox[12.6cm][l]{Nom : \hspace*{3.85cm} Prénom : \hspace*{3cm}Groupe : {\bf }$\rule[-0.3cm]{0cm}{1cm}$}
+\hfill
+\framebox[0.7cm]{\bf \ 3 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 2 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 1 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 0 $\rule[-0.3cm]{0cm}{1cm}$}\\[1mm]
+{\footnotesize\sc Durée: 30'\hfill 
+Documents, téléphones, calculettes et ordinateurs interdits.}\\[2mm]
+\centerline{\bf #1}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\bibliographystyle{plain}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\renewcommand{\mtcfont}{\scriptsize\rmfamily\upshape\mdseries}
+\renewcommand{\mtcSfont}{\scriptsize\bfseries}
+\renewcommand{\mtcSSfont}{\scriptsize\bfseries}
+\renewcommand{\mtcSSSfont}{\scriptsize\bfseries}
+\setlength{\mtcindent}{-0.4cm}
+\nomtcrule
+%-------------------------------------------------------------------------
+
+\setcounter{tocdepth}{1}
+
+\makeindex
+\newindex{algo}{alx}{ald}{Algorithmes}
+\newindex{def}{defx}{defd}{Définitions}
+\newindex{td}{tdx}{tdd}{Exercices}
+
+\graphicspath{{../fig/}}
+
+\definecolor{shadecolor}{gray}{0.9}
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+\dominitoc
+
+%-------------------------------------------------------------------------
+\begin{titlepage}
+%-------------------------------------------------------------------------
+
+\thispagestyle{fancy}
+\lhead{\hspace*{-2em}\begin{minipage}{5cm}\includegraphics[width=5cm]{logo-enib}\end{minipage}}
+\setlength{\textheight}{15cm}
+\setlength{\headheight}{79pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{10pt}
+\null\vfill
+
+\begin{center}
+{\Large --- Cours d'Informatique S1 ---}\\[1cm]
+{\huge\bf Initiation à l'algorithmique}\\[1cm]
+\href{http://www.enib.fr/~tisseau}{\Large\sc Jacques TISSEAU}\\[3mm]
+\href{http://www.enib.fr}{Ecole nationale d'ingénieurs de Brest}\\
+\href{http://www.cerv.fr}{Centre européen de réalité virtuelle}\\
+\href{mailto:tisseau@enib.fr}{\tt tisseau@enib.fr}
+\end{center}
+\marginpar{\centerline{\includegraphics[width=8cm]{pinocchio-enib-small-1.jpg}}
+\footnotesize\vspace*{1.5mm}
+Avec la participation de {\sc Romain Bénard}, 
+{\sc Stéphane Bonneaud}, {\sc Cédric Buche},
+{\sc Gireg Desmeulles}, {\sc Céline Jost}, 
+{\sc Sébastien Kubicki}, {\sc Eric Maisel}, 
+{\sc Aléxis Nédélec}, {\sc Marc Parenthoën} et 
+{\sc Cyril Septseault}.
+}
+\null\vfill
+
+\noindent Ces notes de cours accompagnent les enseignements d'informatique 
+du $1^{er}$ semestre (S1) de l'Ecole Nationale d'Ingénieurs 
+de Brest (\enib : \href{http://www.enib.fr}{\tt www.enib.fr}). 
+Leur lecture ne dispense en aucun cas
+d'une présence attentive aux cours 
+ni d'une participation active aux travaux dirigés.
+\vspace*{0.5cm}
+
+\centerline{\tiny version du \today}
+\mbox{}
+
+\end{titlepage}
+%-------------------------------------------------------------------------
+
+\marginpar{\renewcommand{\contentsname}{\large\bf Sommaire\vspace*{-1.5cm}}
+\vspace*{-4cm}
+\footnotesize\tableofcontents}
+\null\vfill
+
+	$$\begin{minipage}{12cm}\label{cite:abelson}
+	« Chaque programme d'ordinateur est un modèle, forgé par l'esprit, d'un
+	processus réel ou imaginaire. Ces processus, qui naissent de l'expérience et
+	de la pensée de l'homme, sont innombrables et complexes dans leurs détails. 
+	A tout moment, ils ne peuvent être compris que partiellement. 
+	Ils ne sont que rarement modélisés d'une façon satisfaisante dans
+	nos programmes informatiques. Bien que nos programmes soient des ensembles
+	de symboles ciselés avec soin, des mosaïques de fonctions
+	entrecroisées, ils ne cessent d'évoluer. 
+	Nous les modifions au fur et à mesure que notre perception du modèle
+	s'approfondit, s'étend et se généralise, jusqu'à atteindre un 
+	équilibre métastable aux frontières d'une autre modélisation
+	possible du problème. L'ivresse joyeuse qui accompagne la
+	programmation des ordinateurs provient des allers-retours continuels,
+	entre l'esprit humain et l'ordinateur, des mécanismes exprimés par
+	des programmes et de l'explosion de visions nouvelles qu'ils apportent.
+	Si l'art traduit nos rêves, l'ordinateur les réalise sous la forme de 
+	programmes\,! »\\\mbox{}\hfill
+	{\em Abelson H., Sussman G.J. et Sussman J., \cite{abelson}}
+	\end{minipage}$$
+\null\vfill
+
+%-------------------------------------------------------------------------
+\chapter{Introduction générale}\label{ch:introduction}
+%-------------------------------------------------------------------------
+	\marginpar{\vspace*{-2cm}\minitoc}
+	\noindent\fbox{\includegraphics[width=0.75\textwidth,page=1]{../../pdf/cours/introductionSlide.pdf}}
+	\newpage
+	\input{info-S1-introduction}
+
+%-------------------------------------------------------------------------
+\chapter{Instructions de base}\label{ch:instructions}
+%-------------------------------------------------------------------------
+	\marginpar{\vspace*{-2cm}\minitoc}
+	\noindent\fbox{\includegraphics[width=0.75\textwidth,page=1]{../../pdf/cours/instructionsSlide.pdf}}
+	\newpage
+	\input{info-S1-instructions}
+
+%-------------------------------------------------------------------------
+\chapter{Procédures et fonctions}\label{ch:fonctions}
+%-------------------------------------------------------------------------
+	\marginpar{\vspace*{-2cm}\minitoc}
+	\noindent\fbox{\includegraphics[width=0.48\textwidth,page=1]{../../pdf/cours/fonctions-1Slide.pdf}}
+	\fbox{\includegraphics[width=0.48\textwidth,page=1]{../../pdf/cours/fonctions-2Slide.pdf}}
+	\newpage
+	\input{info-S1-fonctions}
+
+%-------------------------------------------------------------------------
+\chapter{Structures linéaires}\label{ch:listes}
+%-------------------------------------------------------------------------
+	\marginpar{\vspace*{-2cm}\minitoc}
+	\noindent\fbox{\includegraphics[width=0.75\textwidth,page=1]{../../pdf/cours/listesSlide.pdf}}
+	\newpage
+	\input{info-S1-listes}
+
+
+%-------------------------------------------------------------------------
+\appendix
+\addcontentsline{toc}{chapter}{Annexes}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\chapter{Grands classiques}\label{ch:classiques}
+%-------------------------------------------------------------------------
+	\renewcommand{\lstlistingname}{Algorithme}
+	\marginpar{\renewcommand{\lstlistlistingname}{\Large\bf Algorithmes\vspace*{-1cm}}
+	\vspace*{-4cm}
+	\lstlistoflistings}
+	\input{info-S1-classiques}
+
+%-------------------------------------------------------------------------
+\chapter{Travaux dirigés}\label{ch:exercices}
+%-------------------------------------------------------------------------
+	\input{info-S1-exercices}
+
+%-------------------------------------------------------------------------
+\chapter{Contrôles types}\label{ch:annales}
+%-------------------------------------------------------------------------
+	\input{info-S1-controles}
+
+%-------------------------------------------------------------------------
+\setlength{\textwidth}{25cm}
+\setlength{\textheight}{16cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\linewidth}{25cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\topmargin}{-0.75cm}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\printindex\label{ch:index}
+\addcontentsline{toc}{chapter}{Index}
+\printindex[def]\label{index:def}
+\printindex[td]\label{index:td}
+\printindex[algo]\label{index:algo}
+%-------------------------------------------------------------------------
+
+\chapter*{Liste des définitions}\addcontentsline{toc}{chapter}{Liste des définitions}
+\listtheorems{defin}
+\chapter*{Liste des exemples}\addcontentsline{toc}{chapter}{Liste des exemples}
+\listtheorems{ex}
+\chapter*{Liste des exercices}\addcontentsline{toc}{chapter}{Liste des exercices}
+\listtheorems{td}
+\chapter*{Liste des figures}\addcontentsline{toc}{chapter}{Liste des figures}
+\listtheorems{fig}
+%\chapter*{Liste des remarques}\addcontentsline{toc}{chapter}{Liste des remarques}
+%\listtheorems{rem}
+
+%\lstlistoflistings
+%-------------------------------------------------------------------------
+\renewcommand{\bibname}{Références}
+\bibliography{info-S1}\label{ch:biblio}
+\addcontentsline{toc}{chapter}{Références}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\label{fin}
+\end{document}
+%-------------------------------------------------------------------------

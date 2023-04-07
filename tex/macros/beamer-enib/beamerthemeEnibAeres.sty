@@ -1,0 +1,134 @@
+%-------------------------------------------------------------------------
+% beamerthemeEnib.sty
+%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------
+\RequirePackage{longtable,multirow}
+\RequirePackage{xcolor,graphics,pgf,tikz}
+\RequirePackage{colortbl,color}
+\RequirePackage{amsmath,amssymb,amsfonts}
+\RequirePackage{hyperref,multimedia,rotating}
+\RequirePackage{listings}
+\RequirePackage[french]{babel}
+\RequirePackage[utf8]{inputenc}
+%\RequirePackage[T1]{fontenc}
+\RequirePackage{eurosym}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+%\RequirePackage[french]{babel}
+%\RequirePackage{calc}
+%\RequirePackage[utf8]{inputenc}
+%%\RequirePackage[T1]{fontenc}
+%\RequirePackage{xcolor,graphics,pgf,tikz,multirow}
+%\RequirePackage{fancybox,fancyvrb}
+%\RequirePackage{colortbl,color}
+%\RequirePackage{multimedia,rotating}
+%\RequirePackage{amsmath,amssymb,amsfonts}
+%\RequirePackage{listings}
+%\RequirePackage{eurosym}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=2cm,interpolate=true]{logo-enib}{logo-enib}
+\pgfdeclareimage[width=4.4cm,interpolate=true]{logo-enib-signature}{logo-enib-signature}
+\pgfdeclareimage[width=2cm,interpolate=true]{logo-aeres}{logo-aeres}
+\pgfdeclareimage[width=\paperwidth,interpolate=true]{footline-enib}{footline-enib}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\definecolor{blanc}{RGB}{255,255,255}
+\definecolor{orange}{RGB}{250,183,0}
+\definecolor{bleu}{RGB}{0,56,130}
+
+\setbeamercolor{titlelike}{fg=bleu,bg=orange}
+\setbeamercolor{normal text}{fg=bleu,bg=blanc}
+\setbeamercolor{alerted text}{fg=orange,bg=blanc}
+\setbeamercolor{background canvas}{bg=}
+\setbeamercolor{title in head/foot}{fg=orange}
+\setbeamercolor{author in head/foot}{fg=orange}
+\setbeamercolor{date in head/foot}{fg=orange}
+\setbeamercolor{detail in head/foot}{fg=orange}
+\setbeamercolor{frametitle}{fg=orange}
+\setbeamercolor{framesubtitle}{fg=bleu,bg=blanc}
+\setbeamercolor{block title}{fg=bleu,bg=orange}
+\setbeamercolor{block body}{fg=bleu,bg=blanc}
+\setbeamercolor{block title alerted}{fg=orange,bg=bleu}
+\setbeamercolor{block body alerted}{fg=bleu,bg=blanc}
+\setbeamercolor{block title example}{fg=green,bg=orange}
+\setbeamercolor{block body example}{fg=bleu,bg=blanc}
+\setbeamercolor{item}{fg=bleu,bg=blanc}
+\setbeamercolor{item projected}{fg=orange,bg=bleu}
+\setbeamercolor{itemize item}{fg=bleu,bg=blanc}
+\setbeamercolor{enumerate item}{fg=bleu,bg=blanc}
+\setbeamercolor{description item}{fg=orange,bg=blanc}
+\setbeamercolor{itemize/enumerate body}{fg=bleu,bg=blanc}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{description item}{series=\bfseries}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamersize{text margin left=0.75cm,text margin right=0.75cm}
+%\setbeamersize{description width of={longest label}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=true]
+
+\setbeamertemplate{frametitle}
+{
+\hspace*{-.5cm}\begin{minipage}{2cm}
+\pgfuseimage{logo-enib-signature}
+\end{minipage}
+\hfill
+\begin{minipage}{.75\paperwidth}
+\hfill\raisebox{5mm}{\insertframetitle}\hspace*{3mm}
+\pgfuseimage{logo-aeres}
+\end{minipage}
+
+
+\hfill
+\begin{minipage}{.75\paperwidth}
+\hfill\usebeamerfont{framesubtitle}\color{bleu}\insertframesubtitle%\hspace*{2.3cm}
+\end{minipage}
+
+}
+ 
+\setbeamertemplate{footline}
+{%
+  %\leavevmode%
+  \pgfuseimage{footline-enib}\\\vspace*{-.4cm}
+  \hbox{\bf
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\hspace*{1em}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace{1em}\insertframenumber{}/\inserttotalframenumber\hspace*{1em}
+  \end{beamercolorbox} 
+  }%
+  %\vskip0pt%
+}
+
+%-------------------------------------------------------------------------
+\mode<presentation>
+{
+\setbeamertemplate{navigation symbols}{}
+}
+\mode<handout> 
+{
+\setbeameroption{show notes} 
+\setbeamertemplate{note page}[plain]
+\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+}
+%-------------------------------------------------------------------------
+

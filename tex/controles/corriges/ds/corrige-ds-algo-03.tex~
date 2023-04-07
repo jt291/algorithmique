@@ -1,0 +1,161 @@
+% corrige-ds-algo-03.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-03-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\section{Conversion base $b$ $\rightarrow$ décimal}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-03-conversion.py}
+
+%-----------------------------------------------------------------------------
+\section{Polygones réguliers}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-03-polygone.py}
+
+
+%-----------------------------------------------------------------------------
+\section{Coefficients de Kreweras}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-03-kreweras.py}
+
+\begin{minipage}[t]{7cm}
+\begin{enumerate}
+\item 
+\begin{Verbatim}
+>>> for n in range(7):
+        for m in range(n+1):
+            print(g(n,m),end=' ')
+        print()
+
+1 
+0 1 
+0 1 1 
+0 1 2 2 
+0 2 4 5 5 
+0 5 10 14 16 16 
+0 16 32 46 56 61 61 
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{1}
+\item  
+\begin{Verbatim}
+>>> 12*g(5,5)/g(6,6)
+3.1475409836065573
+
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-03-portees.py}
+
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> y = f(x)
+>>> print(x)
+f 6
+2
+
+>>> print(x)
+f 6
+g 24
+2
+
+>>> t = h(x)
+>>> print(x)
+f 6
+f 18
+g 72
+h 144
+2
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> x = f(x)
+>>> print(x)
+f 6
+6
+
+>>> x = g(x)
+>>> print(x)
+f 18
+g 72
+72
+
+>>> x = h(x)
+>>> print(x)
+f 216
+f 648
+g 2592
+h 5184
+5184
+\end{verbatim}
+\end{minipage}
+
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction itérative}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-03-binome.py}
+
+\noindent\begin{minipage}[t]{10cm}
+\begin{enumerate}
+\item Il s'agit du tableau de Pascal des coefficients du binôme $(x+y)^n$
+	pour les valeurs de $n$ allant de 0 à 6.
+\item {\tt c} représente le $p^{i\grave eme}$ coefficient du binôme $(x+y)^n$ :
+	$\displaystyle c = C_n^p = \left(\begin{array}{c}p\\n\end{array}\right) =
+	\frac{n!}{p!(n-p)!}$.
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{5cm}
+\begin{verbatim}
+
+>>> for n in range(7): 
+        f(n)
+
+1 
+1 1 
+1 2 1 
+1 3 3 1 
+1 4 6 4 1 
+1 5 10 10 5 1 
+1 6 15 20 15 6 1 
+\end{verbatim}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

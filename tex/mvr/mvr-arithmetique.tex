@@ -1,0 +1,98 @@
+% mrv-arithmetique.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\RequirePackage{calc}
+\RequirePackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\RequirePackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno,framed}
+\RequirePackage{longtable,multirow}
+\RequirePackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz}
+\RequirePackage{colortbl,color}
+\RequirePackage{amsmath,amssymb,amsfonts}
+\RequirePackage{hyperref,multimedia,rotating}
+\RequirePackage{listings}
+\RequirePackage{fontspec}
+\RequirePackage[french]{babel}
+\RequirePackage[french]{nomencl}
+\RequirePackage{eurosym}
+\RequirePackage{pifont}
+
+%-------------------------------------------------------------------------
+\input{sigle.tex}
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\color{blue}\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+%-------------------------------------------------------------------------
+
+\def\python{\textsc{Python}}
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\fancyhead{}
+\fancyhead[L]{\hspace*{-3em}\begin{minipage}{3cm}\pgfuseimage{logo-enib}\end{minipage}}
+\fancyhead[C]{\rightmark}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{51pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Affectation : }\label{arithmetique:affectation}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+
+

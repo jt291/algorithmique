@@ -1,0 +1,158 @@
+% rechercheEvalA.tex
+%-----------------------------------------------------------------------------
+\documentclass[12pt]{article}
+%-----------------------------------------------------------------------------
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\usepackage{listings}
+\pagestyle{myheadings}
+\markright{{E.N.I. Brest}\hfill{Informatique S1}\hfill{Page\ }}
+
+\setlength{\textheight}{23cm}
+\setlength{\textwidth}{16cm}
+\setlength{\parindent}{0cm}
+
+\voffset=-1.5cm
+\hoffset=-1.3cm
+
+\def\entete#1{\framebox[12.6cm][l]{Nom : \hspace*{3.85cm} Prénom :
+\hspace*{3cm}Groupe : {\bf A}$\rule[-0.3cm]{0cm}{1cm}$}
+\hfill
+\framebox[0.7cm]{\bf \ 3 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 2 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 1 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 0 $\rule[-0.3cm]{0cm}{1cm}$}\\[1mm]
+{\footnotesize\sc Durée: 30'\hfill 
+Documents, téléphones, calculettes et ordinateurs interdits.}\\[2mm]
+\centerline{\bf #1}}
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\entete{Contrôle d'autoformation : recherche d'un élément}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Recherche d'une occurrence}
+Définir une fonction {\tt rechercheKieme} qui recherche le rang {\tt r}
+de la $k^{\grave eme}$ occurrence d'un élément {\tt x} à partir du début 
+d'une liste {\tt t}.\\
+Exemple : {\tt t = [7,4,3,2,4,4]}, {\tt k = 2}, {\tt x = 4} $\rightarrow$ {\tt r
+= 4}
+
+$$\framebox[14.5cm]{\begin{minipage}{14cm}
+\begin{lstlisting}
+def rechercheKieme(t,x,k):
+    """
+    recherche la kième occurrence de x dans le tableau t
+    -> (found, index)
+    (found == False and index == len(t)) or
+    (found == True and 0 <= index < len(t))
+
+    >>> rechercheKieme([],7,2)
+    (False, 0)
+    >>> rechercheKieme([1,2,3,2],7,2)
+    (False, 4)
+    >>> rechercheKieme([1,2,3,2],2,2)
+    (True, 3)
+    """
+    assert type(t) is list
+    assert type(k) is int
+    found = False
+    index = 0
+    occur = 0
+    
+    while index < len(t) and not found:
+        if t[index] == x:
+            occur = occur + 1
+            if occur == k: found = True
+            else: index = index + 1
+        else: index = index + 1
+
+    return found, index
+\end{lstlisting}
+\end{minipage}
+}$$
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction}
+\begin{minipage}[t]{7cm}
+On considère la fonction {\tt g} ci-contre.
+
+\begin{enumerate}
+\item Qu'affiche l'appel suivant ?
+$$\framebox[5.9cm]{
+\begin{minipage}{5.75cm}\tt
+>>> t = [5,2,5,3,5,2,5,2]\\
+>>> g(t,2,3,0)
+\vspace*{6.7cm}
+
+\end{minipage}}$$
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{8cm}\footnotesize
+\begin{verbatim}
+#-----------------------------------------
+def g(t,x,k,d):
+#-----------------------------------------
+    assert type(t) is list
+    assert type(k) is int and k > 0
+    assert d in [0,1]
+
+    ok = False
+    i  = (1-d)*(len(t)-1)
+    n  = 0
+    
+    print i,n,ok #-------------- affichage
+    while i in range(0,len(t)) and not ok:
+        if t[i] == x:
+            n = n + 1
+            if n == k: ok = True
+            else: i = i - (-1)**d
+        else: i = i - (-1)**d
+        print i,n,ok #---------- affichage
+
+    print i,n,ok #-------------- affichage
+    return ok,i
+#-----------------------------------------
+\end{verbatim}
+\end{minipage}
+
+\begin{enumerate}\setcounter{enumi}{1}
+\item Compléterer la spécification de la fonction {\tt g}.
+	$$\framebox[14.75cm]{\begin{minipage}{14cm}
+	\begin{description}
+	\item[Description :]\mbox{} \vspace*{2.5cm}
+	
+	\item[Jeu de tests :]\mbox{} \vspace*{7.5cm}
+	\end{description}
+	\end{minipage}}$$
+\end{enumerate}
+
+%-----------------------------------------------------------------------------
+\label{fin}
+\end{document}
+%-----------------------------------------------------------------------------

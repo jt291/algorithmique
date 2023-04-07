@@ -1,0 +1,357 @@
+%-------------------------------------------------------------------------
+% corriges-ds-info-S1-sequences.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{corriges-ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+$$\mbox{\textbf{\large Tri d'une séquence}}$$
+
+%-------------------------------------------------------------------------
+%\newpage
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Un annuaire est représenté ici par une liste de quadruplets 
+\texttt{(nom, age, ville, téléphone)}.\\
+Exemple d'annuaire :
+\begin{minipage}[t]{7cm}
+\begin{Verbatim}
+item1 = ('dupont', 23, 'brest', '06789656')
+item2 = ('abgral', 61, 'lille', '06231298')
+item3 = ('dupont', 23, 'brest', '02989656')
+item4 = ('abgral', 67, 'brest', '06556438')
+item5 = ('martin', 38, 'paris', '01674523')
+item6 = ('abgral', 67, 'lille', '06231298')
+
+annuaire = [item1, item2, item3, item4, item5, item6]
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+Trier l'annuaire, par ordre croissant ou décroissant, selon des critères donnés 
+par une liste des clés successives. 
+L'ordre des critères est précisé par une liste des rangs successifs des champs du quadruplet
+\texttt{(nom, age, ville, téléphone)}. Par exemple, la liste \texttt{[3,0,2,1]} indique
+qu'il faut d'abord (clé primaire) trier selon les numéros de téléphone (champ \no 3 dans le quadruplet), puis (clé secondaire) selon les noms (champ \no 0 dans le quadruplet), 
+puis selon la ville (champ \no 2 dans le quadruplet) et enfin selon les âges 
+(champ \no 1 dans le quadruplet).
+
+\paragraph{Méthode :} 
+On utilise un tri (par exemple le tri par insertion) où la fonction \texttt{cmp} de comparaison est passée en argument (ordre croissant par défaut : \texttt{cmp = (lambda x,y: x < y)}).
+
+\begin{minipage}[t]{14cm}\footnotesize
+\begin{lstlisting}
+def triInsertion(t,cmp=(lambda x,y : x < y)) :
+    assert type(t) is list
+    for i in range(1,len(t)):
+        x = t[i]
+        k = i
+        for j in range(i-1,-1,-1):
+            if not cmp(t[j],x) :
+                k = k-1
+                t[j+1] = t[j]
+        t[k] = x
+    return
+\end{lstlisting}
+\end{minipage}
+
+\noindent
+Dans le cas de l'annuaire, il faut adapter la fonction de comparaison pour tenir compte des
+clés successives de comparaison (\texttt{[0,1,2,3]} par défaut).
+
+\begin{minipage}[t]{14cm}\footnotesize
+\begin{lstlisting}
+def cmpItems(i1,i2,cles=[0,1,2,3],cmp=(lambda x,y : x < y)) :
+    assert type(i1) is tuple and len(i1) == 4
+    assert type(i2) is tuple and len(i2) == 4
+    assert type(cles) is list and (0 < len(cles) <= 4)
+    for k in cles:
+        if cmp(i1[k],i2[k]) : return True
+        elif i1[k] == i2[k] : pass
+        else                : return False
+    return False
+\end{lstlisting}
+\end{minipage}
+
+\noindent
+Il reste à adapter l'appel de la fonction de tri à chaque cas particulier :\\
+\texttt{\footnotesize
+>{>}> cles = [3, 0, 1, 2]\\
+>{>}> decroissant = (lambda x,y: x > y)\\
+>{>}> triInsertion(annuaire,(lambda x,y: cmpItems(x,y,cles,decroissant)))
+}
+
+\paragraph{Réponses :}\mbox{}
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}
+\item \begin{Verbatim}
+[3, 0, 1, 2], croissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '02989656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[3, 0, 2, 1], croissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '02989656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[3, 1, 0, 2], croissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '02989656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[3, 1, 2, 0], croissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '02989656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[3, 2, 0, 1], croissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '02989656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[3, 2, 1, 0], croissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '02989656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{6}
+\item \begin{Verbatim}
+[1, 0, 2, 3], décroissant
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('abgral', 61, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[1, 0, 3, 2], décroissant
+('abgral', 67, 'brest', '06556438')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[1, 2, 0, 3], décroissant
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('abgral', 61, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[1, 2, 3, 0], décroissant
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('abgral', 61, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[1, 3, 0, 2], décroissant
+('abgral', 67, 'brest', '06556438')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[1, 3, 2, 0], décroissant
+('abgral', 67, 'brest', '06556438')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{12}
+\item \begin{Verbatim}
+[2, 0, 1, 3], croissant
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '02989656')
+('dupont', 23, 'brest', '06789656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[2, 0, 3, 1], croissant
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '02989656')
+('dupont', 23, 'brest', '06789656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[2, 1, 0, 3], croissant
+('dupont', 23, 'brest', '02989656')
+('dupont', 23, 'brest', '06789656')
+('abgral', 67, 'brest', '06556438')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[2, 1, 3, 0], croissant
+('dupont', 23, 'brest', '02989656')
+('dupont', 23, 'brest', '06789656')
+('abgral', 67, 'brest', '06556438')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[2, 3, 0, 1], croissant
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[2, 3, 1, 0], croissant
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'brest', '06556438')
+('dupont', 23, 'brest', '06789656')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'lille', '06231298')
+('martin', 38, 'paris', '01674523')
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{18}
+\item \begin{Verbatim}
+[0, 1, 2, 3], décroissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+('abgral', 61, 'lille', '06231298')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[0, 1, 3, 2], décroissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'brest', '06556438')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[0, 2, 1, 3], décroissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[0, 2, 3, 1], décroissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+('abgral', 67, 'brest', '06556438')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[0, 3, 1, 2], décroissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'brest', '06556438')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+\end{Verbatim}
+
+\item \begin{Verbatim}
+[0, 3, 2, 1], décroissant
+('martin', 38, 'paris', '01674523')
+('dupont', 23, 'brest', '06789656')
+('dupont', 23, 'brest', '02989656')
+('abgral', 67, 'brest', '06556438')
+('abgral', 67, 'lille', '06231298')
+('abgral', 61, 'lille', '06231298')
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

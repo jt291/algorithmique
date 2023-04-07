@@ -1,0 +1,82 @@
+# -*- coding: utf-8 -*-
+ 
+# tri d'un annuaire par ordre alphabétique
+
+#-----------------------------------------------------------------------
+def annuaire(a) :
+    """
+    ok = annuaire(a)
+    True si a est une liste de paires (nom,numéro)
+
+    >>> annuaire([])
+    True
+    >>> annuaire([('jean','0607080910'),('paul','0298000102')])
+    True
+    >>> annuaire([1,2,4])
+    False
+    """
+    ok = False
+    if type(a) is list :
+        i = 0
+        ok = True
+        while i < len(a) and ok :
+            if type(a[i]) is not tuple or len(a[i]) != 2 :
+                ok = False
+            else :
+                i = i + 1
+
+    return ok
+
+#-----------------------------------------------------------------------
+def minimum(a,debut,fin) :
+    """
+    mini = minimum(a,debut,fin)
+    indice du plus petit nom par ordre alphabétique
+    de l'annuaire a entre les indices debut et fin
+
+    >>> annuaire = [('jean','0607080910'),('paul','0298000102'),('albert','0300121314')]
+    >>> minimum(annuaire,0,2)
+    2
+    >>> minimum(annuaire,0,1)
+    0
+    """
+    assert annuaire(a)
+    assert 0 <= debut <= fin < len(a)
+
+    mini = debut
+    for j in range(debut+1,fin+1) :
+        if a[j][0] < a[mini][0] :
+            mini = j
+
+    return mini
+    
+#-----------------------------------------------------------------------
+def triAnnuaire(a,debut,fin) :
+    """
+    triAnnuaire(a,debut,fin)
+    tri l'annuaire a par ordre alphabétique des noms entre les indices debut et fin
+    
+    >>> annuaire = [('jean','0607080910'),('paul','0298000102'),('albert','0300121314')]
+    >>> triAnnuaire(annuaire,0,2)
+    >>> annuaire
+    [('albert', '0300121314'), ('jean', '0607080910'), ('paul', '0298000102')]
+    >>> annuaire = [('jean','0607080910'),('paul','0298000102'),('albert','0300121314')]
+    >>> triAnnuaire(annuaire,0,1)
+    >>> annuaire
+    [('jean', '0607080910'), ('paul', '0298000102'), ('albert', '0300121314')]
+    """
+    assert annuaire(a)
+    assert 0 <= debut <= fin < len(a)
+
+    i = debut
+    while i < fin+1 :
+        mini = minimum(a,i,fin)
+        a[i], a[mini] = a[mini], a[i]
+        i = i + 1
+        
+    return
+
+#-----------------------------------------------------------------------
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

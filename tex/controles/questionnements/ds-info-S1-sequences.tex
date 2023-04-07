@@ -1,0 +1,94 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-sequences.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+%\noindent\framebox[\textwidth]{}
+\entete
+
+\autoevaluation
+
+
+$$\mbox{\textbf{\large Tri d'une séquence}}$$
+
+
+%-------------------------------------------------------------------------
+%\newpage
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Un annuaire est représenté ici par une liste de quadruplets 
+\texttt{(nom, age, ville, téléphone)}.\\
+Exemple d'annuaire :
+\begin{minipage}[t]{7cm}
+\begin{Verbatim}
+item1 = ('dupont', 23, 'brest', '06789656')
+item2 = ('abgral', 61, 'lille', '06231298')
+item3 = ('dupont', 23, 'brest', '02989656')
+item4 = ('abgral', 67, 'brest', '06556438')
+item5 = ('martin', 38, 'paris', '01674523')
+item6 = ('abgral', 67, 'lille', '06231298')
+
+annuaire = [item1, item2, item3, item4, item5, item6]
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+Trier l'annuaire, par ordre croissant ou décroissant, selon des critères donnés 
+par une liste des clés successives. 
+L'ordre des critères est précisé par une liste des rangs successifs des champs du quadruplet
+\texttt{(nom, age, ville, téléphone)}. Par exemple, la liste \texttt{[3,0,2,1]} indique
+qu'il faut d'abord (clé primaire) trier selon les numéros de téléphone (champ \no 3 dans le quadruplet), puis (clé secondaire) selon les noms (champ \no 0 dans le quadruplet), 
+puis selon la ville (champ \no 2 dans le quadruplet) et enfin selon les âges 
+(champ \no 1 dans le quadruplet).
+
+\noindent
+\begin{minipage}[t]{7cm}
+\begin{enumerate}
+\item \texttt{cles = [3,0,1,2]}, croissant
+\item \texttt{cles = [3,0,2,1]}, croissant
+\item \texttt{cles = [3,1,0,2]}, croissant
+\item \texttt{cles = [3,1,2,0]}, croissant
+\item \texttt{cles = [3,2,0,1]}, croissant
+\item \texttt{cles = [3,2,1,0]}, croissant
+\item \texttt{cles = [1,0,2,3]}, décroissant
+\item \texttt{cles = [1,0,3,2]}, décroissant
+\item \texttt{cles = [1,2,0,3]}, décroissant
+\item \texttt{cles = [1,2,3,0]}, décroissant
+\item \texttt{cles = [1,3,0,2]}, décroissant
+\item \texttt{cles = [1,3,2,0]}, décroissant
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{12}
+\item \texttt{cles = [2,0,1,3]}, croissant
+\item \texttt{cles = [2,0,3,1]}, croissant
+\item \texttt{cles = [2,1,0,3]}, croissant
+\item \texttt{cles = [2,1,3,0]}, croissant
+\item \texttt{cles = [2,3,0,1]}, croissant
+\item \texttt{cles = [2,3,1,0]}, croissant
+\item \texttt{cles = [0,1,2,3]}, décroissant
+\item \texttt{cles = [0,1,3,2]}, décroissant
+\item \texttt{cles = [0,2,1,3]}, décroissant
+\item \texttt{cles = [0,2,3,1]}, décroissant
+\item \texttt{cles = [0,3,1,2]}, décroissant
+\item \texttt{cles = [0,3,2,1]}, décroissant
+\end{enumerate}
+\end{minipage}
+\paragraph{Réponse :}\mbox{}\\
+\framebox[\textwidth]{$\rule{0cm}{22cm}$}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

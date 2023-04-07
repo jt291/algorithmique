@@ -1,0 +1,25 @@
+LATEX = xelatex
+PDFDIR = ../../../pdf/td/corriges
+PYDIR = ../../../python/td
+
+export TEXINPUTS=.:../../macros//:
+
+td-info-S1.pdf: c-td-info-S1.tex \
+	c-td-info-S1-introduction.tex \
+	c-td-info-S1-instructions.tex \
+	c-td-info-S1-fonctions.tex \
+	c-td-info-S1-listes.tex
+	$(LATEX) c-td-info-S1.tex
+	$(LATEX) c-td-info-S1.tex
+	$(LATEX) c-td-info-S1.tex
+	cp c-td-info-S1.pdf $(PDFDIR)
+	cp td1/*.py $(PYDIR)/td1/
+	cp td2/*.py $(PYDIR)/td2/
+	cp td3/*.py $(PYDIR)/td3/
+	cp td4/*.py $(PYDIR)/td4/
+
+clean:
+	rm -f c-td-info-S1.pdf
+	rm -f *.alx *.aux *.defx *.ha* *.hi* *.ht* *.idx *.log 
+	rm -f *.maf *.mt* *.out *.tdx *.thm *.toc
+

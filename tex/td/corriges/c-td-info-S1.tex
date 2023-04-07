@@ -1,0 +1,232 @@
+%-------------------------------------------------------------------------
+% c-td-info-S1.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{book}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usepackage{calc}
+\usepackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\usepackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno,import}
+\usepackage{longtable,multirow}
+\usepackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz,wrapfig}
+\usepackage{colortbl,color}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref,multimedia,rotating,framed,pstricks}
+\usepackage{listings,index}
+%
+%---- pdflatex
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%---- xelatex
+\usepackage{fontspec}
+%
+%\usepackage[french]{minitoc}
+\usepackage[french]{babel}
+\usepackage[french]{nomencl}
+\usepackage[framed,hyperref,standard]{ntheorem}
+\usepackage{eurosym,pifont}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\definecolor{blanc}{RGB}{255,255,255}
+\definecolor{orange}{RGB}{234,138,0}
+\definecolor{bleu}{RGB}{144,209,223}
+\definecolor{rose}{RGB}{233,96,124}
+\definecolor{beige}{RGB}{247,244,241}
+\definecolor{violet}{RGB}{159,159,202}
+\definecolor{vert}{RGB}{162,169,63}
+\definecolor{marron}{RGB}{193,181,162}
+\definecolor{noir}{RGB}{62,61,64}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usetikzlibrary{mindmap,backgrounds,shapes,decorations.text}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-mesr}{logo-mesr}
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-cti}{logo-cti}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{sigle}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\makeatletter
+\newtheoremstyle{mybreak}%
+  {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+          ##1\ ##2\theorem@separator}\hbox{\strut}}}]}%
+  {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+          ##1\ ##2\theorem@separator {\sc ##3}}\hbox{\strut}}}]}
+\makeatother
+\theoremseparator{\ :\ }
+
+\newtheorem{rem}{Remarque}[chapter]
+\theoremstyle{mybreak}
+\newtheorem{defin}{\color{red}Définition}[chapter]
+\newtheorem{td}{\color{blue}TD}[chapter]
+\newtheorem{ex}{Exemple}[chapter]
+\theorembodyfont{\footnotesize}
+\newframedtheorem{fig}{Fig.}[chapter]
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\hypersetup
+{
+colorlinks=true,
+pdftitle={Initiation à l'algorithmique},
+pdfauthor={Jacques TISSEAU}
+}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\footnotesize\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\fvset
+{
+fontsize=\footnotesize,
+numbers=left,
+numbersep=5pt,
+frame=lines
+}  
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\topmargin}{-0.75cm}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\makeindex
+\newindex{algo}{alx}{ald}{Algorithmes}
+\newindex{def}{defx}{defd}{Définitions}
+\newindex{td}{tdx}{tdd}{Exercices}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\graphicspath{{../../fig/}}
+%-------------------------------------------------------------------------
+
+\newenvironment{py}[1]{\begin{minipage}[t]{#1}\footnotesize}{\end{minipage}}
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{titlepage}
+%-------------------------------------------------------------------------
+\thispagestyle{fancy}
+\lhead{\hspace*{-2em}\begin{minipage}{5cm}\includegraphics[width=5cm]{logo-enib}\end{minipage}}
+\rhead{Cours d'Informatique S1}
+\setlength{\headheight}{79pt}
+\setlength{\footskip}{20pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{center}
+{\huge\bf Initiation à l'algorithmique}\\[5mm]
+{\huge\sc Solutions des travaux dirigés}\\[1cm]
+\href{http://www.enib.fr/~tisseau}{\Large\sc Jacques TISSEAU}\\[3mm]
+\href{http://www.enib.fr}{Ecole nationale d'ingénieurs de Brest}\\
+\href{http://www.cerv.fr}{Centre européen de réalité virtuelle}\\
+\href{mailto:tisseau@enib.fr}{\tt tisseau@enib.fr}
+\end{center}
+
+{\footnotesize\vspace*{1.5mm}
+\noindent Avec la participation de 
+{\sc Romain Bénard}, 
+{\sc Stéphane Bonneaud}, {\sc Cédric Buche},
+{\sc Gireg Desmeulles}, {\sc Céline Jost}, 
+{\sc Sébastien Kubicki}, {\sc Eric Maisel}, 
+{\sc Aléxis Nédélec}, {\sc Marc Parenthoën} et 
+{\sc Cyril Septseault}.
+}
+\vspace*{1cm}
+
+\noindent Ce document regroupe les solutions, testées avec \python\ 3.2.2,
+des exercices du cours d'Infor\-ma\-tique 
+du $1^{er}$ semestre (S1) de l'Ecole Nationale d'Ingénieurs 
+de Brest (\href{http://www.enib.fr}{\enib : {\tt www.enib.fr}}). Il
+accompagne les notes de cours « Initiation à l'algorithmique ».
+$$\fbox{\includegraphics[width=0.9\textwidth,page=1]{../../cours/info-S1.pdf}}$$
+\centerline{\footnotesize
+{\bf Tisseau J.},{\em Initiation à l'algorithmique}, ENIB, cours d'Informatique S1, Brest, 2009.
+}
+\null\vfill
+
+\centerline{\tiny version du \today}
+\end{titlepage}
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\chapter{Introduction générale}\label{ch:introduction}
+%-------------------------------------------------------------------------
+	\input{c-td-info-S1-introduction}
+
+%-------------------------------------------------------------------------
+\chapter{Instructions de base}\label{ch:instructions}
+%-------------------------------------------------------------------------
+	\input{c-td-info-S1-instructions}
+
+%-------------------------------------------------------------------------
+\chapter{Procédures et fonctions}\label{ch:fonctions}
+%-------------------------------------------------------------------------
+	\input{c-td-info-S1-fonctions}
+
+%-------------------------------------------------------------------------
+\chapter{Structures linéaires}\label{ch:listes}
+%-------------------------------------------------------------------------
+	\input{c-td-info-S1-listes}
+
+
+
+%-------------------------------------------------------------------------
+\appendix
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+%\chapter{Annexes}
+%	\input{td-info-S1-annexes}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\chapter*{Liste des exercices}
+\addcontentsline{toc}{chapter}{Liste des exercices}
+	\listtheorems{td}
+%-------------------------------------------------------------------------
+
+
+\label{fin}
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

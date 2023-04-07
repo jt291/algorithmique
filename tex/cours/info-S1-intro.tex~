@@ -1,0 +1,2224 @@
+% info-S1-intro.tex
+
+%-------------------------------------------------------------------------
+\section{Contexte scientifique}\label{contexte}
+%-------------------------------------------------------------------------
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:dico1}Définitions de l'Académie Française (1).\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+{\em INFORMATIQUE} n. f. et adj. XXe siècle. Dérivé d'information sur le modèle de mathématique, électronique.
+1. N. f. Science du traitement rationnel et automatique de l'information ; l'ensemble des applications de cette science. 
+2. Adj. Qui se rapporte à l'informatique. Système informatique, ensemble des moyens qui permettent de conserver, 
+de traiter et de transmettre l'information.\\
+\mbox{}\\
+{\em INSTRUCTION} n. f. XIVe siècle. Emprunté du latin instructio, «~action d'adapter, de ranger~», 
+puis «~instruction~».
+Ordre, indication qu'on donne à quelqu'un pour la conduite d'une affaire ; directive, consigne. 
+Le plus souvent au pluriel. Des instructions verbales, écrites. Donner des instructions à ses collaborateurs. 
+Instructions pour la mise en marche d'un appareil. Par anal. INFORM. Consigne formulée dans un langage de 
+programmation, selon un code.\\
+\mbox{}\\
+{\em LOGICIEL} n. m. XXe siècle. Dérivé de logique.
+INFORM. Ensemble structuré de programmes remplissant une fonction déterminée, 
+permettant l'accomplissement d'une tâche donnée.\\
+\mbox{}\\ 
+{\em MATÉRIEL} adj. et n. XIIIe siècle. Emprunté du latin materialis, de même sens.
+INFORM. Ensemble des éléments physiques employés pour le traitement des données, par opposition aux 
+logiciels.\\
+\mbox{}\\
+{\em ORDINATEUR} n. m. XVe siècle, au sens de «~celui qui institue quelque chose~» ; XXe siècle, au sens actuel. 
+Emprunté du latin ordinator, «~celui qui règle, met en ordre ; ordonnateur~».
+Équipement informatique comprenant les organes nécessaires à son fonctionnement autonome, 
+qui assure, en exécutant les instructions d'un ensemble structuré de programmes, 
+le traitement rapide de données codées sous forme numérique qui peuvent être 
+conservées et transmises.
+\end{minipage}}
+\end{fig}} 
+
+%-------------------------------------------------------------------------
+\subsection{Informatique}
+%-------------------------------------------------------------------------
+Le terme {\sc informatique} est un néologisme proposé en 1962 par
+Philippe Dreyfus pour caractériser le traitement automatique de l'information :
+il est construit sur la contraction de l'expression  «~information automatique~».
+Ce terme a été accepté par l'Académie française en avril 1966, et l'informatique devint alors
+officiellement la science du traitement automatique de l'information, où l'information
+est considérée comme le support des connaissances humaines et des communications 
+dans les domaines techniques, économiques et sociaux (figure \ref{fig:dico1}).
+Le mot {\sc informatique} n'a pas vraiment d'équivalent aux Etats-Unis où l'on parle de 
+{\em Computing Science} (science du calcul) alors que {\em Informatics} est admis par les Britanniques. 
+
+\begin{defin}\label{def:informatique}
+L'informatique est la science du traitement automatique de l'information.
+\end{defin}
+
+L'informatique traite de deux aspects complémentaires : les programmes immatériels (logiciel, {\em software})
+qui décrivent un traitement à réaliser et les machines (matériel, {\em hardware}) qui exécutent ce traitement.
+Le matériel est donc l'ensemble des éléments physiques (microprocesseur, mémoire, écran, clavier, disques durs\ldots)
+utilisés pour traiter les données. 
+Dans ce contexte, l'ordinateur est un terme générique qui désigne un équipement informatique permettant de traiter des 
+informations selon des séquences d'instructions (les programmes) qui constituent le logiciel.
+Le terme {\sc ordinateur} a été proposé par le philologue Jacques Perret en avril 1955 
+en réponse à une demande d'IBM France qui estimait le mot «~calculateur~» ({\em computer}) 
+bien trop restrictif en regard des possibilités de ces machines (voir la proposition de 
+Jacques Perret en annexe \ref{annexe:perret} page \pageref{annexe:perret}).
+
+\begin{defin}\label{def:materiel}
+Le matériel informatique est un ensemble de dispositifs physiques utilisés pour traiter
+automatiquement des informations.
+\end{defin}
+\begin{defin}\label{def:logiciel}
+Le logiciel est un ensemble structuré d'instructions décrivant un traitement d'informations
+à faire réaliser par un matériel informatique.
+\end{defin}
+
+
+Un ordinateur n'est rien d'autre qu'une machine effectuant des opéra\-tions
+simples sur des séquences de signaux électriques, lesquels sont conditionnés de manière à ne pouvoir
+prendre que deux états seulement (par exemple un potentiel électrique maximum ou minimum). Ces
+séquences de signaux obéissent à une logique binaire du type «~tout ou rien~» et peuvent donc être
+considérés conventionnellement comme des suites de nombres 
+ne prenant jamais que les deux valeurs 0 et 1 : 
+un ordinateur est donc incapable de traiter autre chose que des 
+nom\-bres binaires.
+\marginpar{\vspace*{-1.5cm}
+
+\footnotesize\em 
+\begin{fig}\label{fig:vonneumann}John Von Neumann (1903-1957).\\ 
+\framebox[8cm]{\begin{minipage}{3cm}{\includegraphics[width=2.5cm]{vonneumann.jpg}}
+\end{minipage}\hfill
+\begin{minipage}{4.5cm}
+Mathématicien américain d'ori\-gine hongroise : il a donné son nom 
+à l'architecture de von Neumann utilisée dans la quasi 
+totalité des ordinateurs modernes.
+\end{minipage}}
+\end{fig}
+\begin{fig}\label{fig:archiVN}Principe de l'architecture de Von Neumann.\\
+\framebox[8cm]{\includegraphics[width=6cm]{vonneumann.pdf}}
+\end{fig}} 
+Toute information d'un autre type doit être
+convertie, ou codée, en format binaire. C'est vrai non seulement pour les données que l'on
+souhaite traiter (les nombres, les textes, les images, les sons, les vidéos, etc.), mais aussi 
+pour les programmes, c'est-à-dire les séquences d'instructions que l'on va fournir à la machine 
+pour lui dire ce qu'elle doit faire avec ces données.
+
+
+L'architecture matérielle d'un ordinateur repose sur le modèle de Von Neumann
+(figure \ref{fig:vonneumann}) qui distingue classiquement 4 parties (figure \ref{fig:archiVN}):
+\begin{enumerate}
+\item L'unité arithmétique et logique, ou unité de traitement, 
+	effectue les opérations de base.
+\item L'unité de contrôle séquence les opérations.
+\item La mémoire contient à la fois les données et le programme qui dira à l'unité de contrôle 
+	quels calculs faire sur ces données. La mémoire se divise entre mémoire vive volatile 
+	(programmes et données en cours de fonctionnement) et mémoire de masse permanente 
+	(programmes et données de base de la machine).
+\item Les entrées-sorties sont des dispositifs permettant de communiquer avec le monde extérieur
+	(écran, clavier, souris\ldots).
+\end{enumerate}
+Les 2 premières parties sont souvent rassemblées au sein d'une même structure : le micro-processeur
+(la «~puce~»), unité centrale de l'ordinateur.
+
+Dans ce cours, nous ne nous intéresserons qu'aux aspects logiciels de l'informatique.
+
+
+%-------------------------------------------------------------------------
+\subsection{Algorithmique}
+%-------------------------------------------------------------------------
+\begin{ex}\label{ex:modemploi}
+Extrait du mode d'emploi d'un télécopieur concernant l'envoi d'un document.
+\marginpar{\footnotesize\em
+\begin{td}\label{td:plage1}Dessins sur la plage : exécution (1).\\
+On cherche à faire dessiner une figure géométrique sur la plage 
+à quelqu'un qui a les yeux bandés.
+
+Quelle figure géométrique dessine-t-on en exécutant la suite d'instructions 
+ci-dessous ?
+\begin{enumerate}
+\item avance de 10 pas,
+\item tourne à gauche d'un angle de $120^\circ$,
+\item avance de 10 pas,
+\item tourne à gauche d'un angle de $120^\circ$, 
+\item avance de 10 pas.
+\end{enumerate}
+\end{td}
+}
+\begin{enumerate}
+\item Insérez le document dans le chargeur automatique.
+\item Composez le numéro de fax du destinataire à l'aide du pavé numérique.
+\item Enfoncez la touche {\sc envoi} pour lancer l'émission.
+\end{enumerate}
+\end{ex}
+Ce mode d'emploi précise comment envoyer un fax. Il est composé d'une suite 
+ordonnée d'instructions (insérez\ldots, composez\ldots, enfoncez\ldots) qui
+manipulent des données (document, chargeur automatique, numéro de fax, pavé numérique,
+touche {\sc envoi}) pour réaliser la tâche désirée (envoi d'un document).
+Chacun a déjà été confronté à de tels documents pour faire fonctionner un 
+appareil plus ou moins réticent et donc, consciemment ou non, a déjà 
+exécuté un algorithme (ie. exécuter la suite d'instructions dans l'ordre annoncé).
+\exo{td:plage1}
+
+\begin{defin}
+Un algorithme est une suite ordonnée d'instructions qui indique la démarche 
+à suivre pour résoudre une série de problèmes équivalents.
+\end{defin}
+
+\begin{ex}\label{ex:chemin}
+Extrait d'un dialogue entre un touriste égaré et un autochtone.
+\marginpar{\footnotesize\em
+\begin{td}\label{td:plage2}Dessins sur la plage : conception (1).\\
+Faire dessiner une spirale rectangulaire de 5 côtés, le plus petit côté
+faisant 2 pas de long et chaque côté fait un pas de plus que le précédent.
+\end{td}
+}
+\begin{itemize}
+\item Pourriez-vous m'indiquer le chemin de la gare, s'il vous plait ?
+\item Oui bien sûr : vous allez tout droit jusqu'au prochain carrefour,
+	vous prenez à gauche au carrefour et ensuite la troisième à droite,
+	et vous verrez la gare juste en face de vous.
+\item Merci.
+\end{itemize}
+\end{ex}
+
+Dans ce dialogue, 
+la réponse de l'autochtone est la description d'une suite ordonnée
+d'instructions (allez tout droit, prenez à gauche, prenez la troisième à droite) qui
+manipulent des données (carrefour, rues) pour réaliser la tâche désirée (aller à la gare).
+Ici encore, chacun a déjà été confronté à ce genre de situation et donc, consciemment ou non, 
+a déjà construit un algorithme dans sa tête (ie. définir la suite d'instructions pour réaliser 
+une tâche).
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:dico2}Définitions de l'Académie Française (2).\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+{\em ALGORITHME} n. m. XIIIe siècle, augorisme. Altération, sous l'influence du grec 
+arithmos, «~nombre~», d'algorisme, qui, par l'espagnol, remonte à l'arabe Al-Khuwarizmi, 
+surnom d'un mathématicien.
+Méthode de calcul qui indique la démarche à suivre pour résoudre une série de 
+problèmes équivalents en appliquant dans un ordre précis une suite finie de règles.\\
+\mbox{}\\
+{\em DONNÉE} n. f. XIIIe siècle, au sens de «~distribution, aumône~» ; XVIIIe siècle, 
+comme terme de mathématiques. Participe passé féminin substantivé de donner au sens de «~indiquer, dire~».
+1. Fait ou principe indiscuté, ou considéré comme tel, sur lequel se fonde un raisonnement ; 
+constatation servant de base à un examen, une recherche, une découverte. Les données de la science. 
+Les données de l'expérience.
+{\em MATH.} Souvent au pluriel. Chacune des quantités ou propriétés mentionnées dans l'énoncé d'un problème 
+et qui permettent de le résoudre.
+{\em INFORM.} Représentation d'une information sous une forme conventionnelle adaptée à son exploitation. 
+Le traitement automatique des données. Une banque, une base de données.
+\end{minipage}}
+\end{fig}}
+Mais quand on définit un algorithme, celui-ci ne doit contenir que des instructions 
+compréhensibles par celui qui devra l'exécuter (des humains dans les 2 exemples précédents).
+\exo{td:plage2}
+
+Dans ce cours, nous devrons apprendre à définir des algorithmes pour qu'ils soient 
+compré\-hen\-si\-bles --- et donc exécutables --- par un ordinateur.
+
+\begin{defin}
+L'algorithmique est la science des algorithmes.
+\end{defin}
+
+L'algorithmique s'intéresse à l'art de construire des algorithmes ainsi
+qu'à caractériser leur validité, leur robustesse, leur réutilisabilité, 
+leur complexité ou leur efficacité.
+
+\begin{defin}
+La validité d'un algorithme est son aptitude à réaliser exactement la tâche
+pour laquelle il a été conçu.
+\end{defin}
+\noindent Si l'on reprend l'exemple \ref{ex:chemin} de l'algorithme de recherche du chemin
+de la gare, l'étude de sa validité consiste à s'assurer qu'on arrive effectivement 
+à la gare en exécutant scrupuleusement les instructions dans l'ordre annoncé.
+
+\begin{defin}
+La robustesse d'un algorithme est son aptitude à se protéger de conditions 
+anormales d'utilisation.
+\end{defin}
+\noindent Dans l'exemple \ref{ex:chemin}, la question de la robustesse de l'algorithme
+se pose par exemple si le chemin proposé a été pensé pour un piéton, alors que le 
+«~touriste égaré~» est en voiture et que la «~troisième à droite~» est en sens interdit.
+
+\begin{defin}
+\mbox{}\marginpar{\footnotesize\em
+\begin{td}\label{td:prop}Propriétés d'un algorithme.\\
+Reprendre le TD \ref{td:plage1} et illustrer la validité, la robustesse, la réutilisabilité, la
+complexité et l'efficacité de l'algorithme proposé pour dessiner sur la plage.
+\end{td}}
+La réutilisabilité d'un algorithme est son aptitude à être réutilisé pour résoudre
+des tâches équivalentes à celle pour laquelle il a été conçu.
+\end{defin}
+\noindent L'algorithme de recherche du chemin de la gare est-il réutilisable tel quel pour se rendre
+à la mairie ? A priori non, sauf si la mairie est juste à côté de la gare.
+
+
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:pb2source}Du problème au code source.\\
+\framebox[8cm]{\includegraphics[width=3cm]{informatique.pdf}}
+\end{fig}}
+\begin{defin}
+La complexité d'un algorithme est le nombre d'instructions élémentaires à exécuter pour
+réaliser la tâche pour laquelle il a été conçu.
+\end{defin}
+\noindent Si le «~touriste égaré~» est un piéton, la complexité de l'algorithme de recherche de chemin
+peut se compter en nombre de pas pour arriver à la gare.
+
+\begin{defin}
+L'efficacité d'un algorithme est son aptitude à utiliser de manière optimale
+les ressources du matériel qui l'exécute.
+\end{defin}
+\noindent N'existerait-il pas un raccourci piétonnier pour arriver plus vite à la gare ?
+\exo{td:prop}
+
+L'algorithmique permet ainsi de passer d'un problème à résoudre à un algorithme
+qui décrit la démarche de résolution du problème. La programmation a alors pour rôle de traduire cet
+algorithme dans un langage «~compréhensible~» par l'ordinateur afin qu'il
+puisse exécuter l'algorithme automatiquement (figure \ref{fig:pb2source}).
+
+
+%-------------------------------------------------------------------------
+\subsection{Programmation}
+%-------------------------------------------------------------------------
+Un algorithme exprime la structure logique d'un programme
+informatique et de ce fait est indépendant du langage de programmation 
+utilisé. Par contre, la traduction de l'algorithme dans un langage particulier
+dépend du langage choisi et sa mise en \oe uvre dépend également
+de la plateforme d'exécution. 
+
+	
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:dico3}Définitions de l'Académie Française (3).\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+{\em LANGAGE}. n. m. XIIe siècle. Dérivé de langue. Système de signes, de symboles, 
+élaboré à partir des langues naturelles et 
+constituant un code qui les remplace dans certains cas déterminés 
+(on parle aussi de langage symbolique).
+Le langage chiffré, secret, conventionnel. Le langage mathématique. 
+Langage logique, fondé sur la logique formelle. Langage informatique. 
+Langage de programmation.
+\end{minipage}}
+\end{fig}}
+La programmation d'un ordinateur consiste à lui «~expliquer~» en détail 
+ce qu'il doit faire, en sachant qu'il ne «~comprend~» pas le langage humain, 
+mais qu'il peut seulement effectuer un traitement 
+automatique sur des séquences de 0 et de 1.
+Un programme n'est rien d'autre qu'une suite d'instructions, encodées en 
+respectant de manière très stricte un ensemble de conventions fixées à 
+l'avance par un langage informatique (figure \ref{fig:dico3}). 
+La machine décode alors
+ces instructions en associant à chaque «~mot~»
+du langage informatique une action précise.
+Le programme que nous écrivons dans le langage informatique
+à l'aide d'un éditeur (une sorte de traitement de
+texte spécialisé) est appelé programme source (ou code source). 
+
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:dico4}Définitions de l'Académie Française (4).\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+{\em BIT} n. m. XXe siècle. Mot anglo-américain, contraction de binary digit, 
+«~chiffre binaire~». Chacun des deux chiffres, 0 et 1, de la numération binaire. 
+En informatique, le bit est l'unité élémentaire d'information appelée aussi élément binaire.\\
+\mbox{}\\
+{\em OCTET} n. m. XXe siècle. Dérivé savant du latin octo, «~huit~».
+Unité d'information composée de huit bits.
+\end{minipage}}
+\end{fig}}
+Le seul «~langage~» 
+que l'ordinateur puisse véritablement «~comprendre~» 
+est donc très éloigné de ce que nous utilisons nous-mêmes. 
+C'est une 
+longue suite de 0 et de 1 (les «~bits~», {\em binary digit}) traités par
+groupes de 8 (les «~octets~», {\em byte}), 16, 32, ou même 64
+(figure \ref{fig:dico4}). 
+
+\begin{defin}
+Un bit est un chiffre binaire (0 ou 1). 
+C'est l'unité élémentaire d'information.
+\end{defin}
+
+\begin{defin}
+Un octet  est une unité d'information composée de 8 bits.
+\end{defin}
+
+\begin{ex}\label{ex:megaoctet}Description de clé USB.\\
+Sur le descriptif commercial d'une clé USB, on peut lire :
+\begin{itemize}
+\item Type de produit  : Lecteur flash USB
+\item Taille du module : 512 Mo
+\item Type d'interface : Hi-Speed USB
+\end{itemize}
+\end{ex}
+\marginpar{\footnotesize\em 
+\begin{fig}\label{fig:cleUSB}Clé USB ({Universal Serial Bus}).\\
+\framebox[8cm]{\begin{minipage}{4cm}
+\includegraphics{usb.jpg}
+\end{minipage}\hfill
+\begin{minipage}{3.5cm}
+Dispositif matériel 
+con\-te\-nant une mé\-moi\-re de mas\-se 
+(une mémoire flash ou un mini disque dur).
+\end{minipage}}
+\end{fig}}
+\noindent La «~taille du module~» est la capacité de stockage de la clé qui vaut ici 512 Mo (mégaoctets).
+Le préfixe «~méga~» est un multiplicateur décimal qui vaut $10^6$ mais s'il est bien adapté au calcul décimal,
+il l'est moins au calcul binaire car il ne correspond pas à une puissance entière de 2. 
+En effet, la puissance $x$ de 2 telle que $2^x = 10^6$
+vaut $\displaystyle x = 6\cdot\frac{\log(10)}{\log(2)} \approx 19.93$. On choisit alors la puissance entière de 2
+immédiatement supérieure ($2^{20} = 1\,048\,576$) pour définir le Mo : 
+1 Mo = 1\,048\,576 octets.
+\exo{td:octets}
+\marginpar{\footnotesize\em \begin{td}\label{td:octets}Unités d'information.\\
+Combien y a-t-il d'octets dans 1 ko (kilooctet), 
+1 Go (gigaoctet), 1 To (téraoctet), 1 Po (pétaoctet), 1 Eo (exaoctet),
+1 Zo (zettaoctet) et 1 Yo (yottaoctet) ?
+\end{td}}
+
+Pour «~parler~» à un ordinateur, il nous faudra donc utiliser des
+systèmes de traduction automatiques, capables de convertir en nombres binaires des suites de
+caractères formant des mots-clés (anglais en général) qui seront plus significatifs pour nous.
+Le système de traduction proprement dit s'appellera interpréteur ou bien compilateur, suivant la
+méthode utilisée pour effectuer la traduction (figure \ref{fig:code2exec}). On appellera langage de
+programmation un ensemble de mots-clés (choisis arbitrairement) associé à un ensemble de règles
+très précises indiquant comment on peut assembler ces mots pour former des «~phrases~» que
+l'interpréteur ou le compilateur puisse traduire en langage machine (binaire).
+
+\begin{description}
+\item[Compilation :] La compilation consiste à traduire la totalité du code source en une fois. 
+Le compilateur lit toutes les lignes du programme source et produit une nouvelle 
+suite de codes appelé programme objet (ou code objet). 
+Celui-ci peut désormais être exécuté indépendamment du
+compilateur et être conservé tel quel dans un fichier («~fichier exécu\-table~»).
+Les langages {\sc Ada}, {\sc C}, {\sc C++} et {\sc Fortran} sont des exemples de langages 
+compilés.
+
+\item[Interprétation :] L'interprétation consiste à traduire chaque ligne du programme source en quelques instructions
+du langage machine, qui sont ensuite directement exécutées au fur et à mesure
+(«~au fil de l'eau~»). Aucun programme objet n'est généré.
+L'interpréteur doit être utilisé chaque fois que l'on veut faire fonctionner le programme. 
+Les langages {\sc Lisp} et {\sc Prolog} sont des exemples de langages interprétés.
+\marginpar{\footnotesize\em 
+\begin{fig}\label{fig:code2exec}Du code source à son exécution.\\
+\framebox[8cm]{\includegraphics[width=7.8cm]{compilateur.pdf}}
+\end{fig}}
+
+L'interprétation est idéale lorsque l'on est en phase d'apprentissage du langage, ou en cours
+d'expérimentation sur un projet. Avec cette technique, on peut en effet tester immédiatement toute
+modification apportée au programme source, sans passer par une phase de compilation qui demande
+toujours du temps.
+Mais lorsqu'un projet comporte des fonctionnalités complexes qui doivent s'exécuter
+rapidement, la compilation est préférable : un programme compilé fonctionnera
+toujours plus vite que son homologue interprété, puisque dans cette technique l'ordinateur
+n'a plus à (re)traduire chaque instruction en code binaire avant qu'elle puisse être exécutée.
+
+\item[Semi-compilation :] Certains langages tentent de combiner les deux techniques afin de retirer le meilleur de
+chacune. C'est le cas des langages {\sc Python} et {\sc Java} par exemple. 
+De tels langages
+commencent par compiler le code source pour produire un code intermédiaire, similaire à un langage
+machine (mais pour une machine virtuelle), que l'on appelle bytecode, lequel sera ensuite transmis 
+à un interpréteur pour l'exécution
+finale. Du point de vue de l'ordinateur, le bytecode est très facile à interpréter en langage machine.
+Cette interprétation sera donc beaucoup plus rapide que celle d'un code source.
+
+Le fait de disposer en permanence d'un interpréteur permet de tester immédiatement n'importe
+quel petit morceau de programme. On pourra donc vérifier le bon fonctionnement de chaque
+composant d'une application au fur et à mesure de sa construction.
+L'interprétation du bytecode compilé n'est pas aussi rapide que celle d'un véritable code machine,
+mais elle est satisfaisante pour de très nombreux programmes.
+\end{description}
+
+Dans ce cours, nous choisirons d'exprimer directement les algorithmes dans un 
+langage informatique opérationnel : le langage {\sc Python} \cite{swinnen}, sans passer par un
+langage algorithmique intermédiaire.
+\marginpar{\footnotesize\em {\sc Python} : {\tt www.python.org} \includegraphics[width=4cm]{python-logo.jpg}}
+
+%-------------------------------------------------------------------------
+\section{Objectifs du cours}
+%-------------------------------------------------------------------------
+%La pédagogie désigne les méthodes et pratiques d'enseignement et 
+%d'éducation ainsi que toutes les qualités requises pour transmettre 
+%un savoir quelconque.
+%
+%La didactique se différencie de la pédagogie par le rôle central des contenus 
+%disciplinaires et par sa dimension épistémologique (la nature des connaissances à enseigner).
+%
+%L'apprentissage est l'acquisition de nouveaux savoirs ou savoir-faire, 
+%c'est-à-dire le processus d'acquisition de connaissances, compétences, 
+%attitudes ou valeurs, par l'étude, l'expérience ou l'enseignement.
+
+
+%-------------------------------------------------------------------------
+\subsection{Objectifs thématiques}
+%-------------------------------------------------------------------------
+L'objectif principal des enseignements d'informatique S1 de l'ENIB
+est l'acquisition des notions fondamentales de l'algorithmique.
+\marginpar{\footnotesize\em
+\begin{td}\label{td:python}Première utilisation de {\sc Python}.\\
+Se connecter sur un poste de travail d'une salle informatique.
+\begin{enumerate}
+\item Lancer {\sc Python}.
+\item Utiliser {\sc Python} comme une simple calculette.
+\item Quitter {\sc Python}.
+\end{enumerate}
+Ne pas oublier de se déconnecter du poste de travail.
+\end{td}
+}
+Plus précisément, nous étudierons successivement :
+\begin{enumerate}
+\item les instructions de base permettant de décrire les algorithmes : affectation, tests, boucles;
+\item les procédures et les fonctions qui permettent de structurer et de réutiliser les algorithmes;
+	on parlera alors d'encapsulation, de préconditions, de portée des variables, de passage de paramètres,
+	d'appels de fonctions, de récursivité et de jeux de tests;
+\item les structures de données linéaires : tableaux, listes, piles, files, qui améliorent la
+	structuration des données manipulées par les algorithmes. A cette occasion, on évaluera
+	la complexité et l'efficacité de certains algorithmes utilisant ces structures linéaires.
+\end{enumerate}
+Ces différentes notions seront mise en \oe uvre à travers l'utilisation du 
+langage {\sc Python}.
+\exo{td:python}
+
+
+%-------------------------------------------------------------------------
+\subsection{Objectifs pédagogiques}\label{sub:pedago}
+%-------------------------------------------------------------------------
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:bloom}Taxonomie de Benjamin Bloom (1913-1999),
+psychologue américain spécialisé en pédagogie.
+
+\framebox[8cm]{\begin{tabular}{l@{ : }p{5.5cm}}
+Connaître   & définir, distinguer, acquérir, identifier, rappeler, reconnaître\ldots \\
+Comprendre  & traduire, illustrer, représenter, dire avec ses mots, distinguer, réécrire, 
+		réarranger, expliquer, démontrer\ldots \\
+Appliquer   & appliquer, généraliser, relier, choisir, développer, utiliser, employer, 
+		transférer, classer, restructurer\ldots \\
+Analyser    & distinguer, détecter, classer, reconnaître, catégoriser, déduire, discerner, comparer\ldots \\
+Synthétiser & écrire, relater, produire, constituer, transmettre, modifier, créer, 
+		proposer, planifier, projeter, spécifier, combiner, classer, formuler\ldots \\
+Evaluer     & juger, argumenter, valider, décider, comparer\ldots \\
+\end{tabular}}
+\end{fig}}
+Au cours du semestre S1, nous nous positionnerons principalement sur les 3 premiers 
+niveaux de la taxonomie de Bloom qui constitue une référence pédagogique pour la 
+classification des 
+niveaux d'apprentissage (figure \ref{fig:bloom}) : connaissance, compréhension, application. 
+Les 3 derniers niveaux seront plutôt abordés au cours 
+du semestre S2 (analyse, synthèse, évaluation).
+\begin{enumerate}
+\item Connaissance : mémorisation et restitution d'informations dans les mêmes termes.
+\item Compréhension : restitution du sens des informations dans d'autres termes.
+\item Application : utilisation de règles, principes ou algorithmes pour résoudre un problème, les règles 
+	n'étant pas fournies dans l'énoncé.
+\item Analyse : identification des parties constituantes d'un tout pour en distinguer les idées.
+\item Synthèse : réunion ou combinaison des parties pour former un tout.
+\item Evaluation : formulation de jugements qualitatifs ou quantitatifs.
+\end{enumerate}
+
+Afin de mieux nous situer par rapport aux différents types de pédagogie
+associés, nous «~filerons~» une métaphore musicale inspirée de \cite{charles}.
+\begin{description}
+\item[Pédagogie par objectifs :] Le solfège est l'étude des principes élémentaires
+	de la musique et de sa notation : le musicien «~fait ses gammes~» et chaque exercice
+	a un objectif précis pour évaluer l'apprentissage du «~langage musical~».
+	Il en va de même pour l'informaticien débutant confronté à l'apprentissage d'un 
+	langage algorithmique.
+\item[Pédagogie par l'exemple :] L'apprentissage des grands classiques 
+	\marginpar{\footnotesize\em
+	\begin{rem}On trouvera une liste d'algorithmes classiques sur le site 
+	du National Institute of Standards and Technology {\em (NIST : {\tt
+	www.nist.gov/dads/})}.
+	\end{rem}}
+	permet au musicien
+	de s'approprier les bases du solfège en les appliquant à ces partitions connues et en les
+	(re)jouant lui-même. L'informaticien débutant, en (re)codant lui-même des algorithmes bien
+	connus, se constituera ainsi une base de réflexes de programmation en «~imitant~» ces
+	algorithmes.
+\item[Pédagogie de l'erreur :] Les bogues ({\em bugs}) sont à l'informaticien ce que les fausses notes
+	sont aux musiciens : des erreurs. 
+	Ces erreurs sont nécessaires dans l'acquisition de la connaissance.
+	Un élève a progressé si, après s'être trompé,
+	il peut reconnaître qu'il s'est trompé,  dire où et pourquoi il s'est trompé,
+	et comment il recommencerait sans produire les mêmes erreurs.
+\item[Pédagogie par problèmes :] Connaissant «~ses~» classiques et les bases du solfège, le musicien
+	devenu plus autonome peut envisager sereinement la création de ses propres morceaux.
+	Le développement d'un projet informatique ambitieux sera «~mis en musique~» au semestre S2.
+\end{description}
+
+Dans ce cours, nous adopterons ces différentes stratégies pédagogiques sans oublier
+qu'en informatique on apprend toujours mieux en faisant par soi-même.
+
+%-------------------------------------------------------------------------
+\subsection{Objectifs comportementaux}
+%-------------------------------------------------------------------------
+Nous cherchons à développer trois «~qualités~» comportementales chez l'informaticien
+débu\-tant : la rigueur, la persévérance et l'autonomie.
+	\marginpar{\footnotesize\em
+	\begin{td}\label{td:erreur}Erreur de syntaxe en {\sc Python}.\\
+	On considère la session {\sc Python} suivante :\\[1mm]
+	\mbox{}\hfill\begin{minipage}{7cm}\tt
+	>>> x = 3\\
+        >>> \ y = x\\
+        \mbox{}\ \ File "<stdin>", line 1\\
+        \mbox{}\ \ \ \ y = x\\
+        \mbox{}\ \ \ \ \char`^\\
+        SyntaxError: invalid syntax\\
+        >>>
+	\end{minipage}\\[1mm]
+	De quelle erreur de syntaxe s'agit-il ?
+	\end{td}}
+\begin{description}
+\item[Rigueur :] Un ordinateur est une machine qui exécute vite et bien les
+	instructions qu'on lui a «~apprises~». Mais elle ne sait pas interpréter
+	autre chose : même mineure, une erreur provoque le dysfonctionnement de la 
+	machine.
+	\begin{ex}Erreur de syntaxe en langage C.\\
+	Pour un «~{\tt ;}~» oublié dans un programme {\sc C}, le code source n'est pas compilable
+	et le compilateur nous avertit par ce type de message :\\
+	
+	\noindent\mbox{}\hspace*{1cm}\begin{minipage}[t]{12cm}\tt
+	fichier.c: In function `main':\\
+	fichier.c:7: error: syntax error before "printf"
+	\end{minipage}
+	\end{ex}
+	Même si un humain peut transiger sur le «~{\tt ;}~», la machine ne le peut pas : 
+	l'ordinateur ne se contente pas de l'«~à peu près~».
+	La respect des consignes, la précision et l'exactitude sont donc de 
+	rigueur en informatique !
+	\exo{td:erreur}
+\item[Persévérance :] \mbox{}	\marginpar{\footnotesize\em
+	\begin{td}\label{td:plage5}Dessins sur la plage : persévérance.\\
+	Finir l'algorithme suivant qui cherche à dessiner un losange sur la plage.
+	\begin{enumerate}
+	\item avance de 10 pas,
+	\item tourne à gauche d'un angle de $60^\circ$,
+	\end{enumerate}
+	\hspace*{0.9cm}\vdots
+	\end{td}}
+	Face à l'intransigeance de la machine, le débutant est confronté
+	à ses nombreuses erreurs (les siennes, pas celles de la machine !) et sa tendance
+	naturelle est de passer à autre chose. 
+	Mais le papillonnage (ou {\em zapping})
+	est une très mauvaise stratégie en informatique : pour s'exécuter correctement,
+	un programme doit être finalisé. L'informatique nécessite d'«~aller au bout des
+	choses~».
+	\exo{td:plage5}
+\item[Autonomie :] Programmer soi-même les algorithmes
+	qu'on a définis est sans doute le meilleur moyen pour mieux assimiler
+	les principales structures algorithmiques et pour mieux comprendre ses
+	erreurs en se confrontant à l'intransigeante impartialité de l'ordinateur,
+	vérita\-ble «~juge de paix~» des informaticiens.
+	\marginpar{\footnotesize\em
+	\begin{td}\label{td:autonomie}Autonomie.\\
+	Trouver les définitions du mot autonomie et de son contraire (de son antonyme).
+	\end{td}}
+	Par ailleurs, l'évolution continuelle et soutenue des langages de programmation et des 
+	ordinateurs nécessitent de se tenir à jour régulièrement et seule l'autoformation systématique 
+	permet de «~ne pas perdre pied~».
+	\exo{td:autonomie}
+	
+	Pratique personnelle et autoformation constituent ainsi deux piliers de
+	l'autonomisation nécessaire de l'apprenti informaticien.
+\end{description}
+
+
+%-------------------------------------------------------------------------
+\section{Organisation du cours}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\subsection{Présentiel}
+%-------------------------------------------------------------------------
+Les enseignements d'informatique S1 de l'ENIB sont dispensés lors de 45h
+de séances de cours/TD et de séances de laboratoire.
+\marginpar{\footnotesize\em \begin{rem} Un semestre s'étale sur 15 semaines d'enseignements, 
+8 semaines consacrées au cours et 7 semaines aux TD. \end{rem}}
+\begin{itemize}
+\item Les cours/TD ont lieu 1 semaine sur 2 à raison de 3h par semaine, soit
+24h de cours/TD sur toute la durée du semestre. Ils se déroulent dans une salle
+banalisée.
+\item Les séances de laboratoire ont lieu 1 semaine sur 2 en alternance avec les 
+cours à raison de 3h par semaine, soit 21h de laboratoire dans le semestre. Elles
+se déroulent en salle informatique.
+\end{itemize}
+
+
+%-------------------------------------------------------------------------
+\subsection{Documents}
+%-------------------------------------------------------------------------
+Les principaux documents accompagnant les cours sont de 2 types : 
+les supports de cours et les notes de cours.
+\begin{description}
+\item[Support de cours :] \mbox{}\marginpar{\footnotesize\em 
+\begin{fig}\label{fig:transparent}Exemple de transparent de cours.\\
+\framebox[8cm]{
+%\includeslide[width=7.5cm]{informatique<4>}
+}
+\end{fig}}
+	il s'agit de la copie papier des transparents projetés
+	en présentiel (figure \ref{fig:transparent}). 
+\item[Notes de cours :] il s'agit de notes qui complètent et
+	précisent certains points présentés en cours. Ces notes proposent
+	également les exercices de travaux dirigés qui sont étudiés
+	en cours et au laboratoire. Le document que vous 
+	êtes en train de lire constitue les premières notes de cours
+	des enseignements d'informatique S1 de l'ENIB. Il y en aura 3 autres 
+	sur les sujets suivants :
+	\begin{enumerate}
+	\item les instructions de base,
+	\item les procédures et les fonctions,
+	\item les structures de données linéaires.
+	\end{enumerate}
+\end{description}
+
+Un site {\sc Web} permet de retrouver ces documents au format {\tt pdf} 
+({\em Portable Document Format}) ainsi que d'autres documents tels que
+le planning prévisionnel des cours et des contrôles, des exemples corrigés 
+d'évaluation, les notes aux différents contrôles ou encore des liens vers 
+des sites pertinents pour le cours. 
+Un forum de discussions professeurs$\leftrightarrow$élèves
+est également ouvert sur ce site.
+\exo{td:site}
+\marginpar{\footnotesize\em 
+\begin{td}\label{td:site}Site {\sc Web} d'Informatique S1.\\
+Se connecter sur le site {\sc Web} du cours d'informatique S1 de l'ENIB et
+vérifier que ces notes de cours sont bien disponibles sur le site
+ au format {\tt pdf}.
+\end{td}}
+
+La consultation régulière du site est indispensable pour
+se tenir au courant des dernières évolutions du cours : en cas d'ambiguïté,
+ce sont les informations de ce site qui feront foi.
+
+
+%-------------------------------------------------------------------------
+\subsection{Evaluations des apprentissages}\label{sub:evaluation}
+%-------------------------------------------------------------------------
+L'évaluation des connaissances et des compétences acquises par les étudiants
+repose sur 4 types de contrôle : les contrôles d'attention, les contrôles de TD, 
+les contrôles d'autoformation et les contrôles de compétences.
+\begin{description}
+\item[Contrôle d'attention :] \mbox{}\marginpar{\footnotesize\em 
+\begin{td}\label{td:attention1}Exemple de contrôle d'attention (1).\\
+Répondre de mémoire aux questions suivantes (ie. sans rechercher les 
+solutions dans les pages précédentes).
+\begin{enumerate}
+\item Quels sont les 3 principaux thèmes informatiques abordés ?
+\item Quelles sont les 4 principales stratégies péda\-go\-giques suivies ?
+\item Quelles sont les 3 principales qualités comportementales recherchées ?
+\end{enumerate}
+\end{td}}
+	il s'agit d'un QCM (questionnaire à choix multiples) 
+	auquel il faut répondre individuellement
+	sans document, en 5' en fin de cours, et dont les questions portent 
+	sur des points abordés pendant ce cours. Ce type de contrôle teste directement
+	l'acquisition de connaissances au sens du «~connaître~» de la classification de
+	Bloom (section \ref{sub:pedago} page \pageref{sub:pedago}).
+	Il permet d'évaluer «~à chaud~» la capacité d'attention des étudiants et les incite 
+	à une présence attentive afin de bénéficier au maximum des heures de présence 
+	aux cours. 	
+	\exo{td:attention1}
+	
+	Des exemples de QCM sont systématiquement proposés dans les notes de cours
+	comme par exemple celui du TD \ref{td:qcm} page \pageref{td:qcm} pour cette introduction générale.
+\item[Contrôle de TD :]\mbox{}\marginpar{\footnotesize\em 
+	\begin{td}\label{td:TD}Exemple de contrôle de TD.\\
+	Répondre aux questions du TD \ref{td:attention1} situé dans la marge droite
+	de la page \pageref{td:attention1}.
+	\end{td}}
+	il s'agit ici d'inciter les étudiants à préparer
+	activement les séances de laboratoire. En début de chaque séance de 
+	laboratoire, chaque binôme doit répondre sans document en 10' aux questions
+	d'un exercice de TD.
+	L'exercice est choisi aléatoirement parmi les exercices de TD situés en marge
+	des notes de cours et se rapportant au thème du TD. 
+	\exo{td:TD}
+
+	Il concerne le «~comprendre~» et l'«~appliquer~» de la taxonomie de Bloom
+	(section \ref{sub:pedago} page \pageref{sub:pedago}).
+\item[Contrôle d'autoformation :] \mbox{}\marginpar{\footnotesize\em
+	\begin{td}\label{td:bool}Exemple de contrôle d'autoformation (1).\\
+	Etablir la table de vérité du circuit logique ci-dessous où $a$, $b$
+	et $c$ sont les entrées, $s$ et $t$ les sorties.\\[2mm]
+	\centerline{\includegraphics[width=6cm]{add3.pdf}}
+	\end{td}}
+	un contrôle d'autoformation porte sur un thème
+	prévu à l'avance et que l'étudiant doit approfondir par lui-même. Les thèmes 
+	retenus pour l'autoformation en S1 sont par exemple le calcul booléen,
+	le codage des nombres ou encore la recherche d'éléments dans un tableau de données.
+	\exo{td:bool}
+
+	Ces contrôles se déroulent pendant les séances de cours : 
+	ce sont des écrits individuels de 30' sans document qui concernent
+	le «~connaître~», le «~comprendre~» et l'«~appliquer~» de la taxonomie de Bloom.
+\item[Contrôle de compétences :] \mbox{}\marginpar{\footnotesize\em
+	\begin{td}\label{td:competences}Exemple de contrôle des compétences.\\
+	Répondre aux questions du TD \ref{td:shadok} de la page \pageref{td:shadok}.
+	\end{td}}
+	les contrôles de compétences (ou DS) durent 80'
+	pendant une séance de cours. Plus longs, ils permettent d'aborder l'un des 3 
+	derniers niveaux de la classification de Bloom (analyser, synthétiser, évaluer)
+	comme le font les exercices de la section \ref{sub:analyser} page \pageref{sub:analyser}.
+	\exo{td:competences}
+\end{description}
+
+\noindent Quel que soit le type de contrôle, un exercice cherche à évaluer un objectif
+particulier. Aussi, la notation exprimera la distance qui reste à parcourir 
+pour atteindre cet objectif (figure \ref{fig:cible}): 
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:cible}Notation : la métaphore de la cible.\\
+\framebox[8cm]{\includegraphics{cible.pdf}}
+\end{fig}}
+$$\begin{tabular}{l@{ : }l@{ $\rightarrow$ }l}
+0 & «~en plein dans le mille !~» & l'objectif est atteint \\
+1 & «~pas mal !~» & on se rapproche de l'objectif \\
+2 & «~juste au bord de la cible !~» & on est encore loin de l'objectif\\
+3 & «~la cible n'est pas touchée !~» & l'objectif n'est pas atteint
+\end{tabular}$$
+Ainsi, et pour changer de point de vue sur la notation, le contrôle 
+est réussi lorsqu'on a 0 ! Il n'y a pas non plus de $1/2$ point ou de $1/4$ 
+de point : le seul barême possible ne comporte que 4 niveaux : 0, 1, 2 et 3.
+On ne cherche donc pas à «~grappiller~» des points : 
+\begin{itemize}
+\item on peut avoir 0 (objectif atteint) et avoir fait une ou deux erreurs 
+	bénignes en regard de l'objectif recherché;
+\item on peut avoir 3 (objectif non atteint) et avoir quelques éléments de
+	réponse corrects mais sans grand rapport avec l'objectif.
+\end{itemize}
+
+
+%-------------------------------------------------------------------------
+\subsection{Evaluation des enseignements}
+%-------------------------------------------------------------------------
+En fin de semestre, les étudiants organisent de manière anonyme et 
+dans le respect des personnes, une évaluation individuelle des enseignements. 
+Elle est structurée en 2 parties :
+un questionnaire de 10 à 20 questions (voir un exemple en annexe
+\ref{annexe:eval} page \pageref{annexe:eval}) 
+auxquelles il faut répondre selon une grille pré-définie
+et une partie « expression libre » que l'étudiant remplit, ou non, à son gré.
+
+L'ensemble des fiches d'évaluation est remis à l'équipe pédagogique
+d'Informatique S1, qui après en avoir pris connaissance, organise une rencontre spécifique
+avec les étudiants. Cette évaluation a pour objectif l'amélioration de la qualité 
+des enseignements et de la pédagogie à partir de la perception qu'en ont les étudiants.
+
+
+%-------------------------------------------------------------------------
+\section{Méthodes de travail}
+%-------------------------------------------------------------------------
+Il ne s'agit pas ici d'imposer des méthodes de travail, 
+mais de fournir des pistes pour ceux qui en cherchent.
+Dans tous les cas, l'expérience montre que :
+\begin{enumerate}
+\item la seule présence, même attentive et active, aux séances de cours 
+	et de laboratoire ne suffit pas : il faut prévoir un temps de travail personnel
+	qui, selon l'étudiant et la matière, peut aller de 50\% à 150\% du temps de 
+	présence en cours;
+\item la régularité dans le travail personnel est un gage d'apprentissage
+	plus efficace.
+\end{enumerate}
+\marginpar{\footnotesize\em
+\begin{td}\label{td:controles}Nombre de contrôles.\\
+Après consultation du calendrier prévisionnel de l'annexe \ref{annexe:planning} 
+page \pageref{annexe:planning}, donner le nombre et le type de contrôles prévus
+au calendrier du semestre.
+\end{td}}
+Le calendrier prévisionnel des enseignements et des contrôles associés
+est distribué en début de semestre (un exemple de planning est donné
+en annexe \ref{annexe:planning} page \pageref{annexe:planning}).
+\exo{td:controles} 
+
+\noindent Les documents de cours sont distribués au moins 15 jours avant
+les séances correspondantes (sauf en ce qui concerne les 2 premières semaines
+de cours évidemment).
+Par ailleurs, à tout moment, le calendrier et les documents sont disponibles 
+sur le site {\sc Web} d'Informatique S1.
+
+%-------------------------------------------------------------------------
+\subsection{Avant, pendant et après le cours}\label{sub:cours}
+%-------------------------------------------------------------------------
+\begin{description}
+\item[Préparation :] Certains cours débutent par un contrôle d'autoformation
+	(voir section \ref{sub:evaluation}) dont le thème est en rapport avec certains
+	aspects du cours qui suivra immédiatement.
+	Il est donc nécessaire d'avoir étudié avant et par soi-même le
+	sujet du contrôle.
+	
+	En général, on trouvera les informations nécessaires
+	soit directement sur le site d'Informatique S1, 
+	soit dans les références bibliographiques données en fin des notes de cours
+	(voir par exemple les références de ce chapitre en page \pageref{biblio}),
+	soit dans les polycopiés d'autres cours de l'ENIB (mathématiques, 
+	électronique, productique, microprocesseurs\ldots), soit encore sur internet
+	en s'assurant de la qualité du site (préférer des sites universitaires ou 
+	d'écoles dont l'activité principale est d'enseigner ces matières).
+	
+	\marginpar{\footnotesize\em
+	\begin{td}\label{td:negation}Exemple de contrôle d'autoformation (2).\\
+	Exprimer en la développant la négation des expressions booléennes suivantes :
+	\begin{enumerate}
+	\item {\tt (0 < x) and (x < 3)}
+	\item {\tt (x < -2) or (x > 4)}
+	\item {\tt a and (not b)}
+	\item {\tt (not a) or b}
+	\end{enumerate}
+	\end{td}}
+	Par exemple, il est nécessaire d'avoir assimilé les principes
+	du calcul booléen pour maîtriser les tests et les boucles du
+	langage algorithmique. C'est pourquoi, une autoformation est
+	imposée sur ce domaine déjà connu des étudiants.
+	Un contrôle-type d'autoformation sur le calcul booléen 
+	pourrait par exemple être composé des TD \ref{td:bool} 
+	page \pageref{td:bool} et \ref{td:negation} ci-contre.\\
+	\exo{td:negation}
+	
+	Pour chaque contrôle d'autoformation, un exemple corrigé est
+	disponible sur le site d'Informatique S1. Il est donc fortement 
+	recommandé de travailler ce contrôle-type : après avoir revu
+	par soi-même les principales notions du domaine, faire
+	le contrôle sans consulter au préalable la solution proposée. 
+	\marginpar{\footnotesize\em
+	\begin{td}\label{td:attention2}Exemple de contrôle d'attention (2).\\
+	Répondre de mémoire aux questions suivantes (ie. sans rechercher les 
+	solutions dans les pages précédentes).
+	\begin{enumerate}
+	\item Quels sont les 4 types de contrôle proposés ?
+	\item Quels sont les documents que l'on peut trouver sur le site {\sc Web}
+		du cours ?
+	\end{enumerate}
+	\end{td}}
+\item[Participation :] Par respect pour les autres participants, 
+	la ponctualité est de rigueur pour l'étudiant comme pour le professeur.
+	Mais assister à un cours n'a d'intérêt que dans le cas d'une 
+	présence attentive et soutenue : le temps passé en cours 
+	pour assimiler les nouvelles notions sera gagné sur le temps de
+	travail personnel futur nécessaire à leur assimilation.
+	Chaque page des supports de cours est constituée
+	d'une copie d'un transparent de cours dans la demi-page supérieure
+	alors que la demi-page inférieure est volontairement laissée vierge
+	pour que l'étudiant prenne des notes pendant le cours (figure \ref{fig:support}).
+	\marginpar{\footnotesize\em
+	\begin{fig}\label{fig:support}Exemple de support de cours.\\
+	\framebox[8cm]{
+	\framebox[4.5cm]{\begin{minipage}{4cm}
+	%\includeslide[width=3.8cm]{informatique<4>}
+	\vspace*{3cm}
+	
+	\end{minipage}}}
+	\end{fig}}
+	La prise de note systématique est en effet un facteur qui favorise l'attention.
+	Un contrôle de type QCM en fin de cours évaluera l'attention
+	des étudiants (voir section \ref{sub:evaluation}). 
+	\exo{td:attention2}
+
+	Le cours est illustré par des exemples et des exercices : à ces occasions, 
+	c'est une participation active de l'étudiant qui est attendue dans une
+	démarche volontaire d'assimilation du cours « à chaud ».
+	
+\item[Appropriation :] Dans la mesure du possible, il faut relire ses propres notes 
+	ainsi que les notes de cours le soir même afin de « fixer » les principales
+	idées du cours. La révision proprement dite peut venir ultérieurement
+	quelques jours plus tard (et non quelques semaines ni quelques mois après).
+	
+	Les définitions, comme toute définition, sont à apprendre par c\oe ur.
+	Une technique possible est de lire 2 fois de suite à voix haute la définition
+	en détachant distinctement les différentes expressions (exemple: «~l'informatique~»
+	«~est la science~» «~du traitement~» «~automatique~» «~de l'information~»),
+	puis l'écrire de mémoire.
+	
+	Pour réviser le cours, faire systématiquement les TD au moment où ils sont
+	référencés dans les notes par le symbole $\rule{2mm}{2mm}\,$. 
+	C'est particulièrement vrai 
+	avec les exemples pour lesquels sont associés des exercices en marge des
+	notes de cours
+	(exemple : l'exemple \ref{ex:modemploi} de la page \pageref{ex:modemploi}
+	et le TD \ref {td:plage1} en marge droite de la même page).
+	Lorsque l'exemple est un algorithme, il faut  systématiquement se mettre 
+	mentalement à la place de la machine qui va les exécuter (on parle alors 
+	d'«~empathie numérique~») afin de vérifier le résultat obtenu. 
+	Pour cela, il faut être méthodique et rigoureux. 
+	Et petit à petit, à force de pratique, l'expérience fera qu'on « verra » 
+	le résultat produit par les instructions au fur et à mesure qu'on les écrit. 
+	Naturellement, cet apprentissage est long, et demande des heures de travail 
+	patient. Aussi, dans un premier temps, il faut éviter de sauter les étapes : 
+	la vérification méthodique, pas à pas, de chacun des algorithmes 
+	représente plus de la moitié du travail à accomplir \cite{darmengeat}.
+\end{description}
+
+%-------------------------------------------------------------------------
+\subsection{Avant, pendant et après le laboratoire}
+%-------------------------------------------------------------------------
+\begin{description}
+\item[Préparation :] \mbox{}	 \marginpar{\footnotesize\em
+	 \begin{td}\label{td:exercices}Nombres d'exercices de TD.\\
+	 Combien d'exercices y avait-il à faire avant celui-ci ?
+	 \end{td}}
+	Faire les exercices situés dans les marges de ces notes de cours
+	est non seulement une façon de réviser son cours (voir section \ref{sub:cours})
+	mais aussi de préparer les séances de laboratoire.
+	Pour ces notes de cours, la liste complète des exercices est donnée en 
+	page \pageref{sub:listexo}.
+	Un de ces exercices choisi aléatoirement fera l'objet d'une
+	évaluation en début de chaque séance de TD (voir section \ref{sub:evaluation}).
+	\exo{td:exercices}
+	
+	Tous ces exercices ne nécessitent pas une longue phase de réflexion comme
+	les TD \ref{td:prop} ou \ref{td:competences} ($\rightarrow$ \ref{td:shadok}).
+	Certains au contraire ne présentent aucune difficulté particulière
+	comme les TD \ref{td:controles} et \ref{td:exercices}
+	qui demandent simplement de compter les contrôles et les exercices.
+	D'autres comme les TD \ref{td:attention1} et \ref{td:attention2} 
+	font appel à la mémoire, d'autres encore à la recherche d'informations
+	comme les TD \ref{td:octets} et \ref{td:autonomie}, ou à une mise en
+	\oe uvre pratique comme les TD \ref{td:python} et \ref{td:site}.
+\item[Participation :] \mbox{}\marginpar{\footnotesize\em
+	\begin{td}\label{td:labo}Environnement de travail.\\
+	Sur un poste de travail d'une salle informatique :
+	\begin{enumerate}
+	\item Quel est le type de clavier ?
+	\item Comment ouvre-t-on un terminal ?
+	\item Comment lance-t-on {\sc Python} ?
+	\item Où sont stockés les fichiers de travail ?
+	\end{enumerate}
+	\end{td}}
+	Ici encore, par respect pour les autres participants, 
+	la ponctualité est de rigueur pour l'étudiant comme pour le professeur.
+
+	En informatique, lorsqu'on travaille en binôme, il faut régulièrement 
+	alterner les rôles entre l'«~écrivain~» qui manipule clavier et souris 
+	et le «~lecteur~» qui vérifie la production de l'écrivain. A la fin
+	du semestre, chaque étudiant doit être devenu un «~lecteur-écrivain~».
+	La pratique est en effet nécessaire pour «~apprivoiser~» l'environnement 
+	de travail afin que la machine devienne «~transparente~» et que seul 
+	subsiste le problème algorithmique à résoudre.
+	
+	Pour certains exercices, la solution est donnée dans les notes de cours
+	(en section \ref{sub:solutions} page \pageref{sub:solutions} ici).
+	Pendant les séances de laboratoire, il faut donc savoir «~jouer le jeu~»
+	pour ne pas simplement «~recopier~» la solution proposée (il existe
+	d'ailleurs d'autres solutions pour la plupart des exercices).
+	
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:abelson}«~L'ivresse joyeuse de la programmation~».\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+« Chaque programme d'ordinateur est un modèle, forgé par l'esprit, d'un
+processus réel ou imaginaire. Ces processus, qui naissent de l'expérience et
+de la pensée de l'homme, sont innombrables et complexes dans leurs détails. 
+A tout moment, ils ne peuvent être compris que partiellement. 
+Ils ne sont que rarement modélisés d'une façon satisfaisante dans
+nos programmes informatiques. Bien que nos programmes soient des ensembles
+de symboles ciselés avec soin, des mosaïques de fonctions
+entrecroisées, ils ne cessent d'évoluer. 
+Nous les modifions au fur et à mesure que notre perception du modèle
+s'approfondit, s'étend et se généralise, jusqu'à atteindre un 
+équilibre métastable aux frontières d'une autre modélisation
+possible du problème. L'ivresse joyeuse qui accompagne la
+programmation des ordinateurs provient des allers-retours continuels,
+entre l'esprit humain et l'ordinateur, des mécanismes exprimés par
+des programmes et de l'explosion de visions nouvelles qu'ils apportent.
+Si l'art traduit nos rêves, l'ordinateur les réalise sous la forme de 
+programmes\,! »\\\mbox{}\hfill
+{\em Abelson H., Sussman G.J. et Sussman J., \cite{abelson}}
+\end{minipage}}
+\end{fig}}
+	Un apprenti programmeur est toujours confronté à ses propres erreurs
+	(revoir le TD \ref{td:erreur} page \pageref{td:erreur} par exemple). 
+	En général, ce sont des erreurs simples à corriger à condition
+	de lire les messages d'erreur et de faire l'effort 
+	de les comprendre avant d'appeler le professeur «~à l'aide~».
+	\begin{ex}Erreur de nom en {\sc Python}.\\
+	Voici une erreur classique d'une variable non correctement initialisée :\\[1mm]
+	\mbox{}\hspace*{1cm}\begin{minipage}{12cm}\tt
+	>>> print x\\
+        Traceback (most recent call last):\\
+        \mbox{}\ \ File "<stdin>", line 1, in ?\\
+        NameError: name 'x' is not defined\\
+        >>> 
+	\end{minipage}
+	\end{ex}
+	En {\sc Python}, la dernière ligne du message d'erreur est la plus 
+	«~parlante~» au débutant.
+\item[Appropriation :] Avant le cours suivant, il faut refaire les TD qui
+	ont posé des problèmes et faire les exercices qui n'ont pas pu
+	être abordés en séance de laboratoire (les solutions de ces
+	exercices complémentaires sont données dans les notes de cours).
+\end{description}	
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Exercices complémentaires}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\subsection{Connaître}
+%-------------------------------------------------------------------------
+\begin{td}\label{td:qcm}\em QCM (un seul item correct par question).
+\begin{enumerate}
+\item L'informatique est la science
+\marginpar{\footnotesize\em
+\begin{rem} Parmi les 5 items de la question ci-contre, un seul item définit
+	l'informatique, les 4 autres définissent d'autres sciences.
+	Lesquelles ?
+\end{rem}
+}
+	\begin{enumerate}
+	\item des dispositifs dont le fonctionnement dépend de 
+		la circulation d'électrons
+	\item des signaux électriques porteurs d'information ou d'énergie
+	\item du mouvement des systèmes matériels et de leurs déformations
+	\item du traitement automatique de l'information
+	\item de la commande des appareils fonctionnant sans intervention humaine
+	\end{enumerate}
+\item Le logiciel est
+	\begin{enumerate}
+	\item la mémoire de l'ordinateur
+	\item l'ensemble de dispositifs physiques utilisés pour traiter
+		automatiquement des informations
+	\item le traitement automatique de l'information
+	\item l'ensemble des données manipulées par les instructions
+	\item un ensemble structuré d'instructions décrivant un traitement d'informations
+		à faire réaliser par un matériel informatique
+	\end{enumerate}
+\item L'algorithmique est la science
+	\begin{enumerate}
+	\item du traitement automatique de l'information
+	\item des algorithmes
+	\item des langages de programmation
+	\item des instructions
+	\item des données traitées par les algorithmes
+	\end{enumerate}
+\item Un algorithme est
+	\begin{enumerate}
+	\item un ensemble de programmes remplissant une fonction déterminée,
+		permettant l'accomplissement d'une tâche donnée
+	\item une suite ordonnée d'instructions qui indique la démarche 
+		à suivre pour résoudre une série de problèmes équivalents
+	\item le nombre d'instructions élémentaires à exécuter pour
+		réaliser une tâche donnée
+	\item une machine effectuant des opérations simples sur des séquences 
+		de signaux électriques
+	\item un ensemble de dispositifs physiques utilisés pour traiter
+		automatiquement des informations
+	\end{enumerate}
+\item La validité d'un algorithme est son aptitude
+\marginpar{\footnotesize\em
+\begin{rem} Parmi les 5 items de la question ci-contre, un seul item définit
+	la validité d'un algorithme, les 4 autres se rapportent à d'autres propriétés
+	des algorithmes. Lesquelles ?
+\end{rem}
+}
+	\begin{enumerate}
+	\item à utiliser de manière optimale les ressources du matériel qui l'exécute
+	\item à être réutiliser pour résoudre des tâches équivalentes à celle pour 
+		laquelle il a été conçu
+	\item à se protéger de conditions anormales d'utilisation
+	\item à calculer le nombre d'instructions élémentaires nécessaires pour
+		réaliser la tâche pour laquelle il a été conçu
+	\item à réaliser exactement la tâche pour laquelle il a été conçu
+	\end{enumerate}
+\item La complexité d'un algorithme est
+	\begin{enumerate}
+	\item le nombre de fois où l'algorithme est utilisé dans un programme
+	\item le nombre de données manipulées par les instructions de
+		l'algorithme
+	\item le nombre d'octets occupés en mémoire par l'algorithme
+	\item le nombre de dispositifs physiques utilisés pour traiter
+		automatiquement les instructions
+	\item le nombre d'instructions élémentaires à exécuter pour
+		réaliser la tâche pour laquelle il a été conçu
+	\end{enumerate}
+\item Un bit est 
+	\begin{enumerate}
+	\item un chiffre binaire
+	\item composé de 8 chiffres binaires
+	\item un chiffre héxadécimal
+	\item un caractère
+	\item un mot d'un langage informatique
+	\end{enumerate}
+\item Un compilateur 
+	\begin{enumerate}
+	\item exécute le code source
+	\item traduit le code objet en bytecode 
+	\item exécute le bytecode
+	\item traduit un code source en code objet
+	\item exécute le code objet
+	\end{enumerate}
+\end{enumerate}
+\end{td}
+
+%-------------------------------------------------------------------------
+\subsection{Comprendre}
+%-------------------------------------------------------------------------
+\begin{td}\label{td:plage3}\em Dessins sur la plage : exécution (2).
+\begin{enumerate}
+\item Quelle figure géométrique dessine-t-on en exécutant la suite d'instructions 
+ci-dessous ?
+	\begin{enumerate}
+	\item avance de 3 pas,
+	\item tourne à gauche d'un angle de $90^\circ$,
+	\item avance de 4 pas,
+	\item rejoindre le point de départ.
+	\end{enumerate}
+\item Combien de pas a-t-on fait au total pour rejoindre le point de départ ?
+\end{enumerate}
+\end{td}
+
+\begin{td}\label{td:plage4}\em Dessins sur la plage : conception (2).\\
+Reprendre le TD \ref{td:plage2} et illustrer la validité, la robustesse, 
+la réutilisabilité, la complexité et l'efficacité de
+l'algorithme proposé pour dessiner une spirale rectangulaire.
+\end{td}
+
+\begin{td}\label{td:mips}\em Puissance de calcul.\\
+Donner l'ordre de grandeur en instructions par seconde des machines suivantes 
+(voir \cite{delahaye} par exemple) :
+\begin{enumerate}
+\item le premier micro-ordinateur de type PC,
+\item une console de jeu actuelle,
+\item un micro-ordinateur actuel,
+\item {\em Deeper-Blue} : l'ordinateur qui a « battu » Kasparov aux échecs en 1997,
+\item le plus puissant ordinateur actuel.
+\end{enumerate}
+\end{td}
+
+\begin{td}\label{td:stock}\em Stockage de données.\\
+Donner l'ordre de grandeur en octets pour stocker en mémoire
+(voir \cite{delahaye} par exemple) :
+\begin{enumerate}
+\item une page d'un livre,
+\item une encyclopédie en 20 volumes,
+\item une photo couleur,
+\item une heure de vidéo,
+\item une minute de son,
+\item une heure de son.
+\end{enumerate}
+\end{td}
+%-------------------------------------------------------------------------
+\subsection{Appliquer}
+%-------------------------------------------------------------------------
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:polygone}Pentagone, hexagone, octogone.\\
+\framebox[8cm]{
+\includegraphics[width=2.5cm]{pentagone.jpg}
+\hfill
+\includegraphics[width=2.5cm]{hexagone.jpg}
+\hfill
+\includegraphics[width=2.5cm]{octogone.jpg}
+}
+\end{fig}}
+\begin{td}\label{td:tortue}\em Tracés de polygones réguliers.\\
+On cherche à faire dessiner une figure polygonale (figure \ref{fig:polygone}) 
+sur la plage à quelqu'un qui a les yeux bandés.
+Pour cela, on ne dispose que de 2 commandes orales :
+avancer de $n$ pas en avant ($n$ est un nombre entier de pas) et 
+tourner à gauche d'un angle $\theta$ (rotation sur place de $\theta$).
+\begin{enumerate}
+\item Faire dessiner un pentagone régulier de 10 pas de côté.
+\item Faire dessiner un hexagone régulier de 10 pas de côté.
+\item Faire dessiner un octogone régulier de 10 pas de côté.
+\item Faire dessiner un polygone régulier de $n$ côtés de 10 pas chacun.
+\end{enumerate}
+\end{td}
+
+%-------------------------------------------------------------------------
+\subsection{Analyser}\label{sub:analyser}
+%-------------------------------------------------------------------------
+\marginpar{\footnotesize\em
+\begin{rem}La multiplication en Egypte antique.\\[1mm]
+\begin{minipage}{4cm}
+La multiplication «~à la rus\-se~»
+est une variante connue d'une technique égyptienne
+décrite dans le papyrus Rhind (environ -1650). Le scribe Ahmès
+y expose des problèmes de géométrie et d'arithmétique (qui viennent en partie 
+des Babyloniens) dont cette technique de multiplication.
+\end{minipage}
+\hfill
+\begin{minipage}{3.6cm}
+\includegraphics[width=3.5cm]{papyrus.jpg}
+\end{minipage}
+\end{rem}}
+\begin{td}\label{td:russe}\em La multiplication «~à la russe~».\\
+La technique de multiplication dite «~à la rus\-se~» consiste à diviser par 
+2 le multiplicateur (et ensuite les quotients obtenus), 
+jusqu'à un quotient nul, à noter les restes,
+et à multiplier parallèlement le multiplicande par 2. 
+On additionne alors les multiples obtenus du multiplicande 
+correspondant aux restes non nuls.
+
+\noindent Exemple : \begin{minipage}[t]{10cm}
+$68 \times 123\ (= 8364)$\\
+\begin{tabular}{|r|r|r|r|}
+\hline
+multiplicande & multiplicateur & reste      & somme partielle\\
+$M \times 2$  & $m \div 2$     & $m \bmod 2$ &       \\
+\hline
+123  & 68 &   0   &   $(0\times 123) + 0$ \\
+246  & 34 &   0   &   $(0\times 246) + 0$ \\
+492  & 17 &   1   &   $(1\times 492) + 0$ \\
+984  &  8 &   0   &   $(0\times 984) + 492$  \\
+1968 &  4 &   0   &   $(0\times 1968) + 492$ \\
+3936 &  2 &   0   &   $(0\times 3936) + 492$ \\
+7872 &  1 &   1   &   $(1\times 7872) + 492$ \\
+\hline
+\multicolumn{3}{|r|}{$68 \times 123 =$} & 8364\\
+\hline
+\end{tabular}
+\end{minipage}
+\end{td}
+
+\noindent Effectuer les multiplications suivantes selon la technique «~à la russe~».
+\begin{enumerate}
+\item $64 \times 96\ (= 6144)$
+\item $45 \times 239\ (= 10755)$
+\end{enumerate}
+
+\begin{td}\label{td:ibnalbanna}\em La multiplication arabe (d'après \cite{chabert}).
+\marginpar{\footnotesize\em 
+\begin{fig}\label{fig:ibnalbanna}Principe du tableau d'Ibn al-Banna.\\
+\framebox[8cm]{\includegraphics[width=7.5cm]{ibnalbanna.pdf}}
+\end{fig}}\\
+On consid\`ere ici le texte d'Ibn al-Banna concernant la multiplication
+\`a l'aide de tableaux.
+
+{\footnotesize
+« Tu construis un quadrilat\`ere que tu subdivises verticalement et
+horizontalement en autant de bandes qu'il y a de positions dans les
+deux nombres multipli\'es. Tu divises diagonalement les carr\'es
+obtenus, \`a l'aide de diagonales allant du coin inf\'erieur gauche au
+coin sup\'erieur droit (figure \ref{fig:ibnalbanna}).
+
+Tu places le multiplicande au-dessus du quadrilat\`ere, en faisant 
+correspondre chacune de ses positions \`a une colonne\footnote{L'écriture
+du nombre s'effectue de droite à gauche (exemple : 352 s'écrira donc 253).}. 
+Puis, tu places le multiplicateur \`a gauche ou \`a droite du quadrilat\`ere,
+de telle sorte qu'il descende avec lui en faisant correspondre \'egalement 
+chacune de ses positions \`a une ligne\footnote{L'écriture
+du nombre s'effectue de bas en haut (exemple : {\tiny$\begin{array}{c}3\\5\\2\end{array}$} 
+s'écrira donc {\tiny$\begin{array}{c}2\\5\\3\end{array}$}).}. Puis, tu multiplies, 
+l'une apr\`es l'autre, chacune des positions du multiplicande du carr\'e 
+par toutes les positions du multiplicateur, et tu poses le r\'esultat 
+partiel correspondant \`a chaque position dans le carr\'e o\`u se coupent 
+respectivement leur colonne et leur ligne, en pla\c{c}ant les unit\'es 
+au-dessus de la diagonale et les dizaines en dessous. Puis, tu
+commences \`a additionner, en partant du coin sup\'erieur gauche :
+tu additionnes ce qui est entre les diagonales, sans effacer, 
+en pla\c{c}ant chaque nombre dans sa position, en transf\'erant 
+les dizaines de chaque somme partielle \`a la diagonale suivante et
+en les ajoutant \`a ce qui y figure. 
+
+La somme que tu obtiendras sera le r\'esultat. »}
+
+\noindent En utilisant la m\'ethode du tableau d'Ibn al-Banna, calculer $63247\times124$ 
+($= 7842628$).
+\end{td}
+
+\begin{td}\label{td:boulier}\em La division chinoise (d'après \cite{chabert}).\\
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:boulier}Boulier chinois.\\
+\framebox[8cm]{\em
+\mbox{}\hfill 8017 :\hfill
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{boulier.jpg}
+\end{minipage}}
+\end{fig}}
+Dans sa version actuelle, le boulier chinois se compose d'un nombre variable de tringles
+serties dans un cadre rectangulaire. Sur chacune de ces tringles, deux étages de boules
+séparées par une barre transversale peuvent coulisser librement (figure \ref{fig:boulier}).
+La notation des nombres repose sur le principe de la numération de position : chacune
+des 2 boules du haut vaut 5 unités et chacune des 5 boules du bas vaut 1 unité. Seules
+comptent les boules situées dans la région transversale.
+
+Il existe des règles spéciales de division pour chaque diviseur de 1 à 9.
+On consid\`ere ici les 7 r\`egles de division par 7 (figure \ref{fig:div7}) :
+
+\noindent\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}
+\item {\em «~qi-yi xia jia san~»} : 7-1 ? ajouter 3 en dessous ! \\
+\item {\em «~qi-er xia jia liu~»} : 7-2 ? ajouter 6 en dessous ! \\
+\item {\em «~qi-san si sheng er~»} : 7-3 ? 4 reste 2 ! \\
+\end{enumerate}
+\end{minipage}\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{3}
+\item {\em «~qi-si wu sheng wu~»} : 7-4 ? 5 reste 5 ! \\
+\item {\em «~qi-wu qi sheng yi~»} : 7-5 ? 7 reste 1 ! \\
+\item {\em «~qi-liu ba sheng si~»} : 7-6 ? 8 reste 4 ! \\
+\item {\em «~feng-qi jin yi~»} : 7-7 ? 1 monté ! \\
+\end{enumerate}
+\end{minipage}
+
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:div7}Règles de la division par 7.\\
+\framebox[8cm]{\em\begin{tabular}{|c|c|c|}
+\hline
+Règle & Avant & Après \\
+\hline
+\hline
+7-1   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 0 & 1 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 0 & 1 & 3
+\end{tabular} \\
+\hline
+\hline
+7-2   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 0 & 2 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 1 \\
+\hline
+2 & & 0 & 2 & 1
+\end{tabular} \\
+\hline
+\hline
+7-3   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 0 & 3 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 0 & 4 & 2
+\end{tabular} \\
+\hline
+\hline
+7-4   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 0 & 4 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 1 & 1 \\
+\hline
+2 & & 0 & 0 & 0
+\end{tabular} \\
+\hline
+\hline
+7-5   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 1 & 0 \\
+\hline
+2 & & 0 & 0 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 1 & 0 \\
+\hline
+2 & & 0 & 2 & 1
+\end{tabular} \\
+\hline
+\hline
+7-6   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 1 & 0 \\
+\hline
+2 & & 0 & 1 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 1 & 0 \\
+\hline
+2 & & 0 & 3 & 4
+\end{tabular} \\
+\hline
+\hline
+7-7   & 
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 1 & 0 \\
+\hline
+2 & & 0 & 2 & 0
+\end{tabular} &
+\begin{tabular}{ccccc}
+1 & \makebox[0.5mm]{} & 0 & 0 & 0 \\
+\hline
+2 & & 1 & 0 & 0
+\end{tabular} \\
+\hline
+\end{tabular}}
+\end{fig}}
+Ces règles ne sont pas des règles logiques, 
+mais de simples procédés mnémotechniques
+indiquant ce qu'il convient de faire selon la situation. Leur énoncé débute par le
+rappel du diviseur, ici 7, et se poursuit par l'énoncé du dividende, par exemple 3 :
+7-3. Le reste de la règle indique quelles manipulations effectuées, ajouts ou retraits
+de boules. Il faut également savoir que le dividende étant posé sur le boulier, on doit
+appliquer les règles aux chiffres successifs du dividende, en commençant par celui dont
+l'ordre est le plus élevé.
+«~ajouter en dessous~» veut dire «~mettre des boules au rang 
+immédiatement inférieur (à droite) au rang considéré~» et «~monter~» veut dire «~mettre des boules
+au rang immédiatement supérieur (à gauche) au rang considéré~».
+
+
+Pour effectuer la division d'un nombre par 7, on pose le dividende à droite sur le
+boulier et le diviseur (7) à gauche. On opère sur les chiffres successifs du dividende
+en commençant par celui d'ordre le plus élevé (le plus à gauche). Les règles
+précédemment énoncées sont appliquées systématiquement.
+
+Utiliser un boulier chinois pour diviser 1234 par 7 ($1234 = 176\times 7 + 2$).
+
+\centerline{\begin{tabular}{cccccc}
+1 & \makebox[1mm]{} & 0 & 0 & 0 & 0 \\
+\hline
+2 & & 1 & 2 & 3 & 4
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{cccccc}
+1 & \makebox[1mm]{} & 0 & 1 & 1 & 0 \\
+\hline
+2 & & 1 & 2 & 1 & 2
+\end{tabular}}
+
+\end{td}
+
+
+\begin{td}\label{td:shadok}\em Le calcul Shadok (d'après \cite{rouxel}).\\
+Les cerveaux des Shadoks avaient une capacité tout à fait limitée.
+Ils ne comportaient en tout que 4 cases.
+Comme ils n'avaient que 4 cases, évidemment les Shadoks ne connaissaient 
+pas plus de 4 mots :  {\sc ga, bu, zo et meu} (figure \ref{fig:bdShadok}).
+\marginpar{\footnotesize\em 
+\begin{fig}\label{fig:bdShadok}Les Shadoks : {\sc ga} {\sc bu} {\sc zo} {\sc meu}
+{\em \cite{rouxel}}.\\
+\noindent\framebox[8cm]{\includegraphics[width=7cm]{bdShadok.jpg}}
+\end{fig}}
+Etant donné qu'avec 4 mots, ils ne pouvaient pas compter plus loin que 4,
+le Professeur Shadoko avait réformé tout ça :
+\begin{itemize}
+\item Quand il n'y a pas de Shadok, on dit {\sc ga} et on écrit {\sc ga}.
+\item Quand il y a un Shadok de plus, on dit {\sc bu} et on écrit {\sc bu}.
+\item Quand il y a encore un Shadok, on dit {\sc zo} et on écrit {\sc zo}.
+\item Et quand il y en a encore un autre, on dit {\sc meu} et on écrit {\sc meu}.
+\end{itemize}
+
+Tout le monde applaudissait très fort et trouvait ça génial sauf le Devin Plombier 
+qui disait qu'on n'avait pas idée d'inculquer à des enfants des bêtises pareilles 
+et que Shadoko, il fallait le condamner. 
+Il fut très applaudi aussi. Les mathématiques, 
+cela les intéressait, bien sûr, mais brûler le professeur, c'était intéressant aussi, faut dire. 
+Il fut décidé à l'unanimité qu'on le laisserait parler et qu'on le brûlerait après, à la récréation.
+\begin{itemize}
+\item Répétez avec moi : {\sc meu} {\sc zo} {\sc bu} {\sc ga}\ldots {\sc ga} {\sc bu} {\sc zo} {\sc meu}.
+\item Et après! ricanait le Plombier.
+\item Si je mets un Shadok en plus, évidemment, je n'ai plus assez 
+de mots pour les compter, alors c'est très simple : on les jette dans une poubelle, 
+et je dis que j'ai {\sc bu} poubelle. Et pour ne pas confondre avec le {\sc bu} du début, 
+je dis qu'il n'y a pas de Shadok à côté de la poubelle et j'écris {\sc bu} {\sc ga}. 
+{\sc bu} Shadok à côté de la poubelle: {\sc bu} {\sc bu}. Un autre : {\sc bu} {\sc zo}. Encore un autre : {\sc bu} {\sc meu}. 
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:calculShadok}Les 18 premiers nombres Shadok.\\
+\framebox[8cm]{\begin{tabular}[t]{l@{ : }ll@{ : }ll@{ : }l}
+0 & {\sc ga} 	      & 6  & {\sc bu} {\sc zo}  & 12 & {\sc meu} {\sc ga}\\
+1 & {\sc bu} 	      & 7  & {\sc bu} {\sc meu} & 13 & {\sc meu} {\sc bu}\\
+2 & {\sc zo} 	      & 8  & {\sc zo} {\sc ga}  & 14 & {\sc meu} {\sc zo}\\
+3 & {\sc meu} 	      & 9  & {\sc zo} {\sc bu}  & 15 & {\sc meu} {\sc meu}\\
+4 & {\sc bu} {\sc ga} & 10 & {\sc zo} {\sc zo}  & 16 & {\sc bu} {\sc ga} {\sc ga}\\
+5 & {\sc bu} {\sc bu} & 11 & {\sc zo} {\sc meu} & 17 & {\sc bu} {\sc ga} {\sc bu}\\
+\end{tabular}}
+\end{fig}}
+On continue. {\sc zo} poubelles et pas de Shadok à côté : {\sc zo} {\sc ga}\ldots 
+{\sc meu} poubelles et {\sc meu} Shadoks à côté : {\sc meu} {\sc meu}. 
+Arrivé là, si je mets un Shadok en plus, il me faut une autre poubelle. 
+Mais comme je n'ai plus de mots pour compter les poubelles, je m'en débarrasse 
+en les jetant dans une grande poubelle. 
+J'écris {\sc bu} grande poubelle avec pas de petite poubelle 
+et pas de Shadok à côté: {\sc bu} {\sc ga} {\sc ga}, et on continue\ldots {\sc bu} {\sc ga} {\sc bu}, 
+{\sc bu} {\sc ga} {\sc zo}\ldots {\sc meu} {\sc meu} {\sc zo}, {\sc meu} {\sc meu} {\sc meu}.
+Quand on arrive là et qu'on a trop de grandes poubelles pour pouvoir les compter, 
+eh bien, on les met dans une super-poubelle, on écrit {\sc bu} {\sc ga} {\sc ga} {\sc ga}, 
+et on continue\ldots (figure \ref{fig:calculShadok}).
+\end{itemize}
+
+\noindent\begin{enumerate}
+\item Quels sont les entiers décimaux représentés en «~base Shadok~» 
+	par les expressions suivantes ?
+	\begin{enumerate}
+	\item {\sc ga} {\sc ga}
+	\item {\sc bu} {\sc bu} {\sc bu}
+	\item {\sc zo} {\sc zo} {\sc zo} {\sc zo}
+	\item {\sc meu} {\sc meu} {\sc meu} {\sc meu} {\sc meu} 
+	\end{enumerate}	
+\item Effectuer les calculs Shadok suivants.
+	\begin{enumerate}
+	\item {\sc zo} {\sc zo} {\sc meu} $+$ {\sc bu} {\sc ga} {\sc meu}
+	\item {\sc meu} {\sc ga} {\sc meu} $-$ {\sc bu} {\sc meu} {\sc ga}
+	\item {\sc zo} {\sc meu} {\sc meu} $\times$ {\sc bu} {\sc ga} {\sc meu}
+	\item {\sc zo} {\sc zo} {\sc zo} {\sc meu} $\div$ {\sc bu} {\sc ga} {\sc zo}
+	\end{enumerate}
+\end{enumerate}
+\end{td}
+
+%-------------------------------------------------------------------------
+\subsection{Solutions des exercices}\label{sub:solutions}
+%-------------------------------------------------------------------------
+\begin{description}
+\item[TD \ref{td:qcm} :] QCM.\\
+	Les bonnes réponses sont extraites directement
+	du texte de la section \ref{contexte} : \\
+	1a, 2e, 3b, 4b, 5e, 6e, 7a, 8d
+\item[TD \ref{td:plage3} :] Dessins sur la plage : exécution.
+	\begin{enumerate}
+	\item On trace un triangle rectangle dont l'hypothénuse fait 5 pas de long
+		(d'après le théorème de Pythagore : $5^2 = 3^2 + 4^2$).
+	\item On a donc marché $3 + 4 + 5 = 12$ pas.
+	\end{enumerate}
+\item[TD \ref{td:plage4} :] Dessins sur la plage : conception.\\
+	\marginpar{\footnotesize\em
+	\begin{fig}\label{fig:spirale}Spirales rectangulaires.\\
+	\framebox[8cm]{\includegraphics[width=7.5cm]{spirale.pdf}}
+	\end{fig}}
+	Imaginons l'algorithme de tracé suivant :
+	\begin{enumerate}
+	\item avance de 2 pas,
+	\item tourne à gauche de $90^\circ$,
+	\item avance de 3 pas,
+	\item tourne à gauche de $90^\circ$,
+	\item avance de 4 pas,
+	\item tourne à gauche de $90^\circ$,
+	\item avance de 5 pas,
+	\item tourne à gauche de $90^\circ$,
+	\item avance de 6 pas.
+	\end{enumerate}
+	\begin{itemize}
+	\item validité : on doit au moins vérifier que la figure obtenue à toutes
+		les caractéristiques recherchées : spirale rectangulaire de
+		5 côtés, le plus petit côté faisant 2 pas de long et chaque 
+		côté fait un pas de plus que le précédent (figure \ref{fig:spirale}).
+	\item robustesse : cet algorithme suppose qu'on a suffisamment de place pour
+		tracer une spirale (le dernier côté fait 6 pas de long); s'il fonctionne 
+		correctement sur une plage, il ne fonctionnera certainement plus dans un
+		placard.
+	\item réutilisabilité : il existe une infinité de spirales rectangulaires
+		qui ont les caractéristiques attendues; il suffit de penser
+		à changer l'orientation initiale ou la longueur du pas par exemple. 
+		On ne pourra donc pas utiliser l'algorithme tel quel dans toutes les
+		configurations : il aurait fallu paramétrer l'angle de rotation et la
+		longueur du pas.
+	\item complexité : on peut la caractériser par le nombre de pas : 
+		$2 + 3 + 4 + 5 + 6 = 20$ pas.
+	\item efficacité : si la complexité se calcule en nombre de pas comme
+		ci-dessus, on pourrait imaginer par exemple que la fréquence des
+		pas soit plus grande («~fréquence d'horloge~») ou que 
+		5 personnes prennent en charge chacune un côté de la spirale 
+		pour gagner du temps («~système multi-processeurs~»).
+	\end{itemize}
+	\marginpar{\footnotesize\em
+	\begin{rem}Loi de Moore.\\
+	Gordon Earl Moore est le co-fondateur avec Robert Noyce et Andrew Grove de la société Intel en 1968 
+	(fabriquant n°1 mondial de microprocesseurs).
+	En 1965, il expliquait que la complexité des semiconducteurs 
+	doublait tous les dix-huit mois à coût constant depuis 1959, date de leur invention. 
+	En 1975, il précise sa «~première loi~» en affirmant que le nombre de transistors des microprocesseurs  
+	sur une puce de silicium double tous les deux ans («~deuxième loi~»).
+	
+	\centerline{\includegraphics[width=8cm]{loimoore.jpg}}
+	\end{rem}
+	}
+\item[TD \ref{td:mips} :] Puissance de calcul.\\
+	L'unité de puissance est donné ici en Mips («~million d'instructions par
+	seconde~»).
+	\begin{enumerate}
+	\item le premier micro-ordinateur de type PC : $\approx 10^{-1}$ Mips
+	\item une console de jeu actuelle : $\approx 10^{4}$ Mips
+	\item un micro-ordinateur actuel : $\approx 10^{4}$ Mips
+	\item {\em Deeper-Blue} : l'ordinateur qui a « battu » Kasparov aux 
+		échecs en 1997 : $\approx 10^{7}$ Mips
+	\item le plus puissant ordinateur actuel : $\approx 10^{9}$ Mips
+	\end{enumerate}
+\item[TD \ref{td:stock} :] Stockage de données.
+	\begin{enumerate}
+	\item une page d'un livre : $\approx$ 50 lignes de 80 caractères = 4 ko
+	\item une encyclopédie en 20 volumes : $\approx$ 20 volumes de 1000
+	pages de 50 lignes de 80 caractères = 80 Mo (sans images !)
+	\item une photo couleur : $\approx$ de 1Mo à 100 Mo selon la qualité
+	\item une heure de vidéo : $\approx$ de 500 Mo à 2 Go 
+		selon la qualité vidéo (DivX, MPEG-2\ldots)
+	\item une minute de son : $\approx$ de 1 Mo (MP3) à 10 Mo 
+		selon la qualité du son
+	\item une heure de son : $\approx$ de 60 Mo à 600 Mo 
+		selon la qualité du son
+	\end{enumerate}
+\newpage
+\item[TD \ref{td:tortue} :] Tracés de polygones réguliers.
+	\begin{enumerate}
+	\item Pentagone régulier de 10 pas de côté.\\
+		\begin{minipage}{6cm}
+		\begin{enumerate}
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$,
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$,
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$,
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$,
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$.
+		\end{enumerate}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{7cm}
+		On remarque qu'on a effectué 5 fois de suite les 2 instructions 
+		suivantes :
+		\begin{enumerate}
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$.
+		\end{enumerate}
+		Pour simplifier, on écrira plutôt :\\
+		Répète 5 fois de suite les 2 instructions
+		\begin{enumerate}
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/5)^\circ$.
+		\end{enumerate}
+		C'est ce que nous ferons dans les exemples suivants.
+		\end{minipage}
+	\item Hexagone régulier de 10 pas de côté.\\
+		Répète 6 fois de suite les 2 instructions 
+		\begin{enumerate}
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/6)^\circ$,
+		\end{enumerate}
+	\item Octogone régulier de 10 pas de côté.\\
+		Répète 8 fois de suite les 2 instructions 
+		\begin{enumerate}
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/8)^\circ$,
+		\end{enumerate}
+	\item Polygone régulier de $n$ côtés de 10 pas chacun.\\
+		Répète $n$ fois de suite les 2 instructions 
+		\begin{enumerate}
+		\item avance de 10 pas,
+		\item tourne à gauche de $(360/n)^\circ$,
+		\end{enumerate}
+	\end{enumerate}
+\newpage
+\item[TD \ref{td:russe} :] Multiplication «~à la russe~».
+	\begin{enumerate}
+	\item \begin{tabular}[t]{|r|r|r|r|}
+		\hline
+		multiplicande & multiplicateur & reste      & somme partielle\\
+		$M \times 2$  & $m \div 2$     & $m \bmod 2$ &       \\
+		\hline
+		 96  & 64 &   0   &   $(0\times 96) + 0$ \\
+		192  & 32 &   0   &   $(0\times 192) + 0$ \\
+		384  & 16 &   0   &   $(1\times 384) + 0$ \\
+		768  &  8 &   0   &   $(0\times 768) + 0$  \\
+	       1536  &  4 &   0   &   $(0\times 1536) + 0$ \\
+	       3072  &  2 &   0   &   $(0\times 3072) + 0$ \\
+	       6144  &  1 &   1   &   $(1\times 6144) + 0$ \\
+		\hline
+		\multicolumn{3}{|r|}{$64 \times 96 =$} & 6144\\
+		\hline
+		\end{tabular}
+
+	\item \begin{tabular}[t]{|r|r|r|r|}
+		\hline
+		multiplicande & multiplicateur & reste      & somme partielle\\
+		$M \times 2$  & $m \div 2$     & $m \bmod 2$ &       \\
+		\hline
+		239  & 45 &   1   &   $(1\times 239) + 0$ \\
+		478  & 22 &   0   &   $(0\times 478) + 239$ \\
+		956  & 11 &   1   &   $(1\times 956) + 239$ \\
+	       1912  &  5 &   1   &   $(1\times 1912) + 1195$  \\
+	       3824  &  2 &   0   &   $(0\times 3824) + 3107$ \\
+	       7648  &  1 &   1   &   $(1\times 7648) + 3107$ \\
+		\hline
+		\multicolumn{3}{|r|}{$45 \times 239 =$} & 10755\\
+		\hline
+		\end{tabular}
+	\end{enumerate}
+\item[TD \ref{td:ibnalbanna} :] Multiplication arabe : $63247\times124 = 7842628$.\\
+	\mbox{}\hspace*{0.9cm}{\includegraphics[width=7cm]{ibnalbanna1.pdf}} 
+\item[TD \ref{td:boulier} :] Division chinoise : $1234 \div 7$ 
+	($1234 = 176\times 7 +2$).
+	\marginpar{\footnotesize\em
+	\begin{rem}Boulier chinois : division par 3.
+	\begin{enumerate}
+	\item {\em «~san-yi sanshi-yi~»} : trois-un ? trente et un ! \\
+		(on pose 3 \`a la place du 1, et on ajoute 1 \`a droite)
+	\item {\em «~san-er liushi-er~»} : trois-deux ? soixante deux ! \\
+		(on pose 6 \`a la place du 2, et on ajoute 2 \`a droite)
+	\item {\em «~feng san jin yi-shi~»} : trois-trois ? dizaine mont\'ee ! \\
+		(on pose 0 \`a la place du 3, et on ajoute 1 \`a gauche)
+	\end{enumerate}
+	Effectuer la division $2271 \div 3$ avec le boulier chinois.
+	\end{rem}}
+	
+	\noindent\begin{tabular}{|cccccc|}
+	\hline
+	  &                 & $\downarrow$ & & & \\
+	1 & \makebox[1mm]{} & 0 & 0 & 0 & 0 \\
+	\hline
+	2 & & 1 & 2 & 3 & 4 \\
+	\hline
+	\end{tabular}
+	$\rightarrow$ 7-1 $\rightarrow$ 
+	\begin{tabular}{|cccccc|}
+	\hline
+	  &                 & & $\downarrow$ & & \\
+	1 & \makebox[1mm]{} & 0 & 1 & 0 & 0 \\
+	\hline
+	2 & & 1 & 0 & 3 & 4\\
+	\hline
+	\end{tabular}
+	$\rightarrow$ 7-5 $\rightarrow$ 
+	\begin{tabular}{|cccccc|}
+	\hline
+	  &                 & & & $\downarrow$ & \\
+	1 & \makebox[1mm]{} & 0 & 1 & 0 & 0 \\
+	\hline
+	2 & & 1 & 2 & 4 & 4\\
+	\hline
+	\end{tabular}
+	
+	\noindent\begin{tabular}{|cccccc|}
+	\hline
+	  &                 & & & $\downarrow$ & \\
+	1 & \makebox[1mm]{} & 0 & 1 & 0 & 0 \\
+	\hline
+	2 & & 1 & 2 & 4 & 4\\
+	\hline
+	\end{tabular}
+	$\rightarrow$ 7-4 $\rightarrow$ 
+	\begin{tabular}{|cccccc|}
+	\hline
+	  &                 & & & & $\downarrow$ \\
+	1 & \makebox[1mm]{} & 0 & 1 & 1 & 1 \\
+	\hline
+	2 & & 1 & 2 & 0 & 4\\
+	\hline
+	\end{tabular}
+	$\rightarrow$ 7-7 $\rightarrow$ 
+	\begin{tabular}{|cccccc|}
+	\hline
+	  &                 & & & & \\
+	1 & \makebox[1mm]{} & 0 & 1 & 1 & 0 \\
+	\hline
+	2 & & 1 & 2 & 1 & 2\\
+	\hline
+	\end{tabular}
+\item[TD \ref{td:shadok} :] Calcul Shadok.\\
+	Le système Shadok est un système de numération en base 4 :\\
+	{\sc ga} = 0, {\sc bu} = 1, {\sc zo} = 2 et {\sc meu} = 3.
+	\marginpar{\footnotesize\em
+	\begin{rem}
+	Un entier positif en base $b$ est représenté par une suite de
+	chiffres {$(r_nr_{n-1}\ldots r_1r_0)_b$}
+	où les $r_i$ sont des chiffres de la base $b$ ($0\leq r_i < b$).
+	Ce nombre a pour valeur:
+	$${r_nb^n + r_{n-1}b^{n-1} + \ldots + r_1b^1 + r_0b^0 = 
+        \sum^{i=n}_{i = 0} r_ib^i}$$
+	
+	Un nombre fractionnaire (nombre avec des chiffres après la virgule :
+	{$(r_nr_{n-1}\ldots r_1r_0.r_{-1}r_{-2}\ldots)_b$})
+	est défini sur un sous-en\-semble borné, incomplet et fini des rationnels.
+	Un tel nombre a pour valeur :
+	$${r_nb^n + r_{n-1}b^{n-1} + \ldots + r_0b^0 + r_{-1}b^{-1} + r_{-2}b^{-2} + \ldots}$$
+	En pratique, le nombre de chiffres après la virgule est limité par la taille physique
+	en machine.
+	$${(r_nr_{n-1}\ldots r_1r_0.r_{-1}r_{-2}\ldots r_{-m})_b = \sum_{i=-m}^{i=n} r_ib^i}$$
+	\end{rem}}
+	\begin{enumerate}
+	\item   \begin{enumerate}
+		\item {\sc ga} {\sc ga} 
+			$= (00)_4 = 0$
+		\item {\sc bu} {\sc bu} {\sc bu} 
+			$= (111)_4 = 1\cdot 4^2 + 1\cdot 4^1 + 1\cdot 4^0 = 16 + 4 + 1 = 21$
+		\item {\sc zo} {\sc zo} {\sc zo} {\sc zo} 
+			$= (2222)_4 = 2\cdot 4^3 + 2\cdot 4^2 + 2\cdot 4^1 + 2\cdot 4^0 = 128 + 32 + 8 + 2 = 170$
+		\item {\sc meu} {\sc meu} {\sc meu} {\sc meu} {\sc meu} 
+			$= (33333)_4 = 3 \cdot 4^4 + 3\cdot 4^3 + 3\cdot 4^2 + 3\cdot 4^1 + 3\cdot 4^0 = 768 + 192 + 48 + 12 + 3 =
+			1023$
+		\end{enumerate}	
+	\item	\begin{enumerate}
+		\item {\sc zo} {\sc zo} {\sc meu} $+$ {\sc bu} {\sc ga} {\sc meu} 
+			$= (223)_4 + (103)_4 = (332)_4 = 43 + 19 = 62$
+		\item {\sc meu} {\sc ga} {\sc meu} $-$ {\sc bu} {\sc meu} {\sc ga} 
+			$= (303)_4 - (130)_4 = (113)_4 = 51 - 28 = 23$
+		\item {\sc zo} {\sc meu} {\sc meu} $\times$ {\sc bu} {\sc ga} {\sc meu} 
+			$= (233)_4 \times (103)_4 = (31331)_4 = 47 \times 19 = 893$
+		\item {\sc zo} {\sc zo} {\sc zo} {\sc meu} $\div$ {\sc bu} {\sc ga} {\sc zo} 
+			$= (2223)_4 \div (102)_4 = (21)_4 = 171 \div 18 = 9$
+		\end{enumerate}
+	\end{enumerate}
+\end{description}
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Annexes}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\subsection{Lettre de Jacques Perret}\label{annexe:perret}
+%-------------------------------------------------------------------------
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:eniac}Le premier ordinateur (1946) : ENIAC (Electronic Numerical Integrator 
+Analyser and Computer).\\
+\framebox[8cm]{\includegraphics[width=6cm]{eniac2.jpg}}
+\end{fig}
+\begin{fig}\label{fig:micros}Premiers micro-ordinateurs.\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+\includegraphics[width=3.25cm]{apple2.jpg}\hfill
+\includegraphics[width=3.25cm]{zx81.jpg}
+
+\mbox{}\hfill Apple II (1977) \hfill ZX 81 (1981) \hfill \mbox{}
+
+\includegraphics[width=3.25cm]{ibmpc.jpg}\hfill
+\includegraphics[width=3.25cm]{macintosh.jpg}
+
+\mbox{}\hfill IBM PC (1981)\hfill Macintosh (1984)\hfill \mbox{}
+\end{minipage}}
+\end{fig}}
+Au printemps de 1955, IBM France s'apprêtait à construire dans ses ateliers 
+de Corbeil-Essonnes (consacrés jusque-là au montage des machines mécanographiques 
+--- tabulatrices, trieuses, \ldots --- de technologie électromécanique) 
+les premières machines électroniques destinées au traitement de l'information. 
+Aux États-Unis ces nouvelles machines étaient désignées sous le vocable 
+Electronic Data Processing System. Le mot «~computer~» était plutôt réservé 
+aux machines scientifiques et se traduisait aisément en «~calculateur~» ou «~calculatrice~».
+Sollicité par la direction de l'usine de Corbeil-Essonnes, François Girard, 
+alors responsable du service promotion générale publicité, 
+décida de consulter un de ses anciens maîtres, Jacques Perret, professeur de philologie 
+latine à la Sorbonne. A cet effet il écrit une lettre à la signature de C. de Waldner, 
+président d'IBM France. Il décrit sommairement la nature et les fonctions des 
+nouvelles machines. Il accompagne sa lettre de brochures illustrant les machines 
+mécanographiques. Le 16 avril, le professeur Perret lui répond.
+L'ordinateur IBM 650 peut commencer sa carrière.
+Protégé pendant quelques mois par IBM France, le mot fut rapidement adopté
+par un public de spécialistes, de chefs d'entreprises et par l'administration. 
+IBM décida de le laisser dans le domaine public
+(d'après le site de la $10^{\grave eme}$ semaine de la langue française et de la francophonie
+{\tt www.semainelf.culture.fr/site2005/dixmots/}).
+
+{\em
+Le 16 IV 1955
+
+Cher Monsieur,
+
+Que diriez-vous d'«~ordinateur~» ? C'est un mot correctement formé, qui se trouve même dans le
+Littré comme adjectif désignant Dieu qui met de l'ordre dans le monde. Un mot de ce genre a
+l'avantage de donner aisément un verbe «~ordiner~», un nom d'action «~ordination~». L'inconvénient
+est que «~ordination~» désigne une cérémonie religieuse ; mais les deux champs de signification
+(religion et comptabilité) sont si éloignés et la cérémonie d'ordination connue, je crois, de si peu de
+personnes que l'inconvénient est peut-être mineur. D'ailleurs votre machine serait «~ordinateur~» (et
+non ordination) et ce mot est tout à fait sorti de l'usage théologique. «~Systémateur~» serait un
+néologisme, mais qui ne me paraît pas offensant ; il permet «~systématisé~» ; - mais «~système~» ne
+me semble guère utilisable - «~combinateur~» a l'inconvénient du sens péjoratif de «~combine~» ;
+«~combiner~» est usuel donc peu capable de devenir technique ; «~combination~» ne me paraît guère
+viable à cause de la proximité de «~combinaison~». Mais les Allemands ont bien leurs «~combinats~»
+(sorte de trusts, je crois), si bien que le mot aurait peut-être des possibilités autres que celles
+qu'évoque «~combine~».
+
+\marginpar{\footnotesize\em
+\begin{fig}\label{fig:intel86}Du 8086 (1978) au Core 2 (2006) d'Intel.\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+\includegraphics[width=3.25cm]{8086.jpg}\hfill
+\includegraphics[width=3.25cm]{80486.jpg}
+
+\mbox{}\hfill 8086 \hfill 80486 \hfill \mbox{}
+
+\includegraphics[width=3.25cm]{pentium4.jpg}\hfill
+\includegraphics[width=3.25cm]{core2.jpg}
+
+\mbox{}\hfill Pentium 4 \hfill Core Duo \hfill \mbox{}
+\end{minipage}}
+\end{fig}
+
+\begin{fig}\label{fig:derniersnes}Micro-ordinateurs récents.\\
+\framebox[8cm]{\begin{minipage}{7.5cm}
+\includegraphics[width=3.25cm]{pda.jpg}\hfill
+\includegraphics[width=3.25cm]{tablette.jpg}
+
+\mbox{}\hfill PDA \hfill Tablette \hfill \mbox{}
+
+\includegraphics[width=2.5cm]{iphone.jpg}\hfill
+\includegraphics[width=3.25cm]{wii.jpg}
+
+\mbox{}\hfill iPhone \hfill Wii \hfill \mbox{}
+\end{minipage}}
+\end{fig}
+}
+«~Congesteur~», «~digesteur~» évoquent trop «~congestion~» et «~digestion~».
+«~Synthé\-ti\-seur~» ne me
+paraît pas un mot assez neuf pour designer un objet spécifique, déterminé comme votre machine.
+En relisant les brochures que vous m'avez données, je vois que plusieurs de vos appareils sont
+désignés par des noms d'agent féminins (trieuse, tabulatrice). «~Ordinatrice~» serait parfaitement
+possible et aurait même l'avantage de séparer plus encore votre machine du vocabulaire de la
+théologie.
+Il y a possibilité aussi d'ajouter à un nom d'agent un complément : «~ordinatrice d'éléments
+complexes~» ou un élément de composition, par ex. : «~sélecto-sys\-té\-ma\-teur~». - «~Sélecto-
+ordinateur~» a l'inconvénient de 2 «~o~» en hiatus, comme «~électro-ordinatrice~».
+Il me semble que je pencherais pour «~ordinatrice électroni\-que~». Je souhaite que ces suggestions
+stimulent, orientent vos propres facultés d'invention. N'hésitez pas à me donner un coup de
+téléphone si vous avez une idée qui vous paraisse requérir l'avis d'un philologue.
+
+Vôtre.
+
+J. Perret
+}
+
+
+%-------------------------------------------------------------------------
+\newpage
+\subsection{Exemple de questionnaire d'évaluation}\label{annexe:eval}
+%-------------------------------------------------------------------------
+$$\begin{tabular}{|p{11cm}|ccccc|}
+\hline
+\bf Proposition & \bf 1 & \bf 2 & \bf 3 & \bf 4 & \bf $\times$ \\
+\hline
+\hline
+Vos connaissances antérieures étaient suffisantes pour suivre ce cours & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Les objectifs du cours ont été clairement définis & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Vous êtes satisfait des supports de cours fournis & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Vous êtes satisfait de l'équilibre cours/TD/TP & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Vous êtes satisfait de la présentation de ce cours (clarté d'expression\ldots) & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Si vous avez plusieurs professeurs, la cohérence de l'enseignement vous a 
+	semblé assurée & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Le rythme de travail vous a permis de suivre et de comprendre & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Le temps alloué à cette matière vous a semblé satisfaisant & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Cette matière a nécessité beaucoup de travail personnel & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Vous avez eu l'impression de progresser & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Les contrôles sont adaptés à l'objectif et au niveau du cours & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Vous êtes satisfait du mode d'évaluation & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Après les contrôles, les enseignants fournissent des commentaires qui aident
+	à mieux maitriser la matière & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Vous êtes satisfait des conditions de travail 
+	(salles de cours, matériel utilisé\ldots) & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+Respect du programme pédagogique & $\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+\hline
+\hline
+\multicolumn{6}{|c|}{{\bf 1:}Très satisfait , {\bf 2:}Satisfait , {\bf 3:}Peu satisfait , 
+                   {\bf 4:}Pas satisfait ; {\bf $\times$:}Ne me concerne pas}\\
+\hline
+\end{tabular}$$
+
+%-------------------------------------------------------------------------
+\newpage
+\subsection{Exemple de planning}\label{annexe:planning}
+%-------------------------------------------------------------------------
+Les enseignements d'Informatique S1 s'étalent sur 15 semaines :
+de la semaine 2 à la semaine 16 dans le planning ci-dessous.
+$$\begin{tabular}{|l|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\bf Semaine & \bf Cours & \bf TD & \bf Thème contrôle \\
+\hline
+\bf 1 & --- & --- & --- \\
+\hline
+\bf 2 & introduction générale\newline instructions de base & ---  & --- \\
+\hline
+\bf 3 & --- & environnement de pro\-grammation\newline instructions de base & ---  \\
+\hline
+\bf 4 & {\bf contrôle d'autoformation}\newline instructions de base & --- & calculs booléens\\
+\hline
+\bf 5 & --- & instructions de base & --- \\
+\hline
+\bf 6 & instructions de base \newline {\bf DS1} & --- & \mbox{}\newline instructions de base \\
+\hline
+\bf 7 & --- & instructions de base & --- \\
+\hline
+\bf 8 & procédures et fonctions & --- & --- \\
+\hline
+\bf 9 & --- & procédures et fonctions & --- \\
+\hline
+\bf 10 & {\bf contrôle d'autoformation}\newline procédures et fonctions & --- & codage des
+nombres\\
+\hline
+\bf 11 & --- & procédures et fonctions & --- \\
+\hline
+\bf 12 & procédures et fonctions & --- & --- \\
+\hline
+\bf 13 & --- & procédures et fonctions & --- \\
+\hline
+\bf 14 & {\bf DS2}\newline structures linéaires & --- & procédures et fonctions\\
+\hline
+\bf 15 & --- &  structures linéaires & ---\\
+\hline
+\bf 16 & structures linéaires\newline {\bf contrôle d'autoformation} & --- & \mbox{}\newline recherche d'un élément \\
+\hline
+\end{tabular}$$
+
+%-------------------------------------------------------------------------
+\newpage
+\subsection{Informatique à l'ENIB}\label{annexe:enib}
+%-------------------------------------------------------------------------
+\marginpar{\footnotesize ENIB: {\tt www.enib.fr}}
+\marginpar{\includegraphics[width=8cm]{enibHaut-1280.jpg}}
+
+%-------------------------------------------------------------------------
+\subsection*{Enseignements de premier cycle}
+%-------------------------------------------------------------------------
+Les 4  semestres du premier cycle (S1 à S4) sont communs à
+tous les élèves de l'ENIB. Les enseignements d'informatique
+sont précisés dans le tableau ci-dessous.
+
+$$\begin{tabular}{llr}
+\hline
+Semestre & Thème & Horaires \\
+\hline
+S1 & Algorithmique                 & 45 h \\
+S2 & Méthode de développement      & 45 h \\
+\hline
+S3 & Programmation procédurale     & 45 h \\
+S3 & Programmation par objets      & 45 h \\
+S4 & Programmation pour l'embarqué & 45 h \\
+\hline
+\end{tabular}$$
+
+
+%-------------------------------------------------------------------------
+\subsection*{Enseignements du cycle ingénieur}
+%-------------------------------------------------------------------------
+Les 2 premiers semestres du cycle ingénieur (S5 et S6) sont communs à
+tous les élèves de l'ENIB.
+
+$$\begin{tabular}{llr}
+\hline
+Semestre & Thème & Horaires \\
+\hline
+S5  & Programmation par objets               & 45 h \\
+S6  & Programmation par objets               & 45 h \\
+S6  & Modèles pour l'ingénierie des systèmes & 45 h \\
+S6  & Bases de données                       & 22 h\\
+\hline
+\end{tabular}$$
+
+Au cours du $3^{\grave eme}$ semestre du cycle ingénieur (S7), 
+les élèves choisissent une option parmi trois : électronique, informatique 
+ou mécatronique. Les modules de l'option informatique
+sont listés dans le tableau ci-dessous. Le $4^{\grave eme}$ semestre (S8) 
+est consacré à un Projet Professionnalisant en Equipe (PPE).
+
+$$\begin{tabular}{llr}
+\hline
+Semestre & Thème & Horaires \\
+\hline
+S7  & Systèmes embarqués 1                 & 45 h \\
+S7  & Systèmes embarqués 2                 & 45 h \\
+S7  & Réseaux                              & 45 h \\
+S7  & Administration Systèmes et Réseaux   & 45 h \\
+S7  & Génie Logiciel                       & 45 h \\
+S7  & Systèmes d'Information               & 45 h \\
+S7  & Interfaces Homme-Machine             & 45 h \\
+S7  & Applications Réparties               & 45 h \\
+\hline
+S8  & Projet Professionnalisant en Equipe  & 350 h \\
+\hline
+\end{tabular}$$
+
+Au cours du $5^{\grave eme}$ semestre du cycle ingénieur (S9),
+les étudiants doivent suivre 5 modules scientifiques,
+3 modules de type SHS et 1 module d'ouverture. 
+les modules à caractère informatique sont donnés dans le tableau ci-dessous.
+Le dernier semestre 
+est consacré au stage en entreprise. 
+
+$$\begin{tabular}{llr}
+\hline
+Semestre & Thème & Horaires \\
+\hline
+S9  & Systèmes distribués                       & 45 h \\
+S9  & Contrôle adaptatif                        & 45 h \\
+S9  & Styles de programmation                   & 45 h \\
+S9  & Simulation                                & 45 h \\
+S9  & Réalité Virtuelle                         & 45 h \\
+\hline
+S10 & Stage en entreprise & 20 sem \\
+\hline
+\end{tabular}$$
+
+
+%-------------------------------------------------------------------------
+\subsection*{Recherches en informatique}
+%-------------------------------------------------------------------------
+L'ENIB accueille trois laboratoires de recherche correspondant aux trois options :
+électronique, informatique et mécatronique.
+
+Le laboratoire de recherche en informatique de l'ENIB est le {\sc LISyC} 
+(Laboratoire d'Informatique des Systèmes Complexes).
+\marginpar{{\sc LISyC} : \footnotesize\tt www.lisyc.univ-brest.fr}
+Le {\sc LISyC} est à Brest une Equipe d'Accueil (EA 3883) commune à l'Université de Bretagne Occidentale (UBO), 
+à l'Ecole Nationale d'Ingénieurs de Brest (ENIB) et à l'Ecole Nationale Supérieure des Ingénieurs 
+des Etudes des Techniques d'Armement (ENSIETA).
+
+Le {\sc LISyC} a fait sienne l'idée selon laquelle 
+{\em
+comprendre et maîtriser les comportements des systèmes complexes,
+naturels ou artificiels, constituent pour les scientifiques le défi majeur
+du $21^{\grave eme}$ siècle.
+}
+Il compte actuellement 40 enseignants-chercheurs permanents et 20 doctorants
+regroupés en 4 équipes STIC et 1 équipe SHS qui explorent de manière complémentaire
+cette problématique :
+$$\begin{tabular}{l@{ : }l}
+{\sc ARéVi} & Ateliers de Réalité Virtuelle \\
+{\sc EBV} & Ecosystémique et Biologie Virtuelles \\
+{\sc IdM} & Ingénierie des Modèles \\
+{\sc SARA} & Simulation, Apprentissages, Représentations, Action \\
+{\sc SuSy} & Sûreté des Systèmes
+\end{tabular}$$
+Les équipes {\sc ARéVi}, {\sc EBV} et {\sc SARA} sont localisées au {\sc CERV} :
+le Centre Européen de Réalité Virtuelle, établissement de l'ENIB ouvert en juin 2004.
+\marginpar{\footnotesize\tt {\sc CERV} : www.cerv.fr}
+\marginpar{\includegraphics[width=8cm]{cervFacade-1280.jpg}}
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section*{Liste des exercices}\label{sub:listexo}
+\addcontentsline{toc}{section}{Liste des exercices}
+%-------------------------------------------------------------------------
+\subsubsection*{Exercices de TD}
+\noindent
+\exercice{td:plage1}{Dessins sur la plage : exécution (1).}\\
+\exercice{td:plage2}{Dessins sur la plage : conception (1).}\\
+\exercice{td:prop}{Propriétés d'un algorithme.}\\
+\exercice{td:octets}{Unités d'information.}\\
+\exercice{td:python}{Première utilisation de {\sc Python}.}\\
+\exercice{td:erreur}{Erreur de syntaxe en {\sc Python}.}\\
+\exercice{td:plage5}{Dessins sur la plage : persévérance.}\\
+\exercice{td:autonomie}{Autonomie.}\\
+\exercice{td:site}{Site {\sc Web} d'Informatique S1.}\\
+\exercice{td:attention1}{Exemple de contrôle d'attention (1).}\\
+\exercice{td:TD}{Exemple de contrôle de TD.}\\
+\exercice{td:bool}{Exemple de contrôle d'autoformation (1).}\\
+\exercice{td:competences}{Exemple de contrôle des compétences.}\\
+\exercice{td:controles}{Nombre de contrôles.}\\
+\exercice{td:negation}{Exemple de contrôle d'autoformation (2).}\\
+\exercice{td:attention2}{Exemple de contrôle d'attention (2).}\\
+\exercice{td:exercices}{Nombres d'exercices de TD.}\\
+\exercice{td:labo}{Environnement de travail.}
+
+\subsubsection*{Exercices complémentaires}
+\noindent
+\exercice{td:qcm}{QCM.}\\
+\exercice{td:plage3}{Dessins sur la plage : exécution (2).}\\
+\exercice{td:plage4}{Dessins sur la plage : conception (2).}\\
+\exercice{td:mips}{Puissance de calcul.}\\
+\exercice{td:stock}{Stockage de données.}\\
+\exercice{td:tortue}{Tracés de polygones réguliers.}\\
+\exercice{td:russe}{La multiplication «~à la russe~».}\\
+\exercice{td:ibnalbanna}{La multiplication arabe.}\\
+\exercice{td:boulier}{La division chinoise.}\\
+\exercice{td:shadok}{Le calcul Shadok.}
+%-------------------------------------------------------------------------
+

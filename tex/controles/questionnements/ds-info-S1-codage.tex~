@@ -1,0 +1,100 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-codage.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\enib{\textsc{Enib}}
+\def\logo{\textsc{Logo}}
+\def\python{\textsc{Python}}
+\def\uml{\textsc{Uml}}
+%-------------------------------------------------------------------------
+\def\ga{\textsc{ga}}   
+\def\bu{\textsc{bu}} 
+\def\zo{\textsc{zo}} 
+\def\meu{\textsc{meu}} 
+%-------------------------------------------------------------------------
+\def\si{\textsc{Si}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+%\noindent\framebox[\textwidth]{}
+\entete
+
+\autoevaluation
+
+
+$$\mbox{\textbf{\large Codage des réels}}$$
+
+
+%-------------------------------------------------------------------------
+%\newpage
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Coder les nombres réels suivants selon la norme \textsc{Ieee} 754 simple précision.
+\vspace*{3mm}
+
+
+\noindent
+\begin{minipage}{4.5cm}
+\begin{enumerate}
+\item $x = -37.03125$
+\item $x = 49.1875$
+\item $x = -53.0625$
+\item $x = 65.25$
+\item $x = -77.375$
+\item $x = 89.75$
+\item $x = -99.625$
+\item $x = 7.5$
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{4.5cm}
+\begin{enumerate}\setcounter{enumi}{8}
+\item $x = 43.1875$
+\item $x = -13.0625$
+\item $x = 71.25$
+\item $x = -54.375$
+\item $x = -19.125$
+\item $x = 29.3125$
+\item $x = -37.5625$
+\item $x = 45.875$
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{4.5cm}
+\begin{enumerate}\setcounter{enumi}{16}
+\item $x = 27.75$
+\item $x = -33.625$
+\item $x = 69.5$
+\item $x = -83.125$
+\item $x = 99.3125$
+\item $x = -87.5625$
+\item $x = 75.875$
+\item $x = -61.25$
+\end{enumerate}
+\end{minipage}
+\vspace*{3mm}
+
+\paragraph{Réponse :}\mbox{}\\
+\framebox[\textwidth]{$\rule{0cm}{10cm}$\Large
+\begin{tabular}{|c||c|c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & 
+\ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ & \ \\
+\hline
+\end{tabular}}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

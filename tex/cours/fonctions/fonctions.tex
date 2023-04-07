@@ -1,0 +1,1010 @@
+%-------------------------------------------------------------------------
+% fonctions.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\setjobnamebeamerversion{fonctionsSlide}
+
+\usetheme{Enib}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newtheorem{rem}{Remarque}[section]
+\newtheorem{defin}{DÃ©finition}[section]
+\newtheorem{td}{\color{blue}TD}[section]
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\exo#1{\mbox{}\ \hfill\mbox{\color{blue}$\rule{2mm}{2mm}\,$\footnotesize\sc TD\ref{#1}}}
+\def\exercice#1#2{\mbox{}\ \ TD \ref{#1}\ #2\ \dotfill\ \pageref{#1}\mbox{}}
+
+\newenvironment{py}[1]{\begin{minipage}[t]{#1}\footnotesize}{\end{minipage}}
+%-------------------------------------------------------------------------
+
+\graphicspath{{../../fig/}}
+
+%-------------------------------------------------------------------------
+\title[Algorithmique]{\bf Initiation Ã  l'algorithmique}
+\subtitle{\bf --- procÃ©dures et fonctions ---\newline
+1. SpÃ©cification et implÃ©mentation}
+
+
+\author[\tt jacques.tisseau@enib.fr]{\large\bf Jacques TISSEAU}
+\institute[\enib]{{\large\enib--\cerv}}
+\date[enib\copyright 2009-2014]{\footnotesize enib\copyright 2009-2014}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>[label=titre]
+\frametitle{Informatique \hfill {S1}}
+%------------------------------------------
+\titlepage
+
+\end{frame}
+\note{
+\mbox{}\null\vfill
+
+\begin{rem}[Notes de cours : couverture]
+Ce support de cours accompagne le 
+chapitre 3 des notes de cours Â« Initiation Ã  l'algorithmique Â».
+$$\fbox{\includegraphics[width=10cm,page=1]{../info-S1.pdf}}$$
+\end{rem}
+}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{RÃ©utilisabilitÃ© des algorithmes}
+%------------------------------------------
+\begin{block}{ProblÃ¨me}
+Comment rÃ©utiliser un algorithme existant sans avoir Ã  le rÃ©Ã©crire?
+\end{block}
+\pause
+
+\begin{columns}[T]
+\column{5cm}\footnotesize\tt
+>>> n = 3\\
+>>> f = 1\\
+>>> for i in range(1,n+1):\\
+...\ \ \ \ \ f = f*i\\
+...\\
+>>> f\\
+6
+\pause
+\column{5cm}\footnotesize\tt
+>>> n = 5\\
+>>> f = 1\\
+>>> for i in range(1,n+1):\\
+...\ \ \ \ \ f = f*i\\
+...\\
+>>> f\\
+120
+\end{columns}
+\pause
+\begin{block}{ElÃ©ment de rÃ©ponse}
+Encapsuler le code dans des fonctions ou des procÃ©dures.
+\end{block}
+\pause
+\begin{columns}[T]
+\column{5cm}\footnotesize\tt
+>>> \alert{factorielle(}3\alert{)}\\
+6
+\pause
+\column{5cm}\footnotesize\tt
+>>> \alert{factorielle(}5\alert{)}\\
+120
+\end{columns}
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[rÃ©utilisabilitÃ©] aptitude d'un algorithme Ã 
+	Ãªtre rÃ©utilisÃ© pour rÃ©soudre des tÃ¢ches Ã©quivalentes
+	Ã  celle pour laquelle il a Ã©tÃ© conÃ§u.
+\end{description}
+}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Structuration des algorithmes}
+%------------------------------------------
+\begin{block}{ProblÃ¨me}
+Comment structurer un algorithme pour le rendre plus comprÃ©hensible ?
+\end{block}
+\pause
+\begin{columns}[T]
+\column{5.5cm}\tiny\tt
+    ieee\_code = []\\
+    k\_exponent = 8\\
+    k\_significand = 23\\
+    k\_ieee = 32\\
+    bias = code(127,2,k\_exponent)\\
+    x\_int = int(abs(x))\\
+    x\_frac = abs(x) - x\_int\\
+    expo\_2 = 0\\
+    for i in range(k\_ieee): append(ieee\_code,0)\\
+\mbox{}\\
+    \# calcul du signe\\
+    sign = int(x < 0)\\
+\mbox{}\\ 
+    \# calcul de la mantisse\\
+    i = 0\\
+    significand = []\\
+    while (x\_int != 0) and (i < k\_significand):\\
+\ \ \ \ insert(significand,0,x\_int\%2)\\
+\ \ \ \ x\_int = x\_int/2\\
+\ \ \ \ i = i + 1
+\column{5.5cm}\tiny\tt
+    if len(significand) > 0 and significand[0] == 1:\\
+\ \ \ \ del significand[0]\\
+\ \ \ \ expo\_2 = len(significand)\\
+    i = len(significand)\\
+    while (x\_frac != 0) and (i < k\_significand):\\
+\ \ \ \ x\_frac = x\_frac * 2\\
+\ \ \ \ x\_int = int(x\_frac)\\
+\ \ \ \ x\_frac = x\_frac - x\_int\\
+\ \ \ \ if (x\_int == 0) and (i == 0):\\
+\ \ \ \ \ \ \ \ expo\_2 = expo\_2 - 1\\
+        else:\\
+\ \ \ \ \ \ \ \ append(significand,x\_int)\\
+\ \ \ \ \ \ \ \ i = i + 1\\
+\mbox{}\\
+\pause
+\alert{\em et quelques 20 lignes plus loin\ldots}\\
+\mbox{}\\
+\ \ \ \ ieee\_code[0] = sign\\
+\ \ \ \ ieee\_code[1:9] = exponent\\
+\ \ \ \ ieee\_code[9:32] = significand	    
+\end{columns}
+\end{frame}
+\note{}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Structuration des algorithmes}
+%------------------------------------------
+\begin{block}{ElÃ©ment de rÃ©ponse}
+Utiliser des fonctions et des procÃ©dures.
+\end{block}
+\pause
+
+$$\begin{minipage}{8cm}\footnotesize\tt
+\# calcul du signe\\
+sign = int(x < 0)\\
+\mbox{}\\ 
+\# calcul de la mantisse\\
+significand, expo\_2 = \alert{mantisse(}x\alert{)}\\
+\mbox{}\\ 
+\# calcul de l'exposant\\
+exponent = \alert{exposant(}expo\_2,127\alert{)}\\
+\mbox{}\\
+\# code IEEE 754\\
+ieee\_code[0] = sign\\
+ieee\_code[1:9] = exponent\\
+ieee\_code[9:32] = significand
+\end{minipage}$$
+    
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[encapsulation] action de mettre une chose dans une autre
+\end{description}
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Diviser pour rÃ©gner}
+%------------------------------------------
+\begin{block}{Structuration}
+Les fonctions et les procÃ©dures permettent de dÃ©composer un programme complexe en une 
+sÃ©rie de sous-programmes plus simples, lesquels peuvent Ã  leur tour Ãªtre dÃ©composÃ©s 
+eux-mÃªmes en fragments plus petits, et ainsi de suite.  
+\end{block}
+\pause
+
+\centerline{\includegraphics[width=8cm]{../fig/structure1.pdf}}
+\pause 
+
+\centerline{\includegraphics[width=8cm]{../fig/structure2.pdf}}
+
+\end{frame}
+\note{} 
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Fonctions}
+%------------------------------------------
+\begin{block}{Fonctions}
+Une fonction est une suite ordonnÃ©e d'instructions
+qui {\em retourne} une valeur
+(bloc d'instructions nommÃ© et paramÃ©trÃ©).
+\end{block}
+\pause
+\begin{block}{Fonction $\equiv$ expression}
+Une fonction joue le rÃ´le d'une expression.
+
+\pause
+Elle enrichit le jeu des expressions possibles.
+\end{block}
+\pause
+\begin{block}{Exemple}
+{\tt y = sin(x)}\hfill renvoie la valeur du sinus de x
+\begin{description}
+\item[nom :] {\tt sin}
+\item[paramÃ¨tres :] {\tt x:float} $\rightarrow$ {\tt sin(x):float} 
+\end{description}
+\end{block}
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[fonction] bloc d'instructions nommÃ© et paramÃ©trÃ©,
+rÃ©alisant une certaine tÃ¢che. Elle admet zÃ©ro, un ou plusieurs 
+paramÃ¨tres et renvoie toujours un rÃ©sultat.
+\end{description}
+\null\vfill
+
+{\bf Exemples de fonctions prÃ©dÃ©finies en \python}{\footnotesize
+$$\begin{tabular}{|p{3cm}|p{7cm}|}
+\hline
+\bf Function & \bf Result \\
+\hline
+\hline
+\tt abs(x)		& Returns the absolute value of the number {\tt x}.\\
+\hline
+\tt chr(i) 		& Returns one-character string whose ASCII code is integer {\tt i}.\\
+\hline
+\tt help([object]) 	& Invokes the built-in help system. No argument $\rightarrow$ interactive help; if {\tt object} is a string 
+			  (name of a module, function, class, method, keyword, or documentation topic), a help page is printed on the console; 
+			  otherwise a help page on {\tt object} is generated.\\
+\hline
+\tt input([prompt]) 	& Prints {\tt prompt} if given. Reads input and evaluates it.\\
+\hline
+\tt len(obj) 		& Returns the length (the number of items) of an object (sequence, dictionary).\\
+\hline
+\tt ord(c) 		& Returns integer ASCII value of {\tt c} (a string of len 1).\\
+\hline
+\tt print([s1] [, s2 ]*) & Writes to {\tt sys.stdout}. 
+                              Puts spaces between arguments {\tt si}. Puts newline at end unless arguments end with {\tt end=} (ie: {\tt end=' '}).\\
+\hline
+\tt range([start,] end [, step])	& Returns list of ints from {\tt >= start} and {\tt < end}.
+					  With 1 arg, list from {\tt 0..arg-1}. With 2 args, list from {\tt start..end-1}.
+					  With 3 args, list from {\tt start} up to {\tt end} by {\tt step}.\\
+\hline
+\end{tabular}$$
+}
+
+}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{ProcÃ©dures}
+%------------------------------------------
+\begin{block}{ProcÃ©dures}
+Une procÃ©dure est une suite ordonnÃ©e d'instructions
+qui {\em ne retourne pas} de valeur
+(bloc d'instructions nommÃ© et paramÃ©trÃ©).
+\end{block}
+\pause
+\begin{block}{ProcÃ©dure $\equiv$ instruction}
+Une procÃ©dure joue le rÃ´le d'une instruction.
+
+\pause
+Elle enrichit le jeu des instructions existantes.
+\end{block}
+\pause
+\begin{block}{Exemple}
+{\tt print(x, y, z)}\hfill affiche les valeurs de x, y et z
+\begin{description}
+\item[nom :] {\tt print}
+\item[paramÃ¨tres :] {\tt x}, {\tt y}, {\tt z} $\rightarrow$ $\Box$ 
+\end{description}
+\end{block}
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[procÃ©dure] bloc d'instructions nommÃ© et paramÃ©trÃ©,
+rÃ©alisant une certaine tÃ¢che. Elle admet zÃ©ro, un ou plusieurs 
+paramÃ¨tres et ne renvoie pas de rÃ©sultat.
+\end{description}
+\null\vfill
+
+\begin{rem}
+Une fonction en informatique se distingue principalement de la 
+fonction mathÃ©matique par le fait qu'en plus de calculer un rÃ©sultat 
+Ã  partir de paramÃ¨tres, la fonction informatique peut avoir des Â« effets de bord Â»: 
+par exemple afficher un message Ã  l'Ã©cran, jouer un son, 
+ou bien piloter une imprimante.
+
+Une fonction qui n'a pas d'effet de bord joue le rÃ´le d'une expression
+Ã©valuable. 
+
+Une fonction qui n'a que des effets de bord est appelÃ©e une procÃ©dure
+et joue le rÃ´le d'une instruction.
+\end{rem}
+}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Modules}
+%------------------------------------------
+$$\includegraphics[width=8.75cm]{../fig/lego.pdf}$$
+
+\end{frame}
+\note{
+\null\vfill
+
+\begin{rem}
+Les procÃ©dures et les fonctions intÃ©grÃ©es au langage sont 
+relativement peu nombreuses : ce sont seulement celles qui sont susceptibles 
+d'Ãªtre utilisÃ©es trÃ¨s frÃ©quemment. 
+Les autres fonctions sont regroupÃ©es dans des fichiers sÃ©parÃ©s que l'on appelle des modules.
+
+Les modules sont donc des fichiers qui regroupent des ensembles de fonctions. 
+Souvent on regroupe dans un mÃªme module des ensembles de fonctions 
+apparentÃ©es que l'on appelle des bibliothÃ¨ques.
+Pour pouvoir utiliser ces fonctions, il faut importer le module correspondant.
+$$\begin{py}{5cm}\tt
+>>> from math import sin, pi\\
+>>> sin(pi/2)\\
+1.0
+\end{py}
+\hfill
+\begin{py}{5cm}\tt
+>>> import math\\
+>>> math.sin(math.pi/2)\\
+1.0
+\end{py}$$
+\end{rem}
+}
+%------------------------------------------
+
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{DÃ©finition d'une fonction}
+%------------------------------------------
+\begin{block}{Les 6 Ã©tapes de dÃ©finition}
+\begin{description}
+\item[Nom:] un identificateur suffisamment explicite.
+\pause
+\item[ParamÃ¨tres:] la liste des paramÃ¨tres d'entrÃ©e-sortie de l'algorithme.
+\pause
+\item[PrÃ©conditions:] une liste d'expressions boolÃ©ennes qui prÃ©cisent les
+	\alert{conditions d'application} de l'algorithme.
+\pause
+\item[Appel:] des exemples d'utilisation de l'algorithme avec les rÃ©sultats
+	attendus.
+\pause
+\item[Description:] une phrase qui dit \alert{ce que fait l'algorithme}.
+\pause
+\item[Code:] la sÃ©quence d'instructions nÃ©cessaires
+	Ã  la rÃ©solution du problÃ¨me.
+\end{description}
+\end{block}
+
+\end{frame}
+\note{
+\null\vfill
+
+\begin{rem}
+Pour encapsuler un algorithme dans une fonction, on suivra pas Ã  pas 
+la dÃ©marche suivante :
+\begin{enumerate}
+\item donner un nom explicite Ã  l'algorithme,
+\item dÃ©finir les paramÃ¨tres d'entrÃ©e-sortie de l'algorithme,
+\item prÃ©ciser les prÃ©conditions sur les paramÃ¨tres d'entrÃ©e,
+\item donner des exemples d'utilisation et les rÃ©sultats attendus,
+\item dÃ©crire par une phrase ce que fait l'algorithme et dans quelles conditions il le fait,
+\item encapsuler l'algorithme dans la fonction spÃ©cifiÃ©e par les 5 points
+	prÃ©cÃ©dents.
+\end{enumerate}
+Les 5 premiÃ¨res Ã©tapes relÃ¨vent de la spÃ©cification de l'algorithme et la
+derniÃ¨re Ã©tape concerne l'encapsulation proprement dite de l'algorithme.
+\end{rem}
+}
+%------------------------------------------
+
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Nom et paramÃ¨tres d'entrÃ©e-sortie}
+%------------------------------------------
+\begin{columns}[T]
+\column{5.75cm}
+\begin{enumerate}
+\item<1-> {\em nom}\\
+\begin{minipage}[t]{4.75cm}\scriptsize\tt
+\mbox{}\alert{def} factorielle\alert{()}:\\
+\mbox{}\ \ \ \ \alert{return}\\
+\mbox{}
+\end{minipage}
+
+\item<2-> {\em paramÃ¨tres d'entrÃ©e-sortie}\\
+\begin{minipage}[t]{4.75cm}\scriptsize\tt
+def factorielle(\alert{n}):\\
+\mbox{}\ \ \ \ \alert{f = 1}\\
+\mbox{}\ \ \ \ return \alert{f}
+\end{minipage}
+
+\end{enumerate} 
+
+\column{5.75cm}
+\begin{enumerate}
+\item<1-> {\em nom}\\
+\begin{minipage}[t]{4.75cm}\scriptsize\tt
+>>> factorielle()\\
+>>>\\
+\mbox{}
+\end{minipage}
+
+\item<2-> {\em paramÃ¨tres d'entrÃ©e-sortie}\\
+\begin{minipage}[t]{4.75cm}\scriptsize\tt
+>>> factorielle(5)\\
+1\\
+>>> factorielle(-5)\\
+1\\
+>>> factorielle('toto')\\
+1
+\end{minipage}
+
+\end{enumerate} 
+\end{columns}
+\vspace*{5mm}
+
+\pause
+
+$$\includegraphics[width=7cm]{../fig/fact-2.pdf}$$
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[paramÃ¨tres d'entrÃ©e] arguments de la fonction
+	qui sont nÃ©cessaires pour effectuer le traitement associÃ©
+	Ã  la fonction.
+\item[paramÃ¨tres de sortie] rÃ©sultats retournÃ©s 
+	par la fonction aprÃ¨s avoir effectuÃ© le traitement associÃ©
+	Ã  la fonction.
+\end{description}
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{PrÃ©conditions}
+%------------------------------------------
+\begin{columns}[T]
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{2}
+\item {\em prÃ©conditions}
+\begin{minipage}[t]{4.75cm}\scriptsize\tt
+def factorielle(n)\\
+\mbox{}\ \ \ \ \alert{assert type(n) is int}\\
+\mbox{}\ \ \ \ \alert{assert n >= 0}\\
+\mbox{}\ \ \ \ f = 1\\
+\mbox{}\ \ \ \ return f
+\end{minipage}
+\end{enumerate} 
+
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{2}
+\item {\em prÃ©conditions}
+\begin{minipage}[t]{4.75cm}\scriptsize\tt
+>>> factorielle(5)\\
+1\\
+>>> factorielle(-5)\\
+{\color{red}AssertionError: \\
+\mbox{}\ \ assert n >= 0}\\
+>>> factorielle('toto')\\
+{\color{red}AssertionError: \\
+\mbox{}\ \ assert type(n) is int}\\
+\end{minipage}
+\end{enumerate} 
+\end{columns}
+\vspace*{5mm}
+
+\pause
+$$\includegraphics[width=7cm]{../fig/fact-3.pdf}$$
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[prÃ©conditions] conditions que doivent 
+	impÃ©rativement vÃ©rifier les paramÃ¨tres d'entrÃ©e 
+	de la fonction juste avant son exÃ©cution.
+\item[postconditions] conditions que doivent 
+	impÃ©rativement vÃ©rifier les paramÃ¨tres de sortie de la
+	fonction juste aprÃ¨s son exÃ©cution.
+\item[invariants] conditions que doit impÃ©rativement 
+	vÃ©rifier la fonction tout au long de son exÃ©cution.
+\end{description}
+}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Jeu de tests}
+%------------------------------------------
+\begin{columns}[T]
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{3}
+\item {\em jeu de tests}
+\begin{minipage}[t]{5.5cm}\scriptsize\tt
+def factorielle(n):\\
+\mbox{}\ \ \ \ \alert{"""}\\
+\mbox{}\ \ \ \ \alert{>>> for i in range(8):}\\
+\mbox{}\ \ \ \ \alert{...\ \ \ \ \ print(factorielle(i),end=' ')}\\
+\mbox{}\ \ \ \ \alert{1 1 2 6 24 120 720 5040}\\
+\mbox{}\ \ \ \ \alert{"""}\\
+\mbox{}\ \ \ \ assert type(n) is int\\
+\mbox{}\ \ \ \ assert n >= 0\\
+\mbox{}\ \ \ \ f = 1\\
+\mbox{}\ \ \ \ return f
+\end{minipage}
+\end{enumerate}
+
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{3}
+\item {\em jeu de tests}
+\begin{minipage}[t]{5cm}\scriptsize\tt
+>>> for i in range(8):\\
+...\ \ \ \ \ print(factorielle(i),end=' ')\\
+...\\
+1 1 1 1 1 1 1 1
+\end{minipage}
+\end{enumerate} 
+
+\end{columns}
+\pause
+
+\end{frame}
+\note{
+\null\vfill
+
+\begin{rem}
+A chaque Ã©tape de la spÃ©cification, le code de la fonction doit toujours Ãªtre
+exÃ©cutable mÃªme s'il ne donne pas encore le bon rÃ©sultat.
+
+Le jeu de tests ne sera vÃ©rifiÃ©
+qu'une fois l'implÃ©mentation correctement dÃ©finie.
+\end{rem}
+
+\begin{rem}[test automatique]
+En \python, le jeu de tests peut Ãªtre automatiquement
+Ã©valuÃ© par l'interprÃ©teur en ajoutant les 3 lignes suivantes en fin de fichier source.
+$$\begin{py}{6cm}\tt
+if \_\_name\_\_ == "\_\_main\_\_" :\\
+\mbox{}\ \ import doctest\\
+\mbox{}\ \ doctest.testmod()
+\end{py}$$
+\end{rem}
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Description}
+%------------------------------------------
+\begin{columns}[T]
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{4}
+\item {\em description}
+\begin{minipage}[t]{5.5cm}\scriptsize\tt
+def factorielle(n):\\
+\mbox{}\ \ \ \ {"""}\\
+\mbox{}\ \ \ \ \alert{f = n!}\\
+\mbox{}\ \ \ \ {>>> for i in range(8):}\\
+\mbox{}\ \ \ \ {...\ \ \ \ \ print(factorielle(i),end=' ')}\\
+\mbox{}\ \ \ \ {1 1 2 6 24 120 720 5040}\\
+\mbox{}\ \ \ \ {"""}\\
+\mbox{}\ \ \ \ assert type(n) is int\\
+\mbox{}\ \ \ \ assert n >= 0\\
+\mbox{}\ \ \ \ f = 1\\
+\mbox{}\ \ \ \ return f
+\end{minipage}
+\end{enumerate}
+
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{4}
+\item {\em description}
+\begin{minipage}[t]{5cm}\scriptsize\tt
+>>> for i in range(8):\\
+...\ \ \ \ \ print(factorielle(i),end=' ')\\
+...\\
+1 1 1 1 1 1 1 1
+\end{minipage}
+\end{enumerate} 
+
+\end{columns}
+\pause
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[description] phrase qui prÃ©cise ce que fait la fonction 
+	et dans quelles conditions elle le fait.
+\end{description}
+\null\vfill
+
+\begin{rem}
+La description est une  phrase (chaÃ®ne de caractÃ¨res) qui doit
+expliciter le rÃ´le des paramÃ¨tres d'entrÃ©e et leurs prÃ©conditions,
+ainsi que toutes autres informations jugÃ©es nÃ©cessaires par le
+concepteur de la fonction. 
+
+Dans certains cas Â« difficiles Â», on pourra prÃ©ciser une rÃ©fÃ©rence bibliographique ou un site {\sc Web}
+oÃ¹ l'utilisateur pourra trouver des complÃ©ments sur la fonction et l'algorithme associÃ©.
+
+La description d'une fonction intÃ¨grera donc au moins :
+\begin{itemize}
+\item un exemple typique d'appel de la fonction,
+\item la signification des paramÃ¨tres d'entrÃ©e-sortie,
+\item les prÃ©conditions sur les paramÃ¨tres d'entrÃ©e,
+\item un jeu de tests significatifs.
+\end{itemize}
+\end{rem}
+
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{ImplÃ©mentation}
+%------------------------------------------
+\begin{columns}[T]
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{5}
+\item {\em implÃ©mentation}
+\begin{minipage}[t]{5.5cm}\scriptsize\tt
+def factorielle(n):\\
+\mbox{}\ \ \ \ {"""}\\
+\mbox{}\ \ \ \ {f = n!}\\
+\mbox{}\ \ \ \ {>>> for i in range(8):}\\
+\mbox{}\ \ \ \ {...\ \ \ \ \ print(factorielle(i),end=' ')}\\
+\mbox{}\ \ \ \ {1 1 2 6 24 120 720 5040}\\
+\mbox{}\ \ \ \ {"""}\\
+\mbox{}\ \ \ \ assert type(n) is int\\
+\mbox{}\ \ \ \ assert n >= 0\\
+\mbox{}\ \ \ \ {f = 1}\\
+\mbox{}\ \ \ \ \alert{for i in range(1,n+1):} \\
+\mbox{}\ \ \ \ \ \ \ \ \alert{f = f * i}\\
+\mbox{}\ \ \ \ return f
+\end{minipage}
+\end{enumerate}
+
+\column{5.75cm}
+\begin{enumerate}\setcounter{enumi}{5}
+\item {\em implÃ©mentation}
+\begin{minipage}[t]{5cm}\scriptsize\tt
+>>> for i in range(8):\\
+...\ \ \ \ \ print(factorielle(i),end=' ')\\
+...\\
+1 1 2 6 24 120 720 5040
+\end{minipage}
+\end{enumerate} 
+
+\end{columns}
+\pause
+
+\end{frame}
+\note{}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>[containsverbatim]
+\frametitle{{\tt factorielle(n)} : tout en un}
+%------------------------------------------
+\footnotesize
+\begin{lstlisting}
+def factorielle(n):
+    """
+    f = n!
+    >>> for i in range(10):
+    ...     print factorielle(i),
+    1 1 2 6 24 120 720 5040 40320 362880
+    >>> factorielle(15)
+    1307674368000L
+    """
+    assert type(n) is int
+    assert n >= 0
+
+    f = 1
+    for i in range(1,n+1): f = f * i
+
+    return f
+\end{lstlisting}
+
+\end{frame}
+\note{
+\null\vfill
+
+\begin{td}[DÃ©codage base b $\rightarrow$ dÃ©cimal]\label{td:decoder}
+La valeur dÃ©cimale d'un nombre entier
+codÃ© en base $b$ peut Ãªtre obtenue par l'algorithme suivant :\\
+{\tt \mbox{}\ \ \ \ }\begin{py}{7.5cm}\tt
+>>> n = 0\\
+>>> for i in range(len(code)):\\
+... \mbox{}\ \ \ \ n = n + code[i]*b**(len(code)-1-i)\\
+... \\
+>>> 
+\end{py}\\[1mm]
+SpÃ©cifier une fonction qui encapsule cet algorithme.
+\end{td}
+}
+%------------------------------------------
+
+
+%------------------------------------------
+\begin{frame}<presentation>[containsverbatim]
+\frametitle{{\tt sommeArithmetique(n)} : tout en un}
+%------------------------------------------
+\footnotesize
+\begin{lstlisting}
+def sommeArithmetique(n):
+    """
+    somme s des n premiers entiers
+    
+    >>> for n in range(7):
+    ...     print sommeArithmetique(n) == n*(n+1)/2,
+    True True True True True True True
+    """
+    assert type(n) is int
+    assert n >= 0
+q = q + 1
+    s = n*(n+1)/2
+    
+    return s
+\end{lstlisting}
+
+\end{frame}
+\note{
+\null\vfill
+
+\begin{td}[Division entiÃ¨re]
+Le calcul du quotient $q$ et du reste $r$ de la division 
+entiÃ¨re $a\div b$ $(a = bq + r)$ peut Ãªtre obtenu par l'algorithme suivant :\\
+{\tt \mbox{}\ \ \ \ }\begin{py}{7.5cm}\tt
+>>> q,r = 0,a\\
+>>> while r >= b:\\
+... \mbox{}\ \ \ \ q = q + 1\\
+... \mbox{}\ \ \ \ r = r - b\\
+... \\
+>>> 
+\end{py}\\[1mm]
+SpÃ©cifier une fonction qui encapsule cet algorithme.
+\end{td}
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{SpÃ©cification et implÃ©mentation}
+%------------------------------------------
+\begin{block}{SpÃ©cification d'un algorithme\hfill Quoi ?}
+La spÃ©cification dÃ©crit la fonction et l'utilisation d'un algorithme
+(\alert{ce que fait l'algorithme}).
+
+\pause
+L'algorithme est vu comme une boÃ®te noire dont on ne connaÃ®t pas le
+fonctionnement interne.
+\end{block}
+\pause
+\begin{block}{ImplÃ©mentation d'un algorithme\hfill Comment ?}
+L'implÃ©mentation dÃ©crit le fonctionnement interne de l'algorithme
+(\alert{comment fait l'algorithme}).
+
+\pause
+L'implÃ©mentation prÃ©cise l'enchaÃ®nement des instructions nÃ©cessaires
+Ã  la rÃ©solution du problÃ¨me considÃ©rÃ©.
+\end{block}
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[spÃ©cification]
+	dÃ©crit ce que fait l'algorithme 
+	et dans quelles conditions il le fait.
+\item[implÃ©mentation]
+	dÃ©crit comment fait l'algorithme pour satisfaire sa
+	spÃ©cification.
+\end{description}
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{SpÃ©cification et implÃ©mentation}
+%------------------------------------------
+\footnotesize
+La spÃ©cification dÃ©crit la fonction et l'utilisation d'un algorithme
+\null\vfill
+
+\centerline{\includegraphics[width=8cm]{../fig/algo.pdf}}
+\null\vfill 
+
+\mbox{}\hfill L'implÃ©mentation dÃ©crit le fonctionnement interne de l'algorithme
+\end{frame}\note{}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>[containsverbatim]
+\frametitle{Une spÃ©cification, des implÃ©mentations}
+%------------------------------------------
+\begin{columns}[T]\scriptsize
+\column{5.75cm}
+\begin{verbatim}
+#--------------------------------------
+def sommeArithmetique(n):
+#--------------------------------------
+    """
+    somme s des n premiers entiers
+    
+    >>> for n in range(7):
+    ...     print sommeArithmetique(n)\
+                  == n*(n+1)/2
+    True True True True True True True
+    """
+    assert type(n) is int
+    assert n >= 0
+
+
+    s = n*(n+1)/2
+    
+    return s
+#--------------------------------------
+\end{verbatim}
+
+\column{5.75cm}
+\begin{verbatim}
+#--------------------------------------
+def sommeArithmetique(n):
+#--------------------------------------
+    """
+    somme s des n premiers entiers
+    
+    >>> for n in range(7):
+    ...     print sommeArithmetique(n)\
+                  == n*(n+1)/2
+    True True True True True True True
+    """
+    assert type(n) is int
+    assert n >= 0
+
+    s = 0
+    for i  in range(n+1): s = s + i
+    
+    return s
+#--------------------------------------
+\end{verbatim}
+\end{columns}
+\end{frame}
+\note{
+\null\vfill
+
+\begin{td}[Une spÃ©cification, des implÃ©mentations]
+\begin{enumerate}
+\item Proposer deux implÃ©mentations du calcul de
+la somme $s = \sum_0^n u_k$ des $n$ premiers termes d'une suite 
+gÃ©omÃ©trique $u_k = a\cdot b^k$.
+\item Comparer les complexitÃ©s de ces deux im\-plÃ©\-men\-ta\-tions.
+\end{enumerate}
+
+{\bf Indication:}
+$$\displaystyle s = \sum_{k=0}^n ab^k = a\sum_{k=0}^n b^k$$
+
+	oÃ¹ l'expression $\displaystyle N = (b^0+b^1+b^2+\cdots+b^n)$ peut Ãªtre vue comme le nombre 
+	$\displaystyle (111\cdots 1)_b$ en base $b$. Or en base $b$, le nombre $\displaystyle (b-1)(b^0+b^1+b^2+\cdots+b^n)$
+	est le nombre immÃ©diatement infÃ©rieur Ã  $\displaystyle b^{n+1}$, soit $\displaystyle (b-1)N =
+	b^{n+1}-1$.\\
+	Exemple en base $b=10$ : $999_{10} = 9(10^0 + 10^1 + 10^2) = 10^3 - 1$
+	$$\displaystyle S = \sum_{k=0}^n b^k = (b^0+b^1+b^2+\cdots+b^n) = \frac{b^{n+1}-1}{b-1}$$
+\end{td}
+}
+%------------------------------------------
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{Concepteur versus Utilisateur}
+%------------------------------------------
+\begin{block}{Concepteur}
+Le concepteur d'un algorithme dÃ©finit l'interface et 
+l'implÃ©mentation de l'algorithme.
+\end{block}
+\pause
+\begin{block}{Utilisateur}
+L'utilisateur d'un algorithme n'a pas Ã  connaÃ®tre son
+implÃ©mentation; seule l'interface de l'algorithme le concerne.
+
+\pause
+Selon la spÃ©cification de l'algorithme,
+l'utilisateur \alert{appelle} (utilise) l'algorithme sous forme d'une
+\alert{procÃ©dure} ou d'une \alert{fonction}.
+\end{block}
+
+\end{frame}
+\note{}
+%------------------------------------------
+
+
+
+%------------------------------------------
+\begin{frame}<presentation>
+\frametitle{PropriÃ©tÃ©s d'un algorithme}
+%------------------------------------------
+\begin{block}{PropriÃ©tÃ©s d'un algorithme}
+\begin{description}
+\item[validitÃ© :] Ãªtre conforme aux jeux de tests
+\pause
+\item[robustesse :] vÃ©rifier les prÃ©conditions
+\pause
+\item[rÃ©utilisabilitÃ© :] Ãªtre correctement paramÃ©trÃ©
+\end{description}
+\end{block} 
+
+\end{frame}
+\note{
+{\bf DÃ©finitions}\begin{description}
+\item[ValiditÃ© :] aptitude Ã  rÃ©aliser 
+	exactement la tÃ¢che pour laquelle il a Ã©tÃ© conÃ§u.
+	
+	{\em ie}: L'implÃ©mentation de la fonction doit Ãªtre conforme aux jeux de tests.
+\item[Robustesse :] aptitude Ã  se 
+	protÃ©ger de conditions anormales d'utilisation.
+
+	{\em ie}: La fonction doit vÃ©rifier impÃ©rativement ses prÃ©conditions.
+\item[RÃ©utilisabilitÃ© :] aptitude 
+	Ã  Ãªtre rÃ©utilisÃ© pour rÃ©soudre des tÃ¢ches Ã©quivalentes Ã  celle pour 
+	laquelle il a Ã©tÃ© conÃ§u.	
+
+	{\em ie}: La fonction doit Ãªtre correctement paramÃ©trÃ©e.
+\end{description}
+\null\vfill
+
+\begin{rem}
+Une fois la fonction dÃ©finie (spÃ©cifiÃ©e et implÃ©mentÃ©e), 
+il reste Ã  l'utiliser (Ã  l'appeler).
+\end{rem}
+}
+%------------------------------------------
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

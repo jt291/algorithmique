@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Essai</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
+    }}});</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="fonctions-numériques">Fonctions numériques</h1>
+<h2 id="calcul-de-pi">Calcul de <span class="math inline">\pi</span></h2>
+<p>Définir une fonction qui calcule <span class="math inline">\pi</span> à l’ordre <span class="math inline">n</span> selon l’approximation suivante : <span class="math display">\pi \approx \sum_{k = 0}^n\frac{1}{16^k}
+\left(\frac{4}{8k+1} - \frac{2}{8k+4} - \frac{1}{8k+5} - \frac{1}{8k+6}\right)</span> On n’utilisera pas la fonction <em>puissance</em> (x**k).</p>
+<p><span class="math display">\boxed{\rule{0cm}{14cm}}</span></p>
+<h2 id="conversion-décimal-rightarrow-base-b">Conversion décimal <span class="math inline">\rightarrow</span> base <span class="math inline">b</span></h2>
+<p>Définir une fonction qui code sur <span class="math inline">k</span> chiffres un entier positif <span class="math inline">n</span> du système décimal au système en base <span class="math inline">b</span>.</p>
+<p><span class="math display">\boxed{\hspace{10cm}\rule{0cm}{20cm}}</span></p>
+<h1 id="fonctions-graphiques">Fonctions graphiques</h1>
+<h2 id="courbes-paramétrées">Courbes paramétrées</h2>
+<p>Ecrire une fonction qui permettent le tracé de courbes paramétrées (<span class="math inline">x = f(t)</span>, <span class="math inline">y = g(t)</span>) en utilisant les instructions <em>à la Logo</em>. Les courbes paramétrées seront données sous la forme de fonctions lambda comme dans l’exemple ci-dessous du cercle de centre <span class="math inline">(x_0,y_0)</span> et de rayon <span class="math inline">r</span>. <span class="math display">\begin{minipage}[t]{14cm}\footnotesize
+\begin{verbatim}
+#-----------------------------------------------------------------------
+def parametric_circle(x0,y0,r):
+#-----------------------------------------------------------------------
+    &quot;&quot;&quot;
+    cercle paramétrique : x = x0 + r*cos(t), y = y0 + r * sin(t)
+    &quot;&quot;&quot;
+    return lambda(t): x0 + r * cos(t), 
+           lambda(t): y0 + r * sin(t)
+#-----------------------------------------------------------------------
+\end{verbatim}
+\end{minipage}</span></p>
+<p><span class="math display">\boxed{\hspace*{10cm}\rule{0cm}{11cm}}</span></p>
+<h2 id="courbes-fractales">Courbes fractales</h2>
+<p>On considère la procédure p ci-contre :</p>
+<pre><code>def p(n,d):
+    assert type(n) is int
+    assert n &gt;= 0
+    if n == 0: forward(d)
+    else:
+        p(n-1,d/3.)
+        left(60)
+        p(n-1,d/3.)
+        right(120)
+        p(n-1,d/3.)
+        left(60)
+        p(n-1,d/3.)
+    return</code></pre>
+<ol type="1">
+<li><p>On considère l’appel p(1,300) et le crayon initialement en (0,0) avec une direction de 0. Dessiner le résultat de cet appel.</p></li>
+<li><p>On considère l’appel p(3,300) et le crayon initialement en (0,0) avec une direction de 0. Dessiner le résultat de cet appel.</p></li>
+</ol>
+<p><span class="math display">\boxed{\rule{14cm}{12cm}}</span></p>
+<h1 id="appels-de-fonctions">Appels de fonctions</h1>
+<h2 id="portée-des-variables">Portée des variables</h2>
+<p>On considère les fonctions f, g et h suivantes :</p>
+<pre><code>def f(x):
+    x = 2*x
+    print(&#39;f&#39;, x)
+    return x
+
+def g(x):
+    x = 2*f(x)
+    print(&#39;g&#39;, x)
+    return x
+
+def h(x):
+    x = 2*g(f(x))
+    print(&#39;h&#39;, x)
+    return x</code></pre>
+<p>Qu’affichent les appels suivants ?</p>
+<ol type="1">
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>x = 5</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>&gt;&gt;&gt; print(x)
+
+&gt;&gt;&gt; y = f(x)
+&gt;&gt;&gt; print(x)
+
+&gt;&gt;&gt; z = g(x)
+&gt;&gt;&gt; print(x)
+
+&gt;&gt;&gt; t = h(x)
+&gt;&gt;&gt; print(x)</code></pre></li>
+</ol>
+<!-- -->
+<ol type="1">
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>x = 5</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>&gt;&gt;&gt; print(x)
+
+&gt;&gt;&gt; x = f(x)
+&gt;&gt;&gt; print(x)
+
+&gt;&gt;&gt; x = g(x)
+&gt;&gt;&gt; print(x)
+
+&gt;&gt;&gt; x = h(x)
+&gt;&gt;&gt; print(x)</code></pre></li>
+</ol>
+<h2 id="récursivité">Récursivité</h2>
+<p>Définir une fonction récursive pour la recherche de la première occurrence d’un élément <span class="math inline">x</span> dans un tableau <span class="math inline">t</span>.</p>
+<p><span class="math display">\framebox[14.5cm]{$\rule{0cm}{20cm}$}</span></p>
+<h1 id="exécutions-de-fonctions">Exécutions de fonctions</h1>
+<h2 id="exécution-dune-fonction-itérative">Exécution d’une fonction itérative</h2>
+<p>Qu’affiche l’appel f([3,6,4,5,2,1]) où f est la fonction itérative définie ci-contre ?</p>
+<p><span class="math display">\framebox[6.75cm]{$\rule{0cm}{15cm}$}</span></p>
+<pre><code>#----------------------------------------
+def f(t):
+#----------------------------------------
+    assert type(t) is list
+
+    for i in range(len(t)):
+        m = i
+        for j in range(i+1,len(t)):
+            if t[j] &lt; t[m]: m = j
+        t[i],t[m] = t[m],t[i]
+        print(i, t)  #---------- affichage
+
+    return t
+#----------------------------------------</code></pre>
+<h2 id="exécution-dune-fonction-récursive">Exécution d’une fonction récursive</h2>
+<p>Qu’affiche l’appel f(3,4,5,6) où f est la fonction récursive définie ci-contre ?</p>
+<p><span class="math display">\framebox[6.75cm]{$\rule{0cm}{20cm}$}</span></p>
+<pre><code>#----------------------------------------
+def f(n,a,b,c):
+#----------------------------------------
+    assert type(n) is int 
+    assert n &gt;= 0
+    assert a != b 
+    assert b != c 
+    assert a != c
+    
+    if n &gt; 0:
+      f(n-1,a,c,b)
+      print(a, c) #------------- affichage
+      f(n-1,b,a,c)
+
+    return
+#----------------------------------------</code></pre>
+<p><span id="fini" label="fini">[fini]</span></p>
+</body>
+</html>

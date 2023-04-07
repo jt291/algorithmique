@@ -1,0 +1,266 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-instructions.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%%-------------------------------------------------------------------------
+%\newpage
+%\entete{10}
+%\section{Affectation}
+%%-------------------------------------------------------------------------
+%
+%\paragraph{Enoncé :} 
+%Un libraire propose une réduction de 3.5\% sur le prix hors taxes (HT) 
+%d'un livre à 12.35 \euro{} HT.
+%Sachant que la taxe sur la valeur ajoutée (TVA) sur les livres est de 5.5\%, 
+%proposer une instruction de type «~affectation~» qui permettra de calculer 
+%le prix final toutes taxes comprises (TTC) pour le client.
+%	
+%\paragraph{Réponse :}\mbox{}\\
+%\noindent\framebox[0.99\textwidth][l]{\textbf{Méthode :} $\rule[-16cm]{0cm}{16cm}$}
+%
+%\noindent\framebox[0.99\textwidth][l]{\textbf{Résultat :} $\rule[-6cm]{0cm}{6cm}$}
+%\vspace*{5mm}
+%
+%\noindent\framebox[0.99\textwidth][l]{\textbf{Vérification :} $\rule[-15cm]{0cm}{15cm}$}
+
+%-------------------------------------------------------------------------
+\newpage
+\entete{15}
+\section{Tests}
+%-------------------------------------------------------------------------
+
+\paragraph{Enoncé :} 
+Une grande surface propose un service de photocopies aux conditions suivantes :
+les 100 premières pages sont facturées 0.1 \euro{} la page,
+les 500 suivantes sont facturées 0.08 \euro{} la page
+et au-delà, la page est facturée à 0.05 \euro{}.
+Proposer une instruction de type «~alternative multiple~» 
+qui permettra de calculer le prix total des photocopies pour un document 
+de $n$ pages.
+
+\paragraph{}\mbox{}\\
+\noindent\framebox[0.99\textwidth][l]{\textbf{Méthode :} $\rule[-16cm]{0cm}{16cm}$}
+
+\noindent\framebox[0.99\textwidth][l]{\textbf{Résultat :} $\rule[-6cm]{0cm}{6cm}$}
+\vspace*{5mm}
+
+\noindent\framebox[0.99\textwidth][l]{\textbf{Vérification :} $\rule[-15cm]{0cm}{15cm}$}
+
+%-------------------------------------------------------------------------
+\newpage
+\entete{25}
+\section{Boucles}
+%-------------------------------------------------------------------------
+
+\paragraph{Enoncé :}
+Proposer une instruction de type «~boucle~» qui permettra de calculer l'intégrale $I = \int cos(x) dx$ 
+sur l'intervalle $[-\frac{\pi}{4},\frac{\pi}{4}]$ par la méthode des $n$ rectangles.
+$$I = \int_{-\frac{\pi}{4}}^{+\frac{\pi}{4}} cos(x) dx \approx
+\frac{\pi}{2n}\cdot\sum_{k=0}^{n-1} \cos(-\frac{\pi}{4}+\frac{k\pi}{2n})$$
+\noindent\begin{tikzpicture}[scale=1]\footnotesize\shorthandoff{:}
+\draw (0,1.1) node[left] {$1$};
+\draw (0,-1.1) node[left] {$-1$};
+\draw[color=lightgray] (-3.25,1) -- (3.25,1) ;
+\draw[color=lightgray] (-3.25,-1) -- (3.25,-1) ;
+\draw ({-pi},-0.05) -- ({-pi},0.05);
+\draw ({-pi},0) node[below] {$-\pi$};
+\draw ({-3*pi/4},-0.05) -- ({-3*pi/4},0.05);
+\draw ({-3*pi/4},0) node[below] {$-\frac{3\pi}{4}$};
+\draw ({-pi/2},-0.05) -- ({-pi/2},0.05);
+\draw ({-pi/2},0) node[below] {$-\frac{\pi}{2}$};
+\draw ({-pi/4},-0.05) -- ({-pi/4},0.05);
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},-0.05) -- ({pi/4},0.05);
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({pi/2},-0.05) -- ({pi/2},0.05);
+\draw ({pi/2},0) node[below] {$\frac{\pi}{2}$};
+\draw ({3*pi/4},-0.05) -- ({3*pi/4},0.05);
+\draw ({3*pi/4},0) node[below] {$\frac{3\pi}{4}$};
+\draw ({pi},-0.05) -- ({pi},0.05);
+\draw ({pi},0) node[below] {$\pi$};
+\draw[dashed,color=lightgray] ({-pi/4},-1) -- ({-pi/4},1);
+\draw[dashed,color=lightgray] ({pi/4},-1) -- ({pi/4},1);
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\draw[color=blue,domain=-3.5:3.5] plot (\x,{cos(\x r)});
+\draw[dashed,color=lightgray] ({-pi/4},-1) -- ({-pi/4},1);
+\draw[dashed,color=lightgray] ({pi/4},-1) -- ({pi/4},1);
+\draw[->] (0,-1.25) -- (0,1.25) ;
+\draw (0,1.25) node[above] {$f(x)$};
+\draw[->] (-3.5,0) -- (3.5,0) ;
+\draw (3.5,0) node[right] {$x$};
+\draw[fill] (0,0) circle (0.05);
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[xscale=1.8,yscale=1.4]\footnotesize\shorthandoff{:}
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},0) -- ({-pi/4 + \x*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)}) -- ({-pi/4 + (\x+1)*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},0) -- ({pi/4 - \x*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)}) -- ({pi/4 - (\x+1)*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)});
+\draw[color=blue,domain=-1.25:1.25] plot (\x,{cos(\x r)});
+\draw[->] (0,-0.25) -- (0,1.25) ;
+\draw[->] (-1.75,0) -- (1.75,0) ;
+\draw (1.75,0) node[right] {$x$};
+\draw (0,1.25) node[above] {$f(x)$};
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({-pi/4 + 2.5*pi/20},0) node[below] {$x_i$};
+\draw ({-pi/4 + 2.5*pi/20},-0.05) -- ({-pi/4 + 2.5*pi/20},0.05);
+\draw ({2.5*pi/20},-0.5) node[below] {$\Delta x$};
+\draw[dashed] ({2*pi/20},0) -- ({2*pi/20},-0.5);
+\draw[dashed] ({3*pi/20},0) -- ({3*pi/20},-0.5);
+\draw[->] ({1.5*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw[->] ({3.5*pi/20},-0.4) -- ({3*pi/20},-0.4);
+\draw ({3*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw[fill] (0,0) circle(0.03);
+\draw[fill] ({-pi/4},0) circle(0.03);
+\draw[fill] ({pi/4},0) circle(0.03);
+\draw ({2.5*pi/20},-1) node {$\displaystyle \Delta x = \frac{\left(\frac{\pi}{4} - \frac{-\pi}{4}\right)}{n} = \frac{\pi}{2n}$};
+\end{tikzpicture}
+
+\paragraph{}\mbox{}\\
+\noindent\framebox[0.99\textwidth][l]{\textbf{Méthode :} $\rule[-11cm]{0cm}{11cm}$}
+
+\noindent\framebox[0.99\textwidth][l]{\textbf{Résultat :} $\rule[-6cm]{0cm}{6cm}$}
+\vspace*{5mm}
+
+\noindent\framebox[0.99\textwidth][l]{\textbf{Vérification :} $\rule[-15cm]{0cm}{15cm}$}
+
+
+%-------------------------------------------------------------------------
+\newpage
+\entete{25}
+\section{Boucles et tests}
+%-------------------------------------------------------------------------
+
+\paragraph{Enoncé :}
+Ecrire un algorithme qui permettra de déterminer le zéro de $\cos(x)$ dans $[1,2]$ selon une méthode
+par dichotomie.
+
+\begin{minipage}{6cm}
+\begin{tikzpicture}[xscale=1.4,yscale=1.4]\footnotesize\shorthandoff{:}
+\draw[color=blue,domain=0.25:2.75] plot (\x,{cos(\x r)});
+\draw[dashed,color=lightgray] (1,-1) -- (1,1);
+\draw[dashed,color=lightgray] (2,-1) -- (2,1);
+\draw[dashed,color=lightgray] (0,-1) -- (3.25,-1);
+\draw[dashed,color=lightgray] (0,1) -- (3.25,1);
+\draw (0,1) node[left] {1};
+\draw (0,-1) node[left] {-1};
+\draw[fill] (0,0) circle(0.03);
+\draw[fill] (1,0) circle(0.03);
+\draw[fill] (2,0) circle(0.03);
+\draw[fill] (3,0) circle(0.03);
+\draw (0,-0.15) node[left] {0};
+\draw (1,-0.15) node[left] {1};
+\draw (2,-0.15) node[left] {2};
+\draw (3,-0.15) node[left] {3};
+\draw[->] (0,-1.25) -- (0,1.25) ;
+\draw[->] (-0.25,0) -- (3.25,0) ;
+\draw (3.25,0) node[right] {$x$};
+\draw (0,1.25) node[above] {$f(x)$};
+%\draw[color=blue] (3.14/2,0) circle(0.05);
+\draw[->,color=gray] (1.95,0.5) -- (3.14/2,0);
+\draw[color=gray] (1.95,0.5) node[right] {zéro de $\cos(x)$};
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{8cm}
+Indications : Soient $[x_1,x_2]$ l'intervalle de recherche et $x_m = (x_1+x_2)/2$ le point milieu 
+de cet intervalle. Si $f(x_1)\cdot f(x_m) < 0$, le zéro recherché est dans $[x_1,x_m]$, sinon le
+zéro est dans $[x_m,x_2]$. On réitère le procédé sur le nouvel intervalle de recherche jusqu'à ce que
+la longueur de l'intervalle soit suffisamment petite. Le milieu de ce dernier intervalle sera le
+zéro recherché.
+\end{minipage}
+
+\paragraph{}\mbox{}\\
+\noindent\framebox[0.99\textwidth][l]{\textbf{Méthode :} $\rule[-12cm]{0cm}{12cm}$}
+
+\noindent\framebox[0.99\textwidth][l]{\textbf{Résultat :} $\rule[-6cm]{0cm}{6cm}$}
+\vspace*{5mm}
+
+\noindent\framebox[0.99\textwidth][l]{\textbf{Vérification :} $\rule[-15cm]{0cm}{15cm}$}
+
+
+%-------------------------------------------------------------------------
+\newpage
+\entete{15}
+\section{Exécution d'une séquence d'instructions}
+%-------------------------------------------------------------------------
+
+\paragraph{Enoncé :}
+On considère la séquence d'instructions suivantes :
+
+\begin{lstlisting}
+n = 0
+while n <= k:
+    j = 0
+    while j <= n:
+        num, den = 1, 1
+        i = 1
+        while i <= j:
+            num = num * (n - i + 1)
+            den = den * i
+            i = i + 1
+        c = num//den     # division entière
+        print(c,end=' ')
+        j = j + 1
+    print()
+    n = n + 1
+\end{lstlisting}
+\vspace*{3mm}
+
+\noindent Qu'affiche cette séquence pour \texttt{k = 6} ?
+
+\paragraph{Réponse :} On n'attend pas ici une réponse concernant la méthode (M).
+En guise de vérification (V), on pourra proposer un nom à cet algorithme.
+
+\noindent Méthode : Se mettre à la place de la
+machine pour exécuter scrupuleusement les instructions en inscrivant dans
+le tableau ci-dessous chaque affichage de la fonction \texttt{print}.
+
+$$\begin{tabular}{|l|}
+\multicolumn{1}{l}{\textbf{Résultat :}}\\
+\hline
+\makebox[10cm]{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\mbox{}\\[3mm]
+\hline
+\end{tabular}$$
+
+$$\begin{tabular}{|l|}
+\multicolumn{1}{l}{\textbf{Vérification :}}\\
+\hline
+\makebox[10cm][l]{\bf Nom de l'algorithme :}\\[3mm]
+\mbox{}\\[12mm]
+\hline
+\end{tabular}$$
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

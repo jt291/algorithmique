@@ -1,0 +1,357 @@
+%-------------------------------------------------------------------------
+% corriges-ds-info-S1-codage.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{corriges-ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+$$\mbox{\textbf{\large Codage des réels}}$$
+
+
+%-------------------------------------------------------------------------
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Coder les nombres réels suivants selon la norme \textsc{Ieee} 754 simple précision.
+
+
+%-------------------------------------------------------------------------
+\paragraph{Réponses :} 
+%-------------------------------------------------------------------------
+Pour chaque nombre réel $x$ à coder, on commence par déterminer le signe $s$
+de $x$ ($s = (x<0)$). On code ensuite les parties entière ($\mbox{int}(|x|)$) et fractionnaire 
+($|x| - \mbox{int}(|x|)$) de $|x|$
+pour déterminer la mantisse $m' = 1.m$ normalisée et l'exposant $e = p+127$ 
+décalé de 127.
+Enfin, selon la norme \textsc{Ieee} 754 simple précision (32 bits) :
+$x = |s|e|m|$ où $s$ est codé sur 1 bit, $e$ sur 8 bits et $m$ sur 23 bits.
+
+\begin{enumerate}
+\item $x = -37.03125$ \dotfill\ {$|s|e|m| = 1|10000100|00101000010000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $37$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.03125$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.0010100001 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00101000010000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 49.1875$ \dotfill\ {$|s|e|m| = 0|10000100|10001001100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $49$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.1875$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.100010011 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10001001100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -53.0625$ \dotfill\ {$|s|e|m| = 1|10000100|10101000100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $53$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.0625$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.101010001 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10101000100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 65.25$ \dotfill\ {$|s|e|m| = 0|10000101|00000101000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $65$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.25$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.00000101 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00000101000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -77.375$ \dotfill\ {$|s|e|m| = 1|10000101|00110101100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $77$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.375$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.001101011 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00110101100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 89.75$ \dotfill\ {$|s|e|m| = 0|10000101|01100111000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $89$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.75$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.01100111 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.01100111000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -99.625$ \dotfill\ {$|s|e|m| = 1|10000101|10001110100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $99$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.625$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.100011101 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10001110100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 7.5$ \dotfill\ {$|s|e|m| = 0|10000001|11100000000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $7$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.5$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.111 \cdot 2^{2}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.11100000000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000001$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 43.1875$ \dotfill\ {$|s|e|m| = 0|10000100|01011001100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $43$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.1875$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.010110011 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.01011001100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -13.0625$ \dotfill\ {$|s|e|m| = 1|10000010|10100010000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $13$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.0625$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.1010001 \cdot 2^{3}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10100010000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000010$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 71.25$ \dotfill\ {$|s|e|m| = 0|10000101|00011101000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $71$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.25$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.00011101 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00011101000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -54.375$ \dotfill\ {$|s|e|m| = 1|10000100|10110011000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $54$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.375$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.10110011 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10110011000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -19.125$ \dotfill\ {$|s|e|m| = 1|10000011|00110010000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $19$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.125$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.0011001 \cdot 2^{4}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00110010000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000011$ \\[2mm]
+\end{tabular}
+}
+
+\newpage
+\item $x = 29.3125$ \dotfill\ {$|s|e|m| = 0|10000011|11010101000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $29$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.3125$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.11010101 \cdot 2^{4}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.11010101000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000011$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -37.5625$ \dotfill\ {$|s|e|m| = 1|10000100|00101100100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $37$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.5625$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.001011001 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00101100100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 45.875$ \dotfill\ {$|s|e|m| = 0|10000100|01101111000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $45$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.875$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.01101111 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.01101111000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 27.75$ \dotfill\ {$|s|e|m| = 0|10000011|10111100000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $27$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.75$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.101111 \cdot 2^{4}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10111100000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000011$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -33.625$ \dotfill\ {$|s|e|m| = 1|10000100|00001101000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $33$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.625$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.00001101 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00001101000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 69.5$ \dotfill\ {$|s|e|m| = 0|10000101|00010110000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $69$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.5$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.0001011 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00010110000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -83.125$ \dotfill\ {$|s|e|m| = 1|10000101|01001100100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $83$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.125$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.010011001 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.01001100100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\newpage
+\item $x = 99.3125$ \dotfill\ {$|s|e|m| = 0|10000101|10001101010000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $99$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.3125$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.1000110101 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.10001101010000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -87.5625$ \dotfill\ {$|s|e|m| = 1|10000101|01011110010000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $87$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.5625$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.0101111001 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.01011110010000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = 75.875$ \dotfill\ {$|s|e|m| = 0|10000101|00101111100000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $0$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $75$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.875$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.001011111 \cdot 2^{6}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.00101111100000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000101$ \\[2mm]
+\end{tabular}
+}
+
+\item $x = -61.25$ \dotfill\ {$|s|e|m| = 1|10000100|11101010000000000000000|$}
+{\footnotesize
+\begin{tabular}{r@{ : }r@{ $=$ }l}
+signe 					& $s = (x < 0)$ 			& $1$ \\
+partie entière 			& $\mbox{int}(|x|)$ 		& $61$ \\
+partie fractionnaire 	& $|x| - \mbox{int}(|x|)$ 	& $0.25$ \\
+codage binaire 			& $(|x|)_2 = m'\cdot 2^p$   & $1.1110101 \cdot 2^{5}$ \\
+mantisse normalisée 	& $m' = 1.m$ 				& $1.11101010000000000000000$ \\
+exposant décalé de 127 	& $e = p+127$ 				& $10000100$ \\[2mm]
+\end{tabular}
+}
+
+%\item $x = -37.03125$
+%\item $x = 49.1875$
+%\item $x = -53.0625$
+%\item $x = 65.25$
+%\item $x = -77.375$
+%\item $x = 89.75$
+%\item $x = -99.625$
+%\item $x = 7.5$
+%\item $x = 43.1875$
+%\item $x = -13.0625$
+%\item $x = 71.25$
+%\item $x = -54.375$
+%\item $x = -19.125$
+%\item $x = 29.3125$
+%\item $x = -37.5625$
+%\item $x = 45.875$
+%\item $x = 27.75$
+%\item $x = -33.625$
+%\item $x = 69.5$
+%\item $x = -83.125$
+%\item $x = 99.3125$
+%\item $x = -87.5625$
+%\item $x = 75.875$
+%\item $x = -61.25$
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

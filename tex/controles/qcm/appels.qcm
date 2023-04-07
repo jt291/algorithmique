@@ -1,0 +1,97 @@
+[
+["La réutilisabilité d'un algorithme est son aptitude à résoudre des\
+	tâches équivalentes à celle pour laquelle il a été conçu. Plus concrètement, ", 
+ ["la fonction doit être correctement paramétrée",
+  "la fonction doit vérifier impérativement ses préconditions",
+  "l'implémentation de la fonction doit être conforme aux jeux de tests",
+  "l'utilisation de la fonction doit être conviviale"]],
+["Le passage des paramètres par valeur consiste à copier ",
+ ["la valeur du paramètre effectif dans le paramètre formel correspondant",
+  "la référence du paramètre effectif dans le paramètre formel correspondant",
+  "la valeur du paramètre formel dans le paramètre effectif correspondant",
+  "la référence du paramètre formel dans le paramètre effectif correspondant"]],
+["Le passage des paramètres par référence consiste à copier ",
+ ["la référence du paramètre effectif dans le paramètre formel correspondant",
+  "la valeur du paramètre formel dans le paramètre effectif correspondant",
+  "la référence du paramètre formel dans le paramètre effectif correspondant",
+  "la valeur du paramètre effectif dans le paramètre formel correspondant"]],
+["Que vaut \\texttt{x} après l'appel \\texttt{x = 2 ; x = h(x)} ?\ \n\n\
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def f(x) : \n\
+    x = 2*x \n\
+    return x \n\
+\\end{Verbatim}\n\
+\\end{minipage}\n\
+\\hfill\n\
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def g(x) : \n\
+    x = 2*f(x) \n\
+    return x \n\
+\\end{Verbatim}\n\
+\\end{minipage}\n\
+\\hfill\n\
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def h(x) : \n\
+    x = 2*g(f(x)) \n\
+    return x \n\
+\\end{Verbatim}\n\
+\\end{minipage} ",
+ ["32", "16", "64", "2"]],
+["Que vaut \\texttt{x} après l'appel \\texttt{x = 2 ; y = h(x)} ?\ \n\n\
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def f(x) : \n\
+    x = 2*x \n\
+    return x \n\
+\\end{Verbatim}\n\
+\\end{minipage}\n\
+\\hfill\n\
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def g(x) : \n\
+    x = 2*f(x) \n\
+    return x \n\
+\\end{Verbatim}\n\
+\\end{minipage}\n\
+\\hfill\n\
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def h(x) : \n\
+    x = 2*g(f(x)) \n\
+    return x \n\
+\\end{Verbatim}\n\
+\\end{minipage} ",
+ ["2", "16", "64", "32"]],
+["Que vaut \\texttt{x} après l'appel \\texttt{x = f(15,21)} ? \
+\\begin{minipage}{5cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def f(x,y) :\n\
+    if y == 0 : return x\n\
+    else : return f(y,x%y)\n\
+\\end{Verbatim}\n\
+\\end{minipage} ",
+ ["3", "5", "7", "35"]],
+["Que vaut \\texttt{x} après l'appel \\texttt{t = [2,4,6] ; f(t)} ? \
+\\begin{minipage}{4cm}\\footnotesize\n\
+\\begin{Verbatim}[frame=single]\n\
+def f(t) :\n\
+    t[len(t)-1] = 0\n\
+    return\n\
+\\end{Verbatim}\n\
+\\end{minipage} ",
+ ["\\texttt{[2,4,0]}",
+  "\\texttt{[2,4,6]}",
+  "\\texttt{[2,0,6]}",
+  "\\texttt{[0,4,6]}"]],
+["Un appel récursif est un appel ",
+ ["d'une fonction par elle-même",
+  "dont l'exécution est un processus récursif",
+  "dont l'exécution est un processus itératif",
+  "dont le résultat est retourné par la fonction"]]
+]
+	
+		
+

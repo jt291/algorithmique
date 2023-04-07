@@ -1,0 +1,113 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-portees.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+\entete
+
+%\autoevaluation
+
+
+$$\mbox{\textbf{\large Appels de fonctions}}$$
+
+%-------------------------------------------------------------------------
+\paragraph{Contexte :}
+%-------------------------------------------------------------------------
+On considère les 4 fonctions \texttt{f}, \texttt{g}, \texttt{h} et \texttt{i} suivantes :\vspace*{2mm}
+
+\noindent\begin{minipage}{3.5cm}\footnotesize
+\begin{Verbatim}
+def f(x) :
+    x = i(x)
+    print('f :', x)
+    return x
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{3.5cm}\footnotesize
+\begin{Verbatim}
+def g(x) :
+    x = x/2
+    print('g :', x)
+    return x
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{3.5cm}\footnotesize
+\begin{Verbatim}
+def h(x) :
+    x = g(x)
+    print('h :', x)
+    return x
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{3.5cm}\footnotesize
+\begin{Verbatim}
+def i(x) :
+    x = 2*x
+    print('i :', x)
+    return x
+\end{Verbatim}
+\end{minipage}
+
+%-------------------------------------------------------------------------
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Qu'affichent les appels suivants pour une valeur de \texttt{x} donnée ? 
+Indiquer la nouvelle valeur de \texttt{x} après chaque appel.
+\vspace*{3mm}
+
+\noindent\begin{minipage}{7cm}
+\begin{enumerate}
+\item \texttt{h(f(i(g(x))))} avec \texttt{x = -3/2}
+\item \texttt{f(h(i(g(x))))} avec \texttt{x = -2} 
+\item \texttt{g(h(i(f(x))))} avec \texttt{x = -1/2}
+\item \texttt{f(g(i(h(x))))} avec \texttt{x = 1/2}
+\item \texttt{f(h(g(i(x))))} avec \texttt{x = 1/2}
+\item \texttt{i(f(g(h(x))))} avec \texttt{x = -3/2}
+\item \texttt{i(h(f(g(x))))} avec \texttt{x = 3/2}
+\item \texttt{i(f(h(g(x))))} avec \texttt{x = 1}
+\item \texttt{g(f(i(h(x))))} avec \texttt{x = 1}
+\item \texttt{h(i(f(g(x))))} avec \texttt{x = -1}
+\item \texttt{h(g(i(f(x))))} avec \texttt{x = 2}
+\item \texttt{i(g(h(f(x))))} avec \texttt{x = -1/2}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{7cm}
+\begin{enumerate}\setcounter{enumi}{12}
+\item \texttt{h(f(g(i(x))))} avec \texttt{x = 1}
+\item \texttt{g(f(h(i(x))))} avec \texttt{x = -3/2}
+\item \texttt{g(i(h(f(x))))} avec \texttt{x = 2}
+\item \texttt{g(i(f(h(x))))} avec \texttt{x = 3/2}
+\item \texttt{h(g(f(i(x))))} avec \texttt{x = 3/2}
+\item \texttt{h(i(g(f(x))))} avec \texttt{x = -1/2}
+\item \texttt{f(i(h(g(x))))} avec \texttt{x = 1/2}
+\item \texttt{g(h(f(i(x))))} avec \texttt{x = -1}
+\item \texttt{i(g(f(h(x))))} avec \texttt{x = -1}
+\item \texttt{i(h(g(f(x))))} avec \texttt{x = 2}
+\item \texttt{f(g(h(i(x))))} avec \texttt{x = -2} 
+\item \texttt{f(i(g(h(x))))} avec \texttt{x = -2} 
+\end{enumerate}
+\end{minipage}
+
+%-------------------------------------------------------------------------
+%\newpage
+\paragraph{Réponse :} \mbox{}
+%-------------------------------------------------------------------------
+
+\noindent\framebox[\textwidth]{$\rule{0cm}{7cm}$}
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

@@ -1,0 +1,15 @@
+@manual{cti-reference,
+title 		= {Références et orientations},
+author 		= {CTI},
+year 		= 2006,
+note 		= {\mbox{}\\{\footnotesize La « bible » de la Commission des Titres d'Ingénieurs.}},
+}
+
+@manual{cti-auto-evaluation,
+title 		= {Guide d'auto-évaluation des formations d'ingénieurs},
+author 		= {CTI},
+year 		= 2006,
+note 		= {\mbox{}\\{\footnotesize Le complément de la « bible » de la Commission des Titres
+			d'Ingénieurs.}},
+}
+

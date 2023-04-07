@@ -1,0 +1,1133 @@
+%-------------------------------------------------------------------------
+% sigle.tex
+%-------------------------------------------------------------------------
+
+%--------------------------------------------------------------------------
+%\def\aap{\textsc{Aap}}
+\def\acmo{\textsc{Acmo}}
+	\nomenclature{\acmo}{Agent chargé de la mise en \oe uvre des règles 
+	d'hygiène et de sécurité}
+\def\adaenes{\textsc{AdAenes}}
+	\nomenclature{\adaenes}{Attaché de l'\aenes}
+\def\adjaenes{\textsc{AdjAenes}}
+	\nomenclature{\adjaenes}{Adjoint administratif de l'éducation nationale et 
+	de l'enseignement supérieur}
+\def\adt{\textsc{Adt}}
+	\nomenclature{\adt}{Adjoint technique du corps des \itrf}
+\def\aenes{\textsc{Aenes}}
+	\nomenclature{\aenes}{Administration de l'éducation nationale et 
+	de l'enseignement supérieur}
+\def\aeres{\textsc{Aeres}}
+	\nomenclature{\aeres}{Agence d'évaluation de la recherche et de l'enseignement supérieure
+	\newline\mbox{}\hfill
+	\href{http://www.aeres-evaluation.fr}{\scriptsize\tt http\char`://www.aeres-evaluation.fr}}
+\def\afeit{\textsc{Afeit}}
+	\nomenclature{\afeit}{Association des filières de l'électronique, de 
+	l'informatique et des télécommunications de Bretagne occidentale}
+\def\ai{\textsc{A\&I}}
+	\nomenclature{\ai}{Syndicat de l'administration et de l'intendance}
+\def\amdec{\textsc{Amdec}}
+	\nomenclature{\amdec}{Analyse des modes de défaillance, de leurs effets et de leur criticité}
+\def\amue{\textsc{Amue}}
+	\nomenclature{\amue}{Agence de mutualisation des universités et établissements
+	\hfill
+	\href{http://www.amue.fr}{\scriptsize\tt http\char`://www.amue.fr}}
+\def\anienib{\textsc{AniEnib}}
+	\nomenclature{\anienib}{Association nationales des ingénieurs \enib
+	\hfill
+	\href{http://www.anienib.fr}{\scriptsize\tt http\char`://www.anienib.fr}}
+\def\anr{\textsc{Anr}}
+	\nomenclature{\anr}{Agence nationale de la recherche
+	\hfill
+	\href{http://www.agence-nationale-recherche.fr}{\scriptsize\tt http\char`://www.agence-nationale-recherche.fr}}
+\def\anrt{\textsc{Anrt}}
+	\nomenclature{\anrt}{Association nationale de la recherche et de la technologie
+	\hfill
+	\href{http://www.anrt.asso.fr}{\scriptsize\tt http\char`://www.anrt.asso.fr}}
+\def\apaenes{\textsc{ApAenes}}
+	\nomenclature{\apaenes}{Attaché principal de l'\aenes}
+\def\apec{\textsc{Apec}}
+	\nomenclature{\apec}{Association pour l'emploi des cadres
+	\hfill
+	\href{http://www.apec.fr}{\scriptsize\tt http\char`://www.apec.fr}}
+\def\apogee{\textsc{Apogee}}
+	\nomenclature{\apogee}{Application pour l'organisation et la gestion des 
+	enseignements et des étudiants : logiciel de l'\amue}
+\def\arfitec{\textsc{Arfitec}}
+	\nomenclature{\arfitec}{Argentina France ingénieurs technologie :
+	programme bilatéral pour la formation des ingénieurs}
+\def\artt{\textsc{Artt}}
+	\nomenclature{\artt}{Aménagement et réduction conventionnels du temps de travail}
+\def\asi{\textsc{Asi}}
+	\nomenclature{\asi}{Assistant d'ingénieur du corps des \itrf}
+\def\asu{\textsc{Asu}}
+	\nomenclature{\asu}{Administration scolaire et universitaire}
+\def\ater{\textsc{Ater}}
+	\nomenclature{\ater}{Attaché temporaire d'enseignement et de recherche : 
+	statut d'enseignant-chercheur contractuel du \mesr}
+\def\ats{\textsc{Ats}}
+	\nomenclature{\ats}{Adaptation technicien supérieur}
+
+%-------------------------------------------------------------------------
+
+\def\bac{\textsc{Bac}}
+	\nomenclature{\bac}{Baccalauréat}
+\def\bap{\textsc{Bap}}
+	\nomenclature{\bap}{Branche d'activité professionnelle}
+\def\bbc{\textsc{Bbc}}
+	\nomenclature{\bbc}{Bâtiment basse consommation}
+\def\bcom{\textsc{B-Com}}
+	\nomenclature{\bcom}{\irt\ breton dans le domaine des \stic
+	\hfill
+	\href{http://b-com.org}{\scriptsize\tt http\char`://b-com.org}}
+\def\bde{\textsc{Bde}}
+	\nomenclature{\bde}{Bureau des élèves}
+\def\bds{\textsc{Bds}}
+	\nomenclature{\bds}{Bureau des sports}
+\def\bge{\textsc{Bge}}
+	\nomenclature{\bge}{Boutique de gestion
+	\hfill
+	\href{http://www.bg-finistere.com}{\scriptsize\tt http\char`://www.bg-finistere.com}}
+\def\biatoss{\textsc{Biatoss}}
+	\nomenclature{\biatoss}{Bibliothécaires, ingénieurs, administratifs, techniciens, ouvriers,
+	de service et de santé}
+\def\biatss{\textsc{Biatss}}
+	\nomenclature{\biatss}{Bibliothécaires, ingénieurs, administratifs, techniciens
+	de service et de santé (ex \biatoss)}
+\def\bmo{\textsc{Bmo}}
+	\nomenclature{\bmo}{Brest métropole océane
+	\hfill
+	\href{http://www.brest.fr}{\scriptsize\tt http\char`://www.brest.fr}}
+\def\bqr{\textsc{Bqr}}
+	\nomenclature{\bqr}{Bonus qualité recherche}
+\def\br{\textsc{Br}}
+	\nomenclature{\br}{Budget rectificatif}
+\def\brafitec{\textsc{Brafitec}}
+	\nomenclature{\brafitec}{Brasil France ingénieurs technologie :
+	programme bilatéral pour la formation des ingénieurs}
+\def\bts{\textsc{Bts}}
+	\nomenclature{\bts}{Brevet de technicien supérieur}
+\def\bv{\textsc{Bv}}
+	\nomenclature{\bv}{Bretagne valorisation
+	\hfill
+	\href{http://www.bretagne-valorisation.fr}{\scriptsize\tt http\char`://www.bretagne-valorisation.fr}}
+	
+%-------------------------------------------------------------------------
+
+\def\ca{\textsc{Ca}}
+	\nomenclature{\ca}{Conseil d'administration}
+\def\caap{\textsc{Caap}}
+	\nomenclature{\caap}{Cellule d'analyse et d'aide au pilotage}
+\def\cae{\textsc{Cae}}
+	\nomenclature{\cae}{Contrat d'accompagnement dans l'emploi}
+\def\cao{\textsc{Cao}}
+	\nomenclature{\cao}{Conception assistée pare ordinateur}
+\def\cas{\textsc{Cas}}
+	\nomenclature{\cas}{Central authentication service
+	\hfill
+	\href{http://www.jasig.org/cas}{\scriptsize\tt http\char`://www.jasig.org/cas}}
+\def\ccdsa{\textsc{Ccdsa}}
+	\nomenclature{\ccdsa}{Commission consultative départementale de sécurité et d'accessibilité}
+\def\cci{\textsc{Cci}}
+	\nomenclature{\cci}{Chambre de commerce et d'industrie
+	\hfill
+	\href{http://www.cci-brest.fr}{\scriptsize\tt http\char`://www.cci-brest.fr}}
+\def\cclabo{\textsc{CcLabo}}
+	\nomenclature{\cclabo}{Contrôle continu de \labo\ et de \tp}
+\def\cctd{\textsc{CcTd}}
+	\nomenclature{\cctd}{Contrôle continu de \textsc{Td}}
+\def\cctp{\textsc{CcTp}}
+	\nomenclature{\cctp}{Contrôle continu de \labo\ et de \tp}
+\def\cdd{\textsc{Cdd}}
+	\nomenclature{\cdd}{Contrat à durée déterminée}
+\def\cdefi{\textsc{Cdefi}}
+	\nomenclature{\cdefi}{Conférence des directeurs des écoles françaises d'ingénieurs}
+\def\cdgeb{\textsc{Cdgeb}}
+	\nomenclature{\cdgeb}{Conférence des directeurs des grandes écoles de Bretagne}
+\def\cdi{\textsc{Cdi}}
+	\nomenclature{\cdd}{Contrat à durée indéterminée}
+\def\cea{\textsc{Cea}}
+	\nomenclature{\cea}{Commissariat à l'énergie atomique et 
+	aux énergies alternatives
+	\hfill
+	\href{http://www.cea.fr}{\scriptsize\tt http\char`://www.cea.fr}}
+\def\cerma{\textsc{Cerma}}
+	\nomenclature{\cerma}{Centre de recherche méthodologique d'architecture (\umr\ 1563)
+	\newline\mbox{}\hfill
+	\href{http://www.cerma.archi.fr}{\scriptsize\tt http\char`://www.cerma.archi.fr}}
+\def\cerv{\textsc{Cerv}}
+	\nomenclature{\cerv}{Centre européen de réalité virtuelle
+	\hfill
+	\href{http://www.cerv.fr}{\scriptsize\tt http\char`://www.cerv.fr}}
+\def\cervval{\textsc{cervVal}}
+	\nomenclature{\cervval}{\cerv\ valorisation : \sas
+	\hfill
+	\href{http://www.cervval.com}{\scriptsize\tt http\char`://www.cervval.com}}
+\def\cevu{\textsc{Cevu}}
+	\nomenclature{\cevu}{Conseil des études et de la vie universitaire}
+\def\cg{\textsc{Cg}}
+	\nomenclature{\cg}{Conseil général
+	\hfill
+	\href{http://www.cg29.fr/}{\scriptsize\tt http\char`://www.cg29.fr/}}
+\def\cge{\textsc{Cge}}
+	\nomenclature{\cge}{Conférence des grandes écoles}
+\def\chd{\textsc{Chd}}
+	\nomenclature{\chd}{Contrôle hiérarchisé de la dépense}
+\def\chs{\textsc{Chs}}
+	\nomenclature{\chs}{Comité hygiène et sécurité}
+\def\chsct{\textsc{Chsct}}
+	\nomenclature{\chsct}{Comité d'hygiène, de sécurité et des conditions de travail (ex \chs)}
+\def\chu{\textsc{Chu}}
+	\nomenclature{\chu}{Centre hospitalier universitaire}
+\def\cic{\textsc{Cic}}
+	\nomenclature{\cic}{Contrôle interne comptable}
+\def\cicf{\textsc{Cicf}}
+	\nomenclature{\cicf}{Contrôle interne comptable et financier}
+\def\cisc{\textsc{Cics}}
+	\nomenclature{\cics}{Complex instruction set computer}
+\def\cid{\textsc{Cid}}
+	\nomenclature{\cid}{Connaissance, information, décision (pôle du \textsc{Lab-Sticc})}
+\def\ciimi{\textsc{C2iMi}}
+	\nomenclature{\ciimi}{Certificat informatique internet (\textsc{C2i}) pour les métiers de l'ingénieur}
+\def\cio{\textsc{Cio}}
+	\nomenclature{\cio}{Centre d'information et d'orientation}
+\def\clous{\textsc{Clous}}
+	\nomenclature{\clous}{Centre local des \oe uvres universitaires et scolaires
+	\hfill
+	\href{http://www.crous-rennes.fr/brest_1}{\scriptsize\tt http\char`://www.crous-rennes.fr/brest\_1}}
+\def\cm{\textsc{Cm}}
+	\nomenclature{\cm}{Cours magistral}
+\def\cmp{\textsc{Cmp}}
+	\nomenclature{\cmp}{Code des marchés publics}
+\def\cne{\textsc{Cne}}
+	\nomenclature{\cne}{Comité national d'évaluation
+	\hfill
+	\href{https://www.cne-evaluation.fr}{\scriptsize\tt http\char`://www.cne-evaluation.fr}}
+\def\cnisf{\textsc{Cnisf}}
+	\nomenclature{\cnisf}{Conseil national des ingénieurs et scientifiques de France
+	\hfill
+	\href{http://www.cnisf.org}{\scriptsize\tt http\char`://www.cnisf.org}}
+\def\cnrs{\textsc{Cnrs}}
+	\nomenclature{\cnrs}{Centre national de la recherche scientifique
+	\hfill
+	\href{http://www.cnrs.fr}{\scriptsize\tt http\char`://www.cnrs.fr}}
+\def\codir{\textsc{CoDir}}
+	\nomenclature{\codir}{Comité de direction}
+\def\cp{\textsc{Cp}}
+	\nomenclature{\cp}{Conseil pédagogique}
+\def\cpe{\textsc{Cpe}}
+	\nomenclature{\cpe}{Commission paritaire d'établissement}
+\def\cper{\textsc{Cper}}
+	\nomenclature{\cper}{Contrat de projet Etat-région : 
+	anciennement contrat de plan Etat-région
+	\newline\mbox{}\hfill
+	\href{http://www.datar.gouv.fr/fr_1/amenagement_du_territoire_655/contrats_etat_regions_173/}{\scriptsize\tt http\char`://www.datar.gouv.fr/fr\_1/amenagement\_du\_territoire\_655/contrats\_etat\_regions\_173}}
+\def\cpge{\textsc{Cpge}}
+	\nomenclature{\cpge}{Classes préparatoires aux grandes écoles
+	\newline
+	\href{http://www.enseignementsup-recherche.gouv.fr/cid20182/classes-preparatoires-aux-grandes-ecoles-c.p.g.e.html}{\scriptsize\tt http\char`://www.enseignementsup-recherche.gouv.fr/cid20182/classes-preparatoires-aux-grandes-ecoles-c.p.g.e.html}}
+\def\cpi{\textsc{Cpi}} 
+	\nomenclature{\cpi}{Cycles per Instruction}
+\def\cqe{\textsc{Cqe}}
+	\nomenclature{\cqe}{Contrat quadriennal d'établissement}
+\def\cread{\textsc{Cread}}
+	\nomenclature{\cread}{Centre de recherche sur l'éducation, les apprentissages et la didactique
+	\hfill
+	\href{http://cread.espe-bretagne.fr/}{\scriptsize\tt http\char`://cread.espe-bretagne.fr}}
+\def\crb{\textsc{Cr}}
+	\nomenclature{\crb}{Conseil régional
+	\hfill
+	\href{http://www.bretagne.fr}{\scriptsize\tt http\char`://www.bretagne.fr}}
+\def\crct{\textsc{Crct}}
+	\nomenclature{\crct}{Congé pour recherche et conversion thématique}
+\def\crd{\textsc{Crd}}
+	\nomenclature{\crd}{Centre de ressources documentaires}
+\def\cress{\textsc{Cress}}
+	\nomenclature{\cress}{Chambre régionale de l'économie sociale et solidaire
+	\hfill
+	\href{http://www.ess-bretagne.org/}{\scriptsize\tt http\char`://www.ess-bretagne.org/}}
+\def\cri{\textsc{Cri}}
+	\nomenclature{\cri}{Centre de ressources informatiques}
+\def\crous{\textsc{Crous}}
+	\nomenclature{\crous}{Centre régional des \oe uvres universitaires et scolaires
+	\hfill
+	\href{http://www.crous-rennes.fr}{\scriptsize\tt http\char`://www.crous-rennes.fr}}
+\def\cst{\textsc{Cst}}
+	\nomenclature{\cst}{Conseil scientifique et technologique}
+\def\ct{\textsc{Ct}}
+	\nomenclature{\ct}{Comité technique (ex \textsc{Ctp})}
+\def\ctd{\textsc{Ctd}}
+	\nomenclature{\ctd}{Cours-travaux dirigés : unité d'enseignement qui mixe cours magistral et travaux dirigés regroupant au plus 36 étudiants}
+\def\cti{\textsc{Cti}}
+	\nomenclature{\cti}{Commission des titres d'ingénieur
+	\hfill
+	\href{http://www.cti-commission.fr}{\scriptsize\tt http\char`://www.cti-commission.fr}}
+\def\ctp{\textsc{Ctp}}
+	\nomenclature{\ctp}{Comité technique paritaire}
+\def\cue{\textsc{Cue}}
+	\nomenclature{\cue}{Communautés d'universités et établissements}
+\def\cui{\textsc{Cui}}
+	\nomenclature{\cui}{Contrat unique d'insertion}
+\def\cv{\textsc{Cv}}
+	\nomenclature{\cv}{Curriculum vit\ae}
+	
+%-------------------------------------------------------------------------
+
+\def\dbm{\textsc{Dbm}}
+	\nomenclature{\dbm}{Décision budgétaire modificative}
+\def\dcns{\textsc{Dcns}}
+	\nomenclature{\dcns}{Direction des constructions navales et des systèmes
+	\hfill
+	\href{http://fr.dcnsgroup.com/}{\scriptsize\tt http\char`://fr.dcnsgroup.com/}}
+\def\dcri{\textsc{Dcri}}
+	\nomenclature{\dcri}{Direction centrale du renseignement intérieur}
+\def\dg{\textsc{Dg}}
+	\nomenclature{\dg}{Direction générale}
+\def\dgesip{\textsc{Dgesip}}
+	\nomenclature{\dgesip}{Direction générale de l'enseignement supérieur et de l'insertion professionnelle}
+\def\dgf{\textsc{Dgf}}
+	\nomenclature{\dgf}{Dotation globale de fonctionnement : pour un établissement
+	d'enseignement supé\-rieur du \mesr\ (universités et écoles d'ingénieurs), 
+	elle est calculée par le modèle \sympa\ depuis 2009}
+\def\dgfip{\textsc{Dgfip}}
+	\nomenclature{\dgfip}{Direction générale des finances publiques}
+\def\dgs{\textsc{Dgs}}
+	\nomenclature{\dgs}{Directeur général des services : anciennement \sg}
+\def\dpe{\textsc{Dpe}}
+	\nomenclature{\dpe}{Diplômé par l'Etat : l'examen conduisant à la délivrance 
+	du titre d'ingénieur diplômé par l'Etat permet à des ingénieurs de fonction
+	d'obtenir un titre d'ingénieur diplômé par validation de leurs expériences 
+	et acquis professionnels
+	\newline
+	\href{http://www.enseignementsup-recherche.gouv.fr/cid20257/devenir-ingenieur-diplome-par-etat.html}{\scriptsize\tt http\char`://www.enseignementsup-recherche.gouv.fr/cid20257/devenir-ingenieur-diplome-par-etat.html}}
+\def\dpt{\textsc{Dpt}}
+	\nomenclature{\dpt}{Département}
+\def\drh{\textsc{Drh}}
+	\nomenclature{\drh}{Direction des ressources humaines}
+\def\ds{\textsc{Ds}}
+	\nomenclature{\ds}{Devoir surveillé}
+\def\dsi{\textsc{Dsi}}
+	\nomenclature{\dsi}{Directeur des systèmes d'informations}
+\def\due{\textsc{Due}}
+	\nomenclature{\due}{Déclaration unique d'embauche}
+\def\dut{\textsc{Dut}}
+	\nomenclature{\dut}{Diplôme universitaire de technologie}
+	
+%-------------------------------------------------------------------------
+
+\def\ea{\textsc{Ea}}
+	\nomenclature{\ea}{Equipe d'accueil : unité de recherche labellisée par le \mesr}
+\def\ec{\textsc{Ec}}
+	\nomenclature{\ec}{Enseignant-chercheur}
+\def\ects{\textsc{Ects}}
+	\nomenclature{\ects}{European credits transfer system : ce système européen 
+	de transfert
+	et d'accumulation de crédits permet d'attribuer des points à chaque composante d'un
+	programme d'étude en se fondant sur la charge de travail à réaliser par l'étudiant;
+	la charge de travail indique le temps dont les étudiants ont en règle générale 
+	besoin pour participer à toutes les activités d'apprentissage (cours, séminaires,
+	projets, travaux pratiques, autoformation, examens, etc.) nécessaires pour parvenir
+	aux résultats d'apprentissage escomptés; 60 crédits \ects\ sanctionnent la charge 
+	de travail d'une année à temps plein d'un apprentissage formel (année académique) 
+	et les résultats d'apprentissage correspondants
+	\newline\mbox{}\hfill
+	\href{http://ec.europa.eu/education/lifelong-learning-policy/doc48_fr.htm}{\scriptsize\tt http\char`://ec.europa.eu/education/lifelong-learning-policy/doc48\_fr.htm}}
+\def\ecube{\textsc{E3I2}}
+	\nomenclature{\ecube}{Laboratoire extraction et exploitation de l'information en environnements incertains
+	\hfill
+	\href{http://www.ensieta.fr/e3i2}{\scriptsize\tt http\char`://www.ensieta.fr/e3i2}}
+\def\ed{\textsc{Ed}}
+	\nomenclature{\ed}{Ecole doctorale}
+\def\edhec{\textsc{Edhec}}
+	\nomenclature{\edhec}{Ecole des hautes études commerciales
+	\hfill
+	\href{http://www.edhec.com}{\scriptsize\tt http\char`://www.edhec.com}}
+\def\edt{\textsc{Edt}}
+	\nomenclature{\edt}{Emplois du temps : logiciel, initialement développé 
+	au \lisyc\ et étendu et maintenu par \cervval, pour la gestion des emplois du temps
+	des étudiants et des personnels enseignants}
+\def\eesab{\textsc{Eesab}}
+	\nomenclature{\eesab}{Ecole européenne supérieure d'art de Bretagne (ex \textsc{Esab})
+	\hfill
+	\href{http://www.eesab.fr/}{\scriptsize\tt http\char`://www.eesab.fr/}}
+\def\egp{\textsc{Egp}}
+	\nomenclature{\egp}{Etats généraux de la pédagogie}
+\def\eiffel{\textsc{Eiffel}}
+	\nomenclature{\eiffel}{Programme de bourses, lancé en janvier 1999 par le \mae,
+	destiné à soutenir l'action de recrutement à l'international des établissements 
+	d'enseignement supérieur français
+	\hfill
+	\href{http://www.egide.asso.fr}{\scriptsize\tt http\char`://www.egide.asso.fr}}
+\def\emr{\textsc{Emr}}
+	\nomenclature{\emr}{Echelle de maturité de la gestion des risques}
+\def\en{\textsc{En}}
+	\nomenclature{\en}{Ecole navale
+	\hfill
+	\href{http://www.ecole-navale.fr}{\scriptsize\tt http\char`://www.ecole-navale.fr}}
+\def\enib{\textsc{Enib}}
+	\nomenclature{\enib}{Ecole nationale d'ingénieurs de Brest
+	\hfill
+	\href{http://www.enib.fr}{\scriptsize\tt http\char`://www.enib.fr}}
+\def\enim{\textsc{Enim}}
+	\nomenclature{\enim}{Ecole nationale d'ingénieurs de Metz
+	\hfill
+	\href{http://www.enim.fr}{\scriptsize\tt http\char`://www.enim.fr}}
+\def\enise{\textsc{Enise}}
+	\nomenclature{\enise}{Ecole nationale d'ingénieurs de Saint-Etienne
+	\hfill
+	\href{http://www.enise.fr}{\scriptsize\tt http\char`://www.enise.fr}}
+\def\enit{\textsc{Enit}}
+	\nomenclature{\enit}{Ecole nationale d'ingénieurs de Tarbes
+	\hfill
+	\href{http://www.enit.fr}{\scriptsize\tt http\char`://www.enit.fr}}
+\def\enivl{\textsc{Enivl}}
+	\nomenclature{\enivl}{Ecole nationale d'ingénieurs du Val de Loire
+	\hfill
+	\href{http://www.enivl.fr}{\scriptsize\tt http\char`://www.enivl.fr}}
+\def\eni{\textsc{Eni}}
+	\nomenclature{\eni}{Ecoles nationales d'ingénieurs : réseau de 5 écoles du \mesr\
+	(\enib, \enim, \enise, \enit\ et \enivl)
+	\hfill
+	\href{http://www.ingenieur-eni.fr/}{\scriptsize\tt http://www.ingenieur-eni.fr/}}
+\def\enqa{\textsc{Enqa}}
+	\nomenclature{\enqa}{European association for quality assurance 
+	in higher education
+	\hfill
+	\href{http://www.enqa.eu}{\scriptsize\tt http\char`://www.enqa.eu}}
+\def\ensam{\textsc{Ensam}}
+	\nomenclature{\ensam}{Ecole nationale supérieure d'arts et métiers
+	\hfill
+	\href{http://www.ensam.fr}{\scriptsize\tt http\char`://www.ensam.fr}}
+\def\ens{\textsc{Ens}}
+	\nomenclature{\ens}{Ecole normale supérieure}
+\def\ensm{\textsc{Ensm}}
+	\nomenclature{\ensm}{Ecole nationale supérieure des mines
+	\hfill
+	\href{http://www.ensmp.fr}{\scriptsize\tt http\char`://www.ensmp.fr}}
+\def\enssat{\textsc{Enssat}}
+	\nomenclature{\enssat}{Ecole nationale supérieure des sciences appliquées et de technologie
+	\newline\mbox{}\hfill
+	\href{http://www.enssat.fr}{\scriptsize\tt http\char`://www.enssat.fr}}
+\def\ensea{\textsc{Ensea}}
+	\nomenclature{\ensea}{Ecole nationale supérieure de l'électronique et de ses applications
+	\hfill
+	\href{http://www.ensea.fr}{\scriptsize\tt http\char`://www.ensea.fr}}
+\def\ensieta{\textsc{Ensieta}}
+	\nomenclature{\ensieta}{Ecole nationale supérieure d'ingénieurs des 
+	études et techniques d'armement
+	\newline\mbox{}\hfill
+	\href{http://www.ensieta.fr}{\scriptsize\tt http\char`://www.ensieta.fr}}
+\def\ensta{\textsc{Ensta}}
+	\nomenclature{\ensta}{Ecole Nationale Supérieure de Techniques Avancées
+	\hfill
+	\href{http://www.ensta-bretagne.fr/}{\scriptsize\tt http\char`://www.ensta-bretagne.fr}}
+\def\ent{\textsc{Ent}}
+	\nomenclature{\ent}{Environnement numérique de travail
+	\hfill
+	\href{http://ent.enib.fr}{\scriptsize\tt http\char`://ent.enib.fr}}
+\def\ep{\textsc{Ep}}
+	\nomenclature{\ep}{Ecole polytechnique
+	\hfill
+	\href{http://www.polytechnique.fr}{\scriptsize\tt http\char`://www.polytechnique.fr}}
+\def\epa{\textsc{Epa}}
+	\nomenclature{\epa}{Etablissement public à caractère administratif}
+%	\href{http://vie-publique.fr/decouverte-institutions/institutions/administration/organisation/structures-administratives/que-sont-etablissements-publics-administratif-epa-industriel-commercial-epic.html}{\scriptsize\tt http://vie-publique.fr/decouverte-institutions/institutions/administration/organisation/structures-administratives/que-sont-etablissements-publics-administratif-epa-industriel-commercial-epic.html}
+\def\epic{\textsc{Epic}}
+	\nomenclature{\epic}{Etablissement public à caractère industriel 
+	et commercial (exemples : \cea, \ifremer, \ugap)}
+\def\epscp{\textsc{Epscp}}
+	\nomenclature{\epscp}{Etablissement public à caractère scientifique, 
+	culturel et professionnel}
+\def\epst{\textsc{Epst}}
+	\nomenclature{\epst}{Etablissement public à caractère scientifique 
+	et technologique (exemple : \cnrs, \inria)}
+\def\ept{\textsc{Ept}}
+	\nomenclature{\ept}{Equipe projet transversal de l'\ueb}
+\def\eqtd{\textsc{EqTd}}
+	\nomenclature{\eqtd}{Equivalent \textsc{Td}}
+\def\erasmus{\textsc{Erasmus}}
+\def\erp{\textsc{Erp}}
+	\nomenclature{\erp}{Etablissement recevant du public
+	\begin{itemize}
+	\item \erp\ 1 : plus de 1 500 personnes,
+	\item \erp\ 2 : de 701 à 1 500 personnes,
+	\item \erp\ 3 : de 301 à 700 personnes,
+	\item \erp\ 4 : 300 personnes et au-dessous, à l'exception des établissements compris 
+		dans la 5$^{\grave eme}$ catégorie,
+	\item \erp\ 5 : établissements accueillant un nombre de personnes inférieur 
+		au seuil dépendant du type d'établissement.
+	\end{itemize}}
+\def\esab{\textsc{Esab}}
+	\nomenclature{\esab}{Ecole supérieure des arts de Brest
+	\hfill
+	\href{http://www.esa-brest.fr}{\scriptsize\tt http\char`://www.esa-brest.fr}}
+\def\esc{\textsc{Esc}}
+	\nomenclature{\esc}{Ecole supérieure de commerce
+	\hfill
+	\href{http://ww.esc-brest.fr}{\scriptsize\tt http\char`://ww.esc-brest.fr}}
+\def\escc{\textsc{Escc}}
+	\nomenclature{\escc}{Ecoles de 
+	Saint-Cyr CoÃ«tquidant
+	\hfill\href{http://www.st-cyr.terre.defense.gouv.fr/}{\scriptsize\tt http\char`://www.st-cyr.terre.defense.gouv.fr}}
+\def\esiab{\textsc{Esiab}}
+	\nomenclature{\esiab}{Ecole supérieure d'ingénieurs en agroalimentaire de Bretagne Atlantique
+	(ex \esmisab)
+	\newline\mbox{}\hfill
+	\href{http://www.univ-brest.fr/esiab}{\scriptsize\tt http\char`://www.univ-brest.fr/esiab}}
+\def\esmisab{\textsc{Esmisab}}
+	\nomenclature{\esmisab}{Ecole supérieure de microbiologie et de sécurité alimentaire de Brest
+	\newline\mbox{}\hfill
+	\href{http://esmisab.univ-brest.fr}{\scriptsize\tt http\char`://esmisab.univ-brest.fr}}
+\def\esg{\textsc{Esg}}
+	\nomenclature{\esg}{European standards and guideline}
+\def\esr{\textsc{Esr}}
+	\nomenclature{\esr}{Enseignement supérieur et recherche}
+\def\etp{\textsc{Etp}}
+	\nomenclature{\etp}{Emploi temps plein}
+\def\etpt{\textsc{Etpt}}
+	\nomenclature{\etpt}{Emploi temps plein travaillé}
+
+%-------------------------------------------------------------------------
+
+\def\fao{\textsc{Fao}}
+	\nomenclature{\fao}{Fabrication assistée pare ordinateur}
+\def\fbs{\textsc{Fbs}} 
+	\nomenclature{\fbs}{France business school (ex \esc\ Brest)
+	\hfill
+	\href{http://www.france-bs.com}{\scriptsize\tt http\char`://www.france-bs.com}}
+\def\fc{\textsc{Fc}}
+	\nomenclature{\fc}{Formation continue (\dpe, \textsc{Vae}, contrats de professionnalisation)}
+\def\fce{\textsc{Fce}}
+	\nomenclature{\fce}{First certificate in english (Cambridge university)
+	\newline\mbox{}\hfill
+	\href{http://www.cambridgeesol.org/exams/general-english/fce.html}{\scriptsize\tt http\char`://www.cambridgeesol.org/exams/general-english/fce.html}}
+\def\fem{\textsc{Fem}}
+	\nomenclature{\fem}{France énergies marines}
+\def\fle{\textsc{Fle}}
+	\nomenclature{\fle}{Français langue étrangère}
+\def\fontanet{\textsc{Fontanet}}
+	\nomenclature{\fontanet}{Voie Fontanet : cette filière de formation 
+	d'ingénieur s'adresse aux techniciens ayant un minimum de 3 années 
+	d'expérience professionnelle
+	\hfill
+	\href{http://www.reseaufontanet.org}{\scriptsize\tt http\char`://www.reseaufontanet.org}}
+\def\fortran{\textsc{Fortran}}
+	\nomenclature{\fortran}{Formula translator, langage de programmation}
+\def\foton{\textsc{Foton}}
+	\nomenclature{\foton}{Fonctions optiques pour les technologies de l'information
+	\hfill
+	\href{http://foton.cnrs.fr}{\scriptsize\tt https\char`://foton.cnrs.fr}}
+\def\fui{\textsc{Fui}}
+	\nomenclature{\fui}{Fonds unique interministériel
+	\hfill
+	\href{https://extranet.oseo.fr/fui_web}{\scriptsize\tt https\char`://extranet.oseo.fr/fui\_web}}
+	
+%-------------------------------------------------------------------------
+
+\def\geipi{\textsc{Geipi}}
+	\nomenclature{\geipi}{Groupement d'écoles d'ingénieurs publiques à parcours intégré}
+\def\geiser{\textsc{Geiser}}
+	\nomenclature{\geiser}{Gestion des enseignements et des services : logiciel,
+	initialement développé au \lisyc, pour la prévision des services d'enseignement}
+\def\gip{\textsc{Gip}}
+	\nomenclature{\gip}{Groupement d'intérêt public}
+\def\gis{\textsc{Gis}}
+	\nomenclature{\gis}{Groupement d'intérêt scientifique}
+\def\graal{\textsc{Graal}}
+	\nomenclature{\graal}{Gestion de la recherche, application concernant les activités 
+	des laboratoires : logiciel de l'\amue}
+\def\grh{\textsc{Grh}}
+	\nomenclature{\grh}{Gestion des ressources humaines}
+\def\gtc{\textsc{Gtc}}
+	\nomenclature{\gtc}{Gestion technique centralisée}
+
+%-------------------------------------------------------------------------
+
+\def\harpege{\textsc{Harpege}}
+	\nomenclature{\harpege}{Harmonisation de la gestion des personnels :
+	logiciel de l'\amue}
+\def\hc{\textsc{Hc}}
+	\nomenclature{\hc}{Heure complémentaire}
+\def\hdr{\textsc{Hdr}}
+	\nomenclature{\hdr}{Habilitation à diriger des recherches}
+\def\hetd{\textsc{HeTd}}
+	\nomenclature{\hetd}{Heure équivalent \textsc{Td}}
+\def\hqe{\textsc{Hqe}}
+	\nomenclature{\hqe}{Haute qualité énergétique}
+\def\htx{\textsc{Ht}}
+	\nomenclature{\htx}{Hors taxes}
+
+%-------------------------------------------------------------------------
+
+\def\ieed{\textsc{Ieed}}
+	\nomenclature{\ieed}{Institut d'excellence énergies décarbonées («~investissements d'avenir~»)}
+\def\ieee{\textsc{Ieee}}
+	\nomenclature{\ieee}{Institute of electrical and electronics engineers}
+\def\ielts{\textsc{Ielts}}
+	\nomenclature{\ielts}{International english language testing system
+	\hfill
+	\href{http://www.ielts.org}{\scriptsize\tt http\char`://www.ielts.org}}
+\def\ief{\textsc{Ief}}
+	\nomenclature{\ief}{Institut d'électronique fondamentale
+	\hfill
+	\href{http://www.ief.u-psud.fr}{\scriptsize\tt http\char`://www.ief.u-psud.fr}}
+\def\iemn{\textsc{Iemn}}
+	\nomenclature{\iemn}{Institut d'électronique, de micro-électronique et de nanotechnologies
+	\newline\mbox{}\hfill
+	\href{http://www.iemn.univ-lille1.fr}{\scriptsize\tt http\char`://www.iemn.univ-lille1.fr}}
+\def\iesf{\textsc{Iesf}}
+	\nomenclature{\iesf}{Ingénieurs et scientifiques de France (ex \cniesf)\hfill
+	\href{http://www.iesf.fr}{\scriptsize\tt http\char`://www.iesf.fr}}
+\def\ietr{\textsc{Ietr}}
+	\nomenclature{\ietr}{Institut d'électronique et des télécommunications de Rennes
+	\hfill
+	\href{http://www.ietr.org}{\scriptsize\tt http\char`://www.ietr.org}}
+\def\ifremer{\textsc{Ifremer}}
+	\nomenclature{\ifremer}{Institut français de recherche pour
+	l'exploitation de la mer
+	\hfill
+	\href{http://www.ifremer.fr}{\scriptsize\tt http\char`://www.ifremer.fr}}
+\def\igaenr{\textsc{Igaenr}}
+	\nomenclature{\igaenr}{Inspection générale de l'administration de 
+	l'éducation nationale et de la recherche}
+\def\ige{\textsc{Ige}}
+	\nomenclature{\ige}{Ingénieur d'études du corps des \itrf}
+\def\igr{\textsc{Igr}}
+	\nomenclature{\igr}{Ingénieur de recherche du corps des \itrf}
+\def\imt{\textsc{Imt}}
+	\nomenclature{\imt}{Institut Mines-Télécom
+	\hfill\href{http://www.mines-telecom.fr/}{\scriptsize\tt http\char`://www.mines-telecom.fr}}
+\def\inria{\textsc{Inria}}
+	\nomenclature{\inria}{Institut national de recherche en informatique et automatique 
+	\hfill
+	\href{http://www.inria.fr}{\scriptsize\tt http\char`://www.inria.fr}}
+\def\insa{\textsc{Insa}}
+	\nomenclature{\insa}{Institut national des sciences appliquées
+	\hfill
+	\href{http://www.insa-france.fr}{\scriptsize\tt http\char`://www.insa-france.fr}}
+\def\ircantec{\textsc{Ircantec}}
+	\nomenclature{\ircantec}{Institution de retraite complémentaire des agents non titulaires 
+	de l'Etat et des collectivités publiques
+	\hfill
+	\href{http://www.ircantec.fr}{\scriptsize\tt http\char`://www.ircantec.fr}}
+\def\irccyn{\textsc{Irccyn}}
+	\nomenclature{\irccyn}{Institut de recherche en communications et cybernétique 
+	de Nantes (\umr\ 6597)
+	\newline\mbox{}\hfill
+	\href{http://www.irccyn.ec-nantes.fr}{\scriptsize\tt http\char`://www.irccyn.ec-nantes.fr}}
+\def\irenav{\textsc{Irenav}}
+	\nomenclature{\irenav}{Institut de recherche de l'Ecole navale
+	\hfill
+	\href{http://www.ecole-navale.fr/-RECHERCHE-.html}{\scriptsize\tt http\char`://www.ecole-navale.fr/-RECHERCHE-.html}}
+\def\irisa{\textsc{Irisa}}
+	\nomenclature{\irisa}{Institut de recherche en informatique et systèmes aléatoires
+	\hfill
+	\href{http://www.irisa.fr}{\scriptsize\tt http\char`://www.irisa.fr}}
+\def\irmar{\textsc{Irmar}}
+	\nomenclature{\irmar}{Institut de recherche mathématique de Rennes
+	\hfill
+	\href{http://irmar.univ-rennes1.fr}{\scriptsize\tt http\char`://irmar.univ-rennes1.fr}}
+\def\irt{\textsc{Irt}}
+	\nomenclature{\irt}{Institut de recherche technologique («~investissements d'avenir~»)}
+\def\isen{\textsc{Isen}}
+	\nomenclature{\isen}{Institut supérieur de l'électronique et du numérique
+	\hfill
+	\href{http://www.isen.fr}{\scriptsize\tt http\char`://www.isen.fr}}
+\def\iso{\textsc{Iso}}
+	\nomenclature{\iso}{International organization for standardization
+	\hfill
+	\href{http://www.iso.org}{\scriptsize\tt http\char`://www.iso.org}}
+\def\isstb{\textsc{Isstb}}
+	\nomenclature{\isstb}{Institut supérieur des sciences et technologies de Brest
+	\newline\mbox{}\hfill
+	\href{http://pageperso.univ-brest.fr/~huisman/isstb/index.html}{\scriptsize\tt http\char`://pageperso.univ-brest.fr/\char`~huisman/isstb/index.html}}
+\def\ita{\textsc{Ita}}
+	\nomenclature{\ita}{Ingénieurs, techniciens et personnels administratifs}
+\def\itrf{\textsc{Itrf}}
+	\nomenclature{\itrf}{Ingénieurs et personnels techniques de recherche et de formation}
+\def\iuem{\textsc{Iuem}}
+	\nomenclature{\iuem}{Institut universitaire européen de la mer
+	\hfill
+	\href{http://www-iuem.univ-brest.fr/}{\scriptsize\tt http\char`://www-iuem.univ-brest.fr}}
+\def\iup{\textsc{Iup}}
+	\nomenclature{\iup}{Institut universitaire professionnalisé}
+\def\iut{\textsc{Iut}}
+	\nomenclature{\iut}{Institut universitaire de technologie}
+
+%-------------------------------------------------------------------------
+
+\def\jasig{\textsc{Jasig}}
+	\nomenclature{\jasig}{Java architectures special interest group
+	\hfill
+	\href{http://www.jasig.org}{\scriptsize\tt http\char`://www.jasig.org}}
+\def\java{\textsc{Java}}
+	\nomenclature{\java}{\java\ signifie «~café~» en argot américain, langage de programmation}
+\def\jeree{\textsc{Jeree}}
+	\nomenclature{\jeree}{Journées énibiennes de rencontres étudiants-entreprises\\
+	\mbox{}\hfill
+	\href{http://www.enib.fr/index.php/fr/entreprises/journee-entreprises-jeree/presentation-jeree.html}{\scriptsize\tt http\char`://www.enib.fr/index.php/fr/entreprises/journee-entreprises-jeree/presentation-jeree.html}}
+\def\jeu{\textsc{Jeu}}
+	\nomenclature{\jeu}{Jeune entreprise universitaire}
+\def\jpo{\textsc{Jpo}}
+	\nomenclature{\jpo}{Journée portes ouvertes}
+
+%-------------------------------------------------------------------------
+
+\def\laas{\textsc{Laas}}
+	\nomenclature{\}{Laboratoire d'analyse et d'architecture des systèmes
+	\hfill
+	\href{http://www.laas.fr}{\scriptsize\tt http\char`://www.laas.fr}}
+\def\labex{\textsc{Labex}}
+	\nomenclature{\labex}{Laboratoire d'excellence («~investissements d'avenir~»)}
+\def\labo{\textsc{Labo}}
+	\nomenclature{\labo}{Laboratoire : unité d'enseignement qui correspond à un travail en laboratoire regroupant au plus 24 étudiants}
+\def\labsticc{\textsc{Lab-Sticc}}
+	\nomenclature{\labsticc}{Laboratoire des sciences et techniques de l'information, 
+	de la communication et de la connaissance
+	\hfill
+	\href{http://www.lab-sticc.fr}{\scriptsize\tt http\char`://www.lab-sticc.fr}}
+\def\lbms{\textsc{Lbms}}
+	\nomenclature{\lbms}{Laboratoire brestois de mécanique et des systèmes
+	\hfill
+	\href{http://www.ensieta.fr/lbms}{\scriptsize\tt http\char`://www.ensieta.fr/lbms}}
+\def\ldap{\textsc{Ldap}}
+	\nomenclature{\ldap}{Lightweight directory access protocol : 
+	protocole d'interrogation et de modification des services d'annuaire
+	électronique}
+\def\lii{\textsc{Li2}}
+	\nomenclature{\lii}{Laboratoire d'informatique industrielle (1990-2002),
+	puis Laboratoire d'ingénierie informatique (2002-2006), puis \lisyc\ (2006-2011)}
+\def\limatb{\textsc{Limatb}}
+	\nomenclature{\limatb}{Laboratoire d'ingénierie des matériaux de Bretagne
+	\hfill
+	\href{http://web.univ-ubs.fr/limatb}{\scriptsize\tt http\char`://web.univ-ubs.fr/limatb}}
+\def\linux{\textsc{Linux}}
+	\nomenclature{\linux}{\linux : \linux\ is not \unix, système d'exploitation}
+\def\lisyc{\textsc{Lisyc}}
+	\nomenclature{\lisyc}{Laboratoire d'informatique des systèmes complexes
+	\hfill
+	\href{http://www.lisyc.univ-brest.fr}{\scriptsize\tt http\char`://www.lisyc.univ-brest.fr}}
+\def\logo{\textsc{Logo}}
+	\nomenclature{\logo}{Langage de programmation : la tortue \logo
+	\hfill
+	\href{http://el.media.mit.edu/logo-foundation}{\scriptsize\tt http://el.media.mit.edu/logo-foundation}}
+\def\lolf{\textsc{Lolf}}
+	\nomenclature{\lolf}{Loi organique relative aux lois de finances : loi n°2001-692 du 1 août 2001
+	\newline\mbox{}\hfill
+	\href{http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000394028}{\scriptsize\tt http\char`://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000394028}}
+\def\lrm{\textsc{Lrm}}
+	\nomenclature{\lrm}{Laboratoire de recherche en mécatronique}
+\def\lru{\textsc{Lru}}
+	\nomenclature{\lru}{Libertés et responsabilités des universités :
+	loi n°2007-1199 du 10 août 2007
+	\newline\mbox{}\hfill
+	\href{http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000824315&dateTexte=vig}{\scriptsize\tt http\char`://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000824315\&dateTexte=vig}}
+\def\lss{\textsc{Lss}}
+	\nomenclature{\lss}{Laboratoire des signaux et systèmes
+	\hfill
+	\href{http://www.lss.supelec.fr}{\scriptsize\tt http\char`://www.lss.supelec.fr}}
+
+%-------------------------------------------------------------------------
+
+\def\mae{\textsc{Mae}}
+	\nomenclature{\mae}{Ministère des affaires étrangères
+	\hfill
+	\href{http://www.diplomatie.gouv.fr}{\scriptsize\tt http\char`://www.diplomatie.gouv.fr}}
+\def\mapa{\textsc{Mapa}}
+	\nomenclature{\mapa}{Marché à procédure adaptée}
+\def\mc{\textsc{Mc}}
+	\nomenclature{\mc}{Maître de conférences : 
+	statut d'enseignant-chercheur titulaire du \mesr}
+\def\mda{\textsc{Mda}}
+	\nomenclature{\mda}{Maison des associations}
+\def\mde{\textsc{Mde}}
+	\nomenclature{\mde}{Maison des étudiants}
+\def\meito{\textsc{Meito}}
+	\nomenclature{\meito}{Mission pour l'électronique, l'informatique et les
+	télécommunications de l'ouest
+	\newline\mbox{}\hfill
+	\href{http://www.meito.com}{\scriptsize\tt http\char`://www.meito.com}}
+\def\men{\textsc{Men}}
+	\nomenclature{\men}{Ministère de l'éducation nationale
+	\hfill
+	\href{http://www.education.gouv.fr}{\scriptsize\tt http\char`://www.education.gouv.fr}}
+\def\menesr{\textsc{Menesr}}
+	\nomenclature{\menesr}{Ministère de l'éducation nationale, de l'enseignement supérieur et de la recherche
+	(regroupement en 2014 des ex \men\ et \mesr)}
+\def\mesr{\textsc{Mesr}}
+	\nomenclature{\mesr}{Ministère de l'enseignement supérieur et de la recherche
+	\newline\mbox{}\hfill
+	\href{http://www.enseignementsup-recherche.gouv.fr}{\scriptsize\tt http\char`://www.enseignementsup-recherche.gouv.fr}}
+\def\minefi{\textsc{Minefi}}
+	\nomenclature{\minefi}{Ministère de l'économie et des finances
+	\hfill
+	\href{http://www.economie.gouv.fr/}{\scriptsize\tt http\char`://www.economie.gouv.fr/}}
+\def\mines{\textsc{Mines}}
+	\nomenclature{\mines}{Mission numérique de l'enseignement supérieur (\mesr)}
+\def\mom{\textsc{Mom}}
+	\nomenclature{\mom}{Micro-ondes, optronique, matériaux (pôle du \labsticc)}
+\def\moodle{\textsc{Moodle}}
+	\nomenclature{\moodle}{\moodle\ est un système de gestion de contenus 
+	et d'activités pédagogiques}
+\def\mps{\textsc{Mps}}
+	\nomenclature{\mps}{Méthodes et pratiques scientifiques; cours de 2\up{nde}}
+\def\mr{\textsc{M2r}}
+	\nomenclature{\mr}{Master recherche $2^{\grave eme}$ année}
+\def\mvr{\textsc{Mvr}}
+	\nomenclature{\mvr}{Méthode, vérifivation, résultat}
+
+%-------------------------------------------------------------------------
+
+\def\nbi{\textsc{Nbi}}
+	\nomenclature{\nbi}{Nouvelle bonification indiciaire}
+\def\nist{\textsc{Nist}}
+	\nomenclature{\nist}{National institute of standards and technology
+	\hfill
+	\href{http://www.nist.gov/}{\scriptsize\tt http\char`://www.nist.gov}}
+
+%-------------------------------------------------------------------------
+
+\def\oif{\textsc{Oif}}
+	\nomenclature{\oif}{Organisation internationale de la francophonie
+	\hfill
+	\href{http://www.francophonie.org}{\scriptsize\tt http\char`://www.francophonie.org}}
+\def\ori{\textsc{Ori}}
+	\nomenclature{\ori}{Ouest recherche informatique}
+
+%-------------------------------------------------------------------------
+
+\def\pa{\textsc{Pa}}
+	\nomenclature{\pa}{Prime administrative}
+\def\paces{\textsc{Paces}}
+	\nomenclature{\paces}{Première année commune des études de santé}
+\def\pascal{\textsc{Pascal}}
+	\nomenclature{\pascal}{langage de programmation}
+\def\past{\textsc{Past}}
+	\nomenclature{\past}{Personnel associé à temps partiel : 
+	statut d'enseignant-chercheur contractuel du \mesr}
+\def\pc{\textsc{Pc}}
+	\nomenclature{\pc}{Poste de commandement}
+\def\pca{\textsc{Pca}}
+	\nomenclature{\pca}{Prime de charge administrative}
+\def\pcim{\textsc{Pcim}}
+	\nomenclature{\pcim}{Pôle de calcul intensif pour la mer : projet d'équipement
+	d'excellence dans le cadre du grand emprunt}
+\def\peb{\textsc{Peb}}
+	\nomenclature{\peb}{Prêt entre bibliothèques}
+\def\pedr{\textsc{Pedr}}
+	\nomenclature{\pedr}{Prime d'encadrement et de recherche : 
+	prime de recherche pour les enseignants-chercheurs titulaires,
+	remplacée par la \pes\ depuis 2009}
+\def\pes{\textsc{Pes}}
+	\nomenclature{\pes}{Prime d'excellence scientifique : 
+	prime de recherche  pour les enseignants-chercheurs titulaires, 
+	a remplacé la \pedr\ depuis 2009}
+\def\pfc{\textsc{Pfc}}
+	\nomenclature{\pfc}{Prime de formation continue}
+\def\pfe{\textsc{Pfe}}
+	\nomenclature{\pfe}{Projet de fin d'études}
+\def\pfi{\textsc{Pfi}}
+	\nomenclature{\pfi}{Prime de fonction informatique}
+\def\pft{\textsc{Pft}}
+	\nomenclature{\pft}{Plate-forme de technologie}
+\def\phd{\textsc{PhD}}
+	\nomenclature{\phd}{Philosophi\ae\ doctor}
+\def\plp{\textsc{Plp}}
+	\nomenclature{\plp}{Professeur de lycée professionnel : statut d'enseignant 
+	titulaire du \men}
+\def\pme{\textsc{Pme}}
+	\nomenclature{\pme}{Petites et moyennes entreprises}
+\def\ppe{\textsc{Ppe}}
+	\nomenclature{\ppe}{Projet professionnalisant en équipe}
+\def\pr{\textsc{Pr}}
+	\nomenclature{\pr}{Professeur des universités : 
+	statut d'enseignant-chercheur titulaire du \mesr}
+\def\prag{\textsc{Prag}}
+	\nomenclature{\prag}{Professeur agrégé : statut d'enseignant titulaire du \men}
+\def\prce{\textsc{Prce}}
+	\nomenclature{\prce}{Professeur certifié : statut d'enseignant titulaire du \men}
+\def\pres{\textsc{Pres}}
+	\nomenclature{\pres}{Pôle de recherche et d'enseignement supérieur}
+\def\proof{\textsc{Proof}}
+	\nomenclature{\proof}{Plateforme régionale optique flexible : projet d'équipement
+	d'excellence dans le cadre du grand emprunt}
+\def\prp{\textsc{Prp}}
+	\nomenclature{\prp}{Prime de responsabilité pédagogique}
+\def\pv{\textsc{Pv}}
+	\nomenclature{\pv}{Procès-verbal}
+\def\python{\textsc{Python}}
+	\nomenclature{\python}{langage de programmation}
+
+%-------------------------------------------------------------------------
+
+\def\qcm{\textsc{Qcm}}
+	\nomenclature{\qcm}{Questionnaire à choix multiples}
+
+%-------------------------------------------------------------------------
+
+\def\rafp{\textsc{Rafp}}
+	\nomenclature{\rafp}{Retraite additionnelle de la fonction publique}
+\def\rce{\textsc{Rce}}
+	\nomenclature{\rce}{Responsabilités et compétences élargies}
+\def\rdd{\textsc{Rdd}}
+	\nomenclature{\rdd}{Remise des diplômes}
+\def\relier{\textsc{Relier}}
+	\nomenclature{\relier}{Réseau qualité enseignement supérieur et recherche
+	\hfill
+	\href{http://www.relier-univ.fr}{\scriptsize\tt http\char`://www.relier-univ.fr}}
+\def\renater{\textsc{Renater}}
+	\nomenclature{\renater}{Réseau national de télécommunications pour la technologie 
+	l'enseignement et la recherche
+	\hfill
+	\href{http://www.renater.fr}{\scriptsize\tt http\char`://www.renater.fr}}
+\def\reso{\textsc{Reso}}
+	\nomenclature{\reso}{Laboratoire de recherche en électronique, signal, optronique et 
+	télécommunications (\ea\ 3380)}
+\def\reva{\textsc{Reva}}
+	\nomenclature{\reva}{Reprise d'études et validation des acquis}
+\def\rh{\textsc{Rh}}
+	\nomenclature{\rh}{Ressources humaines}
+\def\risc{\textsc{Risc}}
+	\nomenclature{\risc}{Reduced instruction set computer}
+\def\rncp{\textsc{Rncp}}
+	\nomenclature{\rncp}{Répertoire national des certifications professionnelles
+	\hfill
+	\href{http://www.rncp.cncp.gouv.fr/}{\scriptsize\tt http\char`://www.rncp.cncp.gouv.fr/}}
+\def\ru{\textsc{Ru}}
+	\nomenclature{\ru}{Restaurant universitaire}
+
+%-------------------------------------------------------------------------
+
+\def\sacd{\textsc{Sacd}}
+	\nomenclature{\sacd}{Service à comptabilité distincte}
+\def\saenes{\textsc{SAenes}}
+	\nomenclature{\saenes}{Secrétaire de l'\aenes\ : anciennement \sasu}
+\def\saic{\textsc{Saic}}
+	\nomenclature{\saic}{Service d'activités industrielles et commerciales}
+\def\sarl{\textsc{Sarl}}
+	\nomenclature{\sarl}{Société à responsabilité limitée}
+\def\sas{\textsc{Sas}}
+	\nomenclature{\sas}{Société par actions simplifiée}
+\def\sasu{\textsc{Sasu}}
+	\nomenclature{\sasu}{Secrétaire d'administration scolaire et universitaire}
+\def\satt{\textsc{Satt}}
+	\nomenclature{\satt}{Société d'accélération du transfert de technologie («~investissements d'avenir~»)}
+\def\scd{\textsc{Scd}}
+	\nomenclature{\scd}{Service commun de documentation}
+\def\scr{\textsc{Scr}}
+	\nomenclature{\scr}{Sciences chimiques de Rennes
+	\hfill
+	\href{http://www.insa-rennes.fr/scr-cm-insa}{\scriptsize\tt http\char`://www.insa-rennes.fr/scr-cm-insa}}
+\def\sg{\textsc{Sg}}
+	\nomenclature{\sg}{Secrétaire général : ancienne appellation du \dgs}
+\def\sgbd{\textsc{Sgbd}}
+	\nomenclature{\sgbd}{Système de gestion de bases de données}
+\def\sgepes{\textsc{Sgepes}}
+	\nomenclature{\sgepes}{Secrétaire général d'établissement public d'enseignement supérieur}
+\def\sgi{\textsc{Sgi}}
+	\nomenclature{\sgi}{Système global d'information}
+\def\shes{\textsc{Shes}}
+	\nomenclature{\shes}{Sciences humaines, économiques et sociales}
+\def\shi{\textsc{Shi}}
+	\nomenclature{\shi}{Sciences humaines pour l'ingénieur}
+\def\shon{\textsc{Shon}}
+	\nomenclature{\shon}{Surface hors \oe uvre nette}
+\def\si{\textsc{Si}}
+	\nomenclature{\sgi}{Système d'information}
+\def\sicav{\textsc{Sicav}}
+	\nomenclature{\sicav}{Société d'investissement à capital variable}
+\def\sicma{\textsc{Sicma}}
+	\nomenclature{\sicma}{Santé, information, communications, mathématiques,
+	matière : \ed\ commune à l'\ubo, l'\ubs\ et \tb (\ed\ 373), à laquelle
+	l'\enib\ est associée
+	\newline\mbox{}\hfill
+	\href{http://edsicma.univ-brest.fr}{\scriptsize\tt http\char`://edsicma.univ-brest.fr}}
+\def\siham{\textsc{Siham}}
+	\nomenclature{\siham}{Système d'information des ressources humaines dans une approche mutualisée :
+	logiciel de l'\amue (successeur d'\harpege)\\
+	\mbox{}\hfill
+	\href{http://www.amue.fr/ressources-humaines/logiciels/siham/}{\scriptsize\tt http\char`://www.amue.fr/ressources-humaines/logiciels/siham/}}
+\def\sise{\textsc{Sise}}
+	\nomenclature{\sise}{Système d'information sur le suivi de l'étudiant}
+\def\sm{\textsc{Sm}}
+	\nomenclature{\sm}{Sciences de la mer}
+\def\smic{\textsc{Smic}}
+	\nomenclature{\smic}{Salaire minimum interprofessionnel de croissance}
+\def\snesup{\textsc{Snesup}}
+	\nomenclature{\snesup}{Syndicat national de l'enseignement supérieur}
+\def\spi{\textsc{Spi}}
+	\nomenclature{\spi}{Sciences pour l'ingénieur}
+\def\spsi{\textsc{Spsi}}
+	\nomenclature{\spsi}{Schéma pluriannuel de stratégie immobilière}
+\def\snptes{\textsc{Snptes}}
+	\nomenclature{\snptes}{Syndicat national du personnel technique de l'enseignement supérieur}
+\def\ssp{\textsc{Ssp}}
+	\nomenclature{\ssp}{Systèmes et services professionnels}
+\def\sst{\textsc{Sst}}
+	\nomenclature{\sst}{Sauveteur secouriste du travail}
+\def\sti{\textsc{Sti}}
+	\nomenclature{\sti}{Sciences et techniques de l'ingénieur}
+\def\stic{\textsc{Stic}}
+	\nomenclature{\stic}{Sciences et techniques de l'information et 
+	de la communication}
+\def\stidd{\textsc{Sti2d}}
+	\nomenclature{\stidd}{Sciences et techniques de l'ingénieur et développement durable (ex \sti)}
+\def\suaps{\textsc{Suaps}}
+	\nomenclature{\suaps}{Service universitaire des activités physiques 
+	et sportives}
+\def\sumpps{\textsc{Sumpps}}
+	\nomenclature{\sumpps}{Service universitaire de médecine préventive 
+	et de promotion de la santé}
+\def\swot{\textsc{Swot}}
+	\nomenclature{\swot}{Strenghts, Weaknesses, Opportunities, Threats\newline
+	L'analyse qualitative \swot{} est un outil qui peut aider à identifier les forces (Strenghts) 
+	ou avantages, les faiblesses (Weaknesses) ou inconvénients, les opportunités (Opportunities) 
+	et les menaces (Threats) ou risques, d'une organisation.
+	Les forces et les faiblesses sont des facteurs internes à l'organisation,
+	les opportunités et les risques des facteurs externes.}
+\def\sympa{\textsc{Sympa}}
+	\nomenclature{\sympa}{Système de répartition des moyens à la 
+	performance et à l'activité : modèle de calcul de la \dgf\ 
+	des établissements du \mesr\ (universités et écoles d'ingénieurs)}
+\def\syrtef{\textsc{Syrtef}}
+	\nomenclature{\syrtef}{Plate-forme technologique synergie des ressources 
+	technologiques du Finistère : ce \gip\ regroupe les lycées Tristan Corbière de Morlaix, 
+	Yves Thépot de Quimper et Vauban de Brest, l'\ubo\ (\iut\ et \iup) et l'\enib}
+
+%-------------------------------------------------------------------------
+
+\def\ta{\textsc{Ta}}
+	\nomenclature{\ta}{Taxe d'apprentissage}
+\def\tb{\textsc{Télécom Bretagne}}
+	\nomenclature{\tb}{Télécom Bretagne
+	\hfill
+	\href{http://www.telecom-bretagne.eu}{\scriptsize\tt http\char`://www.telecom-bretagne.eu}}
+\def\tbi{\textsc{Tbi}}
+	\nomenclature{\tbi}{Technopôle Brest Iroise
+	\hfill
+	\href{http://www.tech-brest-iroise.fr}{\scriptsize\tt http\char`://www.tech-brest-iroise.fr}}
+\def\tc{\textsc{Tc}}
+	\nomenclature{\tc}{Tronc commun}
+\def\tdir{\textsc{Td}}
+	\nomenclature{\tdir}{Travaux dirigés}
+\def\tech{\textsc{Tech}}
+	\nomenclature{\tech}{Technicien du corps des \itrf}
+\def\tic{\textsc{Tic}}
+	\nomenclature{\tic}{Technologies de l'information et de la communication}
+\def\tice{\textsc{Tice}}
+	\nomenclature{\tice}{Technologies de l'information et de la communication pour l'enseignement}
+\def\toefl{\textsc{Toefl}}
+	\nomenclature{\toefl}{Test of english as a foreign language
+	\hfill\href{http://www.ets.org/toefl}{\scriptsize\tt http\char`://www.ets.org/toefl}
+	\begin{itemize}
+	\item \textsc{Cbt} : computer-based test
+	\item \textsc{Ibt} : internet-based test
+	\item \textsc{Pbt} : paper-based test
+	\end{itemize}}
+\def\toeic{\textsc{Toeic}}
+	\nomenclature{\toeic}{Test of english for international communication
+	\hfill\href{http://www.ets.org/toeic}{\scriptsize\tt http\char`://www.ets.org/toeic}
+	\begin{itemize}
+	\item test de compréhension : \toeic\ listening and reading 
+	(\toeic\ \textsc{L\&R})
+	\item test d'expression : \toeic\ speaking and writing (\toeic\ \textsc{S\&W})
+	\end{itemize}}
+\def\tp{\textsc{Tp}}
+	\nomenclature{\tp}{Travaux pratiques : unité d'enseignement qui correspond à un 
+	travail en laboratoire regroupant au plus 12 étudiants}
+\def\tpe{\textsc{Tpe}}
+	\nomenclature{\tpe}{Très petites entreprises}
+\def\ttc{\textsc{Ttc}}
+	\nomenclature{\ttc}{Toutes taxes comprises}
+
+%-------------------------------------------------------------------------
+
+\def\ubo{\textsc{Ubo}}
+	\nomenclature{\ubo}{Université de Bretagne occidentale
+	\hfill
+	\href{http://www.univ-brest.fr}{\scriptsize\tt http\char`://www.univ-brest.fr}}
+\def\ubs{\textsc{Ubs}}
+	\nomenclature{\ubs}{Université de Bretagne sud
+	\hfill
+	\href{http://www.univ-ubs.fr}{\scriptsize\tt http\char`://www.univ-ubs.fr}}
+\def\uc{\textsc{Uc}}
+	\nomenclature{\uc}{Unité de cours : 1 \uc = 1h30}
+\def\ue{\textsc{Ue}}
+	\nomenclature{\ue}{Union européenne}
+\def\ueb{\textsc{Ueb}}
+	\nomenclature{\ueb}{Université européenne de Bretagne
+	\hfill
+	\href{http://www.ueb.eu}{\scriptsize\tt http\char`://www.ueb.eu}}
+\def\ugap{\textsc{Ugap}}
+	\nomenclature{\ugap}{Union des groupements d'achats publics
+	\hfill
+	\href{http://www.ugap.fr}{\scriptsize\tt http\char`://www.ugap.fr}}
+\def\ufr{\textsc{Ufr}}
+	\nomenclature{\ufr}{Unité de formation et de recherche : 
+	composante d'une université}
+\def\uimm{\textsc{Uimm}}
+	\nomenclature{\uimm}{Union des industries et des métiers de la métallurgie
+	\hfill
+	\href{http://www.uimm.fr}{\scriptsize\tt http\char`://www.uimm.fr}}
+\def\uml{\textsc{Uml}}
+	\nomenclature{\uml}{Unified modeling language}
+\def\umr{\textsc{Umr}}
+	\nomenclature{\umr}{Unité mixte de recherche : association d'un ou de plusieurs 
+	laboratoires de recherche d'un établissement d'enseignement supérieur 
+	ou d'un organisme de recherche avec le \cnrs}
+\def\unix{\textsc{Unix}}
+	\nomenclature{\unix}{Système d'exploitation des ordinateurs}
+\def\unsa{\textsc{Unsa}}
+	\nomenclature{\unsa}{Union nationale des syndicats autonomes}
+\def\uportal{\textsc{uPortal}}
+	\nomenclature{\uportal}{University portal}
+\def\urapeda{\textsc{Urapeda}}
+	\nomenclature{\urapeda}{Union régionale des associations de parents d'enfants 
+	déficients auditifs }
+\def\urssaf{\textsc{Urssaf}}
+	\nomenclature{\urssaf}{Union de recouvrement des cotisations de sécurité sociale 
+	et d'allocations familiales
+	\hfill
+	\href{http://www.urssaf.fr}{\scriptsize\tt http\char`://www.urssaf.fr}}
+\def\usb{\textsc{Usb}}
+	\nomenclature{\usb}{Universal serial bus : norme relative à un bus informatique 
+	qui sert à connecter des périphériques informatiques à un ordinateur}
+\def\utc{\textsc{Utc}}
+	\nomenclature{\utc}{Université de technologie de Compiègne
+	\hfill
+	\href{http://www.utc.fr}{\scriptsize\tt http\char`://www.utc.fr}}
+
+%-------------------------------------------------------------------------
+
+\def\vae{\textsc{Vae}}
+	\nomenclature{\vae}{Validation des acquis de l'expérience :
+	Ce dispositif permet l'obtention de tout ou partie d'une certification
+	(diplôme, titre à finalité professionnelle ou certificat de qualification
+	professionnelle) sur la base d'une expérience professionnelle salariée, 
+	non salariée (commerçant, collaborateur de commerçant, profession libérale,
+	agriculteur ou artisan\ldots) et/ou bénévole (syndicale, associative) 
+	et/ou volontaire
+	\newline\mbox{}\hfill
+	\href{http://www.vae.gouv.fr}{\scriptsize\tt http\char`://www.vae.gouv.fr}}
+\def\vp{\textsc{Vp}}
+	\nomenclature{\vp}{Vice-président}
+
+%-------------------------------------------------------------------------
+
+\def\xlim{\textsc{XLim}}
+	\nomenclature{\xlim}{Institut de recherche de Limoges
+	\hfill
+	\href{http://www.xlim.fr}{\scriptsize\tt http\char`://www.xlim.fr}}
+
+%-------------------------------------------------------------------------
+
+\def\web{\textsc{Web}}
+\def\wifi{\textsc{WiFi}}
+	\nomenclature{\wifi}{Wireless fidelity : ensemble de protocoles de 
+	communication sans fil}
+
+%-------------------------------------------------------------------------
+
+\def\indicateurs{{enib-aeres-Indicateurs-2010.pdf}}
+\def\guide{{http://www.aeres-evaluation.fr/content/download/13256/185769/file/Guide\%20Evaluation\%20Etablissements-S1-VB-120310.pdf}}
+%--------------------------------------------------------------------------

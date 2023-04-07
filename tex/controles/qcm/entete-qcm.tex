@@ -1,0 +1,133 @@
+% entete-qcm.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usepackage{calc}
+\usepackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\usepackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno,import}
+\usepackage{longtable,multirow}
+\usepackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz,wrapfig}
+\usepackage{colortbl,color}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref,multimedia,rotating,framed,pstricks}
+\usepackage{listings,index}
+%
+%---- pdflatex
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%---- xelatex
+\usepackage{fontspec}
+%
+\usepackage[french]{minitoc}
+\usepackage[french]{babel}
+\usepackage[french]{nomencl}
+\usepackage[framed,hyperref,standard]{ntheorem}
+\usepackage{eurosym,pifont}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\definecolor{blanc}{RGB}{255,255,255}
+\definecolor{orange}{RGB}{234,138,0}
+\definecolor{bleu}{RGB}{144,209,223}
+\definecolor{rose}{RGB}{233,96,124}
+\definecolor{beige}{RGB}{247,244,241}
+\definecolor{violet}{RGB}{159,159,202}
+\definecolor{vert}{RGB}{162,169,63}
+\definecolor{marron}{RGB}{193,181,162}
+\definecolor{noir}{RGB}{62,61,64}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\usetikzlibrary{mindmap,backgrounds,shapes,decorations.text}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{sigle}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\color{blue}\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\begin{minipage}{3cm}\pgfuseimage{logo-enib}\end{minipage}}
+\fancyhead[C]{\qcm\ Informatique S1}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{47pt}
+\setlength{\footskip}{30pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\graphicspath{{../fig/}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\entete#1{%
+\noindent\begin{minipage}{\textwidth}
+\framebox[12.6cm][l]{Nom : \hspace*{3.85cm} Pr\'enom :
+\hspace*{3cm}Groupe : {\bf \ }$\rule[-0.3cm]{0cm}{1cm}$}
+\hfill
+\framebox[0.7cm]{\bf \ 3 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 2 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 1 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 0 $\rule[-0.3cm]{0cm}{1cm}$}
+\vspace*{2mm}
+
+{\footnotesize\sc Dur\'ee: 5'\hfill Documents, t\'el\'ephones, calculettes et ordinateurs interdits.}
+\vspace*{7mm}
+
+Pour chaque question, noircir la case 
+(\begin{minipage}{2em}\centering{\colorbox{lightgray!49}{~~}}\end{minipage} 
+$\rightarrow$
+\begin{minipage}{2em}\centering{\colorbox{red!99}{~~}}\end{minipage})
+correspondant à la bonne réponse
+(il n'y a qu'une seule bonne réponse par question).
+
+Pour une question donnée, la réponse est considérée comme fausse si
+\begin{itemize}
+\item aucune case n'est noircie ou
+\item plusieurs cases sont noircies (même si la bonne réponse est noircie) ou
+\item une seule case est noircie mais ne correspond pas à la bonne réponse.
+\end{itemize}
+\vspace*{1cm}
+
+\centering{\large\bf QCM : #1}
+\vspace*{1cm}
+
+\end{minipage}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+

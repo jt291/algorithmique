@@ -1,0 +1,130 @@
+% corrige-ds-algo-04.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$ (1)}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-04-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\section{Conversion base $b$ $\rightarrow$ décimal}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-04-conversion.py}
+
+%-----------------------------------------------------------------------------
+\section{Polygones réguliers}
+%-----------------------------------------------------------------------------
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-04-polygone.py}
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-04-portees.py}
+
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> y = f(x)
+>>> print(x)
+f 6
+2
+
+>>> print(x)
+f 6
+g 24
+2
+
+>>> t = h(x)
+>>> print(x)
+f 6
+f 18
+g 72
+h 144
+2
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> x = f(x)
+>>> print(x)
+f 6
+6
+
+>>> x = g(x)
+>>> print(x)
+f 18
+g 72
+72
+
+>>> x = h(x)
+>>> print(x)
+f 216
+f 648
+g 2592
+h 5184
+5184
+\end{verbatim}
+\end{minipage}
+
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$ (2)}
+%-----------------------------------------------------------------------------
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-04-kreweras.py}
+
+\begin{minipage}[t]{7cm}
+\begin{enumerate}
+\item 
+\begin{Verbatim}
+>>> for n in range(7):
+        print(n,':',end=' ')
+        for m in range(n+1):
+            print(g(n,m),end=' ')
+        print()
+
+0 : 1 
+1 : 0 1 
+2 : 0 1 1 
+3 : 0 1 2 2 
+4 : 0 2 4 5 5 
+5 : 0 5 10 14 16 16 
+6 : 0 16 32 46 56 61 61 
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{1}
+\item  
+\begin{Verbatim}
+>>> 12*g(5,5)/g(6,6)
+3.1475409836065573
+
+\end{Verbatim}
+\end{enumerate}
+\end{minipage}
+
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

@@ -1,0 +1,180 @@
+% cbool.tex
+%-----------------------------------------------------------------------------
+\documentclass[12pt]{article}
+%-----------------------------------------------------------------------------
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\pagestyle{myheadings}
+\markright{{E.N.I. Brest}\hfill{Informatique 1A}\hfill{Objectif 1 -- Page\ }}
+
+\setlength{\textheight}{23cm}
+\setlength{\textwidth}{16cm}
+\setlength{\parindent}{0cm}
+
+\voffset=-1.5cm
+\hoffset=-1.3cm
+
+\def\entete#1{\framebox[13.5cm][l]{Nom : \hspace*{4cm} Pr\'enom : \hspace*{3.5cm}Groupe : $\rule[-0.3cm]{0cm}{1cm}$}
+\hfill
+\framebox[0.7cm]{\bf \ 0 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 1 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 2 $\rule[-0.3cm]{0cm}{1cm}$}\\[1mm]
+{\footnotesize\sc Durée: 30'\hfill 
+Documents, téléphones, calculettes et ordinateurs interdits.}\\[2mm]
+\centerline{\bf #1}}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\entete{Instructions de base : contrôle {\em a priori}}
+%-----------------------------------------------------------------------------
+\section{Développement d'une expression booléenne}
+Développer l'expression booléenne suivante : 
+$$t = \overline{a \cdot b \cdot c \cdot d}$$
+$$\framebox[13.5cm]{
+$\begin{array}{llll}
+t &=& \overline{a \cdot b \cdot c \cdot d} & \\
+  &=& \overline{(a \cdot b) \cdot (c \cdot d)} & \mbox{associativité}\\ 
+  &=& \overline{a \cdot b} + \overline{c \cdot d} & \mbox{De Morgan}\\ 
+  &=& (\overline{a} + \overline{b}) + (\overline{c} + \overline{d}) & \mbox{De Morgan}\\
+  &=& \overline{a} + \overline{b} + \overline{c} + \overline{d} & \mbox{associativité}
+\end{array}$}$$
+
+%-----------------------------------------------------------------------------
+\section{Table de vérité d'une expression booléenne}
+Etablir la table de vérité de l'expression booléenne suivante :
+$$t = ((a \Rightarrow b) \cdot (b \Rightarrow c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$$
+$$\framebox[13.5cm]{
+\begin{minipage}{13cm}
+On pose $u = (a \Rightarrow b) \cdot (b \Rightarrow c)$ :
+
+$$\begin{array}{|ccc|ccc|ccc|c|}
+\hline
+a & b & c & (a \Rightarrow b) & (b \Rightarrow c) & u & \overline{c} & \overline{a} & (\overline{c} \Rightarrow \overline{a}) & t \\
+\hline
+0 & 0 & 0 &   1 & 1 & 1 &   1 & 1 & 1 &   1\\
+0 & 0 & 1 &   1 & 1 & 1 &   0 & 1 & 1 &   1\\
+0 & 1 & 0 &   1 & 0 & 0 &   1 & 1 & 1 &   1\\
+0 & 1 & 1 &   1 & 1 & 1 &   0 & 1 & 1 &   1\\
+1 & 0 & 0 &   0 & 1 & 0 &   1 & 0 & 0 &   1\\
+1 & 0 & 1 &   0 & 1 & 0 &   0 & 0 & 1 &   1\\
+1 & 1 & 0 &   1 & 0 & 0 &   1 & 0 & 0 &   1\\
+1 & 1 & 1 &   1 & 1 & 1 &   0 & 0 & 1 &   1\\
+\hline
+\end{array}$$
+\end{minipage}}$$
+
+%-----------------------------------------------------------------------------
+\section{Table de vérité d'un circuit logique}
+On considère les conventions graphiques traditionnelles pour les opérateurs logiques $\cdot$, $+$ et $\oplus$ :
+$$\begin{tabular}{ccc}
+$a \cdot b$ & $a + b$ & $a \oplus b$ \\
+\epsfig{figure=et.eps} & \epsfig{figure=ou.eps} & \epsfig{figure=xor.eps} 
+\end{tabular}$$
+
+Etablir la table de vérité du circuit logique ci-dessous où $a$, $b$
+et $c$ sont les entrées, $x$ et $y$ les sorties.
+
+$$\epsfig{figure=add3.eps}$$
+$$\framebox[13.5cm]{
+\begin{minipage}{13cm}
+
+$$\begin{array}{|ccc|ccc|cc|}
+\hline
+a & b & c & (b \cdot c) & (b \oplus c) & (a \cdot (b \oplus c)) & x & y \\
+\hline
+0 & 0 & 0 &   0 & 0 & 0 &   0 & 0 \\
+0 & 0 & 1 &   0 & 1 & 0 &   1 & 0 \\
+0 & 1 & 0 &   0 & 1 & 0 &   1 & 0 \\
+0 & 1 & 1 &   1 & 0 & 0 &   0 & 1 \\
+1 & 0 & 0 &   0 & 0 & 0 &   1 & 0 \\
+1 & 0 & 1 &   0 & 1 & 1 &   0 & 1 \\
+1 & 1 & 0 &   0 & 1 & 1 &   0 & 1 \\
+1 & 1 & 1 &   1 & 0 & 0 &   1 & 1 \\
+\hline
+\end{array}$$
+
+Il s'agit de l'addition des 3 bits $a$, $b$ et $c$ : $x$ est la somme et
+$y$ la retenue
+
+$$\begin{tabular}{r}
+$a$ \\
+$b$ \\
+$c$ \\
+\hline
+$yx$
+\end{tabular}
+\hspace*{5mm}
+\begin{tabular}{r}
+0 \\
+0 \\
+0 \\
+\hline
+00
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+0 \\
+0 \\
+1 \\
+\hline
+01
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+0 \\
+1 \\
+0 \\
+\hline
+01
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+0 \\
+1 \\
+1 \\
+\hline
+10
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+1 \\
+0 \\
+0 \\
+\hline
+01
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+1 \\
+0 \\
+1 \\
+\hline
+10
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+1 \\
+1 \\
+0 \\
+\hline
+10
+\end{tabular}
+\hspace*{2mm}
+\begin{tabular}{r}
+1 \\
+1 \\
+1 \\
+\hline
+11
+\end{tabular}$$
+
+\end{minipage}}$$
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

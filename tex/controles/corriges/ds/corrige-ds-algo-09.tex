@@ -1,0 +1,128 @@
+% corriges-ds-algo-09.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+\usepackage{epsfig}
+%-------------------------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-calculPi.py}
+
+%-----------------------------------------------------------------------------
+\section{Conversion base $b$ $\rightarrow$ décimal}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-conversion.py}
+
+%-----------------------------------------------------------------------------
+\section{Polygones réguliers}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-polygone.py}
+
+%-----------------------------------------------------------------------------
+\section{Spirales rectangulaires}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-spirale.py}
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-portees.py}
+
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> y = f(x)
+>>> print(x)
+f 6
+2
+
+>>> z = g(x)
+>>> print(x)
+f 6
+g 12
+2
+
+>>> t = h(x)
+>>> print(x)
+f 6
+f 18
+g 36
+h 36
+2
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+2
+
+>>> x = f(x)
+>>> print(x)
+f 6
+6
+
+>>> x = g(x)
+>>> print(x)
+f 18
+g 36
+36
+
+>>> x = h(x)
+>>> print(x)
+f 108
+f 324
+g 648
+h 648
+648
+\end{verbatim}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\section{Recherche d'un élément dans un tableau}
+\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-recherche.py}
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction de tri}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-tri.py}
+
+\begin{py}{8cm}
+\begin{verbatim}
+>>> f([5,1,4,7,10])
+0 [10, 1, 4, 7, 5]
+1 [10, 7, 4, 1, 5]
+2 [10, 7, 5, 1, 4]
+3 [10, 7, 5, 4, 1]
+4 [10, 7, 5, 4, 1]
+\end{verbatim}
+\end{py}
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction de sélection}
+%\lstinputlisting[basicstyle=\footnotesize]{ds-algo-09-selection.py}
+
+\begin{py}{8cm}
+\begin{verbatim}
+>>> g(h,[5,1,4,7,10])
+1 [5, 1, 4, 7, 10]
+2 [5, 1, 4, 7, 10]
+2 [5, 1, 7, 10]
+3 [5, 1, 7, 10]
+3 [5, 1, 7]
+\end{verbatim}
+\end{py}
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

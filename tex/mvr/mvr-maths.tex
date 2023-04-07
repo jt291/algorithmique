@@ -1,0 +1,1357 @@
+% mrv-maths.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\RequirePackage{calc}
+\RequirePackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\RequirePackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno,framed}
+\RequirePackage{longtable,multirow}
+\RequirePackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz}
+\RequirePackage{colortbl,color}
+\RequirePackage{amsmath,amssymb,amsfonts}
+\RequirePackage{hyperref,multimedia,rotating}
+\RequirePackage{listings}
+\RequirePackage{fontspec}
+\RequirePackage[french]{babel}
+\RequirePackage[french]{nomencl}
+\RequirePackage{eurosym}
+\RequirePackage{pifont}
+
+%-------------------------------------------------------------------------
+\input{sigle.tex}
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\color{blue}\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+%-------------------------------------------------------------------------
+
+\def\python{\textsc{Python}}
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\fancyhead{}
+\fancyhead[L]{\hspace*{-3em}\begin{minipage}{3cm}\pgfuseimage{logo-enib}\end{minipage}}
+\fancyhead[C]{\rightmark}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{51pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Affectation : produit scalaire}\label{maths:affectation}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} Mettre en \oe uvre l'instruction d'affectation.
+
+\paragraph{Syntaxe \python:} \texttt{variable = expression}
+
+\begin{framed}
+\paragraph{Enoncé:}
+On considère les 2 vecteurs $\vec{A}$ et $\vec{B}$ définis dans $\mathbb{R}^2$ 
+comme le montre la figure ci-dessous.
+$$
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\draw[->] (-5,0) -- (5,0);
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[->,very thick,color=blue] (1,-1) -- (4,-1);
+\draw[->,very thick,color=blue] (-2,-2) -- (-4,1);
+\draw (2.5,-1) node[above,color=blue]{$\vec{A}$};
+\draw (-3,-0.5) node[right,color=blue]{$\vec{B}$};
+\end{tikzpicture}
+$$
+Proposer une instruction de type « affectation » qui calcule le produit scalaire
+$\vec{A}\cdot\vec{B}$ de ces deux vecteurs.
+\end{framed}
+
+\paragraph{Méthode:} 
+Il s'agit ici de déterminer le produit scalaire $\vec{V}_1\cdot\vec{V}_2$ 
+de 2 vecteurs $\vec{V}_1$ et $\vec{V}_2$ de $\mathbb{R}^2$
+ayant pour composantes respectives $(x_1,y_1)$ et $(x_2,y_2)$. 
+Par définition, ce produit scalaire est un réel $p$ qui a pour expression 
+$p = x_1\cdot x_2 + y_1\cdot y_2$.
+
+Connaissant les composantes respectivement $(x_1,y_1)$ et $(x_2,y_2)$ des 
+vecteurs $\vec{V}_1$ et $\vec{V}_2$, 
+on détermine le produit scalaire $p$ par une affectation simple : 
+\texttt{p = x1*x2 + y1*y2} .
+
+\paragraph{Résultat:}
+On applique la méthode précédente aux vecteurs $\vec{V}_1 = \vec{A}$
+et $\vec{V}_2 = \vec{B}$. Leurs composantes respectives se lisent directement 
+sur la figure : 
+$x_1 = (4) - (1) = 3$, $y_1 = (-1) - (-1) = 0$, 
+$x_2 = (-4) - (-2) = -2$ et $y_2 = (1) - (-2) = 3$.
+
+\noindent\begin{minipage}[t]{7cm}
+Compte-tenu de ces valeurs, le code ci-contre
+permet de calculer le produit scalaire $\vec{A}\cdot\vec{B}$
+demandé.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{8cm}
+\begin{lstlisting}[caption=\textbf{produit scalaire}]
+x1, y1 = (4)-(1), (-1)-(-1)
+x2, y2 = (-4)-(-2), (1)-(-2)
+p = x1*x2 + y1*y2
+\end{lstlisting}
+\end{minipage}
+
+Remarque : on n'a pas cherché à effectuer « à la main » les calculs numériques :
+\python{} les fera mieux que nous; et surtout, on n'a pas cherché non plus à 
+particulariser la $3^{\grave eme}$ ligne du code en \texttt{p = 3*(-2) + 0*3} :
+la forme plus abstraite \texttt{p = x1*x2 + y1*y2} restera identique pour 
+deux autres vecteurs quelconques de $\mathbb{R}^2$. 
+
+\paragraph{Vérification:}
+Une autre manière de déterminer le produit scalaire est donnée par la formule
+« géométrique » : $\vec{A}\cdot\vec{B} = |\vec{A}| \cdot |\vec{B}| \cdot \cos(\theta)$ où
+$|\vec{A}|$ et $|\vec{B}|$ représentent les modules des vecteurs 
+$\vec{A}$ et $\vec{B}$ et $\theta$ l'angle formé par ces 2 vecteurs.
+\vspace*{2mm}
+
+\noindent\begin{minipage}{10cm}
+$|\vec{B}| \cdot \cos(\theta)$ représente donc la projection de $\vec{B}$
+sur $\vec{A}$. Or cette projection se lit très facilement sur la figure
+puisque $\vec{A}$ est horizontal (parallèle à l'axe des abscisses avec 
+$|\vec{A}| = 3$) : elle a pour valeur (-4) - (-2) = -2, 
+d'où le produit scalaire $p = 3 \cdot (-2) = -6$.
+\vspace*{2mm}
+\end{minipage}
+\hfill
+\begin{minipage}{5cm}
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray] (-4,0) -- (4,0);
+\draw[color=lightgray] (-2,3) -- (-2,0);
+\draw[color=lightgray] (-1.5,0) -- (-1.5,0.5) -- (-2,0.5);
+\draw (0.5,0) arc (0:120:0.5);
+\draw[->,very thick,color=blue] (0,0) -- (3,0);
+\draw[->,very thick,color=blue] (0,0) -- (-2,3);
+\draw[->,dashed,very thick,color=blue] (0,0) -- (-2,0);
+\draw (0.3,0.25) node[above] {$\theta$};
+\draw (1.5,0) node[above,color=blue]{$\vec{A}$};
+\draw (-1,1.5) node[right,color=blue]{$\vec{B}$};
+\draw (0,0) node[below] {$0$};
+\draw (3,0) node[below] {$3$};
+\draw (-2,0) node[below] {$-2$};
+\end{tikzpicture}
+\end{minipage}
+
+\noindent On obtient bien par le calcul analytique 
+le résultat obtenu par la projection géométrique.
+
+\paragraph{Généricité :} 
+Pour vérifier la généricité de la méthode précédente, 
+calculer , à l'aide du code \python{} précédent, les produits scalaires suivants :
+$\vec{A}\cdot\vec{A}$, $\vec{A}\cdot\vec{C}$, $\vec{A}\cdot\vec{D}$, $\vec{A}\cdot\vec{E}$,
+$\vec{C}\cdot\vec{C}$, $\vec{C}\cdot\vec{D}$, $\vec{C}\cdot\vec{E}$,
+$\vec{D}\cdot\vec{D}$, $\vec{D}\cdot\vec{E}$ et $\vec{E}\cdot\vec{E}$.
+Les vecteurs $\vec{A}$, $\vec{C}$, $\vec{D}$ et $\vec{E}$ sont 
+définis sur la figure ci-dessous.
+ $$
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\draw[->] (-5,0) -- (5,0);
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[->,very thick,color=blue] (1,-1) -- (4,-1);
+%\draw[->,very thick,color=blue] (-2,-2) -- (-4,1);
+\draw[->,very thick,color=blue] (5,2) -- (3,0);
+\draw[->,very thick,color=blue] (-2,2) -- (-2,-1);
+\draw[->,very thick,color=blue] (-4,-2) -- (-5,-1);
+\draw (2.5,-1) node[above,color=blue]{$\vec{A}$};
+%\draw (-3,-0.5) node[right,color=blue]{$\vec{B}$};
+\draw (-2,0.5) node[left,color=blue]{$\vec{C}$};
+\draw (4,1) node[above,color=blue]{$\vec{D}$};
+\draw (-4.5,-1.25) node[right,color=blue]{$\vec{E}$};
+\end{tikzpicture}
+$$
+Vérifier en particulier qu'on obtient bien les résultats attendus pour
+le produit scalaire d'un vecteur par lui-même et pour le produit scalaire 
+de deux vecteurs perpendiculaires.
+
+\paragraph{Entraînement:} Dans le m\^eme esprit, utiliser l'affectation pour calculer :
+\begin{enumerate}
+\item le produit vectoriel $\vec{A}\times\vec{B}$ de 2 vecteurs $\vec{A}$ et $\vec{B}$
+	de $\mathbb{R}^3$ de composantes respectives $(a_1,a_2,a_3)$ et $(b_1,b_2,b_3)$;
+\item le produit mixte $\vec{A}\cdot(\vec{B}\times\vec{C})$ de 3 vecteurs $\vec{A}$,
+	$\vec{B}$ et $\vec{C}$ de $\mathbb{R}^3$ de composantes respectives $(a_1,a_2,a_3)$, 	
+	$(b_1,b_2,b_3)$ et $(c_1,c_2,c_3)$.
+\end{enumerate}
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Alternative : graphe d'une fonction}\label{maths:alternative}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} Mettre en \oe uvre l'instruction d'alternative multiple.
+
+\paragraph{Syntaxe \python:} \mbox{}
+
+\noindent\begin{minipage}[t]{0.3\textwidth}
+test simple
+\begin{Verbatim}
+if condition : bloc
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+alternative simple
+\begin{Verbatim}
+if condition : bloc1
+else         : bloc2
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+alternative multiple
+\begin{Verbatim}
+if   condition1 : bloc1
+elif condition2 : bloc2
+elif condition3 : bloc3
+...
+else            : blocn
+\end{Verbatim}
+\end{minipage}
+
+\begin{framed}
+\paragraph{Enoncé:}
+On considère dans $\mathbb{R}$ la fonction continue $f$, affine par morceaux,  
+définie sur $[-5;5]$  par le graphe ci-dessous et $\forall x < -5, f(x) = f(-5)$
+et $\forall x > 5, f(x) = f(5)$. 
+$$%\begin{minipage}{6.75cm}
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\draw[->] (-5,0) -- (5,0);
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[color=blue] (-5,1) -- (-4,1) -- (-3,0) -- (-2,1) -- (0,-2) -- (1,2) -- (4,-1) -- (5,1);
+%\draw (-4.5,1) node[above]{\Pisymbol{pzd}{172}};
+%\draw (-3.5,0.5) node[above]{\Pisymbol{pzd}{173}};
+%\draw (-2.5,0.5) node[below]{\Pisymbol{pzd}{174}};
+%\draw (-1,-0.5) node[below]{\Pisymbol{pzd}{175}};
+%\draw (0.5,0) node[right]{\Pisymbol{pzd}{176}};
+%\draw (2.5,0.5) node[right]{\Pisymbol{pzd}{177}};
+%\draw (4.5,0) node[above]{\Pisymbol{pzd}{178}};
+\end{tikzpicture}
+%\end{minipage}
+$$
+Proposer une instruction de type « alternative multiple » qui calcule la fonction $y = f(x)$
+$\forall x \in \mathbb{R}$.
+\end{framed}
+
+\paragraph{Méthode:}
+Il s'agit de déterminer la valeur $y = f(x)$ d'une fonction continue affine par morceaux sur $\mathbb{R}$. L'axe des réels $]-\infty,x_1,x_2,\ldots,x_n,+\infty[$ est donc vu comme une
+succession d'intervalles $]-\infty,x_1[$, $[x_1,x_2[$, \ldots, $[x_{n-1},x_n[$ et
+$[x_n,+\infty[$ sur lesquels la fonction $f$ est définie respectivement par les fonctions $f_1$, $f_2$, \ldots, $f_n$ et $f_{n+1}$ :
+$$\begin{tabular}{l@{ $=$ }l@{ $\forall x \in$ }l}
+$y = f(x)$ 	& $f_1(x)$		& $]-\infty,x_1[$ \\
+			& $f_2(x)$ 		& $[x_1,x_2[$ \\
+			& $f_3(x)$ 		& $[x_2,x_3[$ \\
+			& \multicolumn{2}{l}{\ldots} \\
+			& $f_n(x)$ 		& $[x_{n-1},x_n[$\\
+			& $f_{n+1}(x)$ 	& $[x_n,+\infty[$
+\end{tabular}$$
+Chacune des fonctions $f_i$ correspond à une droite d'équation $y = a_ix+b_i$ où $a_i$
+représente la pente de la droite et $b_i$ son ordonnée à l'origine.
+Lorsqu'on connaît 2 points $M(x_M,y_M)$ et $N(x_N,y_N)$ 
+d'une droite d'équation $y = ax + b$, les coefficients $a$ (pente de la droite) 
+et $b$ (ordonnée à l'origine) de la droite sont obtenus
+par résolution du système de 2 équations : $y_M =ax_M + b$ et $y_N = ax_N + b$. 
+On obtient alors $a$ et $b$ :
+
+$$\begin{minipage}{6.75cm}
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\filldraw(-1,-1) circle (0.1);
+\draw (-1,-1) node[below]{$M$};
+\draw(-1,0) node[above]{$x_M$};
+\draw(0,-1) node[right]{$y_M$};
+\draw (-1,-1) -- (-1,0);
+\draw (-1,-1) -- (0,-1);
+\filldraw(2,1) circle (0.1);
+\draw (2,1) node[above]{$N$};
+\draw(2,0) node[below]{$x_N$};
+\draw(0,1) node[left]{$y_N$};
+\draw (2,1) -- (2,0);
+\draw (2,1) -- (0,1);
+\draw[->] (-5,0) -- (5,0);
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[color=blue] (-4,-3) -- (5,3);
+\draw[color=blue](4.3,2.3) node[above,rotate=33.69]{$y = ax + b$};
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{8.75cm}
+$$\displaystyle a = \frac{y_N - y_M}{x_N - x_M} \mbox{ et } \displaystyle b = \frac{y_Mx_N - y_Nx_M}{x_N - x_M}$$
+Pour la droite ci-contre :
+$$\displaystyle 
+a = \frac{1 - (-1)}{2 - (-1)} = \frac{2}{3} \mbox{ et } \displaystyle 
+b = \frac{(-1)\cdot 2 - 1\cdot(-1)}{2 - (-1)} = -\frac{1}{3}
+$$
+On vérifie graphiquement ces résultats : pour passer de $M$ à $N$, on
+se déplace de $\Delta x = 3$ horizontalement puis de $\Delta y = 2$ verticalement 
+(d'où la pente $a = \Delta y/\Delta x = 2/3$),
+et la droite coupe bien l'axe des ordonnées en $y = -1/3$.
+\end{minipage}$$
+Une fois déterminés les coefficients $a_i$ et $b_i$ de chaque droite, on détermine
+la valeur de la fonction $y = f(x)$ par une alternative multiple du genre :
+$$\begin{minipage}{5.5cm}\tt
+if   x < $x_1$ : y = $a_1$*x + $b_1$\\
+elif x < $x_2$ : y = $a_2$*x + $b_2$\\
+elif x < $x_3$ : y = $a_3$*x + $b_3$\\
+...\\
+elif x < $x_n$ : y = $a_n$*x + $b_n$\\
+else           : y = $a_{n+1}$*x + $b_{n+1}$
+\end{minipage}$$
+
+\paragraph{Résultat:} On applique la méthode précédente à la fonction $f$ de l'énoncé.
+Il faut donc déterminer les équations de droite 
+correspondant aux différents segments du graphe de la fonction, à savoir :
+$$\begin{minipage}{9cm}
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\draw[->] (-5,0) -- (5,0);
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[color=blue] (-5,1) -- (-4,1) -- (-3,0) -- (-2,1) -- (0,-2) -- (1,2) -- (4,-1) -- (5,1);
+\draw (-4.5,1) node[above]{\Pisymbol{pzd}{172}};
+\draw (-3.5,0.5) node[above]{\Pisymbol{pzd}{173}};
+\draw (-2.5,0.5) node[below]{\Pisymbol{pzd}{174}};
+\draw (-1,-0.5) node[below]{\Pisymbol{pzd}{175}};
+\draw (0.5,0) node[right]{\Pisymbol{pzd}{176}};
+\draw (2.5,0.5) node[right]{\Pisymbol{pzd}{177}};
+\draw (4.5,0) node[above]{\Pisymbol{pzd}{178}};
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{3cm}
+\begin{itemize}
+\item[\Pisymbol{pzd}{172}] $y = 1$
+\item[\Pisymbol{pzd}{173}] $y = -x -3$
+\item[\Pisymbol{pzd}{174}] $y = x + 3$
+\item[\Pisymbol{pzd}{175}] $y = -3x/2 - 2$
+\item[\Pisymbol{pzd}{176}] $y = 4x - 2$
+\item[\Pisymbol{pzd}{177}] $y = -x + 3$
+\item[\Pisymbol{pzd}{178}] $y = 2x - 9$
+\end{itemize}
+\end{minipage}$$
+
+\noindent\begin{minipage}[t]{7cm}
+Compte-tenu de ces équations, le code ci-contre
+permet de calculer $y = f(x)$, y compris pour $x < -5$ ($y = f(-5) =1$) et 
+$x > 5$ ($y = f(5) = 1$).
+
+Remarque : on aurait pu simplifier les deux premières lignes de ce code en\\
+\centerline{\texttt{if x < -4 : y = 1}}
+car les instructions associées sont iden\-tiques (ie. les fonctions
+affines sont identiques sur $]-\infty,-5[$ et $[-5,-4[$).
+\end{minipage}
+\hfill
+\begin{minipage}[t]{8cm}\footnotesize
+\begin{lstlisting}[caption=\textbf{graphe d'une fonction}]
+if   x < -5 : y = 1
+elif x < -4 : y = 1
+elif x < -3 : y = -x - 3
+elif x < -2 : y = x + 3
+elif x <  0 : y = -3*x/2 - 2
+elif x <  1 : y = 4*x - 2
+elif x <  4 : y = -x + 3
+elif x <  5 : y = 2*x - 9
+else        : y = 1
+\end{lstlisting}
+\end{minipage}
+
+\paragraph{Vérification:} Pour tester le résultat précédent, 
+on peut comparer les valeurs obtenues par le calcul avec celles lues
+directement sur le graphe pour quelques points caractéristiques.
+Ces points de mesure sont choisis judicieusement : ils ne correspondent 
+pas aux bornes des intervalles déjà prises en compte dans la méthode
+mais plutôt à des points où la fonction s'annule 
+(exemples : $x = -4/3$, $1/2$, $3$ ou $9/2$)
+ou à des points d'abscisses aux n\oe uds de la grille de lecture 
+(exemples : $x = -1$ ou $x = 2$).
+On peut vérifier par exemple pour $x = -1$ 
+($y = f(-1) = -1/2$) et $x = 3$ ($y = f(3) = 0$).
+$$\begin{minipage}{7.5cm}\footnotesize
+\begin{Verbatim}
+>>> x = -1
+>>> if x < -4 : y = 1
+elif   x < -3 : y = -x - 3
+elif   x < -2 : y = x + 3
+elif   x <  0 : y = -3*x/2 - 2
+elif   x <  1 : y = 4*x - 2
+elif   x <  4 : y = -x + 3
+elif   x <  5 : y = 2*x - 9
+else          : y = 1
+
+>>> y
+-0.5
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{7.5cm}\footnotesize
+\begin{Verbatim}
+>>> x = 3
+>>> if x < -4 : y = 1
+elif   x < -3 : y = -x - 3
+elif   x < -2 : y = x + 3
+elif   x <  0 : y = -3*x/2 - 2
+elif   x <  1 : y = 4*x - 2
+elif   x <  4 : y = -x + 3
+elif   x <  5 : y = 2*x - 9
+else          : y = 1
+
+>>> y
+0
+\end{Verbatim}
+\end{minipage}$$
+On obtient bien par le calcul les résultats lus sur la grille.
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+proposer une alternative multiple pour chacune des 2 fonctions définies sur $[-5;5]$ 
+par les graphes ci-dessous et $\forall x <~-5, f(x) = f(-5)$
+et $\forall x > 5, f(x) = f(5)$.
+
+\begin{minipage}{7cm}
+\begin{enumerate}
+\item 
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\draw[->] (-5,0) -- (5,0); 
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[color=blue] (-5,0) -- (-4,-1) -- (-3,1) -- (1,-2) -- (2,-2) -- (5,-1);
+\end{tikzpicture}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{7cm}
+\begin{enumerate}\setcounter{enumi}{1}
+\item 
+\begin{tikzpicture}[scale=0.5]\footnotesize
+\draw[color=lightgray](-5,-2) grid[xstep=1,ystep=1] (5,2);
+\foreach \x in {-5,-4,...,5} \draw(\x,-2) node[below]{\x};
+\foreach \y in {-2,-1,...,2} \draw(-5,\y) node[left]{\y};
+\filldraw(0,0) circle (0.1);
+\draw[->] (-5,0) -- (5,0);
+\draw (5,0) node[right]{$x$} ;
+\draw[->] (0,-2) -- (0,2);
+\draw (0,2) node[above]{$y$};
+\draw[color=blue] (-5,-1) -- (-4,-1) -- (-4,0) -- (-2,2) -- (0,2) -- (1,-1) -- (1,-1) -- (3,1) -- (3,-1) -- (5,-1);
+\end{tikzpicture}
+\end{enumerate}
+\end{minipage}
+
+\paragraph{Entraînement:} Utiliser une alternative multiple pour déterminer les racines réelles
+d'un trinôme du second degré $ax^2 + bx + c$ à coefficients $a$, $b$ et $c$ réels.
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Boucle : intégration numérique}\label{maths:boucle-simple}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} Mettre en \oe uvre l'instruction d'itération
+	en respectant les 4 étapes de la construction d'une boucle :
+	\begin{enumerate}
+	\item {\bf Invariant :} proposer une situation générale décrivant le problème posé. 
+	\item {\bf Condition d'arrêt :} à  partir de la situation générale imaginée en [1], 
+		on doit formuler la condition qui permet d'affirmer que l'algorithme a 
+		terminé son travail. 
+		La situation dans laquelle il se trouve alors est appelée situation finale.
+		La condition d'arrêt fait sortir de la boucle.
+	\item {\bf Progression :} se « rapprocher » de la situation finale, tout en faisant 
+		le nécessaire pour conserver à  chaque étape une situation générale 
+		analogue à  celle retenue en [1].
+		La progression conserve l'invariant.
+	\item {\bf Initialisation :} initialiser les variables introduites dans l'invariant 
+		pour que celui-ci soit vérifié avant d'entrer dans la boucle.
+		L'initialisation « instaure » l'invariant.
+	\end{enumerate}
+
+\paragraph{Syntaxe \python:} \texttt{while condition : bloc}
+
+\begin{framed}
+\paragraph{Enoncé:} On considère l'intégrale $I$ de la 
+fonction $x \mapsto \cos(x)$ entre $\displaystyle -\frac{\pi}{4}$ et 
+$\displaystyle\frac{\pi}{4}$ :
+$$ I = \int_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \cos(x)dx$$ 
+Cette intégrale représente classiquement l'aire comprise entre 
+la courbe représentative de la fonction cosinus et les droites d'équations 
+$x=-\pi/4$, $x=\pi/4$ et $y=0$ (en grisé sur la figure ci-dessous). 
+Pour calculer numériquement cette intégrale, on utilisera la méthode des rectangles
+selon laquelle l'aire sous la courbe est assimilée à la somme des surfaces de $n$ petits 
+rectangles de base $\Delta x$ (voir figure de droite ci-dessous); ce qui revient à 
+approximer la fonction cosinus par une fonction en escalier.
+
+\noindent\begin{tikzpicture}[scale=1]\footnotesize\shorthandoff{:}
+\draw (0,1.1) node[left] {$1$};
+\draw (0,-1.1) node[left] {$-1$};
+\draw[color=lightgray] (-3.25,1) -- (3.25,1) ;
+\draw[color=lightgray] (-3.25,-1) -- (3.25,-1) ;
+\draw ({-pi},-0.05) -- ({-pi},0.05);
+\draw ({-pi},0) node[below] {$-\pi$};
+\draw ({-3*pi/4},-0.05) -- ({-3*pi/4},0.05);
+\draw ({-3*pi/4},0) node[below] {$-\frac{3\pi}{4}$};
+\draw ({-pi/2},-0.05) -- ({-pi/2},0.05);
+\draw ({-pi/2},0) node[below] {$-\frac{\pi}{2}$};
+\draw ({-pi/4},-0.05) -- ({-pi/4},0.05);
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},-0.05) -- ({pi/4},0.05);
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({pi/2},-0.05) -- ({pi/2},0.05);
+\draw ({pi/2},0) node[below] {$\frac{\pi}{2}$};
+\draw ({3*pi/4},-0.05) -- ({3*pi/4},0.05);
+\draw ({3*pi/4},0) node[below] {$\frac{3\pi}{4}$};
+\draw ({pi},-0.05) -- ({pi},0.05);
+\draw ({pi},0) node[below] {$\pi$};
+\draw[dashed,color=lightgray] ({-pi/4},-1) -- ({-pi/4},1);
+\draw[dashed,color=lightgray] ({pi/4},-1) -- ({pi/4},1);
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\draw[color=blue,domain=-3.5:3.5] plot (\x,{cos(\x r)});
+\draw[dashed,color=lightgray] ({-pi/4},-1) -- ({-pi/4},1);
+\draw[dashed,color=lightgray] ({pi/4},-1) -- ({pi/4},1);
+\draw[->] (0,-1.25) -- (0,1.25) ;
+\draw (0,1.25) node[above] {$f(x)$};
+\draw[->] (-3.5,0) -- (3.5,0) ;
+\draw (3.5,0) node[right] {$x$};
+\draw[fill] (0,0) circle (0.05);
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[xscale=1.8,yscale=1.4]\footnotesize\shorthandoff{:}
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},0) -- ({-pi/4 + \x*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)}) -- ({-pi/4 + (\x+1)*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},0) -- ({pi/4 - \x*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)}) -- ({pi/4 - (\x+1)*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)});
+\draw[color=blue,domain=-1.25:1.25] plot (\x,{cos(\x r)});
+\draw[->] (0,-0.25) -- (0,1.25) ;
+\draw[->] (-1.75,0) -- (1.75,0) ;
+\draw (1.75,0) node[right] {$x$};
+\draw (0,1.25) node[above] {$f(x)$};
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({-pi/4 + 2.5*pi/20},0) node[below] {$x_i$};
+\draw ({-pi/4 + 2.5*pi/20},-0.05) -- ({-pi/4 + 2.5*pi/20},0.05);
+\draw ({2.5*pi/20},-0.5) node[below] {$\Delta x$};
+\draw[dashed] ({2*pi/20},0) -- ({2*pi/20},-0.5);
+\draw[dashed] ({3*pi/20},0) -- ({3*pi/20},-0.5);
+\draw[->] ({1.5*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw[->] ({3.5*pi/20},-0.4) -- ({3*pi/20},-0.4);
+\draw ({3*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\end{tikzpicture}
+
+\noindent
+Proposer une instruction de type « boucle » qui calcule l'intégrale $I$ de la 
+fonction cosinus entre $-\pi/4$ et $\pi/4$ par la méthode des rectangles.
+\end{framed}
+
+\paragraph{Méthode:} 
+Il s'agit ici d'intégrer une fonction continue $f$ de $\mathbb{R} \rightarrow \mathbb{R}$ 
+sur un intervalle $[a,b]$.
+On supposera que $f$ à toutes les bonnes propriétés mathématiques pour être
+intégrable sur l'intervalle considéré. 
+
+On cherche donc à calculer l'intégrale
+$\displaystyle I = \int_a^b f(x)dx$ qui représente classiquement l'aire
+comprise entre la courbe représentative de $f$ et les droites d'équations 
+$x=a$, $x=b$ et $y=0$. Les méthodes d'intégration numérique consistent 
+essentiellement à trouver une bonne approximation de cette aire.
+
+Dans la méthode des rectangles proposée, on subdivise l'intervalle d'intégration de
+longueur $b-a$ en $n$ parties égales de longueur $\displaystyle\Delta x = \frac{b-a}{n}$. 
+Soient $x_1$, $x_2$, \ldots, $x_n$ les points milieux de ces $n$ intervalles. 
+Les $n$ rectangles formés avec les ordonnées correspondantes ont pour surface 
+$f(x_1)\Delta x$, $f(x_2)\Delta x$, \ldots, $f(x_n)\Delta x$. 
+L'aire sous la courbe est alors assimilée à la somme des aires de ces rectangles, soit 
+$$\displaystyle I = \int_a^b f(x)dx \approx \left(f(x_1)+f(x_2)+\cdots+f(x_n)\right)\Delta x = 
+\Delta x\cdot\sum_{i=1}^{i=n}f(x_i)$$ 
+C'est la formule dite des rectangles qui repose sur une approximation par une fonction 
+{\em en	escalier}.
+
+Le calcul attendu revient donc à évaluer d'abord la somme $s = \sum f(x_i)$ puis
+à la multiplier par la largeur $w = \Delta x$ des petits rectangles. 
+Pour calculer $s$ « de tête »,
+on évalue d'abord $f(x_1)$ que l'on mémorise : $s = f(x_1)$, 
+puis on rajoute $f(x_2)$ et on mémorise cette somme intermédiaire : 
+$s = s + f(x_2) \ (= f(x_1) + f(x_2))$, 
+puis on rajoute $f(x_3)$ et on mémorise cette nouvelle somme intermédiaire  
+$s = s + f(x_3) \ (= f(x_1) + f(x_2) + f(x_3))$
+et ainsi de suite jusqu'à rajouter enfin $f(x_n)$ : 
+$s = s + f(x_n) \ (= f(x_1) + f(x_2) + f(x_3) + \ldots + f(x_n))$. 
+On a alors la somme recherchée ($s = \sum f(x_i)$) et
+il ne reste plus qu'à multiplier cette somme $s$ par la largeur $w$ pour obtenir la valeur de l'intégrale $I$.
+
+Les 4 étapes de construction de la boucle recherchée sont donc les suivantes :
+\begin{itemize}
+\item pour l'invariant, on vérifie qu'à chaque étape $k$, $s_k$ est toujours égal à la somme 
+	des $k$ premiers termes $f(x_k)$ : 
+	$\displaystyle \forall k, s_k = \sum_{i=1}^k f(x_i)$;
+\item l'initialisation consiste à définir $w$, à se positionner sur le premier rectangle 
+	$x_1 = a + w/2$ et à initialiser $s_1$ en conséquence : $s_1 = f(x_1)$;
+\item la progression consiste à se déplacer sur le rectangle suivant : $x_{k+1} = x_{k} + w$
+	et à augmenter $s_k$ de la nouvelle valeur $f(x_{k+1})$ afin de conserver l'invariant :
+	$s_{k+1} = s_k + f(x_{k+1})$;
+\item la condition d'arrêt est obtenue pour $x_k > b - w/2$.
+\end{itemize}
+\vspace*{3mm}
+
+\noindent La boucle prend ainsi la forme :\\
+\begin{minipage}[t]{8cm}
+\begin{Verbatim}
+« initialisation »
+while not « condition d'arrêt » :
+    « progression »
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+$w = (b-a)/2$, $x = x_1 = a + w/2$, $s = f(x_1)$\\
+\texttt{while not} $x > b-w/2$ \texttt{:}\\
+\mbox{}\texttt{\ \ \ \ } $x = x_{k+1} = x_{k} + w$\\
+\mbox{}\texttt{\ \ \ \ } $s = s_{k+1} = s_k + f(x_{k+1})$\\
+\end{minipage}
+
+\paragraph{Résultat:} On applique la méthode précédente à la fonction $f : x \mapsto cos(x)$
+dans l'intervalle $\displaystyle [a=-\frac{\pi}{4},b=\frac{\pi}{4}]$.
+
+\noindent\begin{minipage}{7cm}
+Le code \python{} ci-contre permet de calculer l'intégrale recherchée
+à condition de ne pas oublier de définir $f$, $a$, $b$ et $n$
+avant d'exécuter la boucle précédente. On prendra par exemple $n = 100$.
+\end{minipage}
+\hfill
+\begin{minipage}{8cm}\footnotesize
+\begin{lstlisting}[caption=\textbf{intégration numérique}]
+w = (b - a)/n
+x = a + w/2
+s = f(x)
+while not x > (b - w/2):
+    x = x + w
+    s = s + f(x)
+s = w*s
+\end{lstlisting}
+\end{minipage}
+
+\paragraph{Vérification:} Pour vérifier le résultat obtenu, on peut le comparer au
+calcul direct car la primitive de $\cos(x)$ est connue, il s'agit de $\sin(x)$ :
+$$I = \int_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \cos(x)dx = \left[\sin(x)\right]_{-\frac{\pi}{4}}^{\frac{\pi}{4}} = \sin(\frac{\pi}{4}) - \sin(-\frac{\pi}{4}) = 2\sin(\frac{\pi}{4}) = 2\frac{\sqrt{2}}{2} = \sqrt{2}$$
+Ainsi, doit-on trouver une valeur proche de $\sqrt{2} \ (\approx 1.4142135623730951)$.
+
+$$\begin{minipage}{7.5cm}\footnotesize
+\begin{Verbatim}
+>>> from math import cos, pi
+>>> f = cos
+>>> a, b = -pi/4, pi/4
+>>> n = 100
+>>> w = (b - a)/n
+x = a + w/2
+s = f(x)
+while not x > (b - w/2):
+    x = x + w
+    s = s + f(x)
+s = w*s
+>>> s
+1.4142281017781444
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{7.5cm}\footnotesize
+\begin{Verbatim}
+>>> from math import cos, pi
+>>> f = cos
+>>> a, b = -pi/4, pi/4
+>>> n = 100000
+>>> w = (b - a)/n
+x = a + w/2
+s = f(x)
+while not x > (b - w/2):
+    x = x + w
+    s = s + f(x)
+s = w*s
+>>> s
+1.4142135623875653
+\end{Verbatim}
+\end{minipage}$$
+On trouve le bon ordre de grandeur quelle que soit la valeur de $n$
+mais plus $n$ est grand (ie. les rectangles sont de moins en moins larges) 
+meilleur est le résultat.
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+calculer l'intégrale des fonctions suivantes par la méthode des rectangles :
+\begin{enumerate}
+\item $y = \cos(x)$ dans $[0,\pi]$ puis dans $[-\pi/2,\pi/2]$,
+\item $y = \sin(x)$ dans $[0,\pi]$ puis dans $[-\pi/2,\pi/2]$,
+\item $y = 3x$ dans $[0,1]$ puis dans $[-1,1]$.
+\end{enumerate}
+
+\paragraph{Entraînement:} Déterminer l'intégrale $\displaystyle I = \int_a^b f(x)dx$
+selon deux méthodes alternatives : la méthode des trapèzes et la méthode des paraboles
+(ou méthode de Simpson).
+
+\noindent\begin{tikzpicture}[xscale=1.3,yscale=2.5]\footnotesize\shorthandoff{:}
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},0) -- ({-pi/4 + \x*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)}) -- ({-pi/4 + (\x+1)*pi/20},{cos((-pi/4 + (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},0) -- ({pi/4 - \x*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)}) -- ({pi/4 - (\x+1)*pi/20},{cos((pi/4 - (\x+0.5)*pi/20) r)});
+\draw[color=blue,domain=-1.25:1.25] plot (\x,{cos(\x r)});
+\draw[->] (0,-0.25) -- (0,1.25) ;
+\draw[->] (-1.75,0) -- (1.75,0) ;
+\draw (1.75,0) node[right] {$x$};
+\draw (0,1.25) node[above] {$f(x)$};
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({-pi/4 + 2.5*pi/20},0) node[below] {$x_i$};
+\draw ({-pi/4 + 2.5*pi/20},-0.05) -- ({-pi/4 + 2.5*pi/20},0.05);
+\draw ({2.5*pi/20},-0.5) node[below] {$\Delta x$};
+\draw[dashed] ({2*pi/20},0) -- ({2*pi/20},-0.5);
+\draw[dashed] ({3*pi/20},0) -- ({3*pi/20},-0.5);
+\draw[->] ({1.5*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw[->] ({3.5*pi/20},-0.4) -- ({3*pi/20},-0.4);
+\draw ({3*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw (0,-0.75) node {méthode des rectangles};
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[xscale=1.3,yscale=2.5]\footnotesize\shorthandoff{:}
+\draw[color=blue,domain=-1.25:1.25] plot (\x,{cos(\x r)});
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},0) -- ({-pi/4 + \x*pi/20},{cos((-pi/4 + \x*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({-pi/4 + \x*pi/20},{cos((-pi/4 + \x*pi/20) r)}) -- ({-pi/4 + (\x+1)*pi/20},{cos((-pi/4 + (\x+1)*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},0) -- ({pi/4 - \x*pi/20},{cos((pi/4 - \x*pi/20) r)});
+\foreach \x in {0,1,...,4} \draw ({pi/4 - \x*pi/20},{cos((pi/4 - \x*pi/20) r)}) -- ({pi/4 - (\x+1)*pi/20},{cos((pi/4 - (\x+1)*pi/20) r)});
+\draw[->] (0,-0.25) -- (0,1.25) ;
+\draw[->] (-1.75,0) -- (1.75,0) ;
+\draw (1.75,0) node[right] {$x$};
+\draw (0,1.25) node[above] {$f(x)$};
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({-pi/4 + 3*pi/20},0) node[below] {$x_i$};
+\draw ({-pi/4 + 3*pi/20},-0.05) -- ({-pi/4 + 3*pi/20},0.05);
+\draw ({2.5*pi/20},-0.5) node[below] {$\Delta x$};
+\draw[dashed] ({2*pi/20},0) -- ({2*pi/20},-0.5);
+\draw[dashed] ({3*pi/20},0) -- ({3*pi/20},-0.5);
+\draw[->] ({1.5*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw[->] ({3.5*pi/20},-0.4) -- ({3*pi/20},-0.4);
+\draw ({3*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw (0,-0.75) node {méthode des trapèzes};
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[xscale=1.3,yscale=2.5]\footnotesize\shorthandoff{:}
+\fill[color=gray!20] ({-pi/4},0) -- ({-pi/4},{cos((-pi/4) r)}) -- plot [domain=(-pi/4):(pi/4)] (\x,{cos(\x r)}) -- ({cos((pi/4) r)},0) -- cycle;
+\foreach \x in {0,2,4} \draw ({-pi/4 + \x*pi/20},0) -- ({-pi/4 + \x*pi/20},{cos((-pi/4 + \x*pi/20) r)});
+\foreach \x in {1,3} \draw[dashed] ({-pi/4 + \x*pi/20},0) -- ({-pi/4 + \x*pi/20},{cos((-pi/4 + \x*pi/20) r)});
+\foreach \x in {0,2,4} \draw ({pi/4 - \x*pi/20},0) -- ({pi/4 - \x*pi/20},{cos((pi/4 - \x*pi/20) r)});
+\foreach \x in {1,3} \draw[dashed] ({pi/4 - \x*pi/20},0) -- ({pi/4 - \x*pi/20},{cos((pi/4 - \x*pi/20) r)});
+\draw[color=blue,domain=-1.25:-pi/4] plot (\x,{cos(\x r)});
+\draw[domain=-pi/4:pi/4] plot (\x,{cos(\x r)});
+\draw[color=blue,domain=pi/4:1.25] plot (\x,{cos(\x r)});
+\draw (0,-0.25) -- (0,0) ;
+\draw[dashed] (0,0) -- (0,1) ;
+\draw[->] (0,1) -- (0,1.25) ;
+\draw[->] (-1.75,0) -- (1.75,0) ;
+\draw (1.75,0) node[right] {$x$};
+\draw (0,1.25) node[above] {$f(x)$};
+\draw ({-pi/4},0) node[below] {$-\frac{\pi}{4}$};
+\draw ({pi/4},0) node[below] {$\frac{\pi}{4}$};
+\draw ({-pi/4 + 3*pi/20},0) node[below] {$x_i$};
+\draw ({-pi/4 + 3*pi/20},-0.05) -- ({-pi/4 + 3*pi/20},0.05);
+\draw ({2.5*pi/20},-0.5) node[below] {$\Delta x$};
+\draw[dashed] ({2*pi/20},0) -- ({2*pi/20},-0.5);
+\draw[dashed] ({3*pi/20},0) -- ({3*pi/20},-0.5);
+\draw[->] ({1.5*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw[->] ({3.5*pi/20},-0.4) -- ({3*pi/20},-0.4);
+\draw ({3*pi/20},-0.4) -- ({2*pi/20},-0.4);
+\draw (0,-0.75) node {méthode des paraboles};
+\end{tikzpicture}
+
+\begin{enumerate}
+\item Méthode des trapèzes : on subdivise l'intervalle d'intégration de
+	longueur $b-a$ en $n$ parties égales de longueur 
+	$\displaystyle\Delta x = \frac{b-a}{n}$. Les abscisses des points ainsi
+	définis sont
+	$a$, $x_1$, $x_2$, \ldots, $x_{n-1}$, $b$ et les trapèzes construits sur ces
+	points et les ordonnées correspondantes ont pour aire 
+	$\displaystyle \frac{\Delta x}{2}\left(f(a) + f(x_1)\right)$,
+	$\displaystyle \frac{\Delta x}{2}\left(f(x_1) + f(x_2)\right)$,
+	\ldots,
+	$\displaystyle \frac{\Delta x}{2}\left(f(x_{n-1}) + f(b)\right)$.
+	L'aire sous la courbe est alors assimilée à la somme des aires de ces 
+	trapèzes, soit :
+	$$\displaystyle I = \int_a^b f(x)dx \approx
+		\left(\frac{f(a)+f(b)}{2} + f(x_1) + f(x_2)
+		+ \cdots + f(x_{n-1})\right) \Delta x$$
+	C'est la formule dite des trapèzes.
+		
+\item Méthodes des paraboles : on divise l'intervalle d'intégration $[a,b]$ en un nombre 
+	$n$ pair d'intervalles dont la longueur est 
+	$\displaystyle\Delta x = \frac{b-a}{n}$. 
+	Dans les 2 premiers intervalles d'extrémités $a$, $x_1$ et $x_2$, on approche 
+	la courbe représentative de $f$ par une parabole d'équation 
+	$y = \alpha x^2 + \beta x + \gamma$ passant par les points $A(a,f(a))$, 
+	$A_1(x_1,f(x_1))$ et $A_2(x_2,f(x_2))$ de la courbe. Dans les 2 intervalles 
+	suivants, on approche la courbe par une autre parabole d'équation similaire, 
+	passant par les points $A_2$, $A_3$ et $A_4$, et ainsi de suite.
+	On obtient ainsi une courbe formée de $n$ portions de parabole et
+	l'aire déterminée par ces portions de parabole est une approximation de l'aire $I$
+	cherchée.
+	
+	L'intégration de l'équation de la parabole $y = \alpha x^2 + \beta x + \gamma$ sur
+	$\displaystyle \left[-\Delta x,\Delta x\right]$ donne 
+	$$S = \int_{-\Delta x}^{\Delta x} (\alpha x^2 + \beta x + \gamma)dx = 
+	\frac{2}{3}\alpha(\Delta x)^3 + 2\gamma(\Delta x)$$
+	où les constantes $\alpha$ et $\gamma$ sont déterminées en écrivant que les points
+	$(-\Delta x,y_0)$, $(0,y_1)$ et $(\Delta x,y_2)$ satisfont l'équation de la parabole.
+	On obtient ainsi :
+	$$\left|\begin{array}{l@{\ =\ }l}
+	y_0 & \alpha(-\Delta x)^2 + \beta(-\Delta x) + \gamma\\
+	y_1 & \gamma\\
+	y_2 & \alpha(\Delta x)^2 + \beta(\Delta x) + \gamma
+	\end{array}\right.
+	\Rightarrow
+	\left|\begin{array}{l@{\ =\ }l}
+	\alpha & \displaystyle \frac{y_0 - 2y_1 + y_2}{2(\Delta x)^2} \\
+	\beta  & \displaystyle \frac{y_2-y_0}{2(\Delta x)}\\
+	\gamma & \displaystyle y_1
+	\end{array}\right.$$
+	et $\displaystyle S = \frac{\Delta x}{3}(y_0+4y_1+y_2)$.
+	
+	Par suite, il vient :
+	$\displaystyle\left|\begin{array}{l@{\ =\ }l}
+	S_1     & \displaystyle \frac{\Delta x}{3}(y_0 + 4y_1 + y_2)\\
+	S_2     & \displaystyle \frac{\Delta x}{3}(y_2 + 4y_3 + y_4)\\
+	S_3     & \displaystyle \frac{\Delta x}{3}(y_4 + 4y_5 + y_6)\\
+	\vdots  \\
+	\displaystyle S_{n/2} & \displaystyle \frac{\Delta x}{3}(y_{n-2} + 4y_{n-1} + y_n)
+	\end{array}\right.$ 
+	
+	d'où
+	$$I = \int_a^b f(x)dx \approx \frac{\Delta x}{3}
+	\left(f(a) + 4\sum_{i=1,3,5...}^{n-1}f(x_i) + 2\sum_{i=2,4,6...}^{n-2}f(x_i) + f(b)\right)$$
+	C'est la formule dite de Simpson qui repose sur une approximation de $f$ 
+	par des arcs de parabole.
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Boucle : développement limité}\label{maths:boucle}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} Mettre en \oe uvre l'instruction d'itération
+	en respectant les 4 étapes de la construction d'une boucle :
+	\begin{enumerate}
+	\item {\bf Invariant :} proposer une situation générale décrivant le problème posé. 
+	\item {\bf Condition d'arrêt :} à  partir de la situation générale imaginée en [1], 
+		on doit formuler la condition qui permet d'affirmer que l'algorithme a 
+		terminé son travail. 
+		La situation dans laquelle il se trouve alors est appelée situation finale.
+		La condition d'arrêt fait sortir de la boucle.
+	\item {\bf Progression :} se « rapprocher » de la situation finale, tout en faisant 
+		le nécessaire pour conserver à  chaque étape une situation générale 
+		analogue à  celle retenue en [1].
+		La progression conserve l'invariant.
+	\item {\bf Initialisation :} initialiser les variables introduites dans l'invariant 
+		pour que celui-ci soit vérifié avant d'entrer dans la boucle.
+		L'initialisation « instaure » l'invariant.
+	\end{enumerate}
+
+\paragraph{Syntaxe \python:} \texttt{while condition : bloc}
+
+\begin{framed}
+\paragraph{Enoncé:}
+On considère $\forall x \in ]-1;1[$ la fonction $f(x)$ définie par 
+$$\begin{array}{lll}
+\displaystyle y = f(x) = \frac{1}{(1+x)^a} & \approx &\displaystyle  1 + \sum_{k=1}^{n} u_k  = 1 + \sum_{k=1}^{n} (-1)^k a(a+1)\cdots(a+k-1)\frac{x^k}{k!}\\
+	           & = &\displaystyle 1 - ax + a(a+1)\frac{x^2}{2} + \ldots +
+(-1)^k a(a+1)\cdots(a+k-1)\frac{x^k}{k!}
+\end{array}$$
+Ecrire un algorithme qui calcule $y = f(x)$ en respectant les 
+contraintes suivantes :
+\begin{itemize}
+\item les calculs seront arrêtés lorsque la valeur absolue du terme $u_k$ ($|u_k|$) 
+	sera inférieure à un certain seuil $s$ (avec $0 < s < 1$);
+\item on n'utilisera ni la fonction \emph{puissance} ($x^n$) ni la fonction
+	\emph{facto\-riel\-le} ($n!$) pour effectuer le calcul du développement.
+\end{itemize}
+\end{framed}
+
+\paragraph{Méthode:}
+On cherche une relation de récurrence $g$ entre $u_{k+1}$ et $u_k$ afin de faciliter le calcul de $u_{k+1}$ 
+sans faire appel aux fonctions \emph{puissance} ($x^{k}$) et \emph{factorielle} ($k!$).
+
+$$\begin{array}{lll}
+\multicolumn{3}{l}{\mbox{On a :}} \\
+\displaystyle u_{k+1} &=& \displaystyle (-1)^{k+1} a(a+1)\cdots(a+(k+1)-1)\frac{x^{k+1}}{(k+1)!} \\
+\multicolumn{3}{l}{\mbox{et on cherche donc à faire apparaître $u_k$ dans l'expression de $u_{k+1}$ :}}\\
+\displaystyle u_{k+1} &=& \displaystyle (-1)\cdot(-1)^k\cdot a(a+1)\cdots(a+k-1)\cdot(a+k)\cdot\frac{x\cdot x^k}{k!(k+1)}\\
+\displaystyle u_{k+1} &=& \displaystyle - x\cdot\frac{(a+k)}{(k+1)}\cdot (-1)^k a(a+1)\cdots(a+k-1)\frac{x^k}{k!} = \displaystyle - x\cdot\frac{(a+k)}{(k+1)}\cdot u_k
+= g(u_k)
+\end{array}$$
+
+Ainsi, dans la pratique, si on mémorise la valeur de $u_k$, on calculera sans problème 
+la valeur de $u_{k+1}$ grâce à cette relation de récurrence ($u_{k+1} = g(u_k)$).
+$$\begin{array}{lllllll}
+y_1     &=& 1 + u_1 \\
+y_2     &=& 1 + u_1 + u_2                          &=& y_1 + u_2         &=& y_1 + g(u_1) \\
+y_3     &=& 1 + u_1 + u_2 + u_3                    &=& y_2 + u_3         &=& y_2 + g(u_2)\\
+\multicolumn{7}{l}{\ldots}\\
+y_{m+1} &=& 1 + u_1 + u_2 + \cdots + u_m + u_{m+1} &=& y_{m} + u_{m+1}   &=& y_m + g(u_{m})
+\end{array}$$
+
+Les 4 étapes de construction de l'algorithme recherché sont donc les suivantes :
+\begin{itemize}
+\item pour l'invariant, on vérifie qu'à chaque étape $m$, $y$ est toujours égal à la somme 
+	des $m$ premiers termes $u_k$ : 
+	$\displaystyle \forall m, y_m = 1 + \sum_{k=1}^m u_k$;
+\item l'initialisation consiste à décrire le cas $m = 1$ : 
+	$u_1 = -ax$ et $y = y_1 = 1 + u_1 = 1 - ax$;
+\item la progression consiste à calculer l'étape suivante à partir de l'étape courante ($m \rightarrow m+1$) :\\
+	$\displaystyle u_{m+1} = g(u_m) = - x\cdot\frac{(a+m)}{(m+1)}\cdot u_{m}$, $y_{m+1} = y_{m} + g(u_{m})$;
+\item la condition d'arrêt est contrainte par l'énoncé : 
+	$|u_m| < s$.
+\end{itemize}
+\vspace*{3mm}
+
+\noindent L'algorithme recherché prendra la forme :\\
+\begin{minipage}[t]{8cm}
+\begin{Verbatim}
+« initialisation »
+while not « condition d'arrêt » :
+    « progression »
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+$m = 1$, $u_1 = -ax$, $y_1 = 1 - ax$\\
+\texttt{while not} $|u_m| < s$ \texttt{:}\\
+\mbox{}\texttt{\ \ \ \ } $u_{m+1} = g(u_m)$\\
+\mbox{}\texttt{\ \ \ \ } $y_{m+1} = y_{m} + u_{m+1}$\\
+\mbox{}\texttt{\ \ \ \ } $m \rightarrow m+1$
+\end{minipage}
+
+
+\paragraph{Résultat:} En \python, l'algorithme correspondant est présenté
+ci-contre.
+Pour le tester, on fixera différentes valeurs des données $a$, $x$ et $s$,
+et pour le vérifier, on comparera la valeur $y$ calculée 
+avec le calcul direct $(1+x)^{-a}$.
+
+\begin{minipage}[t]{8cm}
+\begin{lstlisting}
+m = 1
+u = -a*x
+y = 1 + u
+while not fabs(u) < s :
+    u = -u*x*(a + m)/(m + 1)
+    y = y + u
+    m = m + 1
+\end{lstlisting}
+\end{minipage}
+
+\paragraph{Vérification:}
+On compare le résultat obtenu par l'algorithme avec 
+le calcul direct : $\displaystyle y - \frac{1}{(1+x)^a}$, 
+pour différentes valeurs des données $a$, $x$ et $s$.
+\vspace*{3mm}
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> a, x, s = 1, 0, 1.0e-9
+...
+>>> y - 1/(1-x)**a
+0.0
+
+>>> a, x, s = 1/2, 0.5, 1.0e-9
+...
+>>> y - 1/(1-x)**a
+-2.65160005064e-10
+
+>>> a, x, s = 3, 0.5, 1.0e-9
+...
+>>> y - 1/(1-x)**a
+2.69446243095e-10
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> a, x, s = 5, 0, 1.0e-9
+...
+>>> y - 1/(1-x)**a
+0.0
+
+>>> a, x, s = 5, 0.85, 1.0e-9
+...
+>>> y - 1/(1-x)**a
+4.27782663459e-10
+
+>>> a, x, s = 5, -0.85, 1.0e-9
+...
+>>> y - 1/(1-x)**a
+-5.8480509324e-09
+\end{Verbatim}
+\end{minipage}
+%\vspace*{5mm}
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> a, x, s = 3, 0.5, 1.0e-4
+...
+>>> y - 1/(1-x)**a
+2.31884143971e-05
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> a, x, s = 5, -0.85, 1.0e-5
+...
+>>> y - 1/(1-x)**a
+-6.00809507887e-05
+\end{Verbatim}
+\end{minipage}
+\vspace*{5mm}
+
+\noindent
+Les différences observées sont toutes voisines de 0 et compatibles
+avec le seuil de précision $s$ donné.
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente, 
+calculer les fonctions suivantes à l'aide de leur développement limité.
+\begin{enumerate}
+\item $\displaystyle\cos(x) \approx \sum_{k=0}^{n} (-1)^k\frac{x^{2k}}{(2k)!} = 
+		1 - \frac{x^2}{2} + \frac{x^4}{24} + \cdots + (-1)^n\frac{x^{2n}}{(2n)!}$
+		\hfill$\forall x \in \mathbb{R}$
+\item $\displaystyle\arctan(x) \approx \sum_{k=0}^{n} (-1)^k \frac{x^{2k+1}}{(2k+1)} = 
+		x - \frac{x^3}{3} + \frac{x^5}{5} + \cdots + (-1)^n \frac{x^{2n+1}}{(2n+1)}$
+		\hfill$\forall x \in \mathbb{R}$
+\item $\displaystyle \sqrt{1+x} \approx 1 + \frac{x}{2} + \sum_{k=2}^{n} (-1)^{k-1} 
+		\frac{1\times3\times\cdots\times(2k-3)}{2^k} \frac{x^k}{k!} =\\ 
+		1 + \frac{x}{2} - \frac{x^2}{8} + \frac{x^3}{16} - \frac{5x^4}{128} + \cdots + (-1)^{n-1} 	
+		\frac{1\times3\times\cdots\times(2n-3)}{2^n} \frac{x^n}{n!} $
+		\hfill$\forall x \in ]-1;1[$
+\end{enumerate}
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Boucle : zéro d'une fonction}\label{maths:boucles-tests}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} 
+Ecrire un algorithme qui détermine le zéro de $\cos(x)$ 
+dans l'intervalle $[1,3]$ selon une méthode par dichotomie.
+On pose $a=1$, $b=3$ les extrémités de l'intervalle
+et $x_1 = (a+b)/2$ le milieu de l'intervalle. 
+Si $f(a).f(x_1) < 0$ (ie. $a$ et $x_1$ sont situés de part et d'autre du zéro), 
+alors la racine est dans $]a,x_1[$ et on pose $b = x_1$; 
+sinon la racine est dans $]x_1,b[$ et on pose $a = x_1$. 
+Puis on réitère le procédé, la longueur de l'intervalle ayant été 
+divisée par deux. On arrête lorsque $a$ et $b$ sont suffisamment proches.
+
+\noindent\begin{tikzpicture}[scale=1]\footnotesize\shorthandoff{:}
+\draw[color=blue,domain=0.5:3.25] plot (\x,{cos(\x r)});
+\draw[dashed,color=lightgray] (1,-1.25) -- (1,1.25);
+\draw[fill] (1,0) circle (0.05);
+\draw (1,-0.25) node[left] {$1$};
+\draw (0,{cos(1 r)}) node[left] {$f(1)$};
+\draw[dashed,color=lightgray] (0,{cos(1 r)}) -- (1,{cos(1 r)});
+\draw[dashed,color=lightgray] (3,-1.25) -- (3,1.25);
+\draw[fill] (3,0) circle (0.05);
+\draw (3,-0.25) node[right] {$3$};
+\draw (0,{cos(3 r)}) node[left] {$f(3)$};
+\draw[fill] (2,0) circle (0.05);
+\draw (2,0) node[above] {$x_1$};
+\draw[dashed,color=lightgray] (2,0) -- (2,{cos(2 r)});
+\draw[dashed,color=lightgray] (2,{cos(2 r)}) -- (0,{cos(2 r)});
+\draw (0,{cos(2 r)}) node[left] {$f(x_1)$};
+\draw[dashed,color=lightgray] (0,{cos(3 r)}) -- (3,{cos(3 r)});
+\draw[->] (0,-1.25) -- (0,1.25) ;
+\draw (0,1.25) node[above] {$f(x)$};
+\draw[->] (-0.25,0) -- (3.5,0) ;
+\draw (3.5,0) node[right] {$x$};
+\draw[fill] (0,0) circle (0.05);
+\draw[fill,color=blue] ({pi/2},0) circle (0.1);
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[xscale=4]\footnotesize\shorthandoff{:}
+\draw[color=blue,domain=1:3] plot (\x,{cos(\x r)});
+\draw[dashed,color=lightgray] (1,-1.25) -- (1,1.25);
+%\draw[fill] (1,0) circle (0.05);
+\draw (1,-0.25) node[left] {$1$};
+%\draw (0,{cos(1 r)}) node[left] {$f(1)$};
+%\draw[dashed,color=lightgray] (0,{cos(1 r)}) -- (1,{cos(1 r)});
+\draw[dashed,color=lightgray] (3,-1.25) -- (3,1.25);
+%\draw[fill] (3,0) circle (0.05);
+\draw (3,-0.25) node[right] {$3$};
+%\draw (0,{cos(3 r)}) node[left] {$f(3)$};
+%\draw[fill] (2,0) circle (0.05);
+\draw (2,0) node[above] {$x_1$};
+\draw (2,-0.05) -- (2,0.05);
+\draw (1.5,0) node[above] {$x_2$};
+\draw (1.5,-0.05) -- (1.5,0.05);
+\draw (1.75,0) node[above] {$x_3$};
+\draw (1.75,-0.05) -- (1.75,0.05);
+\draw (1.625,0) node[above] {$x_4$};
+\draw (1.625,-0.05) -- (1.625,0.05);
+\draw (1.5625,0) node[below] {$x_5$};
+\draw (1.5625,-0.05) -- (1.5625,0.05);
+%\draw[dashed,color=lightgray] (2,0) -- (2,{cos(2 r)});
+%\draw[dashed,color=lightgray] (2,{cos(2 r)}) -- (0,{cos(2 r)});
+%\draw (0,{cos(2 r)}) node[left] {$f(x_m)$};
+%\draw[dashed,color=lightgray] (0,{cos(3 r)}) -- (3,{cos(3 r)});
+%\draw[->] (0,-1.25) -- (0,1.25) ;
+%\draw (0,1.25) node[above] {$f(x)$};
+\draw[->] (0.9,0) -- (3.1,0) ;
+\draw (3.1,0) node[right] {$x$};
+%\draw[fill] (0,0) circle (0.05);
+%\draw[fill,color=blue] ({pi/2},0) circle (0.1);
+\end{tikzpicture}
+
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+rechercher le zéro d'une fonction $f$ continue sur un 
+intervalle $[a,b]$ telle que $f(a).f(b) < 0$;
+il existe alors une racine de $f$ dans $]a,b[$ que nous supposerons 
+unique. 
+
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Déterminer le zéro d'une fonction 
+selon les trois méthodes alternatives suivantes.
+\begin{enumerate}
+\item Méthode des tangentes : 
+	soit $x_n$ une approximation de la racine $c$ recherchée : 
+	$f(c) = f(x_n) + (c-x_n)f'(x_n)$; comme $f(c) = 0$, on a : 
+	$c = x_n - f(x_n)/f'(x_n)$. Posons $x_{n+1} = x_n - f(x_n)/f'(x_n)$ : 
+	on peut considérer que $x_{n+1}$ est une meilleure approximation de $c$ que 
+	$x_n$. On recommence le procédé avec $x_{n+1}$  et ainsi de suite jusqu'à ce 
+	que $|x_{n+1}-x_n|$ soit inférieur à un certain seuil $s$.
+	
+\item Méthode des sécantes : 
+	reprendre la méthode des tangentes en effectuant 
+	l'approximation suivante : $f'(x_n) = (f(x_n)-f(x_{n-1}))/(x_n-x_{n-1})$.
+	
+\item Méthode des cordes : reprendre la méthode par dichotomie en prenant pour $x$ 
+	le point d'intersection de la corde $AB$ et de l'axe des abscisses : 
+	$x = (x_2f(x_1) - x_1f(x_2))/(f(x_1)-f(x_2))$, c'est-à-dire le point obtenu 
+	par la méthode des sécantes.
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Boucles imbriquées : produit de matrices}\label{maths:boucles-imbriquees}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Spécification : racines du trinôme}\label{maths:specification}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Appels de fonctions : }\label{maths:appels}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Récursivité : }\label{maths:recursivite}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Recherche : }\label{maths:recherche}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Tri : }\label{maths:tri}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} objectif
+
+\paragraph{Syntaxe \python:} \texttt{python}
+
+\begin{framed}
+\paragraph{Enoncé:} énoncé
+\end{framed}
+
+\paragraph{Méthode:} Il s'agit ici de 
+
+\paragraph{Résultat:} résultat
+
+\paragraph{Vérification:} vérification
+
+\paragraph{Généricité:} Pour vérifier la généricité de la méthode précédente,
+
+\paragraph{Poursuite:} Pour aller un peu plus loin,
+
+
+%-------------------------------------------------------------------------
+\newpage
+\section{Projet : résolution de systèmes linéaires}\label{maths:projet}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

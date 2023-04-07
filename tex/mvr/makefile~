@@ -1,0 +1,19 @@
+LATEX = xelatex
+PDFDIR = ../../pdf/mvr/
+
+export TEXINPUTS=.:../macros//:
+
+ALLPDF = mvr-paper.pdf
+
+#-------------------------------------------------------------------------------
+info-S1-mvr.pdf: mvr-paper.tex
+	$(LATEX) mvr-paper.tex
+	$(LATEX) mvr-paper.tex
+	cp mvr-paper.pdf $(PDFDIR)
+
+#-------------------------------------------------------------------------------
+clean:
+	rm -f $(ALLPDF)
+	rm -f *.ald *.alx *.aux *.bbl *.blg *.bmt *.defd *.defx *.idx *.ilg *.ind
+	rm -f *.log *.lol *.maf *.mtc* *.out *.tdd *.tdx *.thm *.toc 
+

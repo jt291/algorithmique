@@ -1,0 +1,129 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-booleens.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+%\noindent\framebox[\textwidth]{}
+\entete
+
+\autoevaluation
+
+
+$$\mbox{\textbf{\large Tables de vérité}}$$
+
+
+%-------------------------------------------------------------------------
+%\newpage
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Etablir la table de vérité des expressions booléennes suivantes en faisant apparaître des variables intermédiaires de calcul
+(chaque étudiant traite une seule question : celle correspondant à son numéro d'ordre dans la liste de \textsc{Labo}).
+
+\noindent\begin{minipage}[t]{7cm}
+\begin{enumerate}  
+\item $z = ((a \Rightarrow b) + \overline{(b \Rightarrow c)}) \Rightarrow (\overline{c} + \overline{a})$ 
+\item $z = ((a \Rightarrow b) \cdot (b \Rightarrow \overline{c})) \Rightarrow (\overline{c} \oplus \overline{a})$
+\item $z = (\overline{(a \oplus \overline{b})} \Rightarrow (b \cdot c)) \Rightarrow (\overline{c} \oplus \overline{a})$
+\item $z = ((a \Rightarrow \overline{b}) \cdot (b + c)) \Rightarrow \overline{(\overline{c} \Rightarrow \overline{a})}$
+\item $z = ((\overline{a} \Rightarrow \overline{b}) \cdot (b \Rightarrow c)) \Rightarrow ({c} \Rightarrow {a})$
+\item $z = ({(a \Rightarrow b)} + \overline{(b \Rightarrow \overline{c})}) \Rightarrow (\overline{c} \oplus \overline{a})$ 
+\item $z = ((a \cdot b) \oplus (b \cdot c)) \Rightarrow ({c} + \overline{a})$
+\item $z = ((a \Rightarrow b) \cdot (b \Rightarrow \overline{c})) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\item $z = (({a} \Rightarrow {b}) \cdot \overline{(b \Rightarrow c)}) \oplus ({c} \Rightarrow {a})$
+\item $z = ((a \cdot b) \Rightarrow (b \cdot c)) \Rightarrow ({c} + \overline{a})$
+\item $z = (\overline{(a \oplus \overline{b})} \Rightarrow (b \cdot c)) \Rightarrow (\overline{c} \oplus \overline{a})$
+\item $z = ({(a + b)} \oplus \overline{(b \cdot c)}) \Rightarrow ({c} + \overline{a})$
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{12}
+\item $z = ((a \Rightarrow b) + (b \oplus c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\item $z = ((\overline{a} \Rightarrow \overline{b}) \cdot (b \Rightarrow c)) \oplus ({c} \Rightarrow {a})$
+\item $z = ((a \Rightarrow b) + (b \Rightarrow c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\item $z = ((a \Rightarrow b) + (b \Rightarrow c)) \Rightarrow (\overline{c} + \overline{a})$
+\item $z = ((a \Rightarrow \overline{b}) \cdot (b \oplus c)) \Rightarrow \overline{(\overline{c} \Rightarrow \overline{a})}$
+\item $z = (({a} \Rightarrow {b}) + \overline{(b \Rightarrow c)}) \oplus ({c} \Rightarrow {a})$
+\item $z = ((a \oplus b) \Rightarrow (b + c)) \Rightarrow (\overline{c} \oplus \overline{a})$
+\item $z = ((a \Rightarrow \overline{b}) \cdot \overline{(b \Rightarrow c)}) \Rightarrow ({c} + {a})$
+\item $z = ({(a + b)} + \overline{(b \cdot c)}) \Rightarrow ({c} + \overline{a})$
+\item $z = ((a \Rightarrow \overline{b}) \cdot \overline{(b \Rightarrow c)}) \Rightarrow ({c} \cdot {a})$
+\item $z = ((a + b) \Rightarrow (b + c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\item $z = ({(a \Rightarrow b)} \cdot \overline{(b \Rightarrow \overline{c})}) \Rightarrow (\overline{c} \oplus \overline{a})$ 
+\end{enumerate}
+\end{minipage}
+
+%-------------------------------------------------------------------------
+\paragraph{Réponse :} (table de vérité au verso)
+
+\newpage
+
+{\large
+$$\begin{tabular}{|c|c|c||c||c|}
+\hline
+$a$ & $b$ & $c$ & \makebox[12.8cm]{} & $z$ \\
+\hline
+  & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+ & & & & \\
+ & & & & \\
+\hline
+\end{tabular}$$
+}
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

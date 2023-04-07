@@ -1,0 +1,221 @@
+% ds-algo-02.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-algo-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+\entete
+
+%-----------------------------------------------------------------------------
+\section{Calcul de $\pi$}
+%-----------------------------------------------------------------------------
+Définir une fonction qui calcule $\pi$ à l'ordre $n$ selon la formule :
+	$$\pi = 2\cdot
+	\frac{4}{3}\cdot\frac{16}{15}\cdot\frac{36}{35}\cdot\frac{64}{63}\cdots =
+	      2\prod_{k=1}^n\frac{4k^2}{4k^2 - 1}$$
+
+$$\framebox[14.5cm]{$\rule{0cm}{16cm}$}$$
+
+%-----------------------------------------------------------------------------
+\section{Conversion décimal $\rightarrow$ base $b$}
+%-----------------------------------------------------------------------------
+Définir une fonction qui calcule le code $t$ en base $b$ sur $k$ chiffres
+d'un entier $n$.
+Exemples pour $n=23$ : 
+\begin{tabular}[t]{ll@{\ $\rightarrow$\ }l}
+{\tt b = 2}  & {\tt k = 7} & {\tt t = [0, 0, 1, 0, 1, 1, 1]}\\
+{\tt b = 5}  & {\tt k = 5} & {\tt t = [0, 0, 0, 4, 3]}\\
+{\tt b = 21} & {\tt k = 2} & {\tt t = [1, 2]}\\
+{\tt b = 25} & {\tt k = 6} & {\tt t = [0, 0, 0, 0, 0, 23]}
+\end{tabular}
+
+$$\framebox[14.5cm]{$\rule{0cm}{17cm}$}$$
+
+%-----------------------------------------------------------------------------
+\section{Quinconce}
+%-----------------------------------------------------------------------------
+Définir une procédure qui dessine $n\times m$ cercles de rayon $r$
+disposés en quinconce sur $n$ rangées de $m$ cercles chacune.
+On utilisera les instructions de tracé {\em à la Logo}.
+
+$$\framebox[14.5cm]{$\rule{0cm}{17cm}$}$$
+
+
+%-----------------------------------------------------------------------------
+\section{Coefficients de Kreweras}
+%-----------------------------------------------------------------------------
+\begin{minipage}[t]{7cm}
+On consid\`ere la fonction {\tt g} ci-contre :
+\begin{enumerate}
+\item Calculer toutes les valeurs possibles
+	de $g(n,m)$ pour $n \in [0,6]$.
+\item Vérifier que {\tt 12.*g(5,5)/g(6,6)} est une bonne approximation de
+	$\pi$.
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{verbatim}
+#----------------------------------
+def g(n,m):
+#----------------------------------
+    assert type(n) is int
+    assert type(m) is int
+    assert 0 <= m and m <= n
+    if n == 0 and m == 0:
+        c = 1
+    else:
+        if m == 0: c = 0
+        else:
+            c = 0
+            for i in range(1,m+1):
+                c = c + g(n-1,n-i)
+    return c
+#---------------------------------
+\end{verbatim}
+\end{minipage}
+
+
+$$\framebox[14.5cm]{$\rule{0cm}{14cm}$}$$
+
+%-----------------------------------------------------------------------------
+\section{Portée des variables}
+%-----------------------------------------------------------------------------
+On considère les fonctions {\tt f}, {\tt g} et {\tt h} suivantes :
+\begin{center}
+\begin{py}{4cm}
+\begin{verbatim}
+def f(x):
+    x = 2*x
+    print('f', x)
+    return x
+\end{verbatim}
+\end{py}\hspace*{1cm}
+\begin{py}{4cm}
+\begin{verbatim}
+def g(x):
+    x = 4*f(x)
+    print('g', x)
+    return x
+\end{verbatim}
+\end{py}\hspace*{1cm}
+\begin{py}{4cm}
+\begin{verbatim}
+def h(x):
+    x = 3*g(f(x))
+    print('h', x)
+    return x
+\end{verbatim}
+\end{py}
+\end{center}
+
+Qu'affichent les appels suivants ?
+\vspace*{2mm}
+
+\begin{minipage}{7cm}
+\begin{enumerate}
+\item 
+
+\begin{py}{3cm}
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+
+>>> y = f(x)
+>>> print(x)
+
+>>> z = g(x)
+>>> print(x)
+
+>>> t = h(x)
+>>> print(x)
+\end{verbatim}
+\end{py}
+
+\framebox[5.5cm]{$\rule{0cm}{11cm}$}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{7cm}
+\begin{enumerate}
+
+\item
+
+\begin{py}{4cm}
+\begin{verbatim}
+>>> x = 2
+>>> print(x)
+
+>>> x = f(x)
+>>> print(x)
+
+>>> x = g(x)
+>>> print(x)
+
+>>> x = h(x)
+>>> print(x)
+\end{verbatim}
+\end{py}
+
+\framebox[5.5cm]{$\rule{0cm}{11cm}$}
+
+\end{enumerate}
+\end{minipage}
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une fonction itérative}
+%-----------------------------------------------------------------------------
+\begin{minipage}[t]{7cm}
+On considère la procédure {\tt f} définie ci-contre.
+\begin{enumerate}
+\item Qu'affiche l'instruction sui\-vante ?
+\begin{verbatim}
+>>> for n in range(7): f(n)
+
+\end{verbatim}
+\item Que représente {\tt c} à la fin de chaque itération sur {\tt p} ?
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{py}{8cm}
+\begin{verbatim}
+#----------------------------------------
+def f(n):
+#----------------------------------------
+    for p in range(n+1) :
+        num = 1
+        den = 1
+        for i in range(1,p+1) :
+            num = num*(n-i+1)
+            den = den*i
+        c = num/den
+        print(c,end=' ')  #--- affichage
+    print()               #--- affichage
+    return
+#----------------------------------------
+\end{verbatim}
+\end{py}
+\vspace*{3mm}
+
+\noindent\framebox[7cm]{\begin{minipage}{6.5cm}
+{\tt c} ? \vspace*{7cm}
+\end{minipage}}
+\mbox{}\hfill
+\framebox[8.25cm]{\begin{minipage}{7.5cm}\tt
+>>> for n in range(7): f(n)\\
+...
+\vspace*{9cm}
+
+\end{minipage}}
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

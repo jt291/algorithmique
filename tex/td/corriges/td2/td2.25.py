@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+ 
+# suite arithmétique 1 : version itérative
+n = 10
+
+#initialisation
+i, s = 0, 0
+# invariant : s = somme des i premiers entiers
+print(n,i,s)
+# condition d'arrêt : i >= n
+while not i >= n :
+    i = i + 1
+    s = s + i
+    # invariant : s = somme des i premiers entiers
+    print(n,i,s)
+print('itérative :',n,'->',s)

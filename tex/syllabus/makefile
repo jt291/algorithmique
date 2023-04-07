@@ -1,0 +1,19 @@
+LATEX = xelatex
+PDFDIR = ../../pdf/syllabus/
+
+export TEXINPUTS=.:../macros//:
+
+ALLPDF = info-S1-syllabus.pdf
+
+#-------------------------------------------------------------------------------
+info-S1-syllabus.pdf: info-S1-syllabus.tex
+	$(LATEX) info-S1-syllabus.tex
+	$(LATEX) info-S1-syllabus.tex
+	cp info-S1-syllabus.pdf $(PDFDIR)
+
+#-------------------------------------------------------------------------------
+clean:
+	rm -f $(ALLPDF)
+	rm -f *.ald *.alx *.aux *.bbl *.blg *.bmt *.defd *.defx *.idx *.ilg *.ind
+	rm -f *.log *.lol *.maf *.mtc* *.out *.tdd *.tdx *.thm *.toc 
+

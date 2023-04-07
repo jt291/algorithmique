@@ -1,0 +1,467 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-ds.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+%$$\mbox{\Large \textbf{DS : algorithmique}}$$
+
+%-------------------------------------------------------------------------
+\section{Boucle simple}
+\entete{25'}
+\vspace*{5mm}
+%-------------------------------------------------------------------------
+%\autoevaluation
+
+\paragraph{Enoncé :} Soit $f(x)$ une fonction continue de $R \rightarrow R$ à intégrer sur $[a,b]$ 
+(on supposera que $f$ à toutes les bonnes propriétés mathématiques pour être
+intégrable sur l'intervalle considéré). On cherche à calculer son intégrale
+$\displaystyle I = \int_a^b f(x)dx$ qui représente classiquement l'aire
+comprise entre la courbe représentative de $f$ et les droites d'équations 
+$x=a$, $x=b$ et $y=0$. Les méthodes classiques d'intégration numérique (méthode des rectangles, 
+méthode des trapèzes et méthode de Simpson) consistent 
+essentiellement à trouver une bonne approximation de cette aire.
+
+
+Dans la méthode des rectangles, on subdivise l'intervalle d'intégration de
+	longueur $b-a$ en $n$ parties égales de longueur 
+	$\displaystyle\delta x = \frac{b-a}{n}$. Soient $x_1$, $x_2$, \ldots,$x_i$, \ldots,
+	$x_n$ les points milieux de ces $n$ intervalles. Les $n$ rectangles
+	formés avec les ordonnées correspondantes ont pour surface $f(x_1)\delta
+	x$, $f(x_2)\delta x$, \ldots, $f(x_i)\delta x$, \ldots, $f(x_n)\delta x$. L'aire sous la courbe 
+	est alors assimilée à la somme des aires de ces rectangles, soit :
+	$$\displaystyle I = \int_a^b f(x)dx \approx
+	\left(f(x_1)+f(x_2)+\cdots+f(x_i)+\cdots+f(x_n)\right)\delta x$$ 
+	C'est la formule dite
+	des rectangles qui repose sur une approximation par une fonction {en
+	escalier}.
+$$\begin{tikzpicture}[xmin=-1,xmax=4.2,ymin=-0.25,ymax=1.25,xscale=2,yscale=3]
+%\grille 
+\axes 
+\fenetre
+\draw[thick,smooth,color=blue] plot (\x,{sin(\x r)});
+\draw[dashed] (0.5,-0.5) -- (0.5,1.25);
+\draw[dashed] (2.5,-0.5) -- (2.5,1.25);
+\draw (0.5,0) node {$\bullet$};
+\draw (0.5,-0.1) node[left] {$a$};
+\draw (2.5,0) node {$\bullet$};
+\draw (2.5,-0.1) node[right] {$b$};
+\draw (4,-0.1) node {$x$};
+\draw (0,1.15) node[left] {$f(x)$};
+\foreach \x in {0.5,0.75,1,...,2.25} \draw (\x,0) rectangle (\x+0.25,{sin((\x+0.125) r)});
+\draw (1.125,0) node[below] {$\delta x$};
+\draw[dotted] (1,-0.25) -- (1,0);
+\draw[dotted] (1.25,-0.25) -- (1.25,0);
+\draw[->] (0.875,-0.125) -- (1,-0.125);
+\draw[->] (1.375,-0.125) -- (1.25,-0.125);
+\foreach \x in {0.625,0.875,...,2.375} \draw (\x,-0.025) -- (\x,0.025);
+\draw (1.875,0) node[below] {$x_i$};
+\end{tikzpicture}$$
+
+	
+\paragraph{Question :}
+Définir la fonction \texttt{integration} qui calcule l'intégrale $I$ d'une fonction 
+	\texttt{f} sur \texttt{[a,b]} à l'ordre \texttt{n} par la méthode des rectangles.
+\vspace*{2mm}
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> integration(cos,0.,pi,10000)
+4.307866381890461e-16
+>>> integration(cos,-pi/2,pi/2,10000)
+2.000000008224676
+>>> integration(sin,0.,pi,10000)
+2.000000008224676
+>>> integration(exp,0.,1.,10000)
+1.7182818277430947
+>>> integration(log,1.,2.,100)
+0.38629644443195715
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> integration(lambda x: 3,1.,2.,10)
+3.0
+>>> integration(lambda x: 3,2.,1.,10)
+-3.0
+>>> integration(lambda x: x,-1.,1.,10)
+8.881784197001253e-17
+>>> integration(lambda x: x*x,-1.,1.,100)
+0.6666000000000001
+>>> integration(lambda x: x**3,0.,1.,100)
+0.24998750000000006
+\end{Verbatim}
+\end{minipage}
+
+\newpage
+\paragraph{Réponse :}\mbox{}\\
+\noindent\framebox[0.99\textwidth]{$\rule{0cm}{22cm}$}
+
+%-------------------------------------------------------------------------
+\section{Appels récursifs}
+\entete{25'}
+\vspace*{5mm}
+%-------------------------------------------------------------------------
+%\autoevaluation
+
+\paragraph{Enoncé :} On considère les fonctions \texttt{f} et \texttt{g} ci-dessous qui utilisent
+les primitives classiques de la tortue \textsc{Logo} (module \texttt{turtle}) située en $(x,y)$
+avec une orientation $\theta$ par rapport à l'horizontale.
+
+
+{\footnotesize
+$$\begin{tabular}{l@{ : }p{4cm}c}
+\texttt{forward(distance)} 	& Move the turtle forward by the specified \texttt{distance}
+								(integer or float), in the direction the turtle is headed. 
+							& 
+	\begin{minipage}{3.5cm}
+	\begin{tikzpicture}
+	\draw[color=lightgray] (0,0) -- (2.5,0);
+	\draw[color=lightgray] (0,0) -- (2,2);
+	\draw (0,0) node {$\bullet$};
+	\draw[color=lightgray] (1.5,1.5) node {$\bullet$};
+	\draw (0,0) node[left] {$(x,y)$};
+	\draw[thick,->] (0,0) -- (0.75,0.75);
+	\draw[->] (0.5,0) arc (0:45:0.5);
+	\draw (0.4,0.25) node[right] {$\theta$};
+	\draw[color=lightgray] (0,0) -- (-0.25,0.25);
+	\draw[color=lightgray] (1.5,1.5) -- (1.25,1.75);
+	\draw[color=lightgray,<->] (-0.15,0.15) -- (1.35,1.65);
+	\draw (0.5,1) node[rotate=45] {\scriptsize distance};
+	\end{tikzpicture}
+	\end{minipage} \\
+\texttt{right(angle)}		& Turn turtle right by \texttt{angle} (integer or float) units.
+								Units are by default degrees. 
+							& 
+	\begin{minipage}{3.5cm}
+	\begin{tikzpicture}
+	\draw[color=lightgray] (0,0) -- (2.5,0);
+	\draw[color=lightgray] (0,0) -- (2,2);
+	\draw (0,0) node {$\bullet$};
+	\draw (0,0) node[left] {$(x,y)$};
+	\draw[thick,->] (0,0) -- (0.75,0.75);
+	\draw[->] (0.5,0) arc (0:45:0.5);
+	\draw (0.4,0.25) node[right] {$\theta$};
+	\draw[color=lightgray] (0,0) -- ({2*cos(15)},{-2*sin(15)});
+	\draw[color=lightgray,<-] ({1.5*cos(15)},{-1.5*sin(15)}) arc (-15:45:1.5);
+	\draw (1.85,0.5) node[left] {\scriptsize angle};
+	\end{tikzpicture}
+	\end{minipage} \\
+\texttt{circle(radius)}		& Draw a circle with given \texttt{radius} (integer or float). 
+								The center $C$ is radius units left of the turtle. 
+							& 
+	\begin{minipage}{6cm}
+	\begin{tikzpicture}
+	\draw[color=lightgray] (0,0) -- (2.5,0);
+	\draw[color=lightgray] (0,0) -- (2,2);
+	\draw (0,0) node {$\bullet$};
+	\draw (0,0) node[left] {$(x,y)$};
+	\draw[thick,->] (0,0) -- (0.75,0.75);
+	\draw[->] (0.5,0) arc (0:45:0.5);
+	\draw (0.4,0.25) node[right] {$\theta$};
+	\draw[color=lightgray] (0,0) -- (-1.5,1.5);
+	%\draw[color=lightgray] (0,0) -- (-1.5,1.5);
+	\draw[color=lightgray] (-0.25,0.25) -- (0,0.5) -- (0.25,0.25);
+	\draw[color=lightgray] (-1.25,1.25) node {$\bullet$};
+	\draw (-1.25,1.25) node[above] {$C$};
+	\draw (-0.55,0.75) node[rotate=-45] {\scriptsize radius};
+	\draw[color=lightgray,->] (0,0) arc (-45:360:1.7678);
+	\end{tikzpicture}
+	\end{minipage} 
+\end{tabular}$$
+}
+    
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{lstlisting}
+from turtle import *
+
+def f(n,m,d) :
+    assert type(n) is int
+    assert n >= 0
+    assert type(m) is int
+    assert m >= 0
+    assert type(d) is float
+    assert d >= 0.0
+    
+    for i in range(n):
+        g(m,d)
+        right(360/n)
+    return
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{lstlisting}
+def g(m,d) :
+    assert type(m) is int
+    assert m >= 0
+    assert type(d) is float
+    assert d >= 0.0
+    
+    if m > 0 :
+        g(m-1,d/2)
+        circle(d/2)
+        g(m-1,d/2)
+    else :
+        forward(d)
+    return
+\end{lstlisting}
+\end{minipage}
+\vspace*{2mm}
+
+\paragraph{Question :}
+Que dessinent les appels suivants ?\\
+\begin{minipage}[t]{5cm}
+\begin{enumerate}
+\item \texttt{>{>}> f(1,0,100)}
+\item \texttt{>{>}> f(1,1,100)}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{5cm}
+\begin{enumerate}\setcounter{enumi}{2}
+\item \texttt{>{>}> f(1,2,100)}
+\item \texttt{>{>}> f(2,2,100)}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{5cm}
+\begin{enumerate}\setcounter{enumi}{4}
+\item \texttt{>{>}> f(3,2,100)}
+\item \texttt{>{>}> f(4,3,100)}
+\end{enumerate}
+\end{minipage}
+
+\newpage
+\paragraph{Réponses :}\mbox{}\\
+\noindent
+\framebox[7.5cm]{\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}
+\item \texttt{>{>}> f(1,0,100)}
+\end{enumerate}
+$\rule{0cm}{5.5cm}$
+\end{minipage}}
+\hfill
+\framebox[7.5cm]{\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{1}
+\item \texttt{>{>}> f(1,1,100)}
+\end{enumerate}
+$\rule{0cm}{5.5cm}$
+\end{minipage}}
+\vspace*{2mm}
+
+\noindent
+\framebox[7.5cm]{\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{2}
+\item \texttt{>{>}> f(1,2,100)}
+\end{enumerate}
+$\rule{0cm}{7cm}$
+\end{minipage}}
+\hfill
+\framebox[7.5cm]{\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{3}
+\item \texttt{>{>}> f(2,2,100)}
+\end{enumerate}
+$\rule{0cm}{7cm}$
+\end{minipage}}
+\vspace*{2mm}
+
+\noindent
+\framebox[7.5cm]{\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{4}
+\item \texttt{>{>}> f(3,2,100)}
+\end{enumerate}
+$\rule{0cm}{7cm}$
+\end{minipage}}
+\hfill
+\framebox[7.5cm]{\begin{minipage}[t]{7cm}\footnotesize
+\begin{enumerate}\setcounter{enumi}{5}
+\item \texttt{>{>}> f(4,3,100)}
+\end{enumerate}
+$\rule{0cm}{7cm}$
+\end{minipage}}
+\vspace*{2mm}
+
+
+\newpage
+%-------------------------------------------------------------------------
+\section{Liste de listes}
+\entete{25'}
+\vspace*{5mm}
+%-------------------------------------------------------------------------
+
+\paragraph{Enoncé :}
+Le taquin est un jeu en forme de damier $(n\times n)$.
+Il est composé de $(n^2 - 1)$ petits carreaux numérotés de 1 à $(n^2 - 1)$ qui glissent dans un cadre prévu pour $n^2$ carreaux. Il consiste à remettre dans l'ordre les $(n^2 - 1)$ carreaux à partir d'une configuration initiale quelconque.
+L'état du taquin $(n\times n)$ sera représenté par une liste de $n$ listes de $n$ éléments
+chacune, chaque élément portant un numéro de $1$ à $(n-1)$, le carreau vide étant numéroté $0$.
+La figure ci-dessous donne un exemple de taquin $(3\times 3)$.
+
+\noindent
+\centerline{\begin{minipage}{5.575cm}
+\setlength{\unitlength}{0.6cm}
+\begin{picture}(9,5)
+\put(0,4){\makebox(3,1){initial}}
+\put(0,1){\framebox(3,3){}} 
+\put(0.1,1.1){\framebox(0.8,0.8){7}}
+\put(1.1,1.1){\framebox(0.8,0.8){5}}
+\put(2.1,2.1){\framebox(0.8,0.8){3}}
+\put(2.1,1.1){\framebox(0.8,0.8){4}}
+\put(2.1,3.1){\framebox(0.8,0.8){8}}
+\put(1.1,3.1){\framebox(0.8,0.8){1}}
+\put(0.1,3.1){\framebox(0.8,0.8){2}}
+\put(0.1,2.1){\framebox(0.8,0.8){6}}
+\put(6,4){\makebox(3,1){final}}
+\put(6,1){\framebox(3,3){}} 
+\put(6.1,1.1){\framebox(0.8,0.8){7}}
+\put(7.1,1.1){\framebox(0.8,0.8){8}}
+\put(6.1,2.1){\framebox(0.8,0.8){4}}
+\put(7.1,2.1){\framebox(0.8,0.8){5}}
+\put(8.1,2.1){\framebox(0.8,0.8){6}}
+\put(6.1,3.1){\framebox(0.8,0.8){1}}
+\put(7.1,3.1){\framebox(0.8,0.8){2}}
+\put(8.1,3.1){\framebox(0.8,0.8){3}}
+\put(3.5,2.5){\color{orange}\vector(1,0){2}}
+\put(4.5,2.5){\makebox(0,1){\color{orange}\bf ?}}
+\put(4.5,0.15){\makebox(0,0){taquin $(3\times 3)$}}
+\end{picture}
+\end{minipage}
+\hfill
+\begin{minipage}{8.5cm}
+Le carreau vide est numéroté \texttt{0} :
+$$\begin{tabular}{lll}
+état initial 	&:& \texttt{[[2,1,8],[6,0,3],[7,5,4]]}\\ 
+\color{orange}$\downarrow$ ?   & & \\
+état final 		&:& \texttt{[[1,2,3],[4,5,6],[7,8,0]]}
+\end{tabular}$$
+\end{minipage}}
+
+\paragraph{Questions :}\mbox{}
+\begin{enumerate}
+\item Définir la fonction \texttt{listeCarree} qui teste si une liste \texttt{t} est une
+	liste de $n$ éléments dont chaque élément est lui-même une liste de $n$ éléments.
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> listeCarree([])
+True
+>>> listeCarree([[1]])
+True
+>>> listeCarree([[1],[2]])
+False
+>>> listeCarree([[1,7],[2,-3]])
+True
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> listeCarree([[2,1,8],[6,0,3]])
+False
+>>> listeCarree([[2,1,8],[6,0,3],[7,5,4]])
+True
+>>> listeCarree([[2,1,8],[6,0,3],[7]])
+False
+\end{Verbatim}
+\end{minipage}
+\vspace*{2mm}
+
+\item Définir la fonction \texttt{appartient} qui teste si un élément \texttt{e}
+	appartient (\texttt{True}) ou non (\texttt{False}) à une liste carrée \texttt{t}.
+
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> t = [[2,1,8],[6,0,3],[7,5,4]]
+>>> 5 in t
+False
+>>> 9 in t
+False
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> t = [[2,1,8],[6,0,3],[7,5,4]]
+>>> appartient(5,t)
+True
+>>> appartient(9,t)
+False
+\end{Verbatim}
+\end{minipage}
+\vspace*{2mm}
+
+	
+\item Définir la fonction \texttt{Taquin} qui teste si une liste \texttt{t} représente
+	(\texttt{True}) ou non (\texttt{False}) un jeu de taquin.
+	
+\noindent
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> Taquin([[0,1,2]])
+False
+>>> Taquin([[3,1],[0,2]])
+True
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> Taquin([[2,1,8],[6,0,3],[7,5,4]])
+True
+>>> Taquin([[2,1,8],[6,0,3],[7,5,0]])
+False
+\end{Verbatim}
+\end{minipage}
+\vspace*{2mm}
+
+\item Définir la fonction \texttt{jouerTaquin} qui, à partir d'une configuration 
+	donnée \texttt{jeu} d'un damier $(n\times n)$, retourne la liste des 
+	configurations possibles après un déplacement élémentaire du carreau vide.
+	
+\noindent\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> jeu  = [[3,1],[0,2]]
+>>> jouerTaquin(jeu)
+[[[0, 1], [3, 2]] , 
+ [[3, 1], [2, 0]]]
+\end{Verbatim}
+\end{minipage}
+ \hfill
+\begin{minipage}[t]{7cm}\footnotesize
+\begin{Verbatim}
+>>> jeu  = [[2,1,8],[6,0,3],[7,5,4]]
+>>> jouerTaquin(jeu)
+[[[2, 0, 8], [6, 1, 3], [7, 5, 4]], 
+ [[2, 1, 8], [6, 5, 3], [7, 0, 4]], 
+ [[2, 1, 8], [0, 6, 3], [7, 5, 4]], 
+ [[2, 1, 8], [6, 3, 0], [7, 5, 4]]]
+\end{Verbatim}
+\end{minipage}
+
+\end{enumerate}
+
+\paragraph{Réponses :}\mbox{}\\
+\noindent\framebox[0.99\textwidth]{$\rule{0cm}{19cm}$}
+
+\noindent\framebox[0.99\textwidth]{$\rule{0cm}{22cm}$}
+
+\noindent\framebox[0.99\textwidth]{$\rule{0cm}{22cm}$}
+
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

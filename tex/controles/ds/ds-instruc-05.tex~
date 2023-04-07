@@ -1,0 +1,144 @@
+% ds-instruc-04.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-instruc-preambule.tex}
+\usepackage{epsfig}
+%-------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+\entete
+
+%-----------------------------------------------------------------------------
+\section{Exécution d'une séquence d'instructions}
+%-----------------------------------------------------------------------------
+Qu'affiche la séquence d'instructions suivante ?
+\vspace*{5mm}
+
+\hspace*{5mm}\begin{py}{5cm}
+\begin{verbatim}
+a = 361
+x = 1
+z = a
+y = 0
+t = x
+print(a,x,z,t,y)
+while x <= a: x = x*4
+
+print(a,x,z,t,y)
+t = x
+while x > 1:
+  x = x/4
+  t = t/2 - x
+  if t <= z: 
+    z = z - t
+    t = t + x*2
+  y = t/2
+  print(a,x,z,t,y)
+
+print(a,x,z,t,y)
+\end{verbatim}
+\end{py}\hfill
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+\makebox[1.25cm]{a} & \makebox[1.25cm]{x} & \makebox[1.25cm]{z} & \makebox[1.25cm]{y} & \makebox[1.25cm]{t} \\
+\hline
+  &   &   &   &   \\[15cm]
+\hline
+\end{tabular}
+
+%-----------------------------------------------------------------------------
+\newpage
+\section{Calcul de $\pi$}
+%-----------------------------------------------------------------------------
+Ecrire un algorithme qui calcule $pi$ à l'ordre $n$ selon la formule :
+	$$\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \cdots + (-1)^n\frac{1}{2n+1} = 
+	\sum_{k=0}^n(-1)^k \frac{1}{2k+1}$$
+
+$$\framebox[14.5cm]{\begin{minipage}{14cm}
+\vspace*{17cm}
+
+\end{minipage}}$$ 
+
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\newpage
+\section{Zéro d'une fonction}
+%-----------------------------------------------------------------------------
+Dans cette section, on recherche le zéro d'une fonction $f$ continue sur un 
+intervalle $[a,b]$ telle que $f(a).f(b) < 0$ 
+(il existe donc une racine de $f$ dans $]a,b[$ que nous supposerons 
+unique). 
+
+Ecrire un algorithme qui détermine le zéro de $\sin(x)$ dans $[3,4]$
+	selon la méthode par dichotomie.
+	
+	Indications : on pose $x_1 = a$, $x2 = b$ et $x = (x_1+x_2)/2$. 
+	Si $f(x1).f(x) < 0$, la racine est dans $]x_1,x[$ et on pose $x_2 = x$; 
+	sinon la racine est dans $]x,x_2[$ et on pose $x_1 = x$. 
+	Puis on réitère le procédé, la longueur de l'intervalle ayant été 
+	divisée par deux. Lorsque $x_1$ et $x_2$ seront suffisamment proches, 
+	on décidera que la racine est $x$.
+	
+$$\framebox[14.5cm]{\begin{minipage}{14cm}
+\vspace*{16cm}
+
+\end{minipage}}$$ 
+
+%-----------------------------------------------------------------------------
+\newpage
+\section{Tableau d'Ibn al-Banna}
+%-----------------------------------------------------------------------------
+L'exercice suivant est inspir\'e du premier chapitre du
+livre ``Histoire d'algo\-ri\-thmes''\footnote{{\bf Chabert J.-L. et al.}, 
+{\em Histoire d'algorithmes : du caillou à la puce, Chapitre 1: algorithmes des op\'erations 
+arithm\'etiques}, Editions Belin, Paris, 1994}.
+On consid\`ere ici le texte d'Ibn al-Banna concernant la multiplication
+\`a l'aide de tableaux.
+$$\begin{minipage}{15cm}\footnotesize
+Tu construis un quadrilat\`ere que tu subdivises verticalement et
+horizontalement en autant de bandes qu'il y a de positions dans les
+deux nombres multipli\'es. Tu divises diagonalement les carr\'es
+obtenus, \`a l'aide de diagonale allant du coin inf\'erieur gauche au
+coin sup\'erieur droit.
+
+Tu places le multiplicande au-dessus du quadrilat\`ere, en faisant 
+correspondre chacune de ses positions \`a une colonne\footnote{L'écriture
+du nombre s'effectue de droite à gauche (exemple : 352 s'écrira donc 253).}. 
+Puis, tu places le multiplicateur \`a gauche ou \`a droite du quadrilat\`ere,
+de telle sorte qu'il descende avec lui en faisant correspondre \'egalement 
+chacune de ses positions \`a une ligne\footnote{L'écriture
+du nombre s'effectue de bas en haut (exemple : {\tiny$\begin{array}{c}3\\5\\2\end{array}$} 
+s'écrira donc {\tiny$\begin{array}{c}2\\5\\3\end{array}$}).}. Puis, tu multiplies, 
+l'une apr\`es l'autre, chacune des positions du multiplicande du carr\'e 
+par toutes les positions du multiplicateur, et tu poses le r\'esultat 
+partiel correspondant \`a chaque position dans le carr\'e o\`u se coupent 
+respectivement leur colonne et leur ligne, en pla\c{c}ant les unit\'es 
+au-dessus de la diagonale et les dizaines en dessous. Puis, tu
+commences \`a additionner, en partant du coin sup\'erieur gauche :
+tu additionnes ce qui est entre les diagonales, sans effacer, 
+en pla\c{c}ant chaque nombre dans sa position, en transf\'erant 
+les dizaines de chaque somme partielle \`a la diagonale suivante et
+en les ajoutant \`a ce qui y figure. 
+
+La somme que tu obtiendras sera le r\'esultat.
+\end{minipage}$$
+
+En utilisant la m\'ethode du tableau d'Ibn al-Banna, calculer $15853\times173$ 
+($= 2742569$).
+$$\framebox[14.5cm]{\begin{minipage}{14cm}
+\vspace*{10cm}
+
+\end{minipage}}$$ 
+
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

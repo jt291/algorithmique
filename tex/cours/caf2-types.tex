@@ -1,0 +1,113 @@
+% typesCorrA.tex
+%-----------------------------------------------------------------------------
+\documentclass[12pt]{article}
+%-----------------------------------------------------------------------------
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\pagestyle{myheadings}
+\markright{{E.N.I. Brest}\hfill{Informatique S1}\hfill{Page\ }}
+
+\setlength{\textheight}{23cm}
+\setlength{\textwidth}{16cm}
+\setlength{\parindent}{0cm}
+
+\voffset=-1.5cm
+\hoffset=-1.3cm
+
+\def\entete#1{\framebox[12.6cm][l]{Nom : \hspace*{3.85cm} Prénom : \hspace*{3cm}Groupe : {\bf A}$\rule[-0.3cm]{0cm}{1cm}$}
+\hfill
+\framebox[0.7cm]{\bf \ 3 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 2 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 1 $\rule[-0.3cm]{0cm}{1cm}$}
+\framebox[0.7cm]{\bf \ 0 $\rule[-0.3cm]{0cm}{1cm}$}\\[1mm]
+{\footnotesize\sc Durée: 30'\hfill 
+Documents, téléphones, calculettes et ordinateurs interdits.}\\[2mm]
+\centerline{\bf #1}}
+
+
+\newenvironment{py}[1]{\begin{minipage}[t]{#1}\footnotesize}{\end{minipage}}
+
+%-----------------------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+\entete{Contrôle d'autoformation : codage des nombres}
+%-----------------------------------------------------------------------------
+\section{Représentation en complément à 2}
+\begin{enumerate}
+\item Déterminer la plage de valeurs entières possibles lorsqu'un
+	entier positif, négatif ou nul est codé en binaire 
+	sur $k = 4$ chiffres dans la représentation en complément à 2.
+	
+	$$\framebox[13.5cm]{\begin{minipage}{13cm}
+	Lors d'un codage en binaire sur $k$ bits, 
+	seuls les nombres entiers relatifs $n$ 
+	tels que $-2^{k-1} \leq n < 2^{k-1}$ peuvent être représentés 
+	($\displaystyle n \in [-2^{k-1};2^{k-1}[$).
+	\vspace*{3mm}
+	
+	Application numérique : $k=4 : [-2^{4-1};2^{4-1}[ \ = [-8;+8[$
+	\end{minipage}}$$
+
+\item Coder l'entier $n = (- 93)_{10}$ sur $k = 8$ chiffres en base $b = 2$
+	en utilisant la représentation du complément à 2.
+	
+	$$\framebox[13.5cm]{
+\begin{minipage}{13cm}
+\begin{enumerate}
+\item coder $|n|=(93)_{10}$ sur $(k-1) = 7$ chiffres :
+	$(93)_{10} = (1011101)_2$ 
+\item mettre le bit de poids fort ($k^{\grave eme}$ bit) à $0$ :
+        $(01011101)_2$ 
+\item inverser tous les bits obtenus :
+        $(01011101)_2 \rightarrow (10100010)_2$
+\item ajouter 1 : 
+	$(10100010)_2 + (00000001)_2 = (10100011)_2$
+\item conclusion :
+	$n = (-93)_{10} = (10100011)_2$
+\end{enumerate}
+\end{minipage}}$$
+
+\item Vérifier la réponse précédente en additionnant en base $b=2$,
+	$n$ et $(-n)$, codés sur $k = 8$ chiffres dans la représentation
+	du complément à 2.
+
+	$$\framebox[13.5cm]{\begin{minipage}{13cm}
+$\begin{array}{lrrrrr}
+  & n &=& (- 93)_{10} &=& \ (10100011)_2\\[3mm]
++ & (-n) &=& (+ 93)_{10} &=& \ (01011101)_2\\[3mm]
+\hline
+\\[-2mm]
+= & 0 &=& (0)_{10} &=& \ 1(00000000)_2
+\end{array}$
+\vspace*{3mm}
+
+Le bit de poids fort (le $9^{\grave eme}$ bit à partir de la droite : {\tt 1})
+est perdu.
+\end{minipage}}$$
+\end{enumerate}
+
+%-----------------------------------------------------------------------------
+\section{IEEE 754 simple précision}
+Coder le nombre réel $x=-73.25$ selon la norme IEEE 754 en simple précision.
+	
+	$$\framebox[14.5cm]{
+\begin{minipage}{14cm}
+\begin{description}
+\item[partie entière :] : $(73)_{10} = (1001001)_2$
+\item[partie fractionnaire :] $(0.25)_{10} = (0.01)_2$
+\item[mantisse normalisée :] $(1001001.01)_2 =
+(1.00100101)_2 \cdot 2^6 = (1.00100101)_2 \cdot 2^{(00000110)_2}$
+\item[exposant relatif à 127 :] $(01111111)_2 + (00000110)_2 = (10000101)_2$
+\item[signe :] $(1)_2$
+\item[norme IEEE 754 :]
+\end{description}
+\centerline{\epsfig{figure=ieee754A.eps,width=13.5cm}}
+\end{minipage}
+}$$
+
+%-----------------------------------------------------------------------------
+\label{fini}
+\end{document}
+%-----------------------------------------------------------------------------

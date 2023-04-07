@@ -1,0 +1,743 @@
+%-------------------------------------------------------------------------
+% corriges-ds-info-S1-booleens.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{corriges-ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\enib{\textsc{Enib}}
+\def\logo{\textsc{Logo}}
+\def\python{\textsc{Python}}
+\def\uml{\textsc{Uml}}
+%-------------------------------------------------------------------------
+\def\ga{\textsc{ga}}   
+\def\bu{\textsc{bu}} 
+\def\zo{\textsc{zo}} 
+\def\meu{\textsc{meu}} 
+%-------------------------------------------------------------------------
+\def\si{\textsc{Si}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+$$\mbox{\textbf{\large Tables de vérité}}$$
+
+
+%-------------------------------------------------------------------------
+%\newpage
+\paragraph{Questions :}
+%-------------------------------------------------------------------------
+Etablir la table de vérité des expressions booléennes suivantes en faisant apparaître des variables intermédiaires de calcul.
+
+\paragraph{Réponses :} Au moins 4 variables intermédiaires 
+($s$, $t$, $u$, $v$) seront introduites pour «~suivre~» plus facilement 
+les différentes étapes du calcul 
+de la table de vérité de la fonction $z = f(a,b,c)$. 
+Le code \python{} ci-dessous permet de vérifier la table de vérité obtenue.
+
+\begin{Verbatim}[frame=single]
+print('a','b','c','|','s','t','u','v','|','z')
+print('----------------|--')
+for a in [0,1] :
+    for b in [0,1] :
+        for c in [0,1] :
+            s = ...
+            t = ...
+            u = ...
+            v = ...
+            z = ...
+            print(a,b,c,'|',int(s),int(t),int(u),int(v),'|',int(z))
+\end{Verbatim}
+
+Dans ce qui suit, l'implication $p \Rightarrow q$ est systématiquement remplacée 
+par son expression équivalente $\overline{p} + q$ (\texttt{not p or q} en \python), 
+l'identité $\overline{\overline{p}}$ par $p$ et
+le « ou exclusif » $p \oplus q$ par \mbox{\texttt{p != q}} en \python{}.
+
+\begin{enumerate}  
+\item $z = ((a \Rightarrow b) + \overline{(b \Rightarrow c)}) \Rightarrow (\overline{c} + \overline{a})$ 
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not (not b or c)
+u = s or t
+v = not c or not a   
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 1 1 | 1
+0 0 1 | 1 0 1 1 | 1
+0 1 0 | 1 1 1 1 | 1
+0 1 1 | 1 0 1 1 | 1
+1 0 0 | 0 0 0 1 | 1
+1 0 1 | 0 0 0 0 | 1
+1 1 0 | 1 1 1 1 | 1
+1 1 1 | 1 0 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow b) \cdot (b \Rightarrow \overline{c})) \Rightarrow (\overline{c} \oplus \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not b or not c
+u = s and t
+v = (not c) != (not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 1 1 0 | 0
+0 0 1 | 1 1 1 1 | 1
+0 1 0 | 1 1 1 0 | 0
+0 1 1 | 1 0 0 1 | 1
+1 0 0 | 0 1 0 1 | 1
+1 0 1 | 0 1 0 0 | 1
+1 1 0 | 1 1 1 1 | 1
+1 1 1 | 1 0 0 0 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = (\overline{(a \oplus \overline{b})} \Rightarrow (b \cdot c)) \Rightarrow (\overline{c} \oplus \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not (a != (not b))
+t = b and c
+u = not s or t
+v = (not c) != (not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 0 1 0 | 0
+0 0 1 | 0 0 1 1 | 1
+0 1 0 | 1 0 0 0 | 1
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 1 0 0 1 | 1
+1 0 1 | 1 0 0 0 | 1
+1 1 0 | 0 0 1 1 | 1
+1 1 1 | 0 1 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow \overline{b}) \cdot (b + c)) \Rightarrow \overline{(\overline{c} \Rightarrow \overline{a})}$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or not b
+t = b or c
+u = s and t
+v = not (c or not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 0 0 | 1
+0 0 1 | 1 1 1 0 | 0
+0 1 0 | 1 1 1 0 | 0
+0 1 1 | 1 1 1 0 | 0
+1 0 0 | 1 0 0 1 | 1
+1 0 1 | 1 1 1 0 | 0
+1 1 0 | 0 1 0 1 | 1
+1 1 1 | 0 1 0 0 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((\overline{a} \Rightarrow \overline{b}) \cdot (b \Rightarrow c)) \Rightarrow ({c} \Rightarrow {a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a or not b
+t = not b or c
+u = s and t
+v = not c or a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 1 1 1 | 1
+0 0 1 | 1 1 1 0 | 0
+0 1 0 | 0 0 0 1 | 1
+0 1 1 | 0 1 0 0 | 1
+1 0 0 | 1 1 1 1 | 1
+1 0 1 | 1 1 1 1 | 1
+1 1 0 | 1 0 0 1 | 1
+1 1 1 | 1 1 1 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ({(a \Rightarrow b)} + \overline{(b \Rightarrow \overline{c})}) \Rightarrow (\overline{c} \oplus \overline{a})$ 
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not (not b or not c)
+u = s or t
+v = (not c) != (not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 1 0 | 0
+0 0 1 | 1 0 1 1 | 1
+0 1 0 | 1 0 1 0 | 0
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 0 0 0 1 | 1
+1 0 1 | 0 0 0 0 | 1
+1 1 0 | 1 0 1 1 | 1
+1 1 1 | 1 1 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \cdot b) \oplus (b \cdot c)) \Rightarrow ({c} + \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a and b
+t = b and c
+u = s != t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 0 0 1 | 1
+0 0 1 | 0 0 0 1 | 1
+0 1 0 | 0 0 0 1 | 1
+0 1 1 | 0 1 1 1 | 1
+1 0 0 | 0 0 0 0 | 1
+1 0 1 | 0 0 0 1 | 1
+1 1 0 | 1 0 1 0 | 0
+1 1 1 | 1 1 0 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow b) \cdot (b \Rightarrow \overline{c})) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not b or not c
+u = s and t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 1 1 1 | 1
+0 0 1 | 1 1 1 1 | 1
+0 1 0 | 1 1 1 1 | 1
+0 1 1 | 1 0 0 1 | 1
+1 0 0 | 0 1 0 0 | 1
+1 0 1 | 0 1 0 1 | 1
+1 1 0 | 1 1 1 0 | 0
+1 1 1 | 1 0 0 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = (({a} \Rightarrow {b}) \cdot \overline{(b \Rightarrow c)}) \oplus ({c} \Rightarrow {a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not (not b or c)
+u = s and t
+v = not c or a
+z = u != v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 0 1 | 1
+0 0 1 | 1 0 0 0 | 0
+0 1 0 | 1 1 1 1 | 0
+0 1 1 | 1 0 0 0 | 0
+1 0 0 | 0 0 0 1 | 1
+1 0 1 | 0 0 0 1 | 1
+1 1 0 | 1 1 1 1 | 0
+1 1 1 | 1 0 0 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \cdot b) \Rightarrow (b \cdot c)) \Rightarrow ({c} + \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a and b
+t = b and c
+u = not s or t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 0 1 1 | 1
+0 0 1 | 0 0 1 1 | 1
+0 1 0 | 0 0 1 1 | 1
+0 1 1 | 0 1 1 1 | 1
+1 0 0 | 0 0 1 0 | 0
+1 0 1 | 0 0 1 1 | 1
+1 1 0 | 1 0 0 0 | 1
+1 1 1 | 1 1 1 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = (\overline{(a \oplus \overline{b})} \Rightarrow (b \cdot c)) \Rightarrow (\overline{c} \oplus \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not (a != (not b))
+t = b and c
+u = not s or t
+v = (not c) != (not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 0 1 0 | 0
+0 0 1 | 0 0 1 1 | 1
+0 1 0 | 1 0 0 0 | 1
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 1 0 0 1 | 1
+1 0 1 | 1 0 0 0 | 1
+1 1 0 | 0 0 1 1 | 1
+1 1 1 | 0 1 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ({(a + b)} \oplus \overline{(b \cdot c)}) \Rightarrow ({c} + \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a or b
+t = not (b and c)
+u = s != (not t)
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 1 0 1 | 1
+0 0 1 | 0 1 0 1 | 1
+0 1 0 | 1 1 1 1 | 1
+0 1 1 | 1 0 0 1 | 1
+1 0 0 | 1 1 1 0 | 0
+1 0 1 | 1 1 1 1 | 1
+1 1 0 | 1 1 1 0 | 0
+1 1 1 | 1 0 0 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow b) + (b \oplus c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = b != c
+u = s or t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 1 1 | 1
+0 0 1 | 1 1 1 1 | 1
+0 1 0 | 1 1 1 1 | 1
+0 1 1 | 1 0 1 1 | 1
+1 0 0 | 0 0 0 0 | 1
+1 0 1 | 0 1 1 1 | 1
+1 1 0 | 1 1 1 0 | 0
+1 1 1 | 1 0 1 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((\overline{a} \Rightarrow \overline{b}) \cdot (b \Rightarrow c)) \oplus ({c} \Rightarrow {a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a or not b
+t = not b or c
+u = s and t
+v = not c or a
+z = u != v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 1 1 1 | 0
+0 0 1 | 1 1 1 0 | 1
+0 1 0 | 0 0 0 1 | 1
+0 1 1 | 0 1 0 0 | 0
+1 0 0 | 1 1 1 1 | 0
+1 0 1 | 1 1 1 1 | 0
+1 1 0 | 1 0 0 1 | 1
+1 1 1 | 1 1 1 1 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow b) + (b \Rightarrow c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not b or c
+u = s or t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 1 1 1 | 1
+0 0 1 | 1 1 1 1 | 1
+0 1 0 | 1 0 1 1 | 1
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 0 1 1 0 | 0
+1 0 1 | 0 1 1 1 | 1
+1 1 0 | 1 0 1 0 | 0
+1 1 1 | 1 1 1 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow b) + (b \Rightarrow c)) \Rightarrow (\overline{c} + \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not b or c
+u = s or t
+v = not c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 1 1 1 | 1
+0 0 1 | 1 1 1 1 | 1
+0 1 0 | 1 0 1 1 | 1
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 0 1 1 1 | 1
+1 0 1 | 0 1 1 0 | 0
+1 1 0 | 1 0 1 1 | 1
+1 1 1 | 1 1 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow \overline{b}) \cdot (b \oplus c)) \Rightarrow \overline{(\overline{c} \Rightarrow \overline{a})}$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or not b
+t = b != c
+u = s and t
+v = not (c or not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 0 0 | 1
+0 0 1 | 1 1 1 0 | 0
+0 1 0 | 1 1 1 0 | 0
+0 1 1 | 1 0 0 0 | 1
+1 0 0 | 1 0 0 1 | 1
+1 0 1 | 1 1 1 0 | 0
+1 1 0 | 0 1 0 1 | 1
+1 1 1 | 0 0 0 0 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = (({a} \Rightarrow {b}) + \overline{(b \Rightarrow c)}) \oplus ({c} \Rightarrow {a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not (not b or c)
+u = s or t
+v = not c or a
+z = u != v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 1 1 | 0
+0 0 1 | 1 0 1 0 | 1
+0 1 0 | 1 1 1 1 | 0
+0 1 1 | 1 0 1 0 | 1
+1 0 0 | 0 0 0 1 | 1
+1 0 1 | 0 0 0 1 | 1
+1 1 0 | 1 1 1 1 | 0
+1 1 1 | 1 0 1 1 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \oplus b) \Rightarrow (b + c)) \Rightarrow (\overline{c} \oplus \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a != b
+t = b or c
+u = not s or t
+v = (not c) != (not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 0 1 0 | 0
+0 0 1 | 0 1 1 1 | 1
+0 1 0 | 1 1 1 0 | 0
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 1 0 0 1 | 1
+1 0 1 | 1 1 1 0 | 0
+1 1 0 | 0 1 1 1 | 1
+1 1 1 | 0 1 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow \overline{b}) \cdot \overline{(b \Rightarrow c)}) \Rightarrow ({c} + {a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or not b
+t = not (not b or c)
+u = s and t
+v = c or a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 0 0 | 1
+0 0 1 | 1 0 0 1 | 1
+0 1 0 | 1 1 1 0 | 0
+0 1 1 | 1 0 0 1 | 1
+1 0 0 | 1 0 0 1 | 1
+1 0 1 | 1 0 0 1 | 1
+1 1 0 | 0 1 0 1 | 1
+1 1 1 | 0 0 0 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ({(a + b)} + \overline{(b \cdot c)}) \Rightarrow ({c} + \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a or b
+t = not (b and c)
+u = s or t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 1 1 1 | 1
+0 0 1 | 0 1 1 1 | 1
+0 1 0 | 1 1 1 1 | 1
+0 1 1 | 1 0 1 1 | 1
+1 0 0 | 1 1 1 0 | 0
+1 0 1 | 1 1 1 1 | 1
+1 1 0 | 1 1 1 0 | 0
+1 1 1 | 1 0 1 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a \Rightarrow \overline{b}) \cdot \overline{(b \Rightarrow c)}) \Rightarrow ({c} \cdot {a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or not b
+t = not (not b or c)
+u = s and t
+v = c and a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 0 0 | 1
+0 0 1 | 1 0 0 0 | 1
+0 1 0 | 1 1 1 0 | 0
+0 1 1 | 1 0 0 0 | 1
+1 0 0 | 1 0 0 0 | 1
+1 0 1 | 1 0 0 1 | 1
+1 1 0 | 0 1 0 0 | 1
+1 1 1 | 0 0 0 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ((a + b) \Rightarrow (b + c)) \Rightarrow (\overline{c} \Rightarrow \overline{a})$
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = a or b
+t = b or c
+u = not s or t
+v = c or not a
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 0 0 1 1 | 1
+0 0 1 | 0 1 1 1 | 1
+0 1 0 | 1 1 1 1 | 1
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 1 0 0 0 | 1
+1 0 1 | 1 1 1 1 | 1
+1 1 0 | 1 1 1 0 | 0
+1 1 1 | 1 1 1 1 | 1
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\item $z = ({(a \Rightarrow b)} \cdot \overline{(b \Rightarrow \overline{c})}) \Rightarrow (\overline{c} \oplus \overline{a})$ 
+\hfill
+\begin{minipage}[t]{4cm}\footnotesize
+\begin{Verbatim}
+s = not a or b
+t = not (not b or not c)
+u = s and t
+v = (not c) != (not a)
+z = not u or v
+\end{Verbatim}
+\end{minipage}
+\hspace*{3mm}
+\begin{minipage}[t]{3.5cm}\footnotesize
+\begin{Verbatim}
+a b c | s t u v | z
+----------------|--
+0 0 0 | 1 0 0 0 | 1
+0 0 1 | 1 0 0 1 | 1
+0 1 0 | 1 0 0 0 | 1
+0 1 1 | 1 1 1 1 | 1
+1 0 0 | 0 0 0 1 | 1
+1 0 1 | 0 0 0 0 | 1
+1 1 0 | 1 0 0 1 | 1
+1 1 1 | 1 1 1 0 | 0
+\end{Verbatim}
+\end{minipage}
+\vspace*{3mm}
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

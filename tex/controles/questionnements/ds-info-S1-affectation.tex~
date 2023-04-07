@@ -1,0 +1,151 @@
+%-------------------------------------------------------------------------
+% ds-info-S1-affectation.tex
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\input{ds-info-S1-preambule.tex}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\def\enib{\textsc{Enib}}
+\def\logo{\textsc{Logo}}
+\def\python{\textsc{Python}}
+\def\uml{\textsc{Uml}}
+%-------------------------------------------------------------------------
+\def\ga{\textsc{ga}}   
+\def\bu{\textsc{bu}} 
+\def\zo{\textsc{zo}} 
+\def\meu{\textsc{meu}} 
+%-------------------------------------------------------------------------
+\def\si{\textsc{Si}}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+%\noindent\framebox[\textwidth]{}
+\entete
+
+\autoevaluation
+
+
+$$\mbox{\textbf{\large Facteurs de conversion}}$$
+
+
+%-------------------------------------------------------------------------
+\paragraph{Contexte :} Le système international d'unités (\si) en physique est 
+composé de 7 unités de base et de 2 unités supplémentaires définies dans le
+tableau ci-dessous :
+{\footnotesize
+$$\begin{tabular}{|l|l|c|}
+\hline
+\textbf{Grandeur} & \textbf{Unité} & \textbf{Symbole}\\ 
+\hline 
+longueur						& mètre			& m \\ 
+masse 							& kilogramme	& kg \\ 
+temps							& seconde		& s \\ 
+intensité de courant électrique & ampère		& A \\ 
+température thermodynamique 	& kelvin		& K \\ 
+quantité de matière 			& mole			& mol \\ 
+intensité lumineuse 			& candela		& cd \\ 
+\hline 
+angle plan 						& radian		& rad \\ 
+angle solide					& stéradian		& sr \\ 
+\hline 
+\end{tabular}$$}
+
+\noindent Pour des raisons historiques, culturelles ou pragmatiques, un certain nombre 
+d'unités hors-système, telles que l'heure (h), le grade (gr),
+le pound (lb), le n\oe ud (kn), l'année-lumière (al) ou encore l'électronvolt (eV), 
+peuvent être utilisées. Il est par contre nécessaire de connaître leur facteur 
+de conversion en unités \si. Le tableau ci-dessous donne les facteurs de conversion
+des unités les plus connues.
+{\footnotesize
+$$\begin{tabular}{|l|l@{ = }r@{ $\times$ }ll|l|}  
+\hline
+\bf Grandeur    & \multicolumn{4}{c|}{\textbf{Facteur de conversion}} & \textbf{Domaine} \\ 
+\hline
+année-lumière 	& 1 al 		& $9.46053$	& $10^{15}$ 	& $\textrm{m}$ 		& astronomie\\ 
+atmosphère		& 1 atm 	& $1.01325$	& $10^{5}$  	& $\textrm{Pa}$ 	& météorologie \\
+baril			& 1 b		& $0.15891$	& $10^{0}$		& $\textrm{m}^3$	& pétrole \\
+calorie			& 1 cal		& $4.184$	& $10^{0}$		& $\textrm{J}$ 		& thermique \\
+cheval-vapeur	& 1 ch		& $735.499$	& $10^{0}$		& $\textrm{W}$ 		& mécanique \\
+curie			& 1 Ci		& $3.7$		& $10^{10}$ 	& $\textrm{Bq}$ 	& radioactivité \\
+degré			& 1 $^\circ$& $1.745329$& $10^{-2}$   	& $\textrm{rad}$ 	& géométrie \\ 
+électronvolt	& 1 eV		& $1.602189$& $10^{-19}$    & $\textrm{J}$ 		& physique nucléaire \\
+faraday 		& 1 F		& $9.64870$	& $10^{4}$		& $\textrm{C}$ 		& électricité \\ 
+foot			& 1 ft		& $30.48$	& $10^{-2}$		& $\textrm{m}$ 		& géométrie \\
+franklin		& 1 Fr		& $3.33564$	& $10^{-10}$	& $\textrm{C}$ 		& électricité \\
+frigorie		& 1 fg		& $4.186$	& $10^{3}$		& $\textrm{J}$ 		& thermique \\ 
+gallon			& 1 gal		& $3.78541$	& $10^{-3}$		& $\textrm{m}^3$	& volume \\
+grade			& 1 gr		& $1.570796$& $10^{-2}$		& $\textrm{rad}$ 	& géométrie \\
+heure			& 1 h		& $3.6$		& $10^{3}$		& $\textrm{s}$ 		& temps \\
+inch			& 1 in		& $2.54$	& $10^{-2}$		& $\textrm{m}$ 		& géométrie \\
+lambert			& 1 L		& $3.183$	& $10^{3}$		& $\textrm{cd}\cdot\textrm{m}^{-2}$ 	& photométrie \\
+mile			& 1 mile	& $1.609344$& $10^{3}$		& $\textrm{m}$ 		& géométrie \\ 
+millimètre de mercure & 1 mmHg & $133.3224$ & $10^{0}$	& $\textrm{Pa}$ 	& météorologie \\
+n\oe ud			& 1 nd		& $0.514444$& $10^{0}$		& $\textrm{m}\cdot\textrm{s}^{-1}$ 		& marine \\
+oersted			& 1 Oe		& $79.57747$& $10^{0}$		& $\textrm{A}\cdot\textrm{m}^{-1}$ 		& magnétisme \\
+parsec			& 1 pc		& $3.0857$	& $10^{16}$		& $\textrm{m}$ 		& astronomie\\ 
+pica			& 1 pica	& $4.2175$	& $10^{-3}$		& $\textrm{m}$ 		& typographie\\ 
+torr			& 1 Torr	& $133.3224$& $10^{0}$		& $\textrm{Pa}$		& météorologie \\
+\hline
+\end{tabular}$$ 
+}
+
+\paragraph{Objectif :} utiliser l'affectation pour calculer un facteur de conversion entre 
+deux unités physiques comptatibles.
+
+%-------------------------------------------------------------------------
+\paragraph{Question :}
+Ecrire une affectation qui calcule les facteurs de conversion suivants
+(chaque étudiant traite une seule question : celle correspondant à son numéro d'ordre dans la liste de \textsc{Labo}).
+
+\noindent\begin{minipage}[t]{7cm}
+\begin{enumerate}
+\item année en minute
+\item année-lumière en mile
+\item baril en gallon
+\item année-lumière en parsec
+\item litre en gallon
+\item parsec en inch
+\item inch en pica
+\item mile en foot
+\item frigorie en calorie
+\item centimètre en pica
+\item électronvolt en frigorie
+\item franklin en faraday
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\begin{enumerate}\setcounter{enumi}{12}
+\item baril en litre
+\item parsec en foot
+\item année en seconde
+\item électronvolt en calorie
+\item atmosphère en torr
+\item parsec en année-lumière
+\item foot en inch
+\item n\oe ud en kilomètre par heure
+\item mile en inch
+\item année-lumière en pica
+%\item torr en millimètre de mercure
+\item inch en foot
+\item litre en baril
+\end{enumerate}
+\end{minipage}
+
+%-------------------------------------------------------------------------
+\paragraph{Réponse :}\mbox{}
+
+\noindent\framebox[0.9955\textwidth]{$\rule{0cm}{0.5\textheight}$}
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------
+

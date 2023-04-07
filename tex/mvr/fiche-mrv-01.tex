@@ -1,0 +1,171 @@
+% mrv-physique.tex
+
+%-------------------------------------------------------------------------
+\documentclass[11pt,a4paper,colorlinks,breaklinks]{article}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\RequirePackage{calc}
+\RequirePackage[text={16cm,23cm},centering=true,showframe=false]{geometry}
+\RequirePackage{fancybox,fancyvrb,fancyhdr,lastpage,lineno}
+\RequirePackage{longtable,multirow}
+\RequirePackage{xcolor,graphics,xmpmulti,pgf,pgfpages,tikz}
+\RequirePackage{colortbl,color}
+\RequirePackage{amsmath,amssymb,amsfonts}
+\RequirePackage{hyperref,multimedia,rotating}
+\RequirePackage{listings}
+\RequirePackage{fontspec}
+\RequirePackage[french]{babel}
+\RequirePackage[french]{nomencl}
+\RequirePackage{eurosym}
+\RequirePackage{pifont}
+
+%-------------------------------------------------------------------------
+\input{sigle.tex}
+
+%-------------------------------------------------------------------------
+\lstset
+{
+language=Python,
+basicstyle=\ttfamily,
+identifierstyle=\ttfamily,
+keywordstyle=\color{blue}\ttfamily,
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{green}\ttfamily,
+showstringspaces=false,
+extendedchars=true,
+numbers=left, 
+numberstyle=\color{blue}\tiny,
+frame=lines,
+linewidth=0.95\textwidth,
+xleftmargin=5mm
+} 
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\pgfdeclareimage[width=3cm,interpolate=true]{logo-enib}{logo-enib}
+%-------------------------------------------------------------------------
+
+\def\python{\textsc{Python}}
+
+%-------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\hspace*{-3em}\begin{minipage}{3cm}\pgfuseimage{logo-enib}\end{minipage}}
+\fancyhead[C]{\textsc{Mrv--Physique} : \thesection}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyfoot{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\setlength{\headheight}{51pt}
+\setlength{\footskip}{38pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+\newpage
+\setcounter{section}{1}
+\section{Des n\oe uds aux kilomètres par heure}\label{mrv:noeuds}
+%-------------------------------------------------------------------------
+\paragraph{Objectif:} Mettre en \oe uvre l'instruction d'affectation.
+
+\paragraph{Syntaxe \python:} \texttt{variable = expression}
+
+\paragraph{}\mbox{}
+
+\noindent\fbox{\begin{minipage}{0.985\textwidth}
+\paragraph{Enoncé:}
+On veut convertir une certaine quantité $n1$ de vitesse exprimée en n\oe uds 
+(miles nautiques par heure) en la quantité équivalente $n_2$ exprimée en 
+kilomètres par heure (km/h).\\
+Proposer une instruction de type « affectation » qui réalise cette conversion.
+\end{minipage}}
+
+\paragraph{Méthode:}
+On cherche ici à convertir $n_1\cdot u_1$ en $n_2\cdot u_2$ 
+où $u_1$ et $u_2$ sont des unités physiques compatibles 
+qui dérivent de la même unité de base $u_b$ du \href{http://www.bipm.org/fr/si/}{Système international d'unités}.
+$$\left|\begin{array}{l@{\ =\ }r}
+u_1 & a_1\cdot u_b \\
+u_2 & a_2\cdot u_b
+\end{array}\right.
+\ \Rightarrow\ \ 
+\left|\begin{array}{l@{\ =\ }r@{\ =\ }r}
+n_1\cdot u_1 & n_1\cdot (a_1\cdot u_b) & (n_1\cdot a_1)\cdot u_b\\
+n_2\cdot u_2 & n_2\cdot (a_2\cdot u_b) & (n_2\cdot a_2)\cdot u_b
+\end{array}\right.
+\ \Rightarrow\ \ \frac{n_1\cdot u_1}{n_2\cdot u_2} = \frac{n_1\cdot a_1}{n_2\cdot a_2}$$
+Comme on cherche $n_2$ tel que $n_1\cdot u_1 = n_2\cdot u_2$, on a donc :
+$$\frac{n_1\cdot u_1}{n_2\cdot u_2} = \frac{n_1\cdot a_1}{n_2\cdot a_2} = 1
+\ \Rightarrow\ \ n_2 = n_1 \cdot \frac{a_1}{a_2}$$
+où les coefficients $a_i$ sont documentés dans le Système international d'unités par le
+\href{http://www.bipm.org/}{Bureau international des poids et mesures}.
+
+Une fois connus les coefficients $a_i$, on détermine la quantité $n_2$ de l'unité $u_2$
+par une affectation simple : \texttt{n2 = n1*a1/a2} .
+
+\paragraph{Résultat:} On applique la méthode précédente à la conversion
+proposée dans l'énoncé où $u_1$ représente les n\oe uds (miles nautiques par heure), 
+$u_2$ les kilomètres par heure (km/h) et $u_b$ les mètres par seconde (m/s).
+Le Système international d'unités fournit par ailleurs les facteurs 
+de conversion $a_1$ (nd $\rightarrow$ m/s) et $a_2$ (km/h $\rightarrow$ m/s) :
+$a_1 = 1852/3600$ et $a_2 = 1000/3600$.
+
+
+\noindent\begin{minipage}[t]{7cm}
+Compte-tenu de ces valeurs, le code ci-contre
+permet de calculer le nombre $n_2$ de kilomètres par heure
+en fonction du nombre $n_1$ de n\oe uds.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{8cm}
+\begin{lstlisting}
+a1 = 1852/3600
+a2 = 1000/3600
+n2 = n1*a1/a2
+\end{lstlisting}
+\end{minipage}
+
+Remarque : on n'a pas cherché à effectuer « à la main » les calculs numériques :
+\python{} les fera mieux que nous; et surtout, on n'a pas cherché non plus à 
+particulariser la $3^{\grave eme}$ ligne du code en \texttt{n2 = n1*1852/1000} :
+la forme plus abstraite \texttt{n2 = n1*a1/a2} restera identique pour convertir 
+des parsecs en années-lumière (longueurs), des gallons en barils (volumes) ou 
+encore des électron-volts en frigories (énergies), seules les valeurs des coefficients $a_i$ changeront (lignes \texttt{1} 
+et \texttt{2} du code).
+
+\paragraph{Vérification:}
+Pour tester le résultat précédent, on peut comparer les valeurs obtenues par le calcul 
+avec celles de quelques valeurs caractéristiques facilement évaluables « à la main »
+(exemples : $n_1 = 1\ \rm{nd} \Rightarrow{} n_2 = 1.852\ \rm{km/h}$ ou
+$n_1 = 1/1852\ \rm{nd} \Rightarrow{} n_2 = 1/1000\ \rm{km/h}$).
+$$\begin{minipage}[t]{7.5cm}\footnotesize
+\begin{Verbatim}
+>>> n1 = 1
+>>> a1, a2 = 1852/3600, 1000/3600
+>>> n2 = n1*a1/a2
+>>> n2
+1.852
+\end{Verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7.5cm}\footnotesize
+\begin{Verbatim}
+>>> n1 = 1/1852
+>>> a1, a2 = 1852/3600, 1000/3600
+>>> n2 = n1*a1/a2
+>>> n2
+0.0010000000000000002
+\end{Verbatim}
+\end{minipage}$$
+On obtient bien par le calcul les résultats escomptés.
+
+%-------------------------------------------------------------------------
+\end{document}
+%-------------------------------------------------------------------------

@@ -1,0 +1,67 @@
+LATEX = xelatex
+PDFDIR = ../../../pdf/controles
+
+export TEXINPUTS=.:../../macros//:
+
+ALLPDF = qcm-introduction.pdf c-qcm-introduction.pdf\
+		 qcm-affectation.pdf c-qcm-affectation.pdf\
+		 qcm-tests.pdf c-qcm-tests.pdf\
+		 qcm-boucles.pdf c-qcm-boucles.pdf\
+		 qcm-specification.pdf c-qcm-specification.pdf\
+		 qcm-appels.pdf c-qcm-appels.pdf\
+		 qcm-sequences.pdf c-qcm-sequences.pdf 
+
+ALLTEX = qcm-introduction.tex c-qcm-introduction.tex\
+		 qcm-affectation.tex c-qcm-affectation.tex\
+		 qcm-tests.tex c-qcm-tests.tex\
+		 qcm-boucles.tex c-qcm-boucles.tex\
+		 qcm-specification.tex c-qcm-specification.tex\
+		 qcm-appels.tex c-qcm-appels.tex\
+		 qcm-sequences.tex c-qcm-sequences.tex 
+
+#-------------------------------------------------------------------------------
+all: $(ALLPDF)
+	
+#-------------------------------------------------------------------------------
+qcm-introduction.pdf c-qcm-introduction.pdf : introduction.qcm
+	python qcm.py 'Introduction' introduction.qcm 40 $(LATEX)
+	cp qcm-introduction.pdf $(PDFDIR)/qcm/
+	cp c-qcm-introduction.pdf $(PDFDIR)/corriges/qcm/
+
+qcm-affectation.pdf c-qcm-affectation.pdf : affectation.qcm
+	python qcm.py 'Affectation' affectation.qcm 40 $(LATEX)
+	cp qcm-affectation.pdf $(PDFDIR)/qcm/
+	cp c-qcm-affectation.pdf $(PDFDIR)/corriges/qcm/
+
+qcm-tests.pdf c-qcm-tests.pdf : tests.qcm
+	python qcm.py 'Alternatives' tests.qcm 40 $(LATEX)
+	cp qcm-tests.pdf $(PDFDIR)/qcm/
+	cp c-qcm-tests.pdf $(PDFDIR)/corriges/qcm/
+
+qcm-boucles.pdf c-qcm-boucles.pdf : boucles.qcm
+	python qcm.py 'Itérations' boucles.qcm 40 $(LATEX)
+	cp qcm-boucles.pdf $(PDFDIR)/qcm/
+	cp c-qcm-boucles.pdf $(PDFDIR)/corriges/qcm/
+
+qcm-specification.pdf c-qcm-specification.pdf : specification.qcm
+	python qcm.py 'Spécification de fonctions' specification.qcm 40 $(LATEX)
+	cp qcm-specification.pdf $(PDFDIR)/qcm/
+	cp c-qcm-specification.pdf $(PDFDIR)/corriges/qcm/
+
+qcm-appels.pdf c-qcm-appels.pdf : appels.qcm
+	python qcm.py 'Appels de fonctions' appels.qcm 40 $(LATEX)
+	cp qcm-appels.pdf $(PDFDIR)/qcm/
+	cp c-qcm-appels.pdf $(PDFDIR)/corriges/qcm/
+
+qcm-sequences.pdf c-qcm-sequences.pdf : sequences.qcm
+	python qcm.py 'Séquences' sequences.qcm 40 $(LATEX)
+	cp qcm-sequences.pdf $(PDFDIR)/qcm/
+	cp c-qcm-sequences.pdf $(PDFDIR)/corriges/qcm/
+
+#-------------------------------------------------------------------------------
+clean:
+	rm -f $(ALLPDF)
+	rm -f $(ALLTEX)
+	rm -f *.ald *.alx *.aux *.bbl *.blg *.bmt *.defd *.defx *.idx *.ilg *.ind
+	rm -f *.log *.lol *.maf *.mtc* *.out *.tdd *.tdx *.thm *.toc 
+
